@@ -2,5 +2,5 @@
 Laravel application CI/CD is set up. Find the main branch application [here](https://wf-jd-grocery-app.herokuapp.com/)
 Automatic deploys are enabled. New changes to main branch will be reflected on the above URL
 
-### Automatic PR changes deploy
-Additionally automatic deploys are enabled for pull requests, pull requests will be released and a new application will be created, whose link will be available under the environment section in the branch for the PR.
+### PR changes deploy
+Additionally deploys are enabled for pull requests, after a PR is created, it will be shown in the heroku pipeline for this project, we can then create a review application for the PR there.
