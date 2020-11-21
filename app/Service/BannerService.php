@@ -18,7 +18,6 @@ public function insertBanner(Request $request){
             $extension = $image->extension();
             $name =  $number.".".$extension;
             Image::make($image)->resize(100, 100)->save(storage_path('app/public/images/Banner/').$name);
-            //->storeAs('images/Banner/' ,$name);
         }
 
         $banner = new Banner;
@@ -32,9 +31,6 @@ public function insertBanner(Request $request){
     public function listBanner(){
         $banner = Banner::all();
         return view('Banner.list_banner', ['banners'=>$banner]);
-        // return redirect('list_banner',compact('banner'));
-        // return redirect()->route('list_banner')->with( ['banners' => $banner] );
-        // return redirect()
     }
 
     public function deleteBanner($id){

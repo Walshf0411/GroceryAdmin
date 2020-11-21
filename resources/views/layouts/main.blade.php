@@ -35,7 +35,7 @@
                 <ul class="menu-content">
                   <li><a href="add_category" class="menu-item active">Add category</a>
                   </li>
-                  <li><a href="categorylist.php" class="menu-item">Category List</a>
+                  <li><a href="list_category" class="menu-item">Category List</a>
                   </li>
 
                     </ul>
@@ -43,17 +43,15 @@
 
               </li>
 
-        <li class="has-sub nav-item"><a href="#"><i class="ft-list"></i><span data-i18n="" class="menu-title">Sub Category</span></a>
+        {{-- <li class="has-sub nav-item"><a href="#"><i class="ft-list"></i><span data-i18n="" class="menu-title">Sub Category</span></a>
                 <ul class="menu-content">
                   <li><a href="subcategory.php" class="menu-item active">Add Subcategory</a>
                   </li>
                   <li><a href="subcategorylist.php" class="menu-item">Sub Category List</a>
                   </li>
-
                     </ul>
+              </li> --}}
 
-
-              </li>
               <li class="has-sub nav-item"><a href="#"><i class="ft-package"></i><span data-i18n="" class="menu-title">Product</span></a>
                 <ul class="menu-content">
                   <li><a href="product.php" class="menu-item">Add Product</a>

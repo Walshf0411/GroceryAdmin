@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Model\Category;
+use App\Service\CategoryService;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
+    public function __construct(CategoryService $service){
+        $this->service = $service;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,12 +23,12 @@ class CategoriesController extends Controller
     public function viewAddCategory(){
         return view('Category.add_category');
     }
-    public function viewListCategory(){
-        return view('Category.list_category');
+    public function listCategory(){
+        return $this->service->listCategory();
     }
-    public function vieweditCategory($id){
-        return view('Category.edit_category');
-    }
+    // public function vieweditCategory($id){
+    //     return view('Category.edit_category');
+    // }
     /**
      * Show the form for creating a new resource.
      *
@@ -43,7 +47,7 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->service->insertCategory($request);
     }
 
     /**
@@ -63,9 +67,9 @@ class CategoriesController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Category $category,$id)
     {
-        //
+        return $this->service->editCategory($id);
     }
 
     /**
@@ -75,9 +79,9 @@ class CategoriesController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Category $category, $id)
     {
-        //
+        return $this->service->updateCategory($request,$id);
     }
 
     /**
@@ -86,8 +90,8 @@ class CategoriesController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category, $id)
     {
-        //
+        return $this->service->deleteCategory($id);
     }
 }

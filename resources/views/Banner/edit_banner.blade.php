@@ -31,7 +31,6 @@
                                 <label for="cname">Banner Image</label>
                                 {{-- <input type="file" id="pimg" onchange="loadFile(event)" > --}}
                                 <input type='file' onchange="readURL(this);" class="form-control"  placeholder="Enter Banner Image" name="banner_image"  required />
-
                             </div>
                                 <div class="form-group">
                                     <img id="blah" src = "..\storage\images\Banner\{{ $banners['0']->banner_image }}" alt="your image" height="100px" width="100px"/>

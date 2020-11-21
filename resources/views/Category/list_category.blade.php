@@ -16,31 +16,31 @@
 								 <th>Sr No.</th>
                                     <th>Category Name</th>
                                     <th>Category Image</th>
-									<th>Total Subcategory</th>
+									{{-- <th>Total Subcategory</th> --}}
                                     <th>Action</th>
 
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($category as $row)
                                 <tr>
 
-                                    <td>1</td>
-                                    <td>CName</td>
-                                    <td><img class="media-object round-media" src="src" alt="Generic placeholder image" style="height: 75px;"></td>
-                                    <td>Sub cat</td>
+                                    <td>{{ $row->id }}</td>
+                                    <td>{{ $row->category_name }}</td>
+                                    <td><img class="media-object round-media" src="storage\images\Category\{{ $row->category_image }}" alt="Generic placeholder image" style="height: 75px;"></td>
 									<td>
-									<a class="primary"  href="edit_category/1" data-original-title="" title="">
+									<a class="primary"  href="edit_category/{{ $row->id }}" data-original-title="" title="">
                                             <i class="ft-edit font-medium-3"></i>
                                         </a>
 
-									<a class="danger" href="?dele=id" data-original-title="" title="">
+									<a class="danger" href="deleteCategory/{{ $row->id }}" data-original-title="" title="">
                                             <i class="ft-trash font-medium-3"></i>
                                         </a>
 
 										</td>
 
                                 </tr>
-
+                                @endforeach
                             </tbody>
 
                         </table>
