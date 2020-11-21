@@ -58,5 +58,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/prism.min.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/app.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
   </head>

@@ -1,10 +1,10 @@
 @include('layouts.head')
-@include('layouts.main')
 <body data-col="2-columns" class=" 2-columns ">
     <div class="layer"></div>
   <!-- ////////////////////////////////////////////////////////////////////////////-->
       <div class="wrapper">
 
+        @include('layouts.main')
 
     <!-- main menu-->
     <!--.main-menu(class="#{menuColor} #{menuOpenType}", class=(menuShadow == true ? 'menu-shadow' : ''))-->

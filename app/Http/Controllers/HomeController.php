@@ -25,4 +25,12 @@ class HomeController extends Controller
     {
         return view('dashboard');
     }
+    public function riderlist()
+    {
+        return view('riderlist');
+    }
+    public function addrider()
+    {
+        return view('add_rider');
+    }
 }
