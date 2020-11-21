@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Model;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +23,15 @@ Auth::routes(['register' => false]); //,  'reset' => false
 
 Route::get('/', 'HomeController@index')->name('home');
 
+
+Route::get('/add_category', 'CategoriesController@viewAddCategory');
+Route::get('/list_category', 'CategoriesController@viewListCategory');
+Route::get('/edit_category/{id}', 'CategoriesController@viewEditCategory');
+
+
+Route::get('/add_banner', 'BannerController@viewAddBanner');
+    Route::post('/insertBanner', 'BannerController@store');
+    Route::get('/deleteBanner/{id}', 'BannerController@destroy');
+Route::get('/list_banner', 'BannerController@viewListBanner')->name('list_banner');
+Route::get('/edit_banner/{id}', 'BannerController@edit')->name('edit_banner');
+Route::post('/update_banner/{id}', 'BannerController@update')->name('update_banner');

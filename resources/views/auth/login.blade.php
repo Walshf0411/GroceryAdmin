@@ -77,7 +77,6 @@
     <div class="main-panel">
       <div class="main-content">
         <div class="content-wrapper"><!--Login Page Starts-->
-<section id="login">
   <div class="container-fluid">
       <div class="row full-height-vh">
           <div class="col-12 d-flex align-items-center justify-content-center">
@@ -136,16 +135,3 @@
   </div>
 </section>
 
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- ////////////////////////////////////////////////////////////////////////////-->
-
-  @include('layouts.script')
-
-
-</body>
-
-
-</html>
