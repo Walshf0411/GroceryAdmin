@@ -17,13 +17,13 @@ class CategoriesController extends Controller
         //
     }
     public function viewAddCategory(){
-        return view('add_category');
+        return view('Category.add_category');
     }
     public function viewListCategory(){
-        return view('list_category');
+        return view('Category.list_category');
     }
     public function vieweditCategory($id){
-        return view('edit_category');
+        return view('Category.edit_category');
     }
     /**
      * Show the form for creating a new resource.

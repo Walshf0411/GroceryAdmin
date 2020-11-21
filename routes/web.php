@@ -22,7 +22,7 @@ use App\Model;
 Auth::routes(['register' => false]); //,  'reset' => false
 
 Route::get('/', 'HomeController@index')->name('home');
-
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/add_category', 'CategoriesController@viewAddCategory');
 Route::get('/list_category', 'CategoriesController@viewListCategory');
