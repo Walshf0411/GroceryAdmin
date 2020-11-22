@@ -38,3 +38,11 @@ Route::get('/deleteBanner/{id}', 'BannerController@destroy');
 Route::get('/list_banner', 'BannerController@viewListBanner')->name('list_banner');
 Route::get('/edit_banner/{id}', 'BannerController@edit')->name('edit_banner');
     Route::post('/update_banner/{id}', 'BannerController@update')->name('update_banner');
+
+
+Route::get('/add_product', 'ProductController@index');
+    Route::post('/insertProduct', 'ProductController@store');
+Route::get('/deleteProduct/{id}', 'ProductController@destroy');
+Route::get('/list_product', 'ProductController@show')->name('list_product');
+Route::get('/edit_product/{id}', 'ProductController@edit')->name('edit_product');
+    Route::post('/update_product/{id}', 'ProductController@update')->name('update_product');

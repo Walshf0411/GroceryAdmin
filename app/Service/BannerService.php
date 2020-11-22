@@ -11,8 +11,12 @@ use DB as DB;
 class BannerService{
 
 public function insertBanner(Request $request){
-
-        $number = Banner::all()->count()+1;
+    $count = DB::select("select id from banners order by id DESC LIMIT 1");
+    if(count($count)==0){
+        $number = 1;
+    }else{
+        $number = $count['0']->id +1;
+    }
         if($request->hasFile('banner_image')){
             $image = $request->file('banner_image');
             $extension = $image->extension();

@@ -11,7 +11,12 @@ class CategoryService{
 
 
 public function insertCategory(Request $request){
-    $number = Category::all()->count()+1;
+    $count = DB::select("select id from categories order by id DESC LIMIT 1");
+        if(count($count)==0){
+            $number = 1;
+        }else{
+            $number = $count['0']->id +1;
+        }
         if($request->hasFile('category_image')){
             $image = $request->file('category_image');
             $extension = $image->extension();
