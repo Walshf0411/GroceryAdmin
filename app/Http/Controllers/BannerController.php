@@ -60,9 +60,11 @@ class BannerController extends Controller
      * @param  \App\Banner  $banner
      * @return \Illuminate\Http\Response
      */
-    public function show(Banner $banner)
+    public function show(Request $request)
     {
         //
+       
+
     }
 
     /**
@@ -98,5 +100,12 @@ class BannerController extends Controller
     {
         //
         return $this->service->deleteBanner($id);
+    }
+
+    public function getAllBanner(){
+        //
+        // return response()->json($this->service->listBanner());
+        $banners = Banner::get()->toJson(JSON_PRETTY_PRINT);
+        return response($banners, 200);
     }
 }
