@@ -6,7 +6,8 @@ use App\Model\Banner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
-use DB as DB;
+// use DB as DB;
+use Illuminate\Support\Facades\DB;
 
 class BannerService{
 

@@ -46,3 +46,15 @@ Route::get('/deleteProduct/{id}', 'ProductController@destroy');
 Route::get('/list_product', 'ProductController@show')->name('list_product');
 Route::get('/edit_product/{id}', 'ProductController@edit')->name('edit_product');
     Route::post('/update_product/{id}', 'ProductController@update')->name('update_product');
+
+
+Route::get('/list_temp_product', 'TempProductController@show')->name('list_temp_product');
+Route::get('/deleteProduct/{id}', 'TempProductController@destroy');
+Route::get('/addProduct/{id}', 'TempProductController@store');
+
+Route::get('/list_vendor', 'VendorController@show')->name('list_vendor');
+
+
+Route::get('/list_temp_vendor', 'TempVendorController@show')->name('list_temp_vendor');
+Route::get('/deleteVendor/{id}', 'TempVendorController@destroy');
+Route::get('/addVendor/{id}', 'TempVendorController@store');

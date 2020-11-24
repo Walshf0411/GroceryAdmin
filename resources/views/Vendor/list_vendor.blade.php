@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Product List</h4>
+                    <h4 class="card-title">Vendor List</h4>
                 </div>
                 <div class="card-body collapse show">
                     <div class="card-block card-dashboard">
@@ -13,28 +13,25 @@
                         <table class="table table-striped table-bordered dom-jQuery-events">
                             <thead>
                                 <tr>
-                                 <th>Id No.</th>
-                                    <th>Category Name</th>
-                                    <th>Product Name</th>
-                                    <th>Product Image</th>
+								 <th>Id No.</th>
+                                    <th>Vendor Name</th>
+                                    <th>Shop Name</th>
+                                    <th>Mobile Number</th>
 									{{-- <th>Total Subcategory</th> --}}
                                     <th>Action</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($products as $row)
+                                @foreach($vendordetails as $row)
                                 <tr>
 
                                     <td>{{ $row->id }}</td>
-                                    <td>{{ $row->category_name }}</td>
                                     <td>{{ $row->name }}</td>
-                                    <td>
-                                    @foreach( explode("|", $row->images) as $img)
-                                        <img class="media-object round-media" src="storage\images\Product\{{ $row->id }}\{{ $img }}" alt="Generic placeholder image" style="height: 75px;">
-                                    @endforeach
-                                    </td>
-                                    <td>
+                                    <td>{{ $row->shop_name }}</td>
+                                    <td>{{ $row->mobile_number }}</td>
+
+                                    {{-- <td>
 									<a class="primary"  href="edit_product/{{ $row->id }}" data-original-title="" title="">
                                             <i class="ft-edit font-medium-3"></i>
                                         </a>
@@ -43,7 +40,7 @@
                                             <i class="ft-trash font-medium-3"></i>
                                         </a>
 
-										</td>
+										</td> --}}
 
                                 </tr>
                                 @endforeach

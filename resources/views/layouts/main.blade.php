@@ -52,7 +52,22 @@
                     </ul>
               </li> --}}
 
+
+
               <li class="has-sub nav-item"><a href="#"><i class="ft-package"></i><span data-i18n="" class="menu-title">Product</span></a>
+                <ul class="menu-content">
+                    <li><a href="add_product" class="menu-item">Add Product</a>
+                    </li>
+                    <li><a href="list_product" class="menu-item">Product List</a>
+                    </li>
+                    <li><a href="list_temp_product" class="menu-item">Temporary Product List</a>
+                    </li>
+                </ul>
+              </li>
+
+
+
+              {{-- <li class="has-sub nav-item"><a href="list_temp_vendor"><i class="ft-package"></i><span data-i18n="" class="menu-title">Temp Vendors</span></a>
                 <ul class="menu-content">
                   <li><a href="add_product" class="menu-item">Add Product</a>
                   </li>
@@ -62,7 +77,21 @@
                     </ul>
 
 
+              </li> --}}
+
+              <li class="has-sub nav-item"><a href="#"><i class="fa fa-user"></i>
+                <span data-i18n="" class="menu-title">Vendor</span></a>
+                <ul class="menu-content">
+                    {{-- <li><a href="" class="menu-item">Add Vendor</a>
+                    </li> --}}
+                    <li><a href="list_vendor" class="menu-item">Vendor List</a>
+                    </li>
+                    <li><a href="list_temp_vendor" class="menu-item">Temporary Vendor List</a>
+                    </li>
+                </ul>
               </li>
+
+
 
                <li class="has-sub nav-item"><a href="#"><i class="fa fa-gift"></i><span data-i18n="" class="menu-title">Coupon</span></a>
                 <ul class="menu-content">
