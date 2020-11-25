@@ -14,6 +14,7 @@ class CreateProductTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments("id");
             // $table->integer("banner_rank")->unique();
             $table->Integer("category_id")->unsigned()->index();
