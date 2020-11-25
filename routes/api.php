@@ -20,4 +20,5 @@ use App\Http\Controllers\API\BannerApiController;
 // });
 
 Route::get('/banners', 'API\BannerApiController@show');
+Route::post('/tempvendor', 'API\VendorApiController@create');
 
