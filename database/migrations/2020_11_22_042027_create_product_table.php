@@ -14,7 +14,7 @@ class CreateProductTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->bigIncrements("id");
+            $table->increments("id");
             // $table->integer("banner_rank")->unique();
             $table->Integer("category_id")->unsigned()->index();
             $table->foreign("category_id")->references('id')->on('categories')->onDelete('cascade');
