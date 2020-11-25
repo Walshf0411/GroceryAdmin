@@ -15,7 +15,7 @@ class CreateTempProductTable extends Migration
     {
         Schema::create('temp_products', function (Blueprint $table) {
 
-                $table->id();
+                $table->bigIncrements("id");
                 $table->bigInteger("vendor_id")->unsigned()->index();
                 $table->foreign("vendor_id")->references('id')->on('vendor')->onDelete('cascade');
                 $table->bigInteger("category_id")->unsigned()->index();
