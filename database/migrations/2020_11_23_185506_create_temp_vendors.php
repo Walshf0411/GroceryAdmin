@@ -14,7 +14,7 @@ class CreateTempVendors extends Migration
     public function up()
     {
         Schema::create('temp_vendors', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements("id");
             $table->string("name");
             $table->string("shop_name");
             $table->string("address");
