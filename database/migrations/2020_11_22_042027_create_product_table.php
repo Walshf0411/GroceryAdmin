@@ -17,7 +17,7 @@ class CreateProductTable extends Migration
             $table->id();
             // $table->integer("banner_rank")->unique();
             $table->Integer("category_id")->unsigned()->index();
-            $table->foreign("category_id")->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign("category_id")->references('id')->on('Categories')->onDelete('cascade');
             $table->string("name");
             $table->string("images");
             $table->timestamps();
