@@ -93,7 +93,7 @@
                               <div class="form-group">
                                   <div class="col-md-12">
                                       {{-- <input type="text" class="form-control" name="email" id="email" placeholder="Email" required > --}}
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email" autofocus>
+                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email" autofocus>
 
                                       @error('email')
                                         <span class="invalid-feedback" role="alert">
