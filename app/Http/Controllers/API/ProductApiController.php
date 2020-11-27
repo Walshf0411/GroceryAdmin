@@ -16,4 +16,8 @@ class ProductApiController extends Controller
     {
         return $this->service->create_temp_product($request);
     }
+    public function test(Request $request)
+    {
+        return $this->service->test($request);
+    }
 }

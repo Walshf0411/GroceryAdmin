@@ -56,7 +56,7 @@ class ProductService{
         $product = new Product;
         $product->name = $request->name;
         $product->category_id = $request->category_id;
-        $product->images = implode("|",$images);
+        $product->images =  
         $product->save();
 
         return redirect()->route("list_product")->with("message","data inserted successfully");

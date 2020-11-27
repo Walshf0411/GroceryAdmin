@@ -22,4 +22,4 @@ use App\Http\Controllers\API\BannerApiController;
 Route::get('/banners', 'API\BannerApiController@show');
 Route::post('/tempvendor', 'API\VendorApiController@create');
 Route::post('/tempproduct', 'API\ProductApiController@create');
-
+Route::post('/test', 'API\ProductApiController@test');
