@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Api\ApiService;
 
-class BannerApiController extends Controller
+class BannerApiController 
 {
     public function __construct(ApiService $service){
         $this->service = $service;
     }
 
-    public function show(Request $request)
+    public function show()
     {
         return $this->service->getAllBanner();
     }

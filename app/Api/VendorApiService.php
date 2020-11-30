@@ -21,7 +21,8 @@ class VendorApiService
                 $tempvendor->gst_number = $request->gst_number;
                 $tempvendor->message = $request->message;
                 $tempvendor->save();
-                return response()->json(["message" => "New vendor Added"]);
+                // return response()->json(["message" => "New vendor Added"]);
+                return response()->json($tempvendor);
             }else{
                 return response()->json(["message" => "Vendor already exists"]);
         }

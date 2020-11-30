@@ -13,4 +13,10 @@ class VendorService{
         $vendordetails = DB::select('select * from vendors');
         return view('Vendor.list_vendor', ["vendordetails"=> $vendordetails]);
     }
+
+
+    public function listVendorProduct($id){
+        $vendordetails = DB::select('select name ,vendor_id FROM `temp_products` WHERE vendor_id=?',[$id]);
+        return view('Vendor.list_vendorproduct', ["vendordetails"=> $vendordetails]);
+    }
 }

@@ -23,3 +23,13 @@ Route::get('/banners', 'API\BannerApiController@show');
 Route::post('/tempvendor', 'API\VendorApiController@create');
 Route::post('/tempproduct', 'API\ProductApiController@create');
 Route::post('/test', 'API\ProductApiController@test');
+
+
+Route::post('/email', 'API\EmailApiController@sendEmail')->name('email');
+
+Route::post('/insertbusiness', 'API\BusinessApiController@store');
+// Route::post('/insertProduct', 'ProductController@store');
+Route::get('/deletebusiness/{id}', 'API\BusinessApiController@destroy');
+// Route::get('/list_product', 'ProductController@show')->name('list_product');
+// Route::get('/edit_product/{id}', 'ProductController@edit')->name('edit_product');
+Route::post('/updatebusiness/{id}', 'API\BusinessApiController@update');

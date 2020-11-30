@@ -56,7 +56,7 @@ class ProductService{
         $product = new Product;
         $product->name = $request->name;
         $product->category_id = $request->category_id;
-        $product->images =  
+        $product->images =implode("|",$images) ;
         $product->save();
 
         return redirect()->route("list_product")->with("message","data inserted successfully");
@@ -104,7 +104,7 @@ class ProductService{
         }else{
             DB::update("update products AS p set p.name= ?, p.category_id = ? where id=? ",[$request->name, $request->category_id, $id]);
         }
-        return redirect()->route('list_product')->with("Success","Data Edited Successfully");;
+        return redirect()->route('list_product')->with("Success","Data Edited Successfully");
     }
 }
 
