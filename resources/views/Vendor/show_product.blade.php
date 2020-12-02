@@ -13,12 +13,10 @@
                         <table class="table table-striped table-bordered dom-jQuery-events">
                             <thead>
                                 <tr>
-								 {{-- <th>Id No.</th> --}}
-                                    <th>Vendor id</th>
-                                    <th>Vendor Name</th>
-                                    <th>Vendor Shop Name</th>
-									{{-- <th>Total Subcategory</th> --}}
-                                    <th>Action</th>
+                                 {{-- <th>Id No.</th> --}}
+
+                                    <th>Product Name</th>
+
 
                                 </tr>
                             </thead>
@@ -26,17 +24,15 @@
                                 @foreach($vendordetails as $row)
                                 <tr>
 
-
-                                    <td>{{ $row->vendor_id }}</td>
+                                    {{-- <td>{{ $row->vendor_id }}</td> --}}
                                     <td>{{ $row->name }}</td>
-                                    <td>{{ $row->shop_name }}</td>
-                                    <td>
-                                        <a class="primary"  href="show_product/{{ $row->vendor_id }}" data-original-title="" title="click">
-                                            <i class="fa fa-hand-pointer-o font-medium-3"></i><span>Click</span>
-                                        </a>
-                                    </td>
-
+                                    {{-- <td>{{ $row->name }}</td> --}}
                                     {{-- <td>
+                                    @foreach( explode("|", $row->images) as $img)
+                                        <img class="media-object round-media" src="storage\images\Product\{{ $row->id }}\{{ $img }}" alt="Generic placeholder image" style="height: 75px;">
+                                    @endforeach
+                                    </td>
+                                    <td>
 									<a class="primary"  href="edit_product/{{ $row->id }}" data-original-title="" title="">
                                             <i class="ft-edit font-medium-3"></i>
                                         </a>

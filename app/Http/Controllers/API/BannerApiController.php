@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Api\ApiService;
 
-class BannerApiController 
+class BannerApiController
 {
     public function __construct(ApiService $service){
         $this->service = $service;
@@ -14,7 +14,9 @@ class BannerApiController
 
     public function show()
     {
-        return $this->service->getAllBanner();
+        // return $this->service->getAllBanner();
+        return $this->service->getAllProducts();
+
     }
 
 

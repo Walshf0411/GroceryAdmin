@@ -16,7 +16,7 @@ class TempProductService{
         return view('TempProduct.listtemp_product', ["tempproducts"=> $tempproducts]);
     }
 
-    public function addProduct(Request $request,$id){
+    public function addProduct($id){
         $tempproducts = DB::insert('insert into products (category_id, name,images)
                                     SELECT category_id, name,images FROM temp_products where id=?',[$id]);
         $count = DB::select("select id from products order by id DESC LIMIT 1");

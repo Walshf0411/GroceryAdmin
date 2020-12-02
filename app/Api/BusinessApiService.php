@@ -3,7 +3,7 @@
 namespace App\Api;
 // namespace App\Http\Controllers;
 use App\Model\Business;
-use App\Model\Category;
+use App\Model\TempProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -17,45 +17,86 @@ class BusinessApiService
     //     [
     //     'images' =>  'required|mimes:png,jpg|max:2048',
     //    ]);
-        $count = DB::select("select id from business order by id DESC LIMIT 1");
-            if(count($count)==0){
-                $number = 1;
-            }else{
-                $number = $count['0']->id +1;
-            }
+    $count = DB::select("select * FROM `business` As b,`products` AS p WHERE b.product_id=p.id and b.product_id=?",[$request->product_id]);
 
-            $images=array();
-            $counter = 0;
-            $business = new Business;
-            if($files=$request->file('images')){
-                foreach($files as $file){
-                    $counter += 1;
-                    // $name=$file->getClientOriginalName();
-                    $extension = $file->extension();
-                    $name =  $counter.".".$extension;
-                    $path = storage_path("app/public/images/Business/$number/");
-                    if(!File::isDirectory($path)){
-                        File::makeDirectory($path, 0777, true, true);
-                    }
-                    Image::make($file)->resize(100, 100)->save($path.$name);
-                    $file->move('image',$name);
-                    $images[]=$name;
+            if(count($count)>0){
 
-                    // $business->images = $name;
+            $count = DB::select("select id from business order by id DESC LIMIT 1");
+                if(count($count)==0){
+                    $number = 1;
+                }else{
+                    $number = $count['0']->id +1;
                 }
 
-            }
+                $images=array();
+                $counter = 0;
+                $business = new Business;
+                if($files=$request->file('images')){
+                    foreach($files as $file){
+                        $counter += 1;
+                        // $name=$file->getClientOriginalName();
+                        $extension = $file->extension();
+                        $name =  $counter.".".$extension;
+                        $path = storage_path("app/public/images/Business/$number/");
+                        if(!File::isDirectory($path)){
+                            File::makeDirectory($path, 0777, true, true);
+                        }
+                        Image::make($file)->resize(100, 100)->save($path.$name);
+                        $file->move('image',$name);
+                        $images[]=$name;
 
-            $business = new Business;
-            $business->product_id = $request->product_id;
-            $business->category_id = $request->category_id;
-            $business->vendor_id = $request->vendor_id;
-            $business->price = $request->price;
-            $business->description = $request->description;
-            // $business->images = json_encode($images);
-            $business->images = implode("|",$images);
-            $business->save();
-            return response()->json(["message" => "Data inserted Successfully"]);
+                        // $business->images = $name;
+                    }
+
+                }
+
+                $business = new Business;
+                $business->product_id = $request->product_id;
+                $business->category_id = $request->category_id;
+                $business->vendor_id = $request->vendor_id;
+                $business->price = $request->price;
+                $business->description = $request->description;
+                // $business->images = json_encode($images);
+                $business->images = implode("|",$images);
+                $business->save();
+
+                return response()->json(["message" => "Data inserted Successfully"]);
+            }
+            else
+            {
+                $tempproducts = DB::insert('insert into `temp_products` (`vendor_id`, `category_id`,
+                 `name`, `images`)
+                 VALUES (?,?,?,?);',[$request->vendor_id,$request->category_id,]);
+                 $count = DB::select("select id from temp_products order by id DESC LIMIT 1");
+                        if(count($count)==0){
+                            $number = 1;
+                        }else{
+                            $number = $count['0']->id +1;
+                        }
+
+                        $images=array();
+                        $counter = 0;
+                        $business = new TempProduct;
+                        if($files=$request->file('images')){
+                            foreach($files as $file){
+                                $counter += 1;
+                                // $name=$file->getClientOriginalName();
+                                $extension = $file->extension();
+                                $name =  $counter.".".$extension;
+                                $path = storage_path("app/public/images/TempProduct/$number/");
+                                if(!File::isDirectory($path)){
+                                    File::makeDirectory($path, 0777, true, true);
+                                }
+                                Image::make($file)->resize(100, 100)->save($path.$name);
+                                $file->move('image',$name);
+                                $images[]=$name;
+
+                                // $business->images = $name;
+                            }
+
+                        }
+                return redirect()->action([TempProductController::class, 'store']);
+            }
         }
 
 

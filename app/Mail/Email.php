@@ -34,8 +34,6 @@ class Email extends Mailable
      */
     public function build()
     {
-        // return $this->view('mail.mailview');
-        // return $this->from('pravalikadomal@gmail.com','xyz')->subject('Welcome!')->view('mail.mailview',['mail_data' => $this->sign_mail_data]);
         return $this->from('xyz@xyz.com','Grocery Mart')->subject('Welcome User!')->view('mail.mailview',['mail_data' =>$this->my_mail_data]);
         // return $this->from(env('MAIL_FROM_ADDRESS'),'Grocery Mart')->subject('Welcome User!')->view('mail.mailview',['mail_data' =>$this->my_mail_data]);
     }

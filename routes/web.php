@@ -59,5 +59,6 @@ Route::get('/list_temp_vendor', 'TempVendorController@show')->name('list_temp_ve
 Route::get('/deleteVendor/{id}', 'TempVendorController@destroy');
 Route::get('/addVendor/{id}', 'TempVendorController@store');
 
-
+Route::get('/list_vendor_products', 'BusinessController@show');
+Route::get('/show_product/{$id}', 'BusinessController@edit');
 // Route::get('test-email', 'API\EmailApiController@sendEmail')->name('test-email');

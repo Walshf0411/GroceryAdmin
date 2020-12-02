@@ -12,6 +12,7 @@ class BusinessApiController extends Controller
         $this->service = $service;
     }
 
+
     public function store(Request $request)
     {
         return $this->service->insertBusiness($request);
