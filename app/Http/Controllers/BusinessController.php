@@ -16,7 +16,7 @@ class BusinessController extends Controller
     {
         return $this->service->listVendorProduct();
     }
-    public function edit($id)
+    public function listView($id)
     {
         return $this->service->show_product($id);
     }

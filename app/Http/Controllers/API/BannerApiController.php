@@ -14,11 +14,13 @@ class BannerApiController
 
     public function show()
     {
-        // return $this->service->getAllBanner();
-        return $this->service->getAllProducts();
-
+        return $this->service->getHomePage();
     }
 
+    public function showCategory()
+    {
+        return response()->json($this->service->getAllCategory());
 
+    }
 
 }
