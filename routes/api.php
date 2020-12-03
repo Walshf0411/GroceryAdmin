@@ -19,7 +19,8 @@ use App\Http\Controllers\API\BannerApiController;
 //     return $request->user();
 // });
 
-Route::get('/banners', 'API\BannerApiController@show');
+Route::get('/homepage', 'API\BannerApiController@show');
+Route::get('/category', 'API\BannerApiController@showCategory');
 Route::post('/tempvendor', 'API\VendorApiController@create');
 Route::post('/tempproduct', 'API\ProductApiController@create');
 Route::post('/test', 'API\ProductApiController@test');

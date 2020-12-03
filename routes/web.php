@@ -21,7 +21,7 @@ use App\Model;
 // Auth::routes();
 Auth::routes(['register' => false]); //,  'reset' => false
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/add_category', 'CategoriesController@viewAddCategory');
@@ -60,5 +60,6 @@ Route::get('/deleteVendor/{id}', 'TempVendorController@destroy');
 Route::get('/addVendor/{id}', 'TempVendorController@store');
 
 Route::get('/list_vendor_products', 'BusinessController@show');
-Route::get('/show_product/{$id}', 'BusinessController@edit');
+Route::get('/showVendorProduct/{id}', 'BusinessController@listView')->name('show.vendor.profile');
+
 // Route::get('test-email', 'API\EmailApiController@sendEmail')->name('test-email');
