@@ -17,7 +17,7 @@ class CreateTempProductTable extends Migration
 
                 $table->id();
                 $table->bigInteger("vendor_id")->unsigned()->index();
-                $table->foreign("vendor_id")->references('id')->on('vendor')->onDelete('cascade');
+                $table->foreign("vendor_id")->references('id')->on('vendors')->onDelete('cascade');
                 $table->bigInteger("category_id")->unsigned()->index();
                 $table->foreign("category_id")->references('id')->on('categories')->onDelete('cascade');
                 $table->string("name");

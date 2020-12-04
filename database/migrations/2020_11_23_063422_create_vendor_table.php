@@ -19,6 +19,7 @@ class CreateVendorTable extends Migration
             $table->string("shop_name");
             $table->string("address");
             $table->string("email_id")->unique();
+            $table->string("password");
             $table->string("mobile_number")->unique();
             $table->string("rating");
             $table->string("gst_number");
