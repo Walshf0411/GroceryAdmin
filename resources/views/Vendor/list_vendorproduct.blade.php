@@ -31,7 +31,7 @@
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->shop_name }}</td>
                                     <td>
-                                        <a class="primary"  href="show_product/{{ $row->vendor_id }}" data-original-title="" title="click">
+                                        <a class="primary"  href="showVendorProduct/{{ $row->vendor_id }}" data-original-title="" title="click">
                                             <i class="fa fa-hand-pointer-o font-medium-3"></i><span>Click</span>
                                         </a>
                                     </td>

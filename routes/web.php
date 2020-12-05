@@ -60,6 +60,7 @@ Route::get('/deleteVendor/{id}', 'TempVendorController@destroy');
 Route::get('/addVendor/{id}', 'TempVendorController@store');
 
 Route::get('/list_vendor_products', 'BusinessController@show');
-Route::get('/showVendorProduct/{id}', 'BusinessController@listView')->name('show.vendor.profile');
+Route::get('/showVendorProduct/{id}', 'BusinessController@listView');
+// Route::get('/showVendorProduct/{id}', 'BusinessController@listView')->name('show.vendor.profile');
 
-// Route::get('test-email', 'API\EmailApiController@sendEmail')->name('test-email');
+Route::get('/list_customer', 'CustomerController@show')->name('list_customer');

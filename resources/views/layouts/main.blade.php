@@ -28,20 +28,17 @@
         <div class="sidebar-content">
           <div class="nav-container">
             <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
-  <li><a href="/home"><i class="ft-airplay"></i><span data-i18n="" class="menu-title">Dashboard</span></a>
-              </li>
+            <li><a href="/home"><i class="ft-airplay"></i><span data-i18n="" class="menu-title">Dashboard</span></a>
+            </li>
 
-<li class="has-sub nav-item"><a href="#"><i class="ft-list"></i><span data-i18n="" class="menu-title">Category</span></a>
+            <li class="has-sub nav-item"><a href="#"><i class="ft-list"></i><span data-i18n="" class="menu-title">Category</span></a>
                 <ul class="menu-content">
                   <li><a href="add_category" class="menu-item active">Add category</a>
                   </li>
                   <li><a href="list_category" class="menu-item">Category List</a>
                   </li>
-
-                    </ul>
-
-
-              </li>
+                </ul>
+            </li>
 
         {{-- <li class="has-sub nav-item"><a href="#"><i class="ft-list"></i><span data-i18n="" class="menu-title">Sub Category</span></a>
                 <ul class="menu-content">
@@ -88,6 +85,31 @@
                     </li>
                     <li><a href="list_temp_vendor" class="menu-item">Temporary Vendor List</a>
                     </li>
+                </ul>
+              </li>
+
+
+              <li class="has-sub nav-item"><a href="#"><i class="fa fa-user-plus"></i>
+                <span data-i18n="" class="menu-title">Customer</span></a>
+                <ul class="menu-content">
+                    {{-- <li><a href="" class="menu-item">Add Vendor</a>
+                    </li> --}}
+                    <li><a href="list_customer" class="menu-item">Customer List</a>
+                    </li>
+                    {{-- <li><a href="list_temp_vendor" class="menu-item">Temporary Vendor List</a>
+                    </li> --}}
+                </ul>
+              </li>
+
+              <li class="has-sub nav-item"><a href="#"><i class="fa fa-users"></i>
+                <span data-i18n="" class="menu-title">Business</span></a>
+                <ul class="menu-content">
+                    {{-- <li><a href="" class="menu-item">Add Vendor</a>
+                    </li> --}}
+                    <li><a href="list_vendor_products" class="menu-item">Vendor Product List</a>
+                    </li>
+                    {{-- <li><a href="show.vendor.profile" class="menu-item">Vendor Profile</a>
+                    </li> --}}
                 </ul>
               </li>
 
