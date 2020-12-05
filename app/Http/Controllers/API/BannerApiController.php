@@ -19,7 +19,7 @@ class BannerApiController
 
     public function showCategory()
     {
-        return response()->json($this->service->getAllCategory());
+        return response()->json(["categories"=>$this->service->getAllCategory()]);
 
     }
 
