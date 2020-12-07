@@ -9,6 +9,6 @@ class Business extends Model
     //
     protected $table = 'business';
     protected $fillable = [
-        'product_id' ,'category_id','vendor_id','price','description', 'images'
+        'product_id' ,'category_id','vendor_id','price','description', 'images','stocks','discount'
      ];
 }

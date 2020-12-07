@@ -56,6 +56,8 @@ class BusinessApiService
                 $business->vendor_id = $request->vendor_id;
                 $business->price = $request->price;
                 $business->description = $request->description;
+                $business->stocks = $request->stocks;
+                $business->discount = $request->discount;
                 // $business->images = json_encode($images);
                 $business->images = implode("|",$images);
                 $business->save();
@@ -133,14 +135,14 @@ class BusinessApiService
             //         $images[]=$name;
             //     }
             //     DB::update("update business set price= ?,description=?,product_id=?,
-            //      vendor_id=?, category_id = ?, images= ? where id=? ",
+            //      vendor_id=?, category_id = ?, images= ?,stocks = ?,discount =? where id=? ",
             //      [$request->price,$request->description, $request->product_id, $request->vendor_id,
-            //       $request->category_id, implode("|",$images), $id]);
+            //       $request->category_id, implode("|",$images),$request->stocks,$request->discount,  $id]);
             // }else{
             //     DB::update("update business set price= ?,description=?,product_id=?,
-            //     vendor_id=?, category_id = ? where id=? ",
+            //     vendor_id=?, category_id = ? ,stocks = ?,discount =? where id=? ",
             //     [$request->price,$request->description, $request->product_id, $request->vendor_id,
-            //      $request->category_id, $id]);
+            //      $request->category_id,$request->stocks,$request->discount, $id]);
             // }
             // return response()->json(["message" => "Data updated Successfully"]);
             $image_path = storage_path('app/public/images/Business/'.$business[0]->images);

@@ -24,6 +24,8 @@ class CreateBusinessTable extends Migration
             $table->string("price");
             $table->string("description");
             $table->string("images");
+            $table->bigInteger("stocks");
+            $table->bigInteger("discount");
             $table->timestamps();
         });
     }
