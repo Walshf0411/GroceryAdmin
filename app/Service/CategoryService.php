@@ -19,6 +19,11 @@ public function insertCategory(Request $request){
             $number = $count['0']->id +1;
         }
         if($request->hasFile('category_image')){
+
+            $path =storage_path("app/public/images/Banner/");
+            if(!File::isDirectory($path)){
+                File::makeDirectory($path, 0777, true, true);
+            }
             $image = $request->file('category_image');
             $extension = $image->extension();
             $name =  $number.".".$extension;

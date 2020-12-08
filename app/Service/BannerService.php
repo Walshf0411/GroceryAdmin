@@ -19,6 +19,10 @@ public function insertBanner(Request $request){
         $number = $count['0']->id +1;
     }
         if($request->hasFile('banner_image')){
+            $path =storage_path("app/public/images/Banner/");
+            if(!File::isDirectory($path)){
+                File::makeDirectory($path, 0777, true, true);
+            }
             $image = $request->file('banner_image');
             $extension = $image->extension();
             $name =  $number.".".$extension;
