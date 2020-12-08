@@ -33,13 +33,10 @@ public function insertBanner(Request $request){
         $banner->banner_image = $name;
         $banner->save();
 
-        return redirect()->back()->with("Success","Data inserted Successfully");
-        // return $this->listBanner();
     }
 
     public function listBanner(){
-        $banner = Banner::all();
-        return view('Banner.list_banner', ['banners'=>$banner]);
+        return Banner::all();
     }
 
     public function deleteBanner($id){
@@ -52,8 +49,6 @@ public function insertBanner(Request $request){
             File::delete($image_path);
         }
         $banner = DB::delete('delete from banners where id = ?', [$id]);
-
-        return redirect()->back()->with("Success","Data deleted Successfully");
     }
 
 
@@ -62,7 +57,7 @@ public function insertBanner(Request $request){
         if($banner==[]){
             return redirect()->back()->with("Error","Data Not Found ");
         }
-        return view('Banner.edit_banner', ['banners'=> $banner]);
+
     }
 
     public function updateBanner(Request $request, $id){
@@ -80,6 +75,6 @@ public function insertBanner(Request $request){
 
             $banner = DB::update('update banners set banner_image = ? where id = ?', [$name, $id]);
         }
-        return redirect()->route('list_banner')->with("Success","Data deleted Successfully");;
+        
     }
 }

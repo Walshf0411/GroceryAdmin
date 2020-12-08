@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\DB;
 class CustomerService{
 
     public function listVendor(){
-        $customerdetails = DB::select('select * from customers');
-        return view('Customer.list_customer', ["customerdetails"=> $customerdetails]);
+        return DB::select('select * from customers');
     }
 }

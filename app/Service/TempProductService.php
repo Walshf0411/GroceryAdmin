@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\DB;
 class TempProductService{
 
     public function listProduct(){
-        $tempproducts = DB::select('select t.* ,c.category_name ,v.shop_name from temp_products AS t, categories AS c ,vendors AS v where t.category_id = c.id and t.vendor_id = v.id');
-        return view('TempProduct.listtemp_product', ["tempproducts"=> $tempproducts]);
+        return DB::select('select t.* ,c.category_name ,v.shop_name from temp_products AS t, categories AS c ,vendors AS v where t.category_id = c.id and t.vendor_id = v.id');
     }
 
     public function addProduct($id){
@@ -28,13 +27,13 @@ class TempProductService{
             $path = storage_path("app/public/images/Product/$number/");
             $path1 = storage_path("app/public/images/TempProduct/$id/");
             File::move($path1, $path);
-        return $this->deleteProduct($id);
+        
     }
 
 
     public function deleteProduct($id){
         File::deleteDirectory(storage_path("app/public/images/TempProduct/$id"));
         $tempproducts = TempProduct::findOrFail($id)->delete();
-        return redirect()->route("list_temp_product");
+
     }
 }

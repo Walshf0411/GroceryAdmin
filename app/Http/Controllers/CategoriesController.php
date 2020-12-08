@@ -11,87 +11,36 @@ class CategoriesController extends Controller
     public function __construct(CategoryService $service){
         $this->service = $service;
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+
     public function viewAddCategory(){
         return view('Category.add_category');
     }
     public function listCategory(){
-        return $this->service->listCategory();
-    }
-    // public function vieweditCategory($id){
-    //     return view('Category.edit_category');
-    // }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $category = $this->service->listCategory();
+        return view('Category.list_category', ['category'=>$category]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        return $this->service->insertCategory($request);
+        $this->service->insertCategory($request);
+        return redirect()->route('list_category')->with("Success","Data inserted Successfully");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Category $category)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Category $category,$id)
     {
-        return $this->service->editCategory($id);
+        $category =  $this->service->editCategory($id);
+        return view('Category.edit_category', ['category'=> $category]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Category $category, $id)
     {
-        return $this->service->updateCategory($request,$id);
+        $this->service->updateCategory($request,$id);
+        return redirect()->route('list_category')->with("Success","Data deleted Successfully");;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Category $category, $id)
     {
-        return $this->service->deleteCategory($id);
+        $this->service->deleteCategory($id);
+        return redirect()->back()->with("Success","Data deleted Successfully");
     }
 }

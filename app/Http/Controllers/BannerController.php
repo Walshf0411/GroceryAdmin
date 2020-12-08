@@ -13,98 +13,41 @@ class BannerController extends Controller
         $this->service = $service;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+
     public function viewAddBanner(){
         return view('Banner.add_banner');
     }
+
     public function viewListBanner(){
-        // dd('hi');
-        return $this->service->listBanner();
-    }
-    // public function vieweditBanner($id){
-    //     return view('Banner.edit_banner');
-    // }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $banner = $this->service->listBanner();
+        return view('Banner.list_banner', ['banners'=>$banner]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
-        return $this->service->insertBanner($request);
+        $this->service->insertBanner($request);
+        return redirect()->route("list_banner");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Banner  $banner
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request)
-    {
-        //
-       
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Banner  $banner
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Banner $banner, $id)
     {
-        return $this->service->editBanner($id);
+        $banner = $this->service->editBanner($id);
+        return view('Banner.edit_banner', ['banners'=> $banner]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Banner  $banner
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Banner $banner, $id)
     {
-        return $this->service->updateBanner($request,$id);
+        $this->service->updateBanner($request,$id);
+        return redirect()->route('list_banner')->with("Success","Data deleted Successfully");;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Banner  $banner
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Banner $banner,$id)
     {
-        //
-        return $this->service->deleteBanner($id);
+        $this->service->deleteBanner($id);
+        return redirect()->back()->with("Success","Data deleted Successfully");
     }
 
     public function getAllBanner(){
-        //
-        // return response()->json($this->service->listBanner());
         $banners = Banner::get()->toJson(JSON_PRETTY_PRINT);
         return response($banners, 200);
     }

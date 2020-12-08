@@ -14,6 +14,7 @@ class CustomerController extends Controller
 
     public function show()
     {
-        return $this->service->listVendor();
+        $customerdetails = $this->service->listVendor();
+        return view('Customer.list_customer', ["customerdetails"=> $customerdetails]);
     }
 }

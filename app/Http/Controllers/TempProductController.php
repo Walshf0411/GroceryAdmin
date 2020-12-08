@@ -18,16 +18,19 @@ class TempProductController extends Controller
 
     public function show()
     {
-        return $this->service->listProduct();
+        $tempproducts = $this->service->listProduct();
+        return view('TempProduct.listtemp_product', ["tempproducts"=> $tempproducts]);
     }
 
     public function store(Request $request, $id)
     {
-        return $this->service->addProduct($request, $id);
+        $this->service->addProduct($request, $id);
+        return $this->destroy($id);
     }
 
     public function destroy($id)
     {
-        return $this->service->deleteProduct($id);
+         $this->service->deleteProduct($id);
+        return redirect()->route("list_temp_product");
     }
 }

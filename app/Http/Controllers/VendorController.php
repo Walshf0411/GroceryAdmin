@@ -15,6 +15,7 @@ class VendorController extends Controller
 
     public function show()
     {
-        return $this->service->listVendor();
+        $vendordetails = $this->service->listVendor();
+        return view('Vendor.list_vendor', ["vendordetails"=> $vendordetails]);
     }
 }

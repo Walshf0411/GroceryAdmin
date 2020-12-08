@@ -33,11 +33,10 @@ public function insertCategory(Request $request){
             $category->category_image = $name;
             $category->save();
         }
-        return redirect()->back()->with("Success","Data inserted Successfully");
+
     }
     public function listCategory(){
-        $category = Category::all();
-        return view('Category.list_category', ['category'=>$category]);
+        return Category::all();
     }
     public function deleteCategory($id){
         $category = DB::select('select * from categories where id = ? limit 1', [$id]);
@@ -50,14 +49,14 @@ public function insertCategory(Request $request){
         }
         $category = DB::delete('delete from categories where id = ?', [$id]);
 
-        return redirect()->back()->with("Success","Data deleted Successfully");
+
     }
     public function editCategory($id){
         $category = DB::select('select * from categories where id = ?', [$id]);
         if($category==[]){
             return redirect()->back()->with("Error","Data Not Found ");
         }
-        return view('Category.edit_category', ['category'=> $category]);
+        return $category;
     }
 
     public function updateCategory(Request $request, $id){
@@ -77,7 +76,7 @@ public function insertCategory(Request $request){
         }else{
             $category = DB::update('update categories set category_name = ? where id = ?', [ $request->category_name ,$id]);
         }
-        return redirect()->route('list_category')->with("Success","Data deleted Successfully");;
+
     }
 
 }

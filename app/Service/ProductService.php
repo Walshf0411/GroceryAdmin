@@ -12,20 +12,12 @@ use Illuminate\Support\Facades\DB;
 
 class ProductService{
     public function viewAddProduct(){
-        $category = Category::all();
-        // dd($category['0']->id);
-        return view('Product.add_product', ["category"=> $category]);
+        return Category::all();
     }
-    public function addProduct(Request $request){
-        $product = new Product;
-        $product->name = $request->name;
-        $product->category_id = $request->category_id;
-        // return view('Product.add_product');
 
-    }
     public function listProduct(){
-        $products = DB::select('select p.*, c.category_name from products AS p, categories AS c where p.category_id = c.id ');
-        return view('Product.list_product', ["products"=> $products]);
+        return DB::select('select p.*, c.category_name from products AS p, categories AS c where p.category_id = c.id ');
+
     }
     public function storeProduct(Request $request){
         $count = DB::select("select id from products order by id DESC LIMIT 1");
@@ -34,8 +26,6 @@ class ProductService{
         }else{
             $number = $count['0']->id +1;
         }
-
-
         $images=array();
         $counter = 0;
         if($files=$request->file('images')){
@@ -59,14 +49,14 @@ class ProductService{
         $product->images =implode("|",$images) ;
         $product->save();
 
-        return redirect()->route("list_product")->with("message","data inserted successfully");
+
     }
 
     public function deleteProduct($id){
         File::deleteDirectory(storage_path("app/public/images/Product/$id"));
         $product = Product::findOrFail($id)->delete();
 
-        return redirect()->back()->with("message","data deleted successfully");
+
     }
 
     public function editProduct($id){
@@ -75,7 +65,7 @@ class ProductService{
         if($product==[]){
             return redirect()->back()->with("Error","Data Not Found ");
         }
-        return view('Product.edit_product', ['product'=> $product, 'category'=> $category]);
+        return [$product, $category];
     }
     public function updateProject(Request $request, $id){
         $product = DB::select('select p.*, c.category_name from products AS p, categories as c where p.id = ? and p.category_id = c.id', [$id]);
@@ -104,7 +94,16 @@ class ProductService{
         }else{
             DB::update("update products AS p set p.name= ?, p.category_id = ? where id=? ",[$request->name, $request->category_id, $id]);
         }
-        return redirect()->route('list_product')->with("Success","Data Edited Successfully");
+    }
+    public function productsWithDetials(){
+        $proarray=DB::select("select distinct b.product_id, p.name from business as b , `products` AS p where b.product_id = p.id");
+        $products=array();
+        $count = 0;
+        foreach($proarray as $item){
+        array_push($products,array("id"=>$proarray[(String)$count]->product_id, "product_name" =>$proarray[(String)$count]->name, "vendors" => DB::select("select b.price, b.images, v.name, b.description FROM products AS p, business AS b, vendors as v WHERE b.product_id = p.id and b.vendor_id= v.id and p.id = ?",[$item->product_id]) ));
+        $count += 1;
+       }
+        return $products;
     }
 }
 

@@ -14,10 +14,12 @@ class BusinessController extends Controller
 
     public function show()
     {
-        return $this->service->listVendorProduct();
+        $vendordetails =  $this->service->listVendorProduct();
+        return view('Vendor.list_vendorproduct', ["vendordetails"=> $vendordetails]);
     }
     public function listView($id)
     {
-        return $this->service->show_product($id);
+        $vendordetails =  $this->service->show_product($id);
+        return view('Vendor.show_product', ['vendordetails'=> $vendordetails[0], 'vendorprofiledetails'=> $vendordetails[1]]);
     }
 }
