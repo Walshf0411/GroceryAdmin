@@ -42,9 +42,13 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
-            'hash' => false,
+
+        ],
+        'vendor' => [
+            'driver' => 'jwt',
+            'provider' => 'vendors',
         ],
     ],
 
@@ -70,10 +74,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-        'vendor' => [
+        'vendors' => [
             'driver' => 'eloquent',
             'model' => App\Model\Vendor::class,
         ],
+        // 'customer' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Model\Customer::class,
+        // ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

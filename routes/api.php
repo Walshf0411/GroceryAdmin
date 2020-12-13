@@ -25,6 +25,8 @@ Route::post('/tempvendor', 'API\VendorApiController@create');
 Route::post('/tempproduct', 'API\ProductApiController@create');
 Route::post('/test', 'API\ProductApiController@test');
 
+Route::post('/vendor/login', 'API\VendorLoginController@login');
+Route::get('/trial', 'API\VendorApiController@trial');
 
 Route::post('/email', 'API\EmailApiController@sendEmail')->name('email');
 
@@ -34,3 +36,7 @@ Route::get('/deletebusiness/{id}', 'API\BusinessApiController@destroy');
 // Route::get('/list_product', 'ProductController@show')->name('list_product');
 // Route::get('/edit_product/{id}', 'ProductController@edit')->name('edit_product');
 Route::post('/updatebusiness/{id}', 'API\BusinessApiController@update');
+
+
+Route::get('/unauthorized', 'API\VendorLoginController@unauthorized')->name('unauthorized');
+Route::post('/checkToken', 'API\VendorLoginController@checkToken')->name('check.token');
