@@ -25,7 +25,6 @@ Route::post('/tempvendor', 'API\VendorApiController@create');
 Route::post('/tempproduct', 'API\ProductApiController@create');
 Route::post('/test', 'API\ProductApiController@test');
 
-Route::post('/vendor/login', 'API\VendorLoginController@login');
 Route::get('/trial', 'API\VendorApiController@trial');
 
 Route::post('/email', 'API\EmailApiController@sendEmail')->name('email');
@@ -37,6 +36,21 @@ Route::get('/deletebusiness/{id}', 'API\BusinessApiController@destroy');
 // Route::get('/edit_product/{id}', 'ProductController@edit')->name('edit_product');
 Route::post('/updatebusiness/{id}', 'API\BusinessApiController@update');
 
+Route::prefix('vendor')->group(function () {
+    Route::get('/unauthorized', 'API\VendorLoginController@unauthorized')->name('unauthorized');
+    Route::post('/checkToken', 'API\VendorLoginController@checkToken')->name('check.token');
+Route::post('/login', 'API\VendorLoginController@login');
 
-Route::get('/unauthorized', 'API\VendorLoginController@unauthorized')->name('unauthorized');
-Route::post('/checkToken', 'API\VendorLoginController@checkToken')->name('check.token');
+        Route::middleware(['vendor'])->group(function () {
+        
+    });
+});
+Route::prefix('customer')->group(function () {
+    Route::get('/unauthorized', 'API\CustomerLoginController@unauthorized')->name('unauthorized');
+    Route::post('/checkToken', 'API\CustomerLoginController@checkToken')->name('check.token');
+    
+Route::post('/login', 'API\CustomerLoginController@login');
+        Route::middleware(['customer'])->group(function () {
+                
+        });
+});

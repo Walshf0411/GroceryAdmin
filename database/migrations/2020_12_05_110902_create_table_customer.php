@@ -18,6 +18,7 @@ class CreateTableCustomer extends Migration
             $table->string('c_name');
             $table->string("mobile_number")->unique();
             $table->string("email_id")->unique();
+            $table->string('password');
             $table->string('wallet');
             $table->string('unique_code');
             $table->timestamps();
