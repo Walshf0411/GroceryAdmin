@@ -22,4 +22,9 @@ class CustomerLoginController extends Controller
     public function checkToken(Request $request){
         return $this->customerLoginService->checkToken($request);
     }
+    public function insertCustomer(Request $request){
+        $response = $this->customerLoginService->insertCustomer($request);
+        return response()->json(['token'=>$response[0], 'customer'=> $response[1],'message'=>'success'], 200);
+
+    }
 }

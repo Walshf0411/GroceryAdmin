@@ -48,13 +48,12 @@ Route::post('/login', 'API\VendorLoginController@login');
 Route::prefix('customer')->group(function () {
     Route::get('/unauthorized', 'API\CustomerLoginController@unauthorized')->name('customer.unauthorized');
     Route::post('/checkToken', 'API\CustomerLoginController@checkToken')->name('customer.check.token');
-
+    Route::post('/register', 'API\CustomerLoginController@insertCustomer');
 Route::post('/login', 'API\CustomerLoginController@login');
         Route::middleware(['customer'])->group(function () {
-
+            Route::post('/insertAddress', 'API\AddressApiController@store');
         });
 });
 
-Route::post('/insertAddress', 'API\AddressApiController@store');
 Route::get('/deleteaddress/{id}', 'API\AddressApiController@destroy');
 Route::post('/updateaddress/{id}', 'API\AddressApiController@edit');
