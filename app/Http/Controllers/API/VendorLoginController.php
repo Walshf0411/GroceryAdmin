@@ -12,9 +12,14 @@ class VendorLoginController extends Controller
         $this->vendorLoginService = $vendorLoginService;
     }
 
+    public function login(Request $request){
         return $this->vendorLoginService->login($request);
     }
 
     public function unauthorized(){
         return response()->json(["error"=>"login karo bhai"], 401);
     }
+    public function checkToken(Request $request){
+        return $this->vendorLoginService->checkToken($request);
+    }
+}
