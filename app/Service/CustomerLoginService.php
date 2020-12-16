@@ -48,4 +48,27 @@ class CustomerLoginService{
         return response()->json([$jwtPayload]);
         // return response()->json(['response'=>$apy]);
     }
+
+    public function insertCustomer(Request $request){
+        $customer = new Customer;
+        $customer->c_name = $request->c_name ;
+        $customer->mobile_number = $request->mobile_number ;
+        $customer->email_id = $request->email_id ;
+        $customer->password = bcrypt($request->password);
+        $customer->wallet = 0 ;
+        $customer->unique_code = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 8);
+        $customer->save();
+
+        $token = auth('customer')->login($customer);
+        return [$token, $customer];
+    //   return $this->respondWithToken($token);
+    }
+    protected function respondWithToken($token)
+    {
+      return response()->json([
+        'access_token' => $token,
+        'token_type' => 'bearer',
+        'expires_in' => auth()->factory()->getTTL() * 60
+      ]);
+    }
 }
