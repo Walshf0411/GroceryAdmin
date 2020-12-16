@@ -21,7 +21,7 @@ class CreateBusinessTable extends Migration
             $table->foreign("category_id")->references('id')->on('categories')->onDelete('cascade');
             $table->bigInteger("vendor_id")->unsigned()->index();
             $table->foreign("vendor_id")->references('id')->on('vendors')->onDelete('cascade');
-            $table->string("price");
+            $table->float("price");
             $table->string("description");
             $table->string("images");
             $table->bigInteger("stocks");

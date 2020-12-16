@@ -31,7 +31,7 @@ class CategoryService{
                 // ]);
                 
                 }
-                dd($answer);
+                return $answer;
         }
 
     }
