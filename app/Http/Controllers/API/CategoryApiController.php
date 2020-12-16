@@ -13,7 +13,7 @@ class CategoryApiController extends Controller
 
     public function list_product_category($category_id){
 
-        return response()->json($this->categoryService->list_product_by_category($category_id));
+        return response()->json($this->categoryService->list_product_by_category($category_id), 200);
     }
 
 }
