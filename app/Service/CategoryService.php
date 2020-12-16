@@ -16,7 +16,22 @@ class CategoryService{
         if(count($count)==0){
             return "category doesnt exits";
         }else{
-            return DB::select('select * FROM `business` AS b,`products` AS p WHERE b.category_id=p.category_id and p.id = b.product_id and b.category_id=?',[$category_id]);
+            $answer = array();
+            $products = DB::select('select p.* FROM `products` AS p WHERE p.category_id = ? ',[$category_id]);
+            foreach ($products as $product){
+                $vendors = DB::select('select b.*, v.* from business b, vendors v, products p where p.id = b.product_id and v.id=b.vendor_id and b.category_id=? and b.product_id = ? ORDER BY b.price ASC', [$category_id, $product->id]);
+                // dd($products);
+                if($vendors !=[]){
+                    $product->vendors = $vendors;
+                    array_push($answer, $product);
+                }
+                
+                // $product->merge([
+                //     'vendors' => $vendors
+                // ]);
+                
+                }
+                dd($answer);
         }
 
     }
