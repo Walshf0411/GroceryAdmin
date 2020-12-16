@@ -11,6 +11,7 @@ class CategoriesController extends Controller
     public function __construct(CategoryService $service){
         $this->service = $service;
     }
+    
 
     public function viewAddCategory(){
         return view('Category.add_category');

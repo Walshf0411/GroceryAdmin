@@ -58,3 +58,5 @@ Route::post('/login', 'API\CustomerLoginController@login');
 Route::post('/insertAddress', 'API\AddressApiController@store');
 Route::get('/deleteaddress/{id}', 'API\AddressApiController@destroy');
 Route::post('/updateaddress/{id}', 'API\AddressApiController@edit');
+
+Route::get('/product_category/{id}', 'API\CategoryApiController@list_product_category');

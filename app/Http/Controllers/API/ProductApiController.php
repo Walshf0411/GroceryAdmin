@@ -20,4 +20,6 @@ class ProductApiController extends Controller
     {
         return $this->service->test($request);
     }
+
 }
+

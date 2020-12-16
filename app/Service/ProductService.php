@@ -11,6 +11,9 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\DB;
 
 class ProductService{
+
+    
+
     public function viewAddProduct(){
         return Category::all();
     }

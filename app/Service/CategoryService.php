@@ -10,6 +10,16 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\DB;
 class CategoryService{
 
+    public function list_product_by_category($category_id){
+
+        $count= DB::select('select * FROM `categories` where id=?',[$category_id]);
+        if(count($count)==0){
+            return "category doesnt exits";
+        }else{
+            return DB::select('select * FROM `business` AS b,`products` AS p WHERE b.category_id=p.category_id and p.id = b.product_id and b.category_id=?',[$category_id]);
+        }
+
+    }
 
 public function insertCategory(Request $request){
     $count = DB::select("select id from categories order by id DESC LIMIT 1");
