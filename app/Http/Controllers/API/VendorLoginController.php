@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use App\Service\VendorLoginService;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,17 @@ class VendorLoginController extends Controller
     }
 
     public function login(Request $request){
-        return $this->vendorLoginService->login($request);
+        $validator = Validator::make($request->all(), [
+            'email_id' => 'required|email|max:255',
+            'password' => 'required',
+          ]);
+
+        if($validator->fails()){
+            return response()->json(["Enter all details"],400);
+        }else{
+            return $this->vendorLoginService->login($request);
+
+        }
     }
 
     public function unauthorized(){

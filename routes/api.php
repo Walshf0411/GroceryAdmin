@@ -36,10 +36,10 @@ Route::get('/deletebusiness/{id}', 'API\BusinessApiController@destroy');
 // Route::get('/edit_product/{id}', 'ProductController@edit')->name('edit_product');
 Route::post('/updatebusiness/{id}', 'API\BusinessApiController@update');
 
-Route::prefix('vendor')->group(function () {
+Route::prefix('/vendor')->group(function () {
     Route::get('/unauthorized', 'API\VendorLoginController@unauthorized')->name('vendor.unauthorized');
     Route::post('/checkToken', 'API\VendorLoginController@checkToken')->name('vendor.check.token');
-Route::post('/login', 'API\VendorLoginController@login');
+Route::post('/login', 'API\VendorLoginController@login')->name('vendor.login');
 
         Route::middleware(['vendor'])->group(function () {
 
@@ -49,7 +49,7 @@ Route::prefix('customer')->group(function () {
     Route::get('/unauthorized', 'API\CustomerLoginController@unauthorized')->name('customer.unauthorized');
     Route::post('/checkToken', 'API\CustomerLoginController@checkToken')->name('customer.check.token');
     Route::post('/register', 'API\CustomerLoginController@insertCustomer');
-Route::post('/login', 'API\CustomerLoginController@login');
+Route::post('/login', 'API\CustomerLoginController@login')->name('customer.login');
         Route::middleware(['customer'])->group(function () {
             Route::post('/insertAddress', 'API\AddressApiController@store');
         });
