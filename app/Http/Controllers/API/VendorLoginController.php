@@ -20,7 +20,7 @@ class VendorLoginController extends Controller
           ]);
 
         if($validator->fails()){
-            return response()->json(["Enter all details"],400);
+            return response()->json(["message"=>"Enter all details"],400);
         }else{
             return $this->vendorLoginService->login($request);
 
