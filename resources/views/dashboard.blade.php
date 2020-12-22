@@ -16,7 +16,7 @@
           <div class="px-3 py-3">
             <div class="media">
               <div class="media-body text-left">
-                <h3 class="mb-1 danger">0</h3>
+                <h3 class="mb-1 danger">{{ $category }}</h3>
                 <span>Total Category</span>
               </div>
               <div class="media-right align-self-center">
@@ -34,11 +34,11 @@
           <div class="px-3 py-3">
             <div class="media">
               <div class="media-body text-left">
-                <h3 class="mb-1 danger">0</h3>
-                <span>Total Sub Cat.</span>
+                <h3 class="mb-1 danger">{{ $vendors }}</h3>
+                <span>Total Vendors</span>
               </div>
               <div class="media-right align-self-center">
-                <i class="icon-list danger font-large-2 float-right"></i>
+                <i class="icon-user warning font-large-2 float-right"></i>
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@
           <div class="px-3 py-3">
             <div class="media">
               <div class="media-body text-left">
-                <h3 class="mb-1 success">4</h3>
+                <h3 class="mb-1 success">{{ $products }}</h3>
                 <span>Total Product</span>
               </div>
               <div class="media-right align-self-center">
@@ -70,11 +70,12 @@
           <div class="px-3 py-3">
             <div class="media">
               <div class="media-body text-left">
-                <h3 class="mb-1 warning">5</h3>
-                <span>Total Area</span>
+                <h3 class="mb-1 warning">{{ $bvendors }}</h3>
+                <span>Total Blocked Vendors</span>
               </div>
               <div class="media-right align-self-center">
-                <i class="icon-pie-chart warning font-large-2 float-right"></i>
+                <i class="icon-user danger font-large-2 float-right"></i>
+                {{-- <i class="icon-pie-chart warning font-large-2 float-right"></i> --}}
               </div>
             </div>
           </div>
@@ -105,7 +106,7 @@
           <div class="px-3 py-3">
             <div class="media">
               <div class="media-body text-left">
-                <h3 class="mb-1 primary">4</h3>
+                <h3 class="mb-1 primary">{{ $banner }}</h3>
                 <span>Total Banner</span>
               </div>
               <div class="media-right align-self-center">
@@ -124,7 +125,7 @@
           <div class="px-3 py-3">
             <div class="media">
               <div class="media-body text-left">
-                <h3 class="mb-1 success">100</h3>
+                <h3 class="mb-1 success">{{ $customers }}</h3>
                 <span>Total Customer</span>
               </div>
               <div class="media-right align-self-center">
@@ -153,7 +154,7 @@
         </div>
       </div>
     </div>
-
+{{--
      <div class="col-xl-3 col-lg-6 col-12">
       <div class="card">
         <div class="card-content">
@@ -260,6 +261,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
 
 @endsection
