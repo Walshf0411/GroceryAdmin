@@ -18,18 +18,18 @@ class TempVendorController extends Controller
 
     public function show()
     {
-        $tempvendors = $this->service->listVendor();
+        $tempvendors = $this->service->list_temp_Vendor();
         return view('TempVendor.listtemp_vendor', ["tempvendors"=> $tempvendors]);
     }
     public function store($id)
     {
-        $this->service->addVendor($id);
+        $this->service->add_temp_Vendor($id);
         return $this->destroy($id);
     }
 
     public function destroy($id)
     {
-        $this->service->deleteVendor($id);
+        $this->service->delete_temp_Vendor($id);
         return redirect()->route("list_temp_vendor");
     }
 }

@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Vendor List</h4>
+                    <h4 class="card-title">Blocked Vendor List</h4>
                 </div>
                 <div class="card-body collapse show">
                     <div class="card-block card-dashboard">
@@ -17,9 +17,7 @@
                                     <th>Vendor Name</th>
                                     <th>Shop Name</th>
                                     <th>Mobile Number</th>
-									{{-- <th>Total Subcategory</th> --}}
-                                    <th>Action</th>
-
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,11 +30,11 @@
                                     <td>{{ $row->mobile_number }}</td>
 
                                     <td>
-									    <a class="primary"  href="block_Vendor/{{ $row->id }}" data-original-title="" title="block vendor">
-                                            <i class="fa fa-ban font-medium-3"></i>
+									    <a class="primary"  href="unblock_Vendor/{{ $row->id }}" data-original-title="" title="unblock vendor">
+                                            <i class="fa fa-unlock font-medium-3"></i>
                                         </a>
                                         &ensp;
-									    <a class="danger" href="delete_block_Vendor/{{ $row->id }}" data-original-title="" title="delete vendor">
+									    <a class="danger" href="delete_block_vendor/{{ $row->id }}" data-original-title="" title="delete vendor">
                                             <i class="ft-trash font-medium-3"></i>
                                         </a>
 

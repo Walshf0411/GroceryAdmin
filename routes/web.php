@@ -53,11 +53,15 @@ Route::get('/deleteProduct/{id}', 'TempProductController@destroy');
 Route::get('/addProduct/{id}', 'TempProductController@store');
 
 Route::get('/list_vendor', 'VendorController@show')->name('list_vendor');
-
+Route::get('/list_blocked_vendor', 'VendorController@show_block_vendor')->name('list_blocked_vendor');
+Route::get('/delete_block_vendor/{id}', 'VendorController@destroy');
+Route::get('/delete_unblock_vendor/{id}', 'VendorController@destroy_blockedVendor');
+Route::get('/block_Vendor/{id}', 'VendorController@update_block_vendor');
+Route::get('/unblock_Vendor/{id}', 'VendorController@update_unblock_vendor');
 
 Route::get('/list_temp_vendor', 'TempVendorController@show')->name('list_temp_vendor');
-Route::get('/deleteVendor/{id}', 'TempVendorController@destroy');
-Route::get('/addVendor/{id}', 'TempVendorController@store');
+Route::get('/delete_temp_Vendor/{id}', 'TempVendorController@destroy');
+Route::get('/add_temp_Vendor/{id}', 'TempVendorController@store');
 
 Route::get('/list_vendor_products', 'BusinessController@show');
 Route::get('/showVendorProduct/{id}', 'BusinessController@listView');

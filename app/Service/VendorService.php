@@ -12,7 +12,7 @@ class VendorService{
 
 
     public function listVendor(){
-        return DB::select('select * from vendors');
+        return DB::select('select * from vendors where is_blocked = 0');
 
     }
 
@@ -44,5 +44,22 @@ class VendorService{
                 return response()->json(["message" => "Vendor already exists"]);
         }
 
+    }
+
+    public function list_block_vendor(){
+        return DB::select('select * from vendors where is_blocked = 1');
+    }
+
+    public function block_Vendor($id){
+        return DB::update("update vendors set is_blocked = 1 where id=?",[$id]);
+    }
+
+    public function unblock_Vendor($id){
+        return DB::update("update vendors set is_blocked = 0 where id=?",[$id]);
+    }
+
+    public function delete_block_Vendor($id){
+        $deleteVendor = DB::delete('delete from vendors WHERE id=?',[$id]);
+        return $deleteVendor;
     }
 }

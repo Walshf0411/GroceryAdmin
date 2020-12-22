@@ -11,7 +11,7 @@ class CategoriesController extends Controller
     public function __construct(CategoryService $service){
         $this->service = $service;
     }
-    
+
 
     public function viewAddCategory(){
         return view('Category.add_category');
@@ -36,7 +36,7 @@ class CategoriesController extends Controller
     public function update(Request $request, Category $category, $id)
     {
         $this->service->updateCategory($request,$id);
-        return redirect()->route('list_category')->with("Success","Data deleted Successfully");;
+        return redirect()->route('list_category')->with("Success","Data deleted Successfully");
     }
 
     public function destroy(Category $category, $id)

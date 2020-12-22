@@ -85,6 +85,8 @@
                     </li>
                     <li><a href="list_temp_vendor" class="menu-item">Temporary Vendor List</a>
                     </li>
+                    <li><a href="list_blocked_vendor" class="menu-item">Blocked Vendor List</a>
+                    </li>
                 </ul>
               </li>
 

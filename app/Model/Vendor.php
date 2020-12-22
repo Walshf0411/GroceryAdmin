@@ -15,7 +15,7 @@ class Vendor extends Authenticatable implements JWTSubject
     protected $guard = 'vendor';
 
     protected $fillable = [
-        'name' ,'shop_name','address', 'email_id','mobile_number','gst_number','rating'
+        'name' ,'shop_name','address', 'email_id','mobile_number','gst_number','rating','is_blocked'
      ];
      protected $hidden = [
         'password'
@@ -35,7 +35,8 @@ class Vendor extends Authenticatable implements JWTSubject
         'email_id' => $this->email_id,
         'mobile_number'=> $this->mobile_number,
         'gst_number'=> $this->gst_number,
-        'rating'=> $this->rating
+        'rating'=> $this->rating,
+        'is_blocked'=> $this->is_blocked
     ];
     }
 }

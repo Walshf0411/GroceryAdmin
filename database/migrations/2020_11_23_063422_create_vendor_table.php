@@ -23,6 +23,7 @@ class CreateVendorTable extends Migration
             $table->string("mobile_number")->unique();
             $table->string("rating");
             $table->string("gst_number");
+            $table->boolean("is_blocked")->default(0);
             $table->timestamps();
         });
     }
