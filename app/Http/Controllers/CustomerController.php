@@ -10,6 +10,7 @@ class CustomerController extends Controller
 
     public function __construct(CustomerService $service){
         $this->service = $service;
+        $this->middleware('auth');
     }
 
     public function show()

@@ -12,7 +12,7 @@ class VendorService{
 
 
     public function listVendor(){
-        return DB::select('select * from vendors where is_blocked = 0');
+        return DB::select('select * from business b, vendor v where v.is_blocked = 0');
 
     }
 

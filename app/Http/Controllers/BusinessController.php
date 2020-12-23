@@ -10,6 +10,7 @@ class BusinessController extends Controller
     //
     public function __construct(VendorService $service){
         $this->service = $service;
+        $this->middleware('auth');
     }
 
     public function show()
