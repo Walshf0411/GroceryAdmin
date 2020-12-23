@@ -11,7 +11,6 @@ class BannerController extends Controller
 
     public function __construct(BannerService $service){
         $this->service = $service;
-        $this->middleware('auth');
     }
 
 

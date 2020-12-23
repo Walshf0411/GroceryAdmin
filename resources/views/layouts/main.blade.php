@@ -1,12 +1,26 @@
+<?php
+// if(!empty($_SESSION['username']))
+// {
+
+// }
+// else
+// {
+?>
+{{-- <script>
+    window.location.href="/";
+</script> --}}
+<?php
+// }
+?>
+{{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
+
 <div data-active-color="white" data-background-color="purple-bliss" data-image="" class="app-sidebar">
         <!-- main menu header-->
         <!-- Sidebar Header starts-->
         <div class="sidebar-header">
           <div class="logo clearfix"><a href="" class="logo-text float-left">
               <div class="logo-img"><img src="{{ asset('website/thump_1597913295.png')}}" style="width:100%;"/></div><span class="text align-middle" style="font-size: 16px;
-    padding: 7px;"></span></a>
-    {{-- <a id="sidebarToggle" href="javascript:;" class="nav-toggle d-none d-sm-none d-md-none d-lg-block"><i data-toggle="expanded" class="toggle-icon ft-toggle-right"></i></a><a id="sidebarClose" href="javascript:;" class="nav-close d-block d-md-block d-lg-none d-xl-none"><i class="ft-x"></i></a>--}}
-</div>
+    padding: 7px;"></span></a><a id="sidebarToggle" href="javascript:;" class="nav-toggle d-none d-sm-none d-md-none d-lg-block"><i data-toggle="expanded" class="toggle-icon ft-toggle-right"></i></a><a id="sidebarClose" href="javascript:;" class="nav-close d-block d-md-block d-lg-none d-xl-none"><i class="ft-x"></i></a></div>
         </div>
         <!-- Sidebar Header Ends-->
         <!-- / main menu header-->
@@ -101,7 +115,7 @@
                 </ul>
               </li>
 
-{{--
+
 
                <li class="has-sub nav-item"><a href="#"><i class="fa fa-gift"></i><span data-i18n="" class="menu-title">Coupon</span></a>
                 <ul class="menu-content">
@@ -113,8 +127,8 @@
                     </ul>
 
 
-              </li> --}}
-{{-- 
+              </li>
+
                <li class="has-sub nav-item"><a href="#"><i class="ft-compass"></i><span data-i18n="" class="menu-title">Area</span></a>
                 <ul class="menu-content">
                   <li><a href="area.php" class="menu-item">Add Area</a>
@@ -125,8 +139,8 @@
                     </ul>
 
 
-              </li> --}}
-{{--
+              </li>
+
 
         <li class="has-sub nav-item"><a href="#"><i class="ft-clock"></i><span data-i18n="" class="menu-title">Timeslot</span></a>
                 <ul class="menu-content">
@@ -138,10 +152,10 @@
                     </ul>
 
 
-              </li> --}}
+              </li>
 
 
-               {{-- <li class="has-sub nav-item"><a href="#"><i class="fa fa-motorcycle"></i><span data-i18n="" class="menu-title">Delivery Boy</span></a>
+               <li class="has-sub nav-item"><a href="#"><i class="fa fa-motorcycle"></i><span data-i18n="" class="menu-title">Delivery Boy</span></a>
                 <ul class="menu-content">
                   <li><a href="add_rider.php" class="menu-item active">Add Delivery Boy</a>
                   </li>
@@ -151,7 +165,7 @@
                     </ul>
 
 
-              </li> --}}
+              </li>
 
 
 
@@ -168,7 +182,7 @@
 
               </li>
 
-{{--
+
 
               <li class="has-sub nav-item"><a href="#"><i class="ft-copy"></i><span data-i18n="" class="menu-title">Home Section</span></a>
                 <ul class="menu-content">
@@ -180,13 +194,13 @@
                     </ul>
 
 
-              </li> --}}
+              </li>
 
 
 
 
 
-         {{-- <li class="has-sub nav-item"><a href="#"><i class="ft-bell"></i><span data-i18n="" class="menu-title">Notification</span></a>
+         <li class="has-sub nav-item"><a href="#"><i class="ft-bell"></i><span data-i18n="" class="menu-title">Notification</span></a>
                 <ul class="menu-content">
                   <li><a href="template.php" class="menu-item">Add Notification</a>
                   </li>
@@ -196,15 +210,15 @@
                     </ul>
 
 
-              </li> --}}
+              </li>
 
-        {{-- <li><a href="user.php"><i class="ft-users"></i><span data-i18n="" class="menu-title"> Customer</span></a> </li> --}}
-        {{-- <li><a href="order.php"><i class="ft-shopping-cart"></i><span data-i18n="" class="menu-title"> Pending Order</span></a></li> --}}
-        {{-- <li><a href="orders.php"><i class="ft-check"></i><span data-i18n="" class="menu-title"> Complete Order</span></a></li> --}}
-        {{-- <li><a href="orderrate.php"><i class="ft-flag"></i><span data-i18n="" class="menu-title"> Customer Rating</span></a></li> --}}
-              {{-- <li><a href="feed.php"><i class="ft-star"></i><span data-i18n="" class="menu-title"> Feedback</span></a>
-              </li> --}}
-               {{-- <li class="has-sub nav-item"><a href="#"><i class="fa fa-flag"></i><span data-i18n="" class="menu-title"> Country Code</span></a>
+        <li><a href="user.php"><i class="ft-users"></i><span data-i18n="" class="menu-title"> Customer</span></a> </li>
+        <li><a href="order.php"><i class="ft-shopping-cart"></i><span data-i18n="" class="menu-title"> Pending Order</span></a></li>
+        <li><a href="orders.php"><i class="ft-check"></i><span data-i18n="" class="menu-title"> Complete Order</span></a></li>
+        <li><a href="orderrate.php"><i class="ft-flag"></i><span data-i18n="" class="menu-title"> Customer Rating</span></a></li>
+              <li><a href="feed.php"><i class="ft-star"></i><span data-i18n="" class="menu-title"> Feedback</span></a>
+              </li>
+               <li class="has-sub nav-item"><a href="#"><i class="fa fa-flag"></i><span data-i18n="" class="menu-title"> Country Code</span></a>
                 <ul class="menu-content">
                   <li><a href="code.php" class="menu-item active"> Add Country Code</a>
                   </li>
@@ -212,14 +226,14 @@
                   </li>
 
                     </ul>
-                  </li> --}}
+                  </li>
 
 
 
-			   {{-- <li><a href="payment_list.php"><i class="fa fa-money"></i><span data-i18n="" class="menu-title">Payment  List</span></a></li> --}}
-			  {{-- <li><a href="profile.php"><i class="ft-user"></i><span data-i18n="" class="menu-title">Profile</span></a></li> --}}
-        {{-- <li><a href="setting.php"><i class="ft-settings"></i><span data-i18n="" class="menu-title">Settings</span></a>
-              </li> --}}
+			   <li><a href="payment_list.php"><i class="fa fa-money"></i><span data-i18n="" class="menu-title">Payment  List</span></a></li>
+			  <li><a href="profile.php"><i class="ft-user"></i><span data-i18n="" class="menu-title">Profile</span></a></li>
+        <li><a href="setting.php"><i class="ft-settings"></i><span data-i18n="" class="menu-title">Settings</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -245,7 +259,7 @@
             <div id="navbarSupportedContent" class="collapse navbar-collapse">
               <ul class="navbar-nav">
                 <li class="nav-item mr-2 d-none d-lg-block"><a id="navbar-fullscreen" href="javascript:;" class="nav-link apptogglefullscreen"><i class="ft-maximize font-medium-3 blue-grey darken-4"></i>
-                    <p class="d-none">f\Fullscreen</p></a></li>
+                    <p class="d-none">fullscreen</p></a></li>
 
 
                 <li class="dropdown nav-item"><a id="dropdownBasic3" href="#" data-toggle="dropdown" class="nav-link position-relative dropdown-toggle"><i class="ft-user font-medium-3 blue-grey darken-4"></i>

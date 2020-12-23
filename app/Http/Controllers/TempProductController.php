@@ -13,7 +13,6 @@ class TempProductController extends Controller
 
     public function __construct(TempProductService $service){
         $this->service = $service;
-        $this->middleware('auth');
     }
 
 

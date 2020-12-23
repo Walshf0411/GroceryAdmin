@@ -10,7 +10,6 @@ class ProductController extends Controller
 {
     public function __construct(ProductService $service){
         $this->service = $service;
-        $this->middleware('auth');
     }
 
     public function index()
