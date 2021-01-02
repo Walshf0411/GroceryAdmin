@@ -22,6 +22,7 @@ class CreateTempProductTable extends Migration
                 $table->foreign("category_id")->references('id')->on('categories')->onDelete('cascade');
                 $table->string("name");
                 $table->string("images");
+                $table->string("unit");
                 $table->timestamps();
 
         });

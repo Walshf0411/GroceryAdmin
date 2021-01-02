@@ -43,6 +43,7 @@ class ProductApiService
         $temp->name = $request->name;
         $temp->vendor_id= $request->vendor_id;
         $temp->category_id = $request->category_id;
+        $temp->unit = $request->unit;
         $temp->images = "yet to be uploaded";
         $temp->save();
 

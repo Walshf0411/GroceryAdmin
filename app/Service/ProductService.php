@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class ProductService{
 
-    
+
 
     public function viewAddProduct(){
         return Category::all();
@@ -49,6 +49,7 @@ class ProductService{
         $product = new Product;
         $product->name = $request->name;
         $product->category_id = $request->category_id;
+        $product->unit = $request->unit;
         $product->images =implode("|",$images) ;
         $product->save();
 
@@ -93,9 +94,9 @@ class ProductService{
                 $file->move('image',$name);
                 $images[]=$name;
             }
-            DB::update("update products AS p set p.name= ?, p.category_id = ?, p.images= ? where id=? ",[$request->name, $request->category_id, implode("|",$images), $id]);
+            DB::update("update products AS p set p.name= ?, p.category_id = ?, p.images= ?,p.unit=? where id=? ",[$request->name, $request->category_id, implode("|",$images),$request->unit, $id]);
         }else{
-            DB::update("update products AS p set p.name= ?, p.category_id = ? where id=? ",[$request->name, $request->category_id, $id]);
+            DB::update("update products AS p set p.name= ?, p.category_id = ? ,p.unit=?  where id=? ",[$request->name, $request->category_id,$request->unit, $id]);
         }
     }
     public function productsWithDetials(){

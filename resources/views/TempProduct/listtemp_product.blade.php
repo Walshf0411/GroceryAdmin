@@ -26,7 +26,6 @@
                             <tbody>
                                 @foreach($tempproducts as $row)
                                 <tr>
-
                                     <td>{{ $row->id }}</td>
                                     <td>{{ $row->category_name }}</td>
                                     <td>{{ $row->name }}</td>

@@ -31,6 +31,10 @@
                                 <input type="text" id="cname"  class="form-control"  name="name" required >
                             </div>
                             <div class="form-group">
+                                <label for="unit">Unit</label>
+                                <input type="text" id="unit"  class="form-control"  name="unit" required >
+                            </div>
+                            <div class="form-group">
                             <label for="projectinput6">Select Category</label>
                                 <select id="sub_list" name="category_id" class="form-control">
                                     @foreach($category as $item)

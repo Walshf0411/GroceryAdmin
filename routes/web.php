@@ -64,7 +64,7 @@ Route::get('/delete_temp_Vendor/{id}', 'TempVendorController@destroy');
 Route::get('/add_temp_Vendor/{id}', 'TempVendorController@store');
 
 Route::get('/list_vendor_products', 'BusinessController@show');
-Route::get('/showVendorProduct/{id}', 'BusinessController@listView');
+Route::get('/showVendorProduct/{id}', 'VendorController@listView')->name('show_product');
 // Route::get('/showVendorProduct/{id}', 'BusinessController@listView')->name('show.vendor.profile');
 
 Route::get('/list_customer', 'CustomerController@show')->name('list_customer');

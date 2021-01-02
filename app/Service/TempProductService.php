@@ -16,8 +16,8 @@ class TempProductService{
     }
 
     public function addProduct($id){
-        $tempproducts = DB::insert('insert into products (category_id, name,images)
-                                    SELECT category_id, name,images FROM temp_products where id=?',[$id]);
+        $tempproducts = DB::insert('insert into products (category_id, name,images,unit)
+                                    SELECT category_id, name,images,unit FROM temp_products where id=?',[$id]);
         $count = DB::select("select id from products order by id DESC LIMIT 1");
             if(count($count)==0){
                     $number = 1;
@@ -27,7 +27,7 @@ class TempProductService{
             $path = storage_path("app/public/images/Product/$number/");
             $path1 = storage_path("app/public/images/TempProduct/$id/");
             File::move($path1, $path);
-        
+
     }
 
 

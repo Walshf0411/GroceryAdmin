@@ -14,11 +14,18 @@
                             <thead>
                                 <tr>
 								 {{-- <th>Id No.</th> --}}
-                                    <th>Vendor id</th>
+                                    <th>Business id</th>
+                                    <th>Category Name</th>
+                                    <th>Product Name</th>
                                     <th>Vendor Name</th>
-                                    <th>Vendor Shop Name</th>
+                                    <th>Price</th>
+                                    <th>Unit</th>
+                                    <th>Description</th>
+                                    <th>Image</th>
+                                    <th>Stocks</th>
+                                    <th>Discount</th>
 									{{-- <th>Total Subcategory</th> --}}
-                                    <th>Action</th>
+                                    {{-- <th>Action</th> --}}
 
                                 </tr>
                             </thead>
@@ -27,14 +34,23 @@
                                 <tr>
 
 
-                                    <td>{{ $row->vendor_id }}</td>
+                                    <td>{{ $row->id }}</td>
+                                    <td>{{ $row->category_name }}</td>
+                                    <td>{{ $row->product_name }}</td>
+
                                     <td>{{ $row->name }}</td>
-                                    <td>{{ $row->shop_name }}</td>
-                                    <td>
+                                    <td>{{ $row->price }}</td>
+                                    <td>{{ $row->unit }}</td>
+                                    <td>{{ $row->description }}</td>
+
+                                    <td>{{ $row->images }}</td>
+                                    <td>{{ $row->stocks }}</td>
+                                    <td>{{ $row->discount }}</td>
+                                    {{-- <td>
                                         <a class="primary"  href="showVendorProduct/{{ $row->vendor_id }}" data-original-title="" title="click">
                                             <i class="fa fa-hand-pointer-o font-medium-3"></i><span>Click</span>
                                         </a>
-                                    </td>
+                                    </td> --}}
 
                                     {{-- <td>
 									<a class="primary"  href="edit_product/{{ $row->id }}" data-original-title="" title="">

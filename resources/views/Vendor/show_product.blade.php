@@ -42,11 +42,12 @@
                                     <td colspan="3">{{ $row->gst_number }}</td>
                                 </tr>
                                 @endforeach
-                                
+
                                 <tr>
 
                                     <th>Product Name</th>
                                     <th>Price</th>
+                                    <th>Unit</th>
                                     <th>Description</th>
 
                                 </tr>
@@ -59,6 +60,7 @@
 
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->price }}</td>
+                                    <td>{{ $row->unit }}</td>
                                     <td>{{ $row->description }}</td>
                                     {{-- <td>
                                     @foreach( explode("|", $row->images) as $img)

@@ -16,6 +16,7 @@
                                  <th>Id No.</th>
                                     <th>Category Name</th>
                                     <th>Product Name</th>
+                                    <th>Unit</th>
                                     <th>Product Image</th>
 									{{-- <th>Total Subcategory</th> --}}
                                     <th>Action</th>
@@ -29,6 +30,7 @@
                                     <td>{{ $row->id }}</td>
                                     <td>{{ $row->category_name }}</td>
                                     <td>{{ $row->name }}</td>
+                                    <td>{{ $row->unit }}</td>
                                     <td>
                                     @foreach( explode("|", $row->images) as $img)
                                         <img class="media-object round-media" src="storage\images\Product\{{ $row->id }}\{{ $img }}" alt="Generic placeholder image" style="height: 75px;">

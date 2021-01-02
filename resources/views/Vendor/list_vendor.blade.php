@@ -26,10 +26,10 @@
                                 @foreach($vendordetails as $row)
                                 <tr>
 
-                                    <td>{{ $row->id }}</td>
-                                    <td>{{ $row->name }}</td>
-                                    <td>{{ $row->shop_name }}</td>
-                                    <td>{{ $row->mobile_number }}</td>
+                                  <td><a href="showVendorProduct/{{ $row->id }}">{{ $row->id }}</a></td>
+                                  <td><a href="showVendorProduct/{{ $row->id }}">{{ $row->name }}</a></td>
+                                  <td><a href="showVendorProduct/{{ $row->id }}"> {{ $row->shop_name }}</a></td>
+                                  <td> <a href="showVendorProduct/{{ $row->id }}">{{ $row->mobile_number }}</a></td>
 
                                     <td>
 									    <a class="primary"  href="block_Vendor/{{ $row->id }}" data-original-title="" title="block vendor">
