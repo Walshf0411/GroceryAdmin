@@ -10,6 +10,7 @@ class BusinessController extends Controller
     //
     public function __construct(VendorService $service){
         $this->service = $service;
+        $this->middleware('auth');
     }
 
     public function show()
@@ -17,5 +18,5 @@ class BusinessController extends Controller
         $vendordetails =  $this->service->listVendorProduct();
         return view('Vendor.list_vendorproduct', ["vendordetails"=> $vendordetails]);
     }
-    
+
 }
