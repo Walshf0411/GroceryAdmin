@@ -19,7 +19,7 @@
         "laravel/ui": "^2.4",
         "lcobucci/jwt": "3.3",
         "tymon/jwt-auth": "^1.0.0-beta.3@dev",
-        "gd": "*"
+        "ext-gd":" *"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
