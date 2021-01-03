@@ -52,7 +52,10 @@ public function insertCategory(Request $request){
             $image = $request->file('category_image');
             $extension = $image->extension();
             $name =  $number.".".$extension;
-            Image::make($image)->resize(100, 100)->save(storage_path('app/public/images/Category/').$name);
+            Image::make($image)->resize(100, 100)->save($path.$name);
+            if(!File::isFile($path.$name)){
+                return redirect()->back();
+            }
             $category = new Category;
             $category->category_name = $request->category_name;
             $category->category_image = $name;
