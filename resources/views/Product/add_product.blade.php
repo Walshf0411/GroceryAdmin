@@ -32,7 +32,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="unit">Unit</label>
-                                <input type="text" id="unit"  class="form-control"  name="unit" required >
+                                <select name="unit" id="unit">
+                                    <option value="mL">mL(mililiter)</option>
+                                    <option value="gm">gm(gram)</option>
+                                  </select>
+                                {{-- <input type="text" id="unit"  class="form-control"  name="unit" required > --}}
                             </div>
                             <div class="form-group">
                             <label for="projectinput6">Select Category</label>
