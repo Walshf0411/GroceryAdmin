@@ -25,11 +25,11 @@ class CategoryService{
                     $product->vendors = $vendors;
                     array_push($answer, $product);
                 }
-                
+
                 // $product->merge([
                 //     'vendors' => $vendors
                 // ]);
-                
+
                 }
                 return $answer;
         }
@@ -45,7 +45,7 @@ public function insertCategory(Request $request){
         }
         if($request->hasFile('category_image')){
 
-            $path =storage_path("app/public/images/Banner/");
+            $path =storage_path("app/public/images/Category/");
             if(!File::isDirectory($path)){
                 File::makeDirectory($path, 0777, true, true);
             }
