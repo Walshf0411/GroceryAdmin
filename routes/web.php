@@ -42,14 +42,14 @@ Route::get('/edit_banner/{id}', 'BannerController@edit')->name('edit_banner');
 
 Route::get('/add_product', 'ProductController@index');
     Route::post('/insertProduct', 'ProductController@store');
-Route::get('/deleteProduct/{id}', 'ProductController@destroy');
+Route::get('/delete_product/{id}', 'ProductController@destroy')->name('delete_product');
 Route::get('/list_product', 'ProductController@show')->name('list_product');
 Route::get('/edit_product/{id}', 'ProductController@edit')->name('edit_product');
     Route::post('/update_product/{id}', 'ProductController@update')->name('update_product');
 
 
 Route::get('/list_temp_product', 'TempProductController@show')->name('list_temp_product');
-Route::get('/deleteProduct/{id}', 'TempProductController@destroy');
+Route::get('/temp_delete_product/{id}', 'TempProductController@destroy')->name('temp_delete_product');
 Route::get('/addProduct/{id}', 'TempProductController@store');
 
 Route::get('/list_vendor', 'VendorController@show')->name('list_vendor');

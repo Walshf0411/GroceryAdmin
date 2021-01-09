@@ -36,7 +36,7 @@
                                             <i class="fa fa-ban font-medium-3"></i>
                                         </a>
                                         &ensp;
-									    <a class="danger" href="delete_block_Vendor/{{ $row->id }}" data-original-title="" title="delete vendor">
+									    <a class="danger" href="delete_block_vendor/{{ $row->id }}" data-original-title="" title="delete vendor">
                                             <i class="ft-trash font-medium-3"></i>
                                         </a>
 

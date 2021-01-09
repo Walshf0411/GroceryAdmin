@@ -56,11 +56,12 @@ class ProductService{
 
     }
 
-    public function deleteProduct($id){
-        File::deleteDirectory(storage_path("app/public/images/Product/$id"));
+    public function delete_product($id){
+        if(File::isDirectory(storage_path("app/public/images/Product/$id"))){
+            File::deleteDirectory(storage_path("app/public/images/Product/$id"));
+        }
+
         $product = Product::findOrFail($id)->delete();
-
-
     }
 
     public function editProduct($id){

@@ -23,7 +23,7 @@
             </div>
             <div class="card-body">
                 <div class="px-3">
-
+                    
                     <form class="form" action="../update_banner/{{ $banners['0']->id }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-body">

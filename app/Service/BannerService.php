@@ -54,10 +54,11 @@ public function insertBanner(Request $request){
 
     public function editBanner($id){
         $banner = DB::select('select * from banners where id = ?', [$id]);
+
         if($banner==[]){
             return redirect()->back()->with("Error","Data Not Found ");
         }
-
+        return $banner;
     }
 
     public function updateBanner(Request $request, $id){
@@ -75,6 +76,6 @@ public function insertBanner(Request $request){
 
             $banner = DB::update('update banners set banner_image = ? where id = ?', [$name, $id]);
         }
-        
+
     }
 }

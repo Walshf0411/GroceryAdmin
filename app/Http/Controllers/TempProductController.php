@@ -31,7 +31,7 @@ class TempProductController extends Controller
 
     public function destroy($id)
     {
-         $this->service->deleteProduct($id);
+         $this->service->temp_delete_product($id);
         return redirect()->route("list_temp_product");
     }
 }

@@ -48,7 +48,7 @@ class VendorController extends Controller
     }
 
     public function destroy_blockedVendor($id){
-        $this->service->delete_block_Vendor($id);
+        $this->service->delete_block_vendor($id);
         return redirect()->route('list_blocked_vendor');
     }
 }

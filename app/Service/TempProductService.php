@@ -31,7 +31,7 @@ class TempProductService{
     }
 
 
-    public function deleteProduct($id){
+    public function temp_delete_product($id){
         File::deleteDirectory(storage_path("app/public/images/TempProduct/$id"));
         $tempproducts = TempProduct::findOrFail($id)->delete();
 

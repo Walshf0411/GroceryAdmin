@@ -59,7 +59,7 @@ class VendorService{
         return DB::update("update vendors set is_blocked = 0 where id=?",[$id]);
     }
 
-    public function delete_block_Vendor($id){
+    public function delete_block_vendor($id){
         $deleteVendor = DB::delete('delete from vendors WHERE id=?',[$id]);
         return $deleteVendor;
     }
