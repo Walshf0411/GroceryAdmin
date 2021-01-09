@@ -8,6 +8,6 @@ class TempProduct extends Model
 {
     //
     protected $fillable = [
-        'name' ,'vendor_id','category_id', 'images','unit'
+        'temp_product_name' ,'vendor_id','category_id', 'images','unit'
      ];
 }

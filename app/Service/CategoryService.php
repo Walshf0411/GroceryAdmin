@@ -106,5 +106,6 @@ public function insertCategory(Request $request){
         }
 
     }
+    
 
 }

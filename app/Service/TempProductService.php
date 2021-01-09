@@ -32,8 +32,76 @@ class TempProductService{
 
 
     public function temp_delete_product($id){
-        File::deleteDirectory(storage_path("app/public/images/TempProduct/$id"));
+        if(!File::isDirectory(storage_path("app/public/images/TempProduct/$id"))){
+            File::deleteDirectory(storage_path("app/public/images/TempProduct/$id"));
+        }
         $tempproducts = TempProduct::findOrFail($id)->delete();
+
+    }
+    public function create_temp_product(Request $request)
+    {
+        //checking whether the product exists or not
+        $count = DB::select("select c.id,p.id from temp_products as c, products as p where p.name = ? or c.temp_product_name = ? ", [$request->name, $request->name]);
+        if(count($count)>0){
+            return response()->json(["message"=> "Product already exists"]);
+        }
+        //inserting record with no image
+        $temp = new TempProduct();
+        $temp->temp_product_name = $request->name;
+        $temp->vendor_id= $request->vendor_id;
+        $temp->category_id = $request->category_id;
+        $temp->unit = $request->unit;
+        $temp->images = "yet to be uploaded";
+        $temp->save();
+
+        //collecting id inorder to create folder of that with name of that id
+        $getid = DB::select("select id from temp_products order  by id  DESC limit 1");
+        $number = $getid['0']->id;
+        //storing images in the folder with name $number(id)
+        $images=array();
+        $counter = 0;
+        if($files=$request->file('images')){
+            foreach($files as $file){
+                $counter += 1;
+                // $name=$file->getClientOriginalName();
+                $extension = $file->extension();
+                $name =  $counter.".".$extension;
+                $path = storage_path("app/public/images/TempProduct/$number/");
+                if(!File::isDirectory($path)){
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                Image::make($file)->resize(100, 100)->save($path.$name);
+                $file->move('image',$name);
+                $images[]=$name;
+            }
+        }
+        //updating the image names
+        $adding = TempProduct::find($number)->update(['images'=>implode("|",$images)]);
+        // $adding->save();
+        return response()->json(["message"=>"Temp Product inserted successfully"]);
+    }
+    public function test(Request $request){
+        $counter = 0;
+
+        if($request->hasFile('images')){
+            $files = $request->file('images');
+
+            foreach($files as $file){
+                $counter += 1;
+
+                $extension = $file->extension();
+                $name =  $counter.".".$extension;
+                $path = storage_path("app/public/images/Demo/");
+                if(!File::isDirectory($path)){
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                Image::make($file)->resize(100, 100)->save($path.$name);
+                $file->move('image',$name);
+                $images[]=$name;
+            }
+
+        }
+        return response()->json(["message"=>$request->file('images')]);
 
     }
 }

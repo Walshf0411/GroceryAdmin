@@ -22,8 +22,8 @@ use App\Http\Controllers\API\BannerApiController;
 Route::get('/homepage', 'API\BannerApiController@show');
 Route::get('/category', 'API\BannerApiController@showCategory');
 Route::post('/tempvendor', 'API\VendorApiController@create');
-Route::post('/tempproduct', 'API\ProductApiController@create');
-Route::post('/test', 'API\ProductApiController@test');
+Route::post('/tempproduct', 'API\TempProductController@create');
+Route::post('/test', 'API\TempProductController@test');
 
 Route::get('/trial', 'API\VendorApiController@trial');
 

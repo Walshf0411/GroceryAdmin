@@ -14,7 +14,7 @@ class VendorApiController extends Controller
 
     public function __construct(VendorService $service){
         $this->service = $service;
-        // $this->middleware('auth:vendor');
+        $this->middleware('auth:vendor');
     }
 
     public function create(Request $request)
