@@ -41,8 +41,8 @@ Route::prefix('/vendor')->group(function () {
     Route::post('/checkToken', 'API\VendorLoginController@checkToken')->name('vendor.check.token');
 Route::post('/login', 'API\VendorLoginController@login')->name('vendor.login');
 
-        Route::middleware(['vendor'])->group(function () {
-
+        Route::middleware('api:vendor')->group(function () {
+            Route::get('/getSelectedProducts/{vendor_id}', 'API\ProductApiController@selectedProducts')->name('vendor.product.list');
     });
 });
 Route::prefix('customer')->group(function () {

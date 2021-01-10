@@ -42,7 +42,7 @@ class VendorService{
                 // return response()->json(["message" => "New vendor Added"]);
                 return response()->json($tempvendor);
             }else{
-                return response()->json(["message" => "Vendor already exists"]);
+                return response()->json(["message" => "Vendor already exists"],400);
         }
 
     }

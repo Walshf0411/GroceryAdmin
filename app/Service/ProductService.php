@@ -110,6 +110,10 @@ class ProductService{
        }
         return $products;
     }
+
+    public function viewSelectedProducts($vendor_id){
+        return DB::select('select p.* from products p where p.id NOT IN (SELECT b.product_id from business b where b.vendor_id=?)', [$vendor_id]);
+    }
 }
 
 ?>
