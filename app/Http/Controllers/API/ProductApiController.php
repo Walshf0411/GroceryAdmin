@@ -10,7 +10,7 @@ class ProductApiController extends Controller
     //
     public function __construct(ProductService $service){
         $this->service = $service;
-        $this->middleware("auth:vendor");
+        // $this->middleware("auth:vendor");
     }
 
     public function selectedProducts($vendor_id){

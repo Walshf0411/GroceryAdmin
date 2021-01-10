@@ -10,7 +10,7 @@ class BusinessApiController extends Controller
     //
     public function __construct(BusinessApiService $service){
         $this->service = $service;
-        // $this->middleware("auth:vondor");
+        // $this->middleware("auth:vendor");
     }
 
 
