@@ -17,7 +17,7 @@ class TempProductService{
 
     public function addProduct($id){
         $tempproducts = DB::insert('insert into products (category_id, name,images,unit)
-                                    SELECT category_id,temp_product_name,images,unit FROM temp_products where id=?',[$id]);
+                                    SELECT category_id, name,images,unit FROM temp_products where id=?',[$id]);
         $count = DB::select("select id from products order by id DESC LIMIT 1");
             if(count($count)==0){
                     $number = 1;
@@ -41,18 +41,10 @@ class TempProductService{
     public function create_temp_product(Request $request)
     {
         //checking whether the product exists or not
-        $count = DB::select("select c.id,p.id from temp_products as c, products as p where p.name = ? or c.temp_product_name = ? ", [$request->name, $request->temp_product_name]);
+        $count = DB::select("select c.id,p.id from temp_products as c, products as p where p.name = ? or c.temp_product_name = ? ", [$request->name, $request->name]);
         if(count($count)>0){
             return response()->json(["message"=> "Product already exists"]);
         }
-        //inserting record with no image
-        $temp = new TempProduct();
-        $temp->temp_product_name = $request->temp_product_name;
-        $temp->vendor_id= $request->vendor_id;
-        $temp->category_id = $request->category_id;
-        $temp->unit = $request->unit;
-        $temp->images = "yet to be uploaded";
-        $temp->save();
 
         //collecting id inorder to create folder of that with name of that id
         $getid = DB::select("select id from temp_products order  by id  DESC limit 1");
