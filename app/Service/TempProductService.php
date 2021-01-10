@@ -45,25 +45,20 @@ class TempProductService{
         if(count($count)>0){
             return response()->json(["message"=> "Product already exists"]);
         }
-        //inserting record with no image
-        $temp = new TempProduct();
-        $temp->temp_product_name = $request->name;
-        $temp->vendor_id= $request->vendor_id;
-        $temp->category_id = $request->category_id;
-        $temp->unit = $request->unit;
-        $temp->images = "yet to be uploaded";
-        $temp->save();
 
         //collecting id inorder to create folder of that with name of that id
         $getid = DB::select("select id from temp_products order  by id  DESC limit 1");
-        $number = $getid['0']->id;
+        if (count($getid) == 0) {
+            $number = 1;
+        } else {
+            $number = $count['0']->id + 1;
+        }
         //storing images in the folder with name $number(id)
         $images=array();
         $counter = 0;
         if($files=$request->file('images')){
             foreach($files as $file){
                 $counter += 1;
-                // $name=$file->getClientOriginalName();
                 $extension = $file->extension();
                 $name =  $counter.".".$extension;
                 $path = storage_path("app/public/images/TempProduct/$number/");
@@ -75,9 +70,16 @@ class TempProductService{
                 $images[]=$name;
             }
         }
-        //updating the image names
-        $adding = TempProduct::find($number)->update(['images'=>implode("|",$images)]);
-        // $adding->save();
+        //inserting data in db
+
+        $temp = new TempProduct();
+        $temp->temp_product_name = $request->name;
+        $temp->vendor_id= $request->vendor_id;
+        $temp->category_id = $request->category_id;
+        $temp->unit = $request->unit;
+        $temp->images = $images;
+        $temp->save();
+
         return response()->json(["message"=>"Temp Product inserted successfully"]);
     }
     public function test(Request $request){
