@@ -51,7 +51,8 @@ class TempProductService{
         if (count($getid) == 0) {
             $number = 1;
         } else {
-            $number = $count['0']->id + 1;
+            // dd($getid);
+            $number = $getid['0']->id + 1;
         }
         //storing images in the folder with name $number(id)
         $images=array();
@@ -73,11 +74,11 @@ class TempProductService{
         //inserting data in db
 
         $temp = new TempProduct();
-        $temp->temp_product_name = $request->name;
+        $temp->temp_product_name = $request->temp_product_name;
         $temp->vendor_id= $request->vendor_id;
         $temp->category_id = $request->category_id;
         $temp->unit = $request->unit;
-        $temp->images = $images;
+        $temp->images = implode("|",$images);
         $temp->save();
 
         return response()->json(["message"=>"Temp Product inserted successfully"]);

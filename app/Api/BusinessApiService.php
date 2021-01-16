@@ -16,18 +16,18 @@ class BusinessApiService
     {
 
         //check wether the record already exists or not
-        $count = DB::select("select * FROM `business` As b WHERE b.product_id=?1 and b.vendor_id=?", [$request->product_id, $request->vendor_id]);
-        if ($count > 0) {
+        $count = DB::select("select * FROM `business` As b WHERE b.product_id=? and b.vendor_id=?", [$request->product_id, $request->vendor_id]);
+        if (count($count) > 0) {
             return response()->json(["message" => "You have already added this product"], 400);
         }
         //check whether the product exists or not
-        $prod_ex = DB::select('select * from products where id = ', [$request->product_id]);
+        $prod_ex = DB::select('select * from products where id = ?', [$request->product_id]);
         if (count($prod_ex) < 1) {
             return response()->json(["message" => "Such Product does not exists"], 400);
         }
 
         //check whether the vendor exists or not
-        $vendor_ex = DB::select('select * from vendors where id = ', [$request->vendor_id]);
+        $vendor_ex = DB::select('select * from vendors where id = ?', [$request->vendor_id]);
         if (count($vendor_ex) < 1) {
             return response()->json(["message" => "Such Vendor does not exists"], 400);
         }

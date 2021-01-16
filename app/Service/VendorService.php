@@ -35,6 +35,7 @@ class VendorService{
                 $tempvendor->shop_name = $request->shop_name;
                 $tempvendor->address = $request->address;
                 $tempvendor->email_id = $request->email_id;
+                $tempvendor->password = $request->password;
                 $tempvendor->mobile_number = $request->mobile_number;
                 $tempvendor->gst_number = $request->gst_number;
                 $tempvendor->message = $request->message;

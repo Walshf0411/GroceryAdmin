@@ -108,6 +108,7 @@ class ProductService{
         array_push($products,array("id"=>$proarray[(String)$count]->product_id, "product_name" =>$proarray[(String)$count]->name, "vendors" => DB::select("select b.price, b.images, v.name, b.description FROM products AS p, business AS b, vendors as v WHERE b.product_id = p.id and b.vendor_id= v.id and p.id = ?",[$item->product_id]) ));
         $count += 1;
        }
+
         return $products;
     }
 

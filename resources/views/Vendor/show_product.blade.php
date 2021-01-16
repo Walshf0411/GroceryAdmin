@@ -12,7 +12,7 @@
 
                         <table class="table table-striped table-bordered dom-jQuery-events">
                             <thead>
-                                @foreach($vendorprofiledetails as $row)
+                                @foreach($vendordetails as $row)
                                 <tr>
                                     <th  >Vendor Name</th>
                                     <td colspan="3">{{ $row->name }}</td>
