@@ -16,7 +16,7 @@ class VendorLoginService{
         if($token){
             // $vendor = Vendor::where('email_id', $request->email_id)->where('password', Hash::make($request->password));
             $vendor = DB::select('select * from vendors where email_id = ? ', [$request->email_id]);
-            return response()->json(["token"=>$token, 'vendor'=>$vendor],200);
+            return response()->json(["token"=>$token, 'vendor'=>$vendor['0']],200);
         }else{
             return response()->json(["error"=> "wrong credentials"],401);
         }

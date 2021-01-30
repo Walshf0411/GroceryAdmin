@@ -37,8 +37,4 @@ class TempVendorApiController extends Controller
         }
     }
 
-    public function trial(){
-
-        return "Welcome vendor";
-    }
 }
