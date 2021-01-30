@@ -47,6 +47,6 @@ class VendorLoginService{
         $jwtPayload = json_decode($tokenPayload);
 
         return response()->json([$jwtPayload]);
-        // return response()->json(['response'=>$apy]);
+
     }
 }

@@ -13,7 +13,7 @@ class TempVendorController extends Controller
     //
     public function __construct(TempVendorService $service){
         $this->service = $service;
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
 

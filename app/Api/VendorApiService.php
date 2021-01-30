@@ -19,16 +19,14 @@ class VendorApiService
                 $tempvendor->email_id = $request->email_id;
                 $tempvendor->mobile_number = $request->mobile_number;
                 $tempvendor->gst_number = $request->gst_number;
+                $tempvendor->password  = $request->password;
                 $tempvendor->message = $request->message;
                 $tempvendor->save();
-                // return response()->json(["message" => "New vendor Added"]);
                 return response()->json($tempvendor);
             }else{
-                return response()->json(["message" => "Vendor already exists"]);
+                return response()->json(["message" => "Vendor already exists"], 400);
         }
-
     }
-
 }
 
 

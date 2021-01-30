@@ -19,6 +19,6 @@ class TempVendorService{
     }
 
     public function add_temp_Vendor($id){
-        $tempvendors = DB::insert('insert into vendors (name,shop_name,address,mobile_number,email_id,gst_number) SELECT name, shop_name,address,mobile_number,email_id,gst_number FROM temp_vendors where id=?',[$id]);
+        $tempvendors = DB::insert('insert into vendors (name,shop_name,address,mobile_number,email_id,password,gst_number) SELECT name, shop_name,address,mobile_number,email_id,password,gst_number FROM temp_vendors where id=?',[$id]);
     }
 }
