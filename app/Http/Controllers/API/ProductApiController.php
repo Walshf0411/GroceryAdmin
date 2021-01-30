@@ -14,7 +14,7 @@ class ProductApiController extends Controller
     }
 
     public function selectedProducts($vendor_id){
-        return response()->json(["products"=>$this->service->viewSelectedProducts($vendor_id)],200);
+        return response()->json(["products"=>$this->service->viewSelectedProducts($vendor_id)]);
     }
 
 

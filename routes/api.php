@@ -35,6 +35,8 @@ Route::get('/deletebusiness/{id}', 'API\BusinessApiController@destroy');
 // Route::get('/list_product', 'ProductController@show')->name('list_product');
 // Route::get('/edit_product/{id}', 'ProductController@edit')->name('edit_product');
 Route::post('/updatebusiness/{id}', 'API\BusinessApiController@update');
+Route::get('vendor/getSelectedProducts/{vendor_id}', 'API\ProductApiController@selectedProducts')->name('vendor.product.list');
+
 
 Route::prefix('/vendor')->group(function () {
 
@@ -42,7 +44,6 @@ Route::prefix('/vendor')->group(function () {
 Route::post('/login', 'API\VendorLoginController@login')->name('vendor.login');
 
         Route::middleware('auth:vendor')->group(function () {
-            Route::get('/getSelectedProducts/{vendor_id}', 'API\ProductApiController@selectedProducts')->name('vendor.product.list');
     });
 });
 Route::prefix('customer')->group(function () {
