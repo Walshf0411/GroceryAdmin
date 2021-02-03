@@ -22,4 +22,8 @@ class TempProductController extends Controller
     {
         return $this->service->test($request);
     }
+
+    public function vendorsProductList($id){
+        return response()->json(["products"=>$this->service->listTempProducts($id)], 200);
+    }
 }

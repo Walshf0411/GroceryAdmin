@@ -107,4 +107,7 @@ class TempProductService{
         return response()->json(["message"=>$request->file('images')]);
 
     }
+    public function listTempProducts($id){
+        return DB::select('select * from temp_products where vendor_id = ?', [$id]);
+    }
 }
