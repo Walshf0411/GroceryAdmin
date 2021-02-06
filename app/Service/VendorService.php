@@ -22,11 +22,11 @@ class VendorService{
     }
 
     public function show_product($id){
-        $vendordetails = DB::select('select p.name,p.unit,b.price,b.description FROM `business` AS b,`products`AS p,`vendors` AS v WHERE b.product_id=p.id and b.vendor_id=v.id and b.vendor_id=?', [$id]);
+        $vendordetails = DB::select('select p.*,b.* FROM `business` AS b,`products`AS p,`vendors` AS v WHERE b.product_id=p.id and b.vendor_id=v.id and b.vendor_id=?', [$id]);
         $vendorprofiledetails=DB::select('select v.name,v.shop_name,v.address,v.mobile_number,v.email_id,v.rating,v.gst_number FROM `business` AS b,`products`AS p,`vendors` AS v, `categories` AS c WHERE b.vendor_id=v.id and b.vendor_id=? limit 1', [$id]);
         return  [$vendordetails, $vendorprofiledetails];
     }
-    
+
 
     public function list_block_vendor(){
         return DB::select('select * from vendors where is_blocked = 1');

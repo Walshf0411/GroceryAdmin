@@ -42,7 +42,7 @@ Route::prefix('/vendor')->group(function () {
     Route::get('/getSelectedProducts/{vendor_id}', 'API\ProductApiController@selectedProducts')->name('vendor.product.list');
     Route::get('/getVendorsTempProducts/{id}','API\TempProductController@vendorsProductList')->name('vendor.tempprod.list');
     Route::post('/login', 'API\VendorLoginController@login')->name('vendor.login');
-
+    Route::get('/getVendorProducts/{id}', 'API\VendorApiController@getAddedProducts')->name('vendor.added.products');
         Route::middleware('auth:vendor')->group(function () {
     });
 });

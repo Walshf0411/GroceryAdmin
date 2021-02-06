@@ -29,7 +29,7 @@ class VendorApiController extends Controller
         'gst_number' => 'required',
         'message' => 'required',
       ]);
-      
+
         if($validator->fails()){
             return response()->json(["message"=>"Enter all details properly"],400);
         }else{
@@ -40,5 +40,8 @@ class VendorApiController extends Controller
     public function trial(){
 
         return "Welcome vendor";
+    }
+    public function getAddedProducts($id){
+        return response()->json(["products"=>$this->service->show_product($id)['0']], 200);
     }
 }
