@@ -83,30 +83,30 @@ class TempProductService{
 
         return response()->json(["message"=>"Temp Product inserted successfully"]);
     }
-    public function test(Request $request){
-        $counter = 0;
+    // public function test(Request $request){
+    //     $counter = 0;
 
-        if($request->hasFile('images')){
-            $files = $request->file('images');
+    //     if($request->hasFile('images')){
+    //         $files = $request->file('images');
 
-            foreach($files as $file){
-                $counter += 1;
+    //         foreach($files as $file){
+    //             $counter += 1;
 
-                $extension = $file->extension();
-                $name =  $counter.".".$extension;
-                $path = storage_path("app/public/images/Demo/");
-                if(!File::isDirectory($path)){
-                    File::makeDirectory($path, 0777, true, true);
-                }
-                Image::make($file)->resize(100, 100)->save($path.$name);
-                $file->move('image',$name);
-                $images[]=$name;
-            }
+    //             $extension = $file->extension();
+    //             $name =  $counter.".".$extension;
+    //             $path = storage_path("app/public/images/Demo/");
+    //             if(!File::isDirectory($path)){
+    //                 File::makeDirectory($path, 0777, true, true);
+    //             }
+    //             Image::make($file)->resize(100, 100)->save($path.$name);
+    //             $file->move('image',$name);
+    //             $images[]=$name;
+    //         }
 
-        }
-        return response()->json(["message"=>$request->file('images')]);
+    //     }
+    //     return response()->json(["message"=>$request->file('images')]);
 
-    }
+    // }
     public function listTempProducts($id){
         return DB::select('select * from temp_products where vendor_id = ?', [$id]);
     }

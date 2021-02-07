@@ -39,9 +39,12 @@ Route::post('/updatebusiness/{id}', 'API\BusinessApiController@update');
 Route::prefix('/vendor')->group(function () {
 
     Route::post('/checkToken', 'API\VendorLoginController@checkToken')->name('vendor.check.token');
-    Route::get('/getSelectedProducts/{vendor_id}', 'API\ProductApiController@selectedProducts')->name('vendor.product.list');
+    Route::get('/getSelectedProducts/{vendor_id}', 'API\ProductApxiController@selectedProducts')->name('vendor.product.list');
     Route::get('/getVendorsTempProducts/{id}','API\TempProductController@vendorsProductList')->name('vendor.tempprod.list');
     Route::post('/login', 'API\VendorLoginController@login')->name('vendor.login');
+    Route::post('deleteTempProduct2', 'API\TempProduct2ApiController@deleteTempProduct')->name('vendor.tempproduct2.delete');
+    Route::post('/addTempProdcut2', 'API\TempProduct2ApiController@addTempProduct')->name('vendor.tempproduct2.add');
+    
     Route::get('/getVendorProducts/{id}', 'API\VendorApiController@getAddedProducts')->name('vendor.added.products');
         Route::middleware('auth:vendor')->group(function () {
     });
