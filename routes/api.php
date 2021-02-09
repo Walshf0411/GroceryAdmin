@@ -42,9 +42,14 @@ Route::prefix('/vendor')->group(function () {
     Route::get('/getSelectedProducts/{vendor_id}', 'API\ProductApxiController@selectedProducts')->name('vendor.product.list');
     Route::get('/getVendorsTempProducts/{id}','API\TempProductController@vendorsProductList')->name('vendor.tempprod.list');
     Route::post('/login', 'API\VendorLoginController@login')->name('vendor.login');
-    Route::post('deleteTempProduct2', 'API\TempProduct2ApiController@deleteTempProduct')->name('vendor.tempproduct2.delete');
+    //Temp Prodcuts
+    Route::get('/deleteTempProduct2/{id}', 'API\TempProduct2ApiController@deleteTempProduct')->name('vendor.tempproduct2.delete');
     Route::post('/addTempProdcut2', 'API\TempProduct2ApiController@addTempProduct')->name('vendor.tempproduct2.add');
-    
+    Route::post('/editTempProducts/{id}','API\TempProduct2ApiController@editTempProduct')->name('vendor.edit.tempprodcuts');
+    Route::get('/listVendorTempProducts/{id}', 'API\TempProduct2ApiController@listVendorTempProducts')->name('vendor.list.tempprodcuts');
+    //Products
+    Route::get('/listOfProducts/{id}', 'API\Product2ApiController@getAllVendorProducts')->name('vendor.list.products');
+
     Route::get('/getVendorProducts/{id}', 'API\VendorApiController@getAddedProducts')->name('vendor.added.products');
         Route::middleware('auth:vendor')->group(function () {
     });
