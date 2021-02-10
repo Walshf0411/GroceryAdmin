@@ -98,7 +98,7 @@ class TempProduct2Service{
     }
 
     public function approveTempProduct($id){
-        $product = DB::insert('insert into product2(vendor_id, category_id, name, description, price, unit, images, discount, created_at, updated_at)
+        $tempProducts = DB::insert('insert into product2(vendor_id, category_id, name, description, price, unit, images, discount, created_at, updated_at)
         select vendor_id, category_id, name, description, price, unit, images, discount, NOW(), NOW() from tempprod2 where id=?',[$id]);
         $path = storage_path("app/public/images/TempProduct/$id/");
         $latestId = DB::getPdo()->lastInsertId();
@@ -109,20 +109,25 @@ class TempProduct2Service{
             }
             File::copy($path, $newPath);
         }
-        return "Product approved successfully";
+        // return "Product approved successfully";
     }
 
-    public function rejectedTempProdcut(Request $request, $id){
-        $message = $request->message;
+    public function rejectedTempProduct($id){
+        // $message = $request->message;
         DB::delete('delete from tempprod2 where id = ?', [$id]);
         $path = storage_path("app/public/images/TempProduct/$id/");
         if(File::isDirectory($path)){
             File::deleteDirectory($path);
         }
-        return "Product rejected Successfully";
+        // return "Product rejected Successfully";
     }
 
-    public function listTempProdcuts($id){
-        return DB::select('select * from tempprod2 where vendor_id = ?', [$id]);
+    // public function listTempProduct($id){
+    //     return DB::select('select * from tempprod2 where vendor_id = ?', [$id]);
+    // }
+
+    public function listTempProduct(){
+        return DB::select('select t.* ,c.category_name ,v.shop_name from tempprod2 AS t, categories AS c ,vendors AS v where t.category_id = c.id and t.vendor_id = v.id');
     }
+
 }

@@ -48,9 +48,9 @@ Route::get('/edit_product/{id}', 'ProductController@edit')->name('edit_product')
     Route::post('/update_product/{id}', 'ProductController@update')->name('update_product');
 
 
-Route::get('/list_temp_product', 'TempProductController@show')->name('list_temp_product');
-Route::get('/temp_delete_product/{id}', 'TempProductController@destroy')->name('temp_delete_product');
-Route::get('/addProduct/{id}', 'TempProductController@store');
+Route::get('/listTempProduct', 'TempProduct2Controller@show')->name('listTempProduct');
+Route::get('/rejectedTempProduct/{id}', 'TempProduct2Controller@destroy')->name('tempDeleteProduct');
+Route::get('/approveTempProduct/{id}', 'TempProduct2Controller@store');
 
 Route::get('/list_vendor', 'VendorController@show')->name('list_vendor');
 Route::get('/list_blocked_vendor', 'VendorController@show_block_vendor')->name('list_blocked_vendor');
