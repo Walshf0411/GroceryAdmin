@@ -41,7 +41,7 @@ padding: 7px;"></span></a>
             <ul class="menu-content">
                 <li><a href="add_product" class="menu-item">Add Product</a>
                 </li>
-                <li><a href="list_product" class="menu-item">Product List</a>
+                <li><a href="listProduct" class="menu-item">Product List</a>
                 </li>
                 <li><a href="listTempProduct" class="menu-item">Temporary Product List</a>
                 </li>

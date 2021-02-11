@@ -15,6 +15,6 @@ class Product2Service{
     }
 
     public function listProduct(){
-        return DB::select('select p.*, c.category_name from product2 AS p, categories AS c where p.category_id = c.id ');
+        return DB::select('select p.*, c.category_name,v.name AS vendor_name from product2 AS p, categories AS c,vendors AS v where p.category_id = c.id and p.vendor_id=v.id ');
     }
 }

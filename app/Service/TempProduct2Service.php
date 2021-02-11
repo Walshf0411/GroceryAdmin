@@ -100,16 +100,34 @@ class TempProduct2Service{
     public function approveTempProduct($id){
         $tempProducts = DB::insert('insert into product2(vendor_id, category_id, name, description, price, unit, images, discount, created_at, updated_at)
         select vendor_id, category_id, name, description, price, unit, images, discount, NOW(), NOW() from tempprod2 where id=?',[$id]);
-        $path = storage_path("app/public/images/TempProduct/$id/");
-        $latestId = DB::getPdo()->lastInsertId();
-        $newPath = storage_path("app/public/images/Product/$latestId/");
-        if(File::isDirectory($path)){
-            if(File::isDirectory($newPath)){
-                File::makeDirectory($newPath, 0777, true, true);
-            }
-            File::copy($path, $newPath);
+
+        // $path = storage_path("app/public/images/TempProduct/$id/");
+        // $latestId = DB::getPdo()->lastInsertId();
+        // dd($latestId);
+        // $newPath = storage_path("app/public/images/Product/$latestId/");
+        // if(File::isDirectory($path)){
+        //     if(File::isDirectory($newPath)){
+        //         File::makeDirectory($newPath, 0777, true, true);
+        //     }
+        //     File::move($path, $newPath);
+        // }
+
+        $count = DB::select("select id from product2 order by id DESC LIMIT 1");
+        // dd($count);
+        if(count($count)==0){
+                $number = 1;
+        }else{
+                $number = $count['0']->id +1;
         }
+        $path = storage_path("app/public/images/Product/$number/");
+        $path1 = storage_path("app/public/images/TempProduct/$id/");
+        if(File::isDirectory($path)){
+            if(File::isDirectory($path1)){
+                File::makeDirectory($path1, 0777, true, true);
+            }
+        File::move($path1, $path);
         // return "Product approved successfully";
+        }
     }
 
     public function rejectedTempProduct($id){

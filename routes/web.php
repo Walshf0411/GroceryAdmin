@@ -43,7 +43,7 @@ Route::get('/edit_banner/{id}', 'BannerController@edit')->name('edit_banner');
 Route::get('/add_product', 'ProductController@index');
     Route::post('/insertProduct', 'ProductController@store');
 Route::get('/delete_product/{id}', 'ProductController@destroy')->name('delete_product');
-Route::get('/list_product', 'ProductController@show')->name('list_product');
+Route::get('/listProduct', 'Product2Controller@show')->name('listProduct');
 Route::get('/edit_product/{id}', 'ProductController@edit')->name('edit_product');
     Route::post('/update_product/{id}', 'ProductController@update')->name('update_product');
 

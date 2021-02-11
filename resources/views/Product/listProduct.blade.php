@@ -16,6 +16,7 @@
                                  <th>Id No.</th>
                                     <th>Category Name</th>
                                     <th>Product Name</th>
+                                    <th>Vendor Name</th>
                                     <th>Unit</th>
                                     <th>Product Image</th>
 									{{-- <th>Total Subcategory</th> --}}
@@ -30,6 +31,7 @@
                                     <td>{{ $row->id }}</td>
                                     <td>{{ $row->category_name }}</td>
                                     <td>{{ $row->name }}</td>
+                                    <td>{{ $row->vendor_name }}</td>
                                     <td>{{ $row->unit }}</td>
                                     <td>
                                     @foreach( explode("|", $row->images) as $img)
