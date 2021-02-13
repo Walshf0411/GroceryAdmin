@@ -13,9 +13,22 @@ class AddressApiController extends Controller
 
     }
 
-    public function store(Request $request){
-        $this->addressService->insertAddress($request);
-        return response()->json(["message" => "Data inserted Successfully"]);
+    public function storeAddress(Request $request){
+        // $this->addressService->insertAddress($request);
+        return response()->json(["message" =>$this->addressService->insertAddress($request)],200);
     }
+
+    public function destroyAddress($id){
+        return response()->json(["message"=>$this->addressService->deleteAddress($id)], 200);
+    }
+
+    public function updateAddress(Request $request,$id){
+        return response()->json(["message"=>$this->addressService->updateAddress($request,$id)], 200);
+    }
+
+    public function listAddress(){
+        return response()->json(["address"=>$this->addressService->listAddress()], 200);
+    }
+
 
 }

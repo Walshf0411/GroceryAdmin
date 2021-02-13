@@ -58,14 +58,18 @@ Route::prefix('/customer')->group(function () {
 
     Route::post('/checkToken', 'API\CustomerLoginController@checkToken')->name('customer.check.token');
     Route::post('/register', 'API\CustomerLoginController@insertCustomer');
-Route::post('/login', 'API\CustomerLoginController@login')->name('customer.login');
-Route::post('/insertAddress', 'API\AddressApiController@store');
+    Route::post('/login', 'API\CustomerLoginController@login')->name('customer.login');
+
+    //Address
+    Route::post('/insertAddress', 'API\AddressApiController@storeAddress');
+    Route::get('/deleteAddress/{id}', 'API\AddressApiController@destroyAddress');
+    Route::post('/updateAddress/{id}', 'API\AddressApiController@updateAddress');
+    Route::get('/listAddress', 'API\AddressApiController@listAddress');
         // Route::middleware(['customer'])->group(function () {
 
         // });
 });
 
-Route::get('/deleteaddress/{id}', 'API\AddressApiController@destroy');
-Route::post('/updateaddress/{id}', 'API\AddressApiController@edit');
+
 
 Route::get('/product_category/{id}', 'API\CategoryApiController@list_product_category');

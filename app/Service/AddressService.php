@@ -22,7 +22,7 @@ class AddressService
                 $address->save();
 
                 return response()->json(["message" => "Data inserted Successfully"]);
-            
+
         }
 
 
@@ -46,6 +46,11 @@ class AddressService
 
                 return response()->json(["message" => "Data updated Successfully"]);
                 }
+        }
+
+        public function listAddress(){
+            $address = DB::select('select * from address');
+            return $address;
         }
 
 }
