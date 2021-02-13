@@ -17,9 +17,9 @@ class CategoryService{
             return "category doesnt exits";
         }else{
             $answer = array();
-            $products = DB::select('select p.* FROM `products` AS p WHERE p.category_id = ? ',[$category_id]);
+            $products = DB::select('select p.* FROM `product2` AS p WHERE p.category_id = ? ',[$category_id]);
             foreach ($products as $product){
-                $vendors = DB::select('select b.*, v.* from business b, vendors v, products p where p.id = b.product_id and v.id=b.vendor_id and b.category_id=? and b.product_id = ? ORDER BY b.price ASC', [$category_id, $product->id]);
+                $vendors = DB::select('select b.*, v.* from business b, vendors v, product2 p where p.id = b.product_id and v.id=b.vendor_id and b.category_id=? and b.product_id = ? ORDER BY b.price ASC', [$category_id, $product->id]);
                 // dd($products);
                 if($vendors !=[]){
                     $product->vendors = $vendors;
@@ -106,6 +106,6 @@ public function insertCategory(Request $request){
         }
 
     }
-    
+
 
 }

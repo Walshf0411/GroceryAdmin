@@ -119,13 +119,14 @@ class TempProduct2Service{
         }else{
                 $number = $count['0']->id +1;
         }
-        $path = storage_path("app/public/images/Product/$number/");
-        $path1 = storage_path("app/public/images/TempProduct/$id/");
+        $path = storage_path("app/public/images/TempProduct/$id/");
+        $newpath = storage_path("app/public/images/Product/$number/");
+
         if(File::isDirectory($path)){
-            if(File::isDirectory($path1)){
-                File::makeDirectory($path1, 0777, true, true);
+            if(File::isDirectory($newpath)){
+                File::makeDirectory($newpath, 0777, true, true);
             }
-        File::move($path1, $path);
+        File::move($path, $newpath);
         // return "Product approved successfully";
         }
     }

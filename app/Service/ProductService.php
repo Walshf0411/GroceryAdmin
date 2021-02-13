@@ -19,11 +19,11 @@ class ProductService{
     }
 
     public function listProduct(){
-        return DB::select('select p.*, c.category_name from products AS p, categories AS c where p.category_id = c.id ');
+        return DB::select('select p.*, c.category_name from product2 AS p, categories AS c where p.category_id = c.id ');
 
     }
     public function storeProduct(Request $request){
-        $count = DB::select("select id from products order by id DESC LIMIT 1");
+        $count = DB::select("select id from product2 order by id DESC LIMIT 1");
         if(count($count)==0){
             $number = 1;
         }else{
@@ -101,7 +101,7 @@ class ProductService{
         }
     }
     public function productsWithDetials(){
-        $proarray=DB::select("select distinct b.product_id, p.name from business as b , `products` AS p where b.product_id = p.id");
+        $proarray=DB::select("select distinct b.product_id, p.name from business as b , `product2` AS p where b.product_id = p.id");
         $products=array();
         $count = 0;
         foreach($proarray as $item){

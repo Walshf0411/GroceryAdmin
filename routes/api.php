@@ -51,17 +51,18 @@ Route::prefix('/vendor')->group(function () {
     Route::get('/listOfProducts/{id}', 'API\Product2ApiController@getAllVendorProducts')->name('vendor.list.products');
 
     Route::get('/getVendorProducts/{id}', 'API\VendorApiController@getAddedProducts')->name('vendor.added.products');
-        Route::middleware('auth:vendor')->group(function () {
-    });
+    //     Route::middleware('auth:vendor')->group(function () {
+    // });
 });
-Route::prefix('customer')->group(function () {
+Route::prefix('/customer')->group(function () {
 
     Route::post('/checkToken', 'API\CustomerLoginController@checkToken')->name('customer.check.token');
     Route::post('/register', 'API\CustomerLoginController@insertCustomer');
 Route::post('/login', 'API\CustomerLoginController@login')->name('customer.login');
-        Route::middleware(['customer'])->group(function () {
-            Route::post('/insertAddress', 'API\AddressApiController@store');
-        });
+Route::post('/insertAddress', 'API\AddressApiController@store');
+        // Route::middleware(['customer'])->group(function () {
+
+        // });
 });
 
 Route::get('/deleteaddress/{id}', 'API\AddressApiController@destroy');

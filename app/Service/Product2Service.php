@@ -3,7 +3,7 @@
 namespace App\Service;
 
 use App\Model\TempProduct2;
-use App\Model\Product;
+use App\Model\Product2;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -16,5 +16,11 @@ class Product2Service{
 
     public function listProduct(){
         return DB::select('select p.*, c.category_name,v.name AS vendor_name from product2 AS p, categories AS c,vendors AS v where p.category_id = c.id and p.vendor_id=v.id ');
+    }
+
+    public function homeListProduct(){
+        return Product2::all();
+        return DB::select('select * from product2 LIMIT 10');
+
     }
 }

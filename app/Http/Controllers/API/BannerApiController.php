@@ -7,19 +7,19 @@ use Illuminate\Http\Request;
 use App\Api\ApiService;
 use App\Service\BannerService;
 use App\Service\CategoryService;
-use App\Service\ProductService;
+use App\Service\Product2Service;
 
 class BannerApiController
 {
-    public function __construct(BannerService $bannerService,CategoryService $categoryService, ProductService $productService){
+    public function __construct(BannerService $bannerService,CategoryService $categoryService, Product2Service $product2Service){
         $this->bannerService = $bannerService;
         $this->categoryService = $categoryService;
-        $this->productService = $productService;
+        $this->product2Service = $product2Service;
     }
 
     public function show()
     {
-        return response()->json(["banners"=>$this->bannerService->listBanner(), "categories"=>$this->categoryService->listCategory(), "products_list"=>$this->productService->productsWithDetials()]);
+        return response()->json(["banners"=>$this->bannerService->listBanner(), "categories"=>$this->categoryService->listCategory(), "products"=>$this->product2Service->homeListProduct()]);
     }
 
     public function showCategory()
