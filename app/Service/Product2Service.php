@@ -23,4 +23,42 @@ class Product2Service{
         return DB::select('select * from product2 LIMIT 10');
 
     }
+
+    public function storeProduct(Request $request){
+        $count = DB::select("select id from product2 order by id DESC LIMIT 1");
+        if(count($count)==0){
+            $number = 1;
+        }else{
+            $number = $count['0']->id +1;
+        }
+        $images=array();
+        $counter = 0;
+        if($files=$request->file('images')){
+            foreach($files as $file){
+                $counter += 1;
+                // $name=$file->getClientOriginalName();
+                $extension = $file->extension();
+                $name =  $counter.".".$extension;
+                $path = storage_path("app/public/images/Product/$number/");
+                if(!File::isDirectory($path)){
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                Image::make($file)->resize(100, 100)->save($path.$name);
+                $file->move('image',$name);
+                $images[]=$name;
+            }
+        }
+        $product = new Product2;
+        $product->name = $request->name;
+        $product->vendor_id = $request->vendor_id;
+        $product->category_id = $request->category_id;
+        $product->unit = $request->unit;
+        $product->discount = $request ->discount;
+        $product->price = $request -> price;
+        $product->description = $request -> description;
+        $product->images =implode("|",$images) ;
+        $product->save();
+
+
+    }
 }
