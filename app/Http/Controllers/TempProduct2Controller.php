@@ -19,7 +19,7 @@ class TempProduct2Controller extends Controller
     }
 
     public function store(Request $request,$id){
-        $this->service->approveTempProduct($request, $id);
+        $this->service->approveTempProduct( $id);
         return $this->destroy($id);
     }
 

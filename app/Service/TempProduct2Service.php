@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\DB;
+use App\Model\Product2;
 
 class TempProduct2Service{
     public function addTempProduct(Request $request){
@@ -98,40 +99,32 @@ class TempProduct2Service{
     }
 
     public function approveTempProduct($id){
-        $tempProducts = DB::insert('insert into product2 (vendor_id,category_id, name,description,price,unit,discount,images,created_at,updated_at)
-        SELECT vendor_id,category_id, name,description,price,unit,discount,images,NOw(),NOW() FROM tempprod2 where id=?',[$id]);
+        $tempProd = DB::select('select * from tempprod2 where id = ?', [$id]);
+        if($tempProd==[]){
+            return "tempProduct does not exists";
+        }
+        $prod = new Product2;
+        $prod->vendor_id= $tempProd['0']->vendor_id;
+        $prod->category_id = $tempProd['0']->category_id;
+        $prod->name = $tempProd['0']->name;
+        $prod->description = $tempProd['0']->description;
+        $prod->price = $tempProd['0']->price;
+        $prod->unit = $tempProd['0']->unit;
+        $prod->discount = $tempProd['0']->discount;
+        $prod->images = $tempProd['0']->images;
+        $prod->save();
 
-        // $path = storage_path("app/public/images/TempProduct/$id/");
-        // $latestId = DB::getPdo()->lastInsertId();
-        // dd($latestId);
-        // $newPath = storage_path("app/public/images/Product/$latestId/");
-        // if(File::isDirectory($path)){
-        //     if(File::isDirectory($newPath)){
-        //         File::makeDirectory($newPath, 0777, true, true);
-        //     }
-        //     File::move($path, $newPath);
-        // }
-
-        $count = DB::select("select id from product2 order by id DESC LIMIT 1");
-        // dd($count);
-        // if(count($count)==0){
-        //         $number = 1;
-        // }else{
-        //         $number = $count['0']->id +1;
-        // }
-        // dd($number);
-        $number=$count['0']->id;
         $path = storage_path("app/public/images/TempProduct/$id/");
-        $newpath = storage_path("app/public/images/Product/$number/");
+        $newpath = storage_path("app/public/images/Product/$prod->id/");
 
         if(File::isDirectory($path)){
             if(File::isDirectory($newpath)){
                 File::makeDirectory($newpath, 0777, true, true);
             }
-        File::copy($path, $newpath);
+            File::move($path, $newpath);
+            File::deleteDirectory($path);
         }
-        // return "Product approved successfully";
-        // }
+        return "Product approved successfully";
     }
 
     public function rejectedTempProduct($id){
