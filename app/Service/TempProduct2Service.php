@@ -113,19 +113,6 @@ class TempProduct2Service{
         // }
 
         $count = DB::select("select id from product2 order by id DESC LIMIT 1");
-        if(count($count)==0){
-            $number = 1;
-    }else{
-            $number = $count['0']->id +1;
-    }
-
-    $path1 = storage_path("app/public/images/TempProduct/$id/");
-    $path = storage_path("app/public/images/Product/$number/");
-    if(File::isDirectory($path1)){
-            if(File::isDirectory($path)){
-                File::makeDirectory($path, 0777, true, true);
-            }
-    File::move($path1, $path);}
         // dd($count);
         // if(count($count)==0){
         //         $number = 1;
@@ -133,14 +120,16 @@ class TempProduct2Service{
         //         $number = $count['0']->id +1;
         // }
         // dd($number);
-        // $path = storage_path("app/public/images/TempProduct/$id/");
-        // $newpath = storage_path("app/public/images/Product/$number/");
+        $number=$count['0']->id;
+        $path = storage_path("app/public/images/TempProduct/$id/");
+        $newpath = storage_path("app/public/images/Product/$number/");
 
-        // if(File::isDirectory($path)){
-        //     if(File::isDirectory($newpath)){
-        //         File::makeDirectory($newpath, 0777, true, true);
-        //     }
-        // File::move($path, $newpath);
+        if(File::isDirectory($path)){
+            if(File::isDirectory($newpath)){
+                File::makeDirectory($newpath, 0777, true, true);
+            }
+        File::copy($path, $newpath);
+        }
         // return "Product approved successfully";
         // }
     }
