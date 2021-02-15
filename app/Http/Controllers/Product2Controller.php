@@ -13,9 +13,25 @@ class Product2Controller extends Controller
         $this->service = $service;
         // $this->middleware('auth');
     }
+    public function index()
+    {
+        $category = $this->service->viewAllCategories();
+        $vendors = $this->service->viewAllVendors();
+        return view('Product.add_product', ["category"=> $category, "vendors"=>$vendors]);
+    }
 
     public function show(){
         $products= $this->service->listProduct();
         return view('Product.listProduct',["products"=>$products]);
+    }
+
+    public function store(Request $request){
+        $products = $this->service->insertProduct($request);
+        return redirect()->route("listProduct");
+    }
+
+    public function destroy($id){
+        $products = $this->service->deleteProduct($id);
+        return redirect()->back();
     }
 }

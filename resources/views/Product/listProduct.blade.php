@@ -39,15 +39,15 @@
                                     @endforeach
                                     </td>
                                     <td>
-									<a class="primary"  href="edit_product/{{ $row->id }}" data-original-title="" title="">
+									{{-- <a class="primary"  href="edit_product/{{ $row->id }}" data-original-title="" title="">
                                             <i class="ft-edit font-medium-3"></i>
-                                        </a>
+                                        </a> --}}
 
-									<a class="danger" href="delete_product/{{ $row->id }}" data-original-title="" title="">
+									    <a class="danger" href="deleteProduct/{{ $row->id }}" data-original-title="" title="">
                                             <i class="ft-trash font-medium-3"></i>
                                         </a>
 
-										</td>
+									</td>
 
                                 </tr>
                                 @endforeach

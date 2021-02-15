@@ -39,7 +39,7 @@ padding: 7px;"></span></a>
 
           <li class="has-sub nav-item"><a href="#"><i class="ft-package"></i><span data-i18n="" class="menu-title">Product</span></a>
             <ul class="menu-content">
-                <li><a href="add_product" class="menu-item">Add Product</a>
+                {{-- <li><a href="add_product" class="menu-item">Add Product</a> --}}
                 </li>
                 <li><a href="listProduct" class="menu-item">Product List</a>
                 </li>

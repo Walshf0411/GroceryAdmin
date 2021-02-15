@@ -116,7 +116,11 @@ class TempProduct2Service{
 
         $path = storage_path("app/public/images/TempProduct/$id/");
         $newpath = storage_path("app/public/images/Product/$prod->id/");
+        $path1 = storage_path("app/public/images/Product/");
 
+        if(!File::isDirectory($path1)){
+            File::makeDirectory($path1, 0777, true, true);
+        }
         if(File::isDirectory($path)){
             if(File::isDirectory($newpath)){
                 File::makeDirectory($newpath, 0777, true, true);
@@ -136,10 +140,6 @@ class TempProduct2Service{
         }
         // return "Product rejected Successfully";
     }
-
-    // public function listTempProduct($id){
-    //     return DB::select('select * from tempprod2 where vendor_id = ?', [$id]);
-    // }
 
     public function listTempProduct(){
         return DB::select('select t.* ,c.category_name ,v.shop_name from tempprod2 AS t, categories AS c ,vendors AS v where t.category_id = c.id and t.vendor_id = v.id');
