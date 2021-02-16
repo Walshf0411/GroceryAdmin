@@ -25,6 +25,11 @@ class CustomerLoginController extends Controller
     public function insertCustomer(Request $request){
         $response = $this->customerLoginService->insertCustomer($request);
         return response()->json(['token'=>$response[0], 'customer'=> $response[1],'message'=>'success'], 200);
+    }
+
+    public function editCustomer(Request $request,$id){
+        $response = $this->customerLoginService->editCustomer($request,$id);
+        return response()->json(['token'=>$response[0], 'customer'=> $response[1],'message'=>'success'], 200);
 
     }
 }

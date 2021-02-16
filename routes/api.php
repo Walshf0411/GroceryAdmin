@@ -64,6 +64,7 @@ Route::prefix('/customer')->group(function () {
     Route::post('/checkToken', 'API\CustomerLoginController@checkToken')->name('customer.check.token');
     Route::post('/register', 'API\CustomerLoginController@insertCustomer');
     Route::post('/login', 'API\CustomerLoginController@login')->name('customer.login');
+    Route::post('/editCustomer/{id}', 'API\CustomerLoginController@editCustomer');
 
     //Address
     Route::post('/insertAddress', 'API\AddressApiController@storeAddress');

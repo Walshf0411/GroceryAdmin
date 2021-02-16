@@ -71,4 +71,15 @@ class CustomerLoginService{
         'expires_in' => auth()->factory()->getTTL() * 60
       ]);
     }
+
+    public function editCustomer(Request $request,$id){
+        $customer = Customer::findOrFail($id);
+        $customer->c_name = $request->c_name;
+        $customer->mobile_number= $request->mobile_number;
+        $customer->save();
+
+        $token = auth('customer')->login($customer);
+        return [$token, $customer];
+        // return "Details Edited Successfully";
+    }
 }
