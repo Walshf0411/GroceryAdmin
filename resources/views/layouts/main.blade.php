@@ -89,6 +89,16 @@ padding: 7px;"></span></a>
             </ul>
           </li>
 
+          <li class="has-sub nav-item"><a href="#"><i class="fa fa-user-plus"></i>
+            <span data-i18n="" class="menu-title">Timeslots</span></a>
+            <ul class="menu-content">
+                <li><a href="add_timeslot" class="menu-item">Add Timeslot</a>
+                </li>
+                <li><a href="list_timeslot" class="menu-item">Timeslots List</a>
+                </li>
+            </ul>
+          </li>
+
           <li class="has-sub nav-item"><a href="#"><i class="fa fa-users"></i>
             <span data-i18n="" class="menu-title">Business</span></a>
             <ul class="menu-content">

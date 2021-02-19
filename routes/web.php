@@ -68,3 +68,11 @@ Route::get('/showVendorProduct/{id}', 'VendorController@listView')->name('show_p
 // Route::get('/showVendorProduct/{id}', 'BusinessController@listView')->name('show.vendor.profile');
 
 Route::get('/list_customer', 'CustomerController@show')->name('list_customer');
+
+
+Route::get('/add_timeslot', 'TimeslotController@viewAddTimeslot');
+Route::post('/insertTimeslot', 'TimeslotController@store');
+Route::get('/deleteTimeslot/{id}', 'TimeslotController@destroy');
+Route::get('/list_timeslot', 'TimeslotController@listTimeslots')->name('list_timeslot');
+Route::get('/edit_timeslot/{id}', 'TimeslotController@edit')->name('edit_timeslot');
+Route::post('/update_timeslot/{id}', 'TimeslotController@update')->name('update_timeslot');
