@@ -26,8 +26,8 @@ class AddressApiController extends Controller
         return response()->json(["message"=>$this->addressService->updateAddress($request,$id)], 200);
     }
 
-    public function listAddress(){
-        return response()->json(["address"=>$this->addressService->listAddress()], 200);
+    public function listAddress($customer_id){
+        return response()->json(["address"=>$this->addressService->listAddress($customer_id)], 200);
     }
 
 

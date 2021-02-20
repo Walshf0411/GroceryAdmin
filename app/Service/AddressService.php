@@ -48,8 +48,8 @@ class AddressService
                 }
         }
 
-        public function listAddress(){
-            $address = DB::select('select * from address');
+        public function listAddress($customer_id){
+            $address = DB::select('select * from address where customer_id=?',[$customer_id]);
             return $address;
         }
 

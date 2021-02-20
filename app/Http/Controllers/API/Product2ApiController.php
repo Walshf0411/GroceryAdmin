@@ -32,4 +32,13 @@ class Product2ApiController extends Controller
         return response()->json(["message"=>$this->service->deleteProduct($id)], 200);
     }
 
+    public function popularProductsList(){
+        return response()->json(["popular_products"=>$this->service->homeListProduct()], 200);
+    }
+
+    public function listProduct(){
+        return response()->json(["products"=>$this->service->listProduct()], 200);
+    }
+
+
 }

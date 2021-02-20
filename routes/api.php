@@ -52,28 +52,26 @@ Route::prefix('/vendor')->group(function () {
     Route::post('/insertProduct', 'API\Product2ApiController@insertProduct')->name('vendor.insert.products');
     Route::post('/editProduct/{id}', 'API\Product2ApiController@editProduct')->name('vendor.edit.products');
     Route::get('/deleteProduct/{id}', 'API\Product2ApiController@deleteProduct')->name('vendor.delete.products');
-
+    //Vendors
     Route::get('/getVendorProducts/{id}', 'API\VendorApiController@getAddedProducts')->name('vendor.added.products');
-
-
-    //     Route::middleware('auth:vendor')->group(function () {
-    // });
 });
+
+
 Route::prefix('/customer')->group(function () {
 
     Route::post('/checkToken', 'API\CustomerLoginController@checkToken')->name('customer.check.token');
     Route::post('/register', 'API\CustomerLoginController@insertCustomer');
     Route::post('/login', 'API\CustomerLoginController@login')->name('customer.login');
     Route::post('/editCustomer/{id}', 'API\CustomerLoginController@editCustomer');
-
     //Address
     Route::post('/insertAddress', 'API\AddressApiController@storeAddress');
     Route::get('/deleteAddress/{id}', 'API\AddressApiController@destroyAddress');
     Route::post('/updateAddress/{id}', 'API\AddressApiController@updateAddress');
-    Route::get('/listAddress', 'API\AddressApiController@listAddress');
-        // Route::middleware(['customer'])->group(function () {
+    Route::get('/listAddress/{id}', 'API\AddressApiController@listAddress');
+    //Products
+    Route::get('/popularProducts', 'API\Product2ApiController@popularProductsList');
+    Route::get('/listProduct', 'API\Product2ApiController@listProduct');
 
-        // });
 });
 
 
