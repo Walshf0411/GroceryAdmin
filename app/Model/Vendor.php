@@ -39,4 +39,14 @@ class Vendor extends Authenticatable implements JWTSubject
         'is_blocked'=> $this->is_blocked
     ];
     }
+
+    /**
+     * Get all of the product for the Vendor
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function prodcut()
+    {
+        return $this->hasMany(Product2::class, 'foreign_key', 'local_key');
+    }
 }

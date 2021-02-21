@@ -24,11 +24,30 @@ class Product2Service{
         return Vendor::all();
     }
     public function homeListProduct(){
-        return DB::select('select * from product2 LIMIT 10');
+        $products = DB::select('select * from product2 LIMIT 10');
+        $newProd = array();
+        foreach ($products as $items) {
+            $getVendor = DB::select('select * from vendors where id = ?', [$items->vendor_id])['0'];
+            $getCategory = DB::select('select * from categories where id = ?', [$items->category_id])['0'];
+            $items->vendor = $getVendor;
+            $items->category = $getCategory;
+            array_push($newProd, $items);
+        }
+        return $newProd;
+
     }
 
     public function listProduct(){
-        return DB::select('select p.*, c.category_name,v.name AS vendor_name from product2 AS p, categories AS c,vendors AS v where p.category_id = c.id and p.vendor_id=v.id ');
+        $products = DB::select('select * from product2 ');
+        $newProd = array();
+        foreach ($products as $items) {
+            $getVendor = DB::select('select * from vendors where id = ?', [$items->vendor_id])['0'];
+            $getCategory = DB::select('select * from categories where id = ?', [$items->category_id])['0'];
+            $items->vendor = $getVendor;
+            $items->category = $getCategory;
+            array_push($newProd, $items);
+        }
+        return $newProd;
     }
 
     public function insertProduct(Request $request){
