@@ -8,5 +8,5 @@ class Delivery_cost extends Model
 {
     //
     protected $table= 'delivery_costs';
-    protected $fillable = [' delivery_charges'];
+    protected $fillable = ['delivery_charges'];
 }

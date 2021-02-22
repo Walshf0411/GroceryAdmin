@@ -99,6 +99,16 @@ padding: 7px;"></span></a>
             </ul>
           </li>
 
+          <li class="has-sub nav-item"><a href="#"><i class="fa fa-user-plus"></i>
+            <span data-i18n="" class="menu-title">Delivery Costs</span></a>
+            <ul class="menu-content">
+                <li><a href="add_deliverycost" class="menu-item">Add Delivery Cost</a>
+                </li>
+                <li><a href="list_deliverycost" class="menu-item">Delivery Cost List</a>
+                </li>
+            </ul>
+          </li>
+
           <li class="has-sub nav-item"><a href="#"><i class="fa fa-users"></i>
             <span data-i18n="" class="menu-title">Business</span></a>
             <ul class="menu-content">

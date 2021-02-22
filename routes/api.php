@@ -71,9 +71,10 @@ Route::prefix('/customer')->group(function () {
     //Products
     Route::get('/popularProducts', 'API\Product2ApiController@popularProductsList');
     Route::get('/listProduct', 'API\Product2ApiController@listProduct');
-
+    Route::get('/list_timeslot', 'API\TimeslotApiController@listTimeslots')->name('list_timeslot');
+    Route::get('/list_deliverycost', 'API\DeliverycostApiController@listDeliveryCosts')->name('list_deliverycost');
+    // Route::get('/list_timeslot', 'API\TimeslotApiController@listTimeslots')->name('list_timeslot');
 });
-
 
 
 Route::get('/product_category/{id}', 'API\CategoryApiController@list_product_category');
