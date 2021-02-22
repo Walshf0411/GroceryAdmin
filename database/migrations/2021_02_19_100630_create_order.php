@@ -25,6 +25,7 @@ class CreateOrder extends Migration
             $table->string("timeslot");
             $table->string("status");
             $table->float("rider_id");
+            $table->string("mode_of_payment");
             $table->timestamps();
         });
     }
