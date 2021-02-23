@@ -52,7 +52,7 @@ class DeliveryService{
     public function listDeliveryCost(){
         $delivery_cost = DB::select('select * from delivery_costs');
         if (count($delivery_cost) == 1){
-            return $delivery_cost;
+            return $delivery_cost['0']->delivery_charges;
         }
         else{
             return response()->json(["message" => "Data Error"],400);
