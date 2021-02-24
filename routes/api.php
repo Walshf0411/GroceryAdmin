@@ -74,6 +74,10 @@ Route::prefix('/customer')->group(function () {
     Route::get('/list_timeslot', 'API\TimeslotApiController@listTimeslots')->name('list.timeslot');
     Route::get('/list_deliverycost', 'API\DeliverycostApiController@listDeliveryCosts')->name('list.deliverycost');
     // Route::get('/list_timeslot', 'API\TimeslotApiController@listTimeslots')->name('list_timeslot');
+
+    //Order
+    Route::post('/addOrder', 'API\OrderApiController@addOrder')->name('add.order');
+    Route::get('/listOrderByCustomer/{id}', 'API\OrderApiController@getOrdersByCustomer')->name('customer.orders');
 });
 
 
