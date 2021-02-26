@@ -26,6 +26,7 @@ class OrderService{
         $order->status = $request->status;
         $order->rider_id = 0;
         $order->mode_of_payment = $request->mode_of_payment;
+        $order->date_of_delivery = $request->date_of_delivery;
         $order->save();
 
 
@@ -50,11 +51,11 @@ class OrderService{
             if($orderdescription==[]){return "there is some error";}
             $finalOrderdescription = array();
             foreach($orderdescription as $orderdesc){
-                $orderdesc->vendor = DB::select('select * from vendors where id = ?', [$orderdesc->vendor_id]);
+                $orderdesc->vendor = DB::select('select * from vendors where id = ?', [$orderdesc->vendor_id])['0'];
                 // if(count($orderdesc->vendor)!=1){return strval($orderdesc->vendor_id);}
                 // $orderdesc->vendor = DB::select('select * from vendors where id = ?', [$orderdesc->vendor_id])['0'];
 
-                $orderdesc->product = DB::select('select * from product2 where id = ?', [$orderdesc->product_id]);
+                $orderdesc->product = DB::select('select * from product2 where id = ?', [$orderdesc->product_id])['0'];
                 // if(count($orderdesc->product)!=1){return "prodcut id error";}
                 // $orderdesc->product = DB::select('select * from product2 where id = ?', [$orderdesc->product_id])['0'];
 

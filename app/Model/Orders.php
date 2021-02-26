@@ -18,6 +18,6 @@ class Orders extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'customer_id' ,'address_id', 'amount','delivery_charges', 'total_amount', 'timeslot', 'status' ,'rider_id'
+        'customer_id' ,'address_id', 'amount','delivery_charges', 'total_amount', 'timeslot', 'status' ,'rider_id', 'date_of_delivery'
      ];
 }
