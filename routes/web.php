@@ -20,6 +20,9 @@ use App\Model;
 
 // Auth::routes();
 Auth::routes(['register' => false]); //,  'reset' => false
+Route::get('/walshtmp', function() {
+	return ("hello walsh");
+});
 
 Route::get('/', 'HomeController@index')->name('');
 Route::get('/home', 'HomeController@index')->name('home');
