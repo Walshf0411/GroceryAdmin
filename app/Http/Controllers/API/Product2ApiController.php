@@ -14,7 +14,7 @@ class Product2ApiController extends Controller
     }
 
     public function getAllVendorProducts($id){
-        return $this->service->getAllVendorProducts($id);
+        return response()->json(["products"=>$this->service->getAllVendorProducts($id)]);
     }
 
     public function listVendorTempProducts($id){
