@@ -42,6 +42,6 @@ class VendorService{
 
     public function delete_block_vendor($id){
         $deleteVendor = DB::delete('delete from vendors WHERE id=?',[$id]);
-        return $deleteVendor;
+        return "Vendor Deleted Successfully";
     }
 }

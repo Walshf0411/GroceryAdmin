@@ -37,10 +37,6 @@ class VendorApiController extends Controller
         }
     }
 
-    public function trial(){
-
-        return "Welcome vendor";
-    }
     public function getAddedProducts($id){
         return response()->json(["products"=>$this->service->show_product($id)['0']], 200);
     }

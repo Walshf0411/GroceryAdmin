@@ -53,7 +53,9 @@ Route::prefix('/vendor')->group(function () {
     Route::post('/editProduct/{id}', 'API\Product2ApiController@editProduct')->name('vendor.edit.products');
     Route::get('/deleteProduct/{id}', 'API\Product2ApiController@deleteProduct')->name('vendor.delete.products');
     //Vendors
-    Route::get('/getVendorProducts/{id}', 'API\VendorApiController@getAddedProducts')->name('vendor.added.products');
+    // Route::get('/getVendorProducts/{id}', 'API\VendorApiController@getAddedProducts')->name('vendor.added.products');
+    //Order
+    Route::get('getOrderByVendor/{vendorId}', 'API\OrderApiController@getOrderByVendor')->name('vendor.order.list');
 });
 
 
@@ -71,13 +73,16 @@ Route::prefix('/customer')->group(function () {
     //Products
     Route::get('/popularProducts', 'API\Product2ApiController@popularProductsList');
     Route::get('/listProduct', 'API\Product2ApiController@listProduct');
+    //Timeslot
     Route::get('/list_timeslot', 'API\TimeslotApiController@listTimeslots')->name('list.timeslot');
+    //Delivery Cost
     Route::get('/list_deliverycost', 'API\DeliverycostApiController@listDeliveryCosts')->name('list.deliverycost');
-    // Route::get('/list_timeslot', 'API\TimeslotApiController@listTimeslots')->name('list_timeslot');
-
     //Order
     Route::post('/addOrder', 'API\OrderApiController@addOrder')->name('add.order');
     Route::get('/listOrderByCustomer/{id}', 'API\OrderApiController@getOrdersByCustomer')->name('customer.orders');
+    Route::get('/cancelOrder/{orderid}', 'API\OrderApiController@cancellOrder')->name('customer.cancel.order');
+    //Mode of Payment
+    Route::get('/modeOfPayment', 'API\ModeOfPaymentApiController@getAllModes')->name('customer.paymentMode.list');
 });
 
 

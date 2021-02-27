@@ -52,18 +52,24 @@ class OrderService{
             $finalOrderdescription = array();
             foreach($orderdescription as $orderdesc){
                 $orderdesc->vendor = DB::select('select * from vendors where id = ?', [$orderdesc->vendor_id])['0'];
-                // if(count($orderdesc->vendor)!=1){return strval($orderdesc->vendor_id);}
-                // $orderdesc->vendor = DB::select('select * from vendors where id = ?', [$orderdesc->vendor_id])['0'];
-
                 $orderdesc->product = DB::select('select * from product2 where id = ?', [$orderdesc->product_id])['0'];
-                // if(count($orderdesc->product)!=1){return "prodcut id error";}
-                // $orderdesc->product = DB::select('select * from product2 where id = ?', [$orderdesc->product_id])['0'];
-
                 array_push($finalOrderdescription, $orderdesc);
             }
             $order->order_description = $finalOrderdescription;
             array_push($final_orders, $order);
         }
         return $final_orders;
+    }
+
+    public function cancellOrder($id){
+        DB::update("update orders set status = 'Cancelled' where id = ? ",[$id]);
+        return "Order Cancelled Sucessfully";
+    }
+
+
+    //vendor
+
+    public function getOrderByVendor($id) {
+        return DB::select("select * from orders as o, orderdescription AS od where od.vendor_id = ? and od.order_id = o.id", [$id]);
     }
 }
