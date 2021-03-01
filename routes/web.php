@@ -20,9 +20,9 @@ use App\Model;
 
 // Auth::routes();
 Auth::routes(['register' => false]); //,  'reset' => false
-Route::get('/walshtmp', function() {
-	return ("hello walsh");
-});
+// Route::get('/walshtmp', function() {
+// 	return ("hello walsh");
+// });
 
 Route::get('/', 'HomeController@index')->name('');
 Route::get('/home', 'HomeController@index')->name('home');
@@ -98,3 +98,6 @@ Route::get('/showOrderDetail', 'OrderController@show')->name('showOrderDetail');
 Route::get('/showOrderAddress/{address_id}', 'AddressController@showOrderAddres')->name('show_orderaddress');
 Route::get('/showOrderProduct/{id}', 'Product2Controller@showOrderProduct')->name('show_orderproduct');
 Route::get('/showOrderVendor/{id}', 'VendorController@vendorByid')->name('show_ordervendor');
+
+//Static Pages
+Route::get('/showTc', 'StaticPagesController@viewTc');

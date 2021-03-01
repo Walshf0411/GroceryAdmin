@@ -80,12 +80,11 @@ class OrderService{
     }
 
     public function orderDetails(){
-        $orders = DB::select('select * from orders');
-        return $orders;
+        return DB::select('select * from orders');
     }
 
 
 
-    
+
 
 }
