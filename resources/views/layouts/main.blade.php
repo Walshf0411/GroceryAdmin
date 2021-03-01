@@ -195,7 +195,18 @@ padding: 7px;"></span></a>
 
 
           </li>
+        <li class="has-sub nav-item"><a href="#"><i class="ft-image"></i><span data-i18n="" class="menu-title">Static Pages</span></a>
+        <ul class="menu-content">
+            <li><a href="/showTc" class="menu-item">Add T&C</a>
+            </li>
+            <li><a href="/showShare" class="menu-item">Add Share App</a>
+            </li>
+            <li><a href="/showAbout" class="menu-item">Add About Us</a>
+            </li>
+            </ul>
 
+
+        </li>
 {{--
 
           <li class="has-sub nav-item"><a href="#"><i class="ft-copy"></i><span data-i18n="" class="menu-title">Home Section</span></a>

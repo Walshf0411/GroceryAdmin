@@ -100,4 +100,9 @@ Route::get('/showOrderProduct/{id}', 'Product2Controller@showOrderProduct')->nam
 Route::get('/showOrderVendor/{id}', 'VendorController@vendorByid')->name('show_ordervendor');
 
 //Static Pages
-Route::get('/showTc', 'StaticPagesController@viewTc');
+Route::get('/showTc', 'StaticTableController@viewTc');
+Route::post('/addTc', 'StaticTableController@addTc');
+Route::get('/showAbout', 'StaticTableController@viewAbout');
+Route::post('/addAbout', 'StaticTableController@addAboutUs');
+Route::get('/showShare', 'StaticTableController@viewShare');
+Route::post('/addShare', 'StaticTableController@addShare');
