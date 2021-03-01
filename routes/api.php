@@ -83,7 +83,12 @@ Route::prefix('/customer')->group(function () {
     Route::get('/cancelOrder/{orderid}', 'API\OrderApiController@cancellOrder')->name('customer.cancel.order');
     //Mode of Payment
     Route::get('/modeOfPayment', 'API\ModeOfPaymentApiController@getAllModes')->name('customer.paymentMode.list');
+
 });
 
 
 Route::get('/product_category/{id}', 'API\CategoryApiController@list_product_category');
+
+
+
+

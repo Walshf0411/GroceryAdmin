@@ -8,4 +8,6 @@ class OrderDescription extends Model
 {
     //
     protected $table = 'orderdescription';
+
+
 }

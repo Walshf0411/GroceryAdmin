@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class VendorService{
 
 
-    public function listVendor(){
+    public function listVendor( ){
         return DB::select('select * from vendors where is_blocked = 0');
 
     }
@@ -21,10 +21,19 @@ class VendorService{
         `vendors` AS v ,`products` AS p ,`categories` AS c WHERE b.vendor_id=v.id and b.product_id=p.id and b.category_id=c.id' );
     }
 
-    public function show_product($id){
-        $vendordetails = DB::select('select p.*,b.* FROM `business` AS b,`products`AS p,`vendors` AS v WHERE b.product_id=p.id and b.vendor_id=v.id and b.vendor_id=?', [$id]);
-        $vendorprofiledetails=DB::select('select v.name,v.shop_name,v.address,v.mobile_number,v.email_id,v.rating,v.gst_number FROM `business` AS b,`products`AS p,`vendors` AS v, `categories` AS c WHERE b.vendor_id=v.id and b.vendor_id=? limit 1', [$id]);
-        return  [$vendordetails, $vendorprofiledetails];
+    // public function show_product($id){
+    //     $vendordetails = DB::select('select p.*,b.* FROM `business` AS b,`products`AS p,`vendors` AS v WHERE b.product_id=p.id and b.vendor_id=v.id and b.vendor_id=?', [$id]);
+    //     $vendorprofiledetails=DB::select('select v.name,v.shop_name,v.address,v.mobile_number,v.email_id,v.rating,v.gst_number FROM `business` AS b,`products`AS p,`vendors` AS v, `categories` AS c WHERE b.vendor_id=v.id and b.vendor_id=? limit 1', [$id]);
+    //     return  [$vendordetails, $vendorprofiledetails];
+    // }
+
+    public function getProductbyVendor($id){
+        $vendors = DB::select('select p.* from product2 as p,vendors as v  where p.vendor_id=v.id and v.id=?',[$id]);
+        return $vendors;
+    }
+
+    public function getVendorById($id){
+        return DB::select('select * from vendors as v,product2 as p where v.id =? and p.vendor_id=v.id',[$id]);
     }
 
 

@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Product List</h4>
+                    <h4 class="card-title">Product Details</h4>
                 </div>
                 <div class="card-body collapse show">
                     <div class="card-block card-dashboard">
@@ -13,42 +13,34 @@
                         <table class="table table-striped table-bordered dom-jQuery-events">
                             <thead>
                                 <tr>
-                                 <th>Id No.</th>
-                                    <th>Category Name</th>
+                                    <th>Id No.</th>
+                                    {{-- <th>Category Name</th> --}}
                                     <th>Product Name</th>
-                                    <th>Vendor Name</th>
+                                    <th>Product Description</th>
+                                    <th>Price</th>
                                     <th>Unit</th>
-                                    <th>Product Image</th>
-									{{-- <th>Total Subcategory</th> --}}
-                                    <th>Action</th>
-
+                                    <th>Discount</th>
+                                    <th>Vendor name</th>
+                                    {{-- <th>Count</th> --}}
+                                    {{-- <th>Product Image</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($products as $row)
+                                @foreach($orderproducts as $row)
                                 <tr>
-
                                     <td>{{ $row->id }}</td>
-                                     {{-- {{ dd($row)}} --}}
-                                    <td>{{ $row->category->category_name }}</td>
                                     <td>{{ $row->name }}</td>
-                                    <td>{{ $row->vendor->name }}</td>
+                                    <td>{{ $row->description }}</td>
+                                    <td>{{ $row->price }}</td>
                                     <td>{{ $row->unit }}</td>
-                                    <td>
+                                    <td>{{ $row->discount}}</td>
+                                    <td><a href="../showOrderVendor/{{ $row->vendor_id }}">{{ $row->vendor_name }}</a></td>
+                                    {{-- <td>{{ $row->count}}</td> --}}
+                                    {{-- <td>
                                     @foreach( explode("|", $row->images) as $img)
                                         <img class="media-object round-media" src="storage\images\Product\{{ $row->id }}\{{ $img }}" alt="Generic placeholder image" style="height: 75px;">
                                     @endforeach
-                                    </td>
-                                    <td>
-									{{-- <a class="primary"  href="edit_product/{{ $row->id }}" data-original-title="" title="">
-                                            <i class="ft-edit font-medium-3"></i>
-                                        </a> --}}
-
-									    <a class="danger" href="deleteProduct/{{ $row->id }}" data-original-title="" title="">
-                                            <i class="ft-trash font-medium-3"></i>
-                                        </a>
-
-									</td>
+                                    </td> --}}
 
                                 </tr>
                                 @endforeach

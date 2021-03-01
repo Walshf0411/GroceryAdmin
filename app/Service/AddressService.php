@@ -53,4 +53,12 @@ class AddressService
             return $address;
         }
 
+        public function getOrderAddress($address_id){
+            $orderaddress = DB::select('select a.* from address AS a ,orders AS o where o.address_id=a.id and o.address_id=?', [$address_id]);
+            return $orderaddress;
+
+        }
+
+
+
 }

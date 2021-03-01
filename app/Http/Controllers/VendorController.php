@@ -22,10 +22,18 @@ class VendorController extends Controller
 
     public function listView($id)
     {
-        $vendordetails =  $this->service->show_product($id);
+        $vendordetails =  $this->service->getProductbyVendor($id);
         #$vendorprofiledetails =  $this->service->show_product($id);
         return view('Vendor.show_product', ['vendordetails'=> $vendordetails[0], 'vendordetails'=> $vendordetails[1]]);
     }
+
+    public function vendorByid($id)
+    {
+        $vendordetails = $this->service->getVendorById($id);
+        return view('Order.show_ordervendor', ["vendordetails"=> $vendordetails]);
+    }
+
+
 
     public function show_block_vendor()
     {

@@ -34,4 +34,10 @@ class Product2Controller extends Controller
         $products = $this->service->deleteProduct($id);
         return redirect()->back();
     }
+
+    public function showOrderProduct($id)
+    {
+        $orderproducts =  $this->service->getOrderByProduct($id);
+        return view('Order.show_orderproduct', ['orderproducts'=> $orderproducts]);
+    }
 }

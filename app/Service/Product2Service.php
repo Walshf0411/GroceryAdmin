@@ -16,6 +16,7 @@ class Product2Service{
         return DB::select('select * from product2 where vendor_id = ? ', [$id]);
     }
 
+
     public function viewAllCategories(){
         return Category::all();
     }
@@ -48,6 +49,8 @@ class Product2Service{
             array_push($newProd, $items);
         }
         return $newProd;
+        // dd($newProd);
+
     }
 
     public function insertProduct(Request $request){
@@ -132,4 +135,10 @@ class Product2Service{
 
         return "Product Deleted Successfully";
     }
+
+
+    public function getOrderByProduct($id){
+        $orderproducts= DB::select("select p.*,v.name as vendor_name from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id", [$id]);
+        return $orderproducts;
+      }
 }

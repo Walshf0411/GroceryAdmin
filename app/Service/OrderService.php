@@ -36,6 +36,7 @@ class OrderService{
             $orderdescription->order_id = $order->id;
             $orderdescription->vendor_id = $order_description['vendor_id'];
             $orderdescription->product_id = $order_description['product_id'];
+            $orderdescription->counts = $order_description['counts'];
             $orderdescription->save();
         }
         //for loop to iterate through products and insert them using order id
@@ -72,4 +73,19 @@ class OrderService{
     public function getOrderByVendor($id) {
         return DB::select("select * from orders as o, orderdescription AS od where od.vendor_id = ? and od.order_id = o.id", [$id]);
     }
+
+
+    public function orderList(){
+        return Orders::all();
+    }
+
+    public function orderDetails(){
+        $orders = DB::select('select * from orders');
+        return $orders;
+    }
+
+
+
+    
+
 }

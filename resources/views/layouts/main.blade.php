@@ -89,7 +89,7 @@ padding: 7px;"></span></a>
             </ul>
           </li>
 
-          <li class="has-sub nav-item"><a href="#"><i class="fa fa-user-plus"></i>
+          <li class="has-sub nav-item"><a href="#"><i class="fa fa-clock-o"></i>
             <span data-i18n="" class="menu-title">Timeslots</span></a>
             <ul class="menu-content">
                 <li><a href="add_timeslot" class="menu-item">Add Timeslot</a>
@@ -99,12 +99,20 @@ padding: 7px;"></span></a>
             </ul>
           </li>
 
-          <li class="has-sub nav-item"><a href="#"><i class="fa fa-user-plus"></i>
+          <li class="has-sub nav-item"><a href="#"><i class="fa fa-money"></i>
             <span data-i18n="" class="menu-title">Delivery Costs</span></a>
             <ul class="menu-content">
                 <li><a href="add_deliverycost" class="menu-item">Add Delivery Cost</a>
                 </li>
                 <li><a href="list_deliverycost" class="menu-item">Delivery Cost List</a>
+                </li>
+            </ul>
+          </li>
+
+          <li class="has-sub nav-item"><a href="#"><i class="fa fa-shopping-basket"></i>
+            <span data-i18n="" class="menu-title">Orders</span></a>
+            <ul class="menu-content">
+                <li><a href="showOrderDetail" class="menu-item">Order List</a>
                 </li>
             </ul>
           </li>
