@@ -98,7 +98,7 @@ Route::get('/showOrderDetail', 'OrderController@show')->name('showOrderDetail');
 Route::get('/showOrderAddress/{id}', 'AddressController@showOrderAddres')->name('show_orderaddress');
 Route::get('/showOrderCustomer/{id}', 'CustomerController@showOrderCustomer')->name('show_ordercustomer');
 Route::get('/showOrderProduct/{id}', 'Product2Controller@showOrderProduct')->name('show_orderproduct');
-Route::get('/showOrderVendor/{id}', 'VendorController@showOrderVendor')->name('show_ordervendor');
+Route::get('/total/{id}', 'Product2Controller@total')->name('total');
 
 //Static Pages
 Route::get('/showTc', 'StaticTableController@viewTc');

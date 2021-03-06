@@ -139,7 +139,18 @@ class Product2Service{
 
     public function getOrderByProduct($id){
         $orderproducts= DB::select("select p.*,v.name as vendor_name from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id", [$id]);
+        // $total= DB::select("select sum(p.price) As total from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id", [$id]);
         return $orderproducts;
+      }
+
+      public function totalamount($id){
+        $total= DB::select("select sum(p.price) As total from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id", [$id]);
+
+        // foreach($orderproducts as $orderproduct){
+        //     $total = $total + $orderproduct->price ;
+        // }
+        // dd($total);
+        return $total;
       }
 
 

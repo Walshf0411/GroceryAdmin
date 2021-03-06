@@ -20,11 +20,13 @@
                                     <th>Price</th>
                                     <th>Discount</th>
                                     <th>Vendor name</th>
+                                    <th>Total</th>
                                     {{-- <th>Count</th> --}}
                                     {{-- <th>Product Image</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
+                                {{-- {{ $total=0 }} --}}
                                 @foreach($orderproducts as $row)
                                 <tr>
                                     <td>{{ $row->id }}</td>
@@ -33,7 +35,7 @@
                                     <td>{{ $row->price }}</td>
                                     <td>{{ $row->discount}}</td>
                                     <td><a href="../showOrderVendor/{{ $row->vendor_id }}">{{ $row->vendor_name }}</a></td>
-                                    {{-- <td>{{ $row->count}}</td> --}}
+                                    {{-- <td>{{ $total += $row->price }}</td> --}}
                                     {{-- <td>
                                     @foreach( explode("|", $row->images) as $img)
                                         <img class="media-object round-media" src="storage\images\Product\{{ $row->id }}\{{ $img }}" alt="Generic placeholder image" style="height: 75px;">
@@ -42,6 +44,13 @@
 
                                 </tr>
                                 @endforeach
+                                {{-- {{ dd($total) }}; --}}
+                                <td>{{ $total->total->total}}</td>
+                                {{-- {{ $total = 0 }} --}}
+                                {{-- @foreach($total as $row) --}}
+                                {{-- <td>{{ $total}}</td> --}}
+                                {{-- @endforeach --}}
+                                {{-- <td>{{ $total->total }}</td> --}}
                             </tbody>
 
                         </table>
