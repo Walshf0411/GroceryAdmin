@@ -36,6 +36,10 @@ Route::get('/deletebusiness/{id}', 'API\BusinessApiController@destroy');
 // Route::get('/edit_product/{id}', 'ProductController@edit')->name('edit_product');
 Route::post('/updatebusiness/{id}', 'API\BusinessApiController@update');
 
+Route::get('/about', 'API\StaticTableController@getAbout');
+Route::get('/share', 'API\StaticTableController@getShare');
+Route::get('/terms', 'API\StaticTableController@getTc');
+
 Route::prefix('/vendor')->group(function () {
 
     Route::post('/checkToken', 'API\VendorLoginController@checkToken')->name('vendor.check.token');

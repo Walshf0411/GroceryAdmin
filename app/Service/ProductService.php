@@ -4,7 +4,7 @@ namespace App\Service;
 
 use App\Model\Product;
 use App\Model\Category;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request;    
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
 // use DB as DB;
