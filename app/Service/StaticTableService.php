@@ -26,4 +26,7 @@ class StaticTableService{
     public function getAboutUs(){
         return DB::select('select content from statictable where page = "about"')['0']->content;
     }
+    public function getRpSecretKey(){
+        return DB::select("select content from statictable where page='rpsecretkey'")['0']->content;
+    }
 }

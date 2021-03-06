@@ -136,14 +136,14 @@
         </div>
       </div>
     </div>
-{{--
+
     <div class="col-xl-3 col-lg-6 col-12">
       <div class="card">
         <div class="card-content">
           <div class="px-3 py-3">
             <div class="media">
               <div class="media-body text-left">
-                <h3 class="mb-1 danger">1000</h3>
+                <h3 class="mb-1 danger">{{ $pendingOrders }}</h3>
                 <span>Pending Order</span>
               </div>
               <div class="media-right align-self-center">
@@ -153,15 +153,15 @@
           </div>
         </div>
       </div>
-    </div> --}}
-{{--
+    </div>
+
      <div class="col-xl-3 col-lg-6 col-12">
       <div class="card">
         <div class="card-content">
           <div class="px-3 py-3">
             <div class="media">
               <div class="media-body text-left">
-                <h3 class="mb-1 primary">100000</h3>
+                <h3 class="mb-1 primary">{{ $deliveredOrders }}</h3>
                 <span>Complete Order</span>
               </div>
               <div class="media-right align-self-center">
@@ -179,7 +179,7 @@
           <div class="px-3 py-3">
             <div class="media">
               <div class="media-body text-left">
-                <h3 class="mb-1 warning">50</h3>
+                <h3 class="mb-1 warning">{{ $cancelledOrders }}</h3>
                 <span>Cancelled Order</span>
               </div>
               <div class="media-right align-self-center">
@@ -190,7 +190,7 @@
         </div>
       </div>
     </div>
-
+{{--
      <div class="col-xl-3 col-lg-6 col-12">
       <div class="card">
         <div class="card-content">

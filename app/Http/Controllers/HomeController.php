@@ -29,12 +29,19 @@ class HomeController extends Controller
         $bvendors = DB::select('select count(*) c from vendors where is_blocked = 1');
         $customers = DB::select('select count(*) c from customers');
         $products = DB::select('select count(*) c from products');
+        $cancelledOrders = DB::select('select count(*) c from orders where status="Cancelled"');
+        $pendingOrders = DB::select('select count(*) c from orders where status="Pending"');
+        $deliveredOrders = DB::select('select count(*) c from orders where status="Delivered"');
         // dd($vendors['0']->c);
         return view('dashboard',["category"=>$category['0']->c,
-        "banner"=> $banner['0']->c,
-        "vendors" => $vendors['0']->c,
-        "bvendors" => $bvendors['0']->c,
-        "customers"=> $customers['0']->c,
-        "products"=> $products['0']->c]);
+            "banner"=> $banner['0']->c,
+            "vendors" => $vendors['0']->c,
+            "bvendors" => $bvendors['0']->c,
+            "customers"=> $customers['0']->c,
+            "products"=> $products['0']->c,
+            "cancelledOrders" => $cancelledOrders['0']->c,
+            "pendingOrders" => $pendingOrders['0']->c,
+            "deliveredOrders" => $deliveredOrders['0']->c
+        ]);
     }
 }

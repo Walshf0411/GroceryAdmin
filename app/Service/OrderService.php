@@ -27,6 +27,9 @@ class OrderService{
         $order->rider_id = 0;
         $order->mode_of_payment = $request->mode_of_payment;
         $order->date_of_delivery = $request->date_of_delivery;
+        if(isset($request->payment_id)){
+            $order->payment_id = $request->payment_id;
+        }
         $order->save();
 
         foreach($request->order_description as $order_description){
@@ -46,7 +49,7 @@ class OrderService{
         $orders = DB::select('select * from orders where customer_id = ?', [$id]);
         $final_orders = array();
         foreach($orders as $order){
-            $orderdescription = DB::select('select * from orderdescription where order_id = ?', [$order->id]);
+            $orderdescription = DB::select('select * from orderdescription where order_id = ? order by created_at desc', [$order->id]);
             if($orderdescription==[]){return "there is some error";}
             $finalOrderdescription = array();
             foreach($orderdescription as $orderdesc){
