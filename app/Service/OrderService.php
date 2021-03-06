@@ -29,8 +29,6 @@ class OrderService{
         $order->date_of_delivery = $request->date_of_delivery;
         $order->save();
 
-
-
         foreach($request->order_description as $order_description){
             $orderdescription  = new OrderDescription;
             $orderdescription->order_id = $order->id;

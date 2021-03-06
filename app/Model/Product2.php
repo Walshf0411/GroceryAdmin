@@ -9,7 +9,7 @@ class Product2 extends Model
 
     //
     protected $fillable = [
-    'vendor_id', 'name', 'description', 'price', 'images', 'created_at', 'updated_at'
+    'vendor_id', 'name', 'description', 'price','unit','discount', 'images', 'created_at', 'updated_at'
     ];
 
 
@@ -17,7 +17,7 @@ class Product2 extends Model
     {
         $this->setAttribute($key, $value);
     }
-    
+
     /**
      * Get the user that owns the Product2
      *

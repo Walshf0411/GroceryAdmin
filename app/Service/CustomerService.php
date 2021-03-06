@@ -12,4 +12,9 @@ class CustomerService{
     public function listVendor(){
         return DB::select('select * from customers');
     }
+
+    public function getCustomerById($id){
+        $customer = DB::select('select * from customers where id=?',[$id]);
+        return $customer;
+    }
 }

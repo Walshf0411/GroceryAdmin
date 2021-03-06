@@ -141,4 +141,7 @@ class Product2Service{
         $orderproducts= DB::select("select p.*,v.name as vendor_name from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id", [$id]);
         return $orderproducts;
       }
+
+
+
 }

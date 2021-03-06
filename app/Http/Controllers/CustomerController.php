@@ -18,4 +18,11 @@ class CustomerController extends Controller
         $customerdetails = $this->service->listVendor();
         return view('Customer.list_customer', ["customerdetails"=> $customerdetails]);
     }
+
+    public function showOrderCustomer($id)
+    {
+        $customer =  $this->service->getCustomerById($id);
+        return view('Order.show_ordercustomer', ['customer'=> $customer]);
+
+    }
 }

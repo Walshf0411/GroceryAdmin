@@ -11,8 +11,9 @@
                     <div class="card-block card-dashboard">
 
                         <table class="table table-striped table-bordered dom-jQuery-events">
+                            <h4 class="card-title">Vendor Details</h4>
                             <thead>
-                                @foreach($vendordetails as $row)
+                                @foreach($vendor as $row)
                                 <tr>
                                     <th  >Vendor Name</th>
                                     <td colspan="3">{{ $row->name }}</td>
@@ -42,46 +43,41 @@
                                     <td colspan="3">{{ $row->gst_number }}</td>
                                 </tr>
                                 @endforeach
+                            </thead>
+                        </table>
 
+                        <table class="table table-striped table-bordered dom-jQuery-events">
+                            <h4 class="card-title">Vendor Products</h4>
+                            <thead>
                                 <tr>
-
                                     <th>Product Name</th>
+                                    <th>Product Description</th>
                                     <th>Price</th>
                                     <th>Unit</th>
-                                    <th>Description</th>
-
+                                    <th>Discount</th>
+                                    {{-- <th>Images</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
 
-                                @foreach($vendordetails as $row)
+                                @foreach($vendorprofile as $row)
                                 <tr>
-
-
-                                    <td>{{ $row->name }}</td>
+                                    <td>{{ $row->product_name }}</td>
+                                    <td>{{ $row->description }}</td>
                                     <td>{{ $row->price }}</td>
                                     <td>{{ $row->unit }}</td>
-                                    <td>{{ $row->description }}</td>
+                                    <td>{{ $row->discount }}</td>
                                     {{-- <td>
                                     @foreach( explode("|", $row->images) as $img)
                                         <img class="media-object round-media" src="storage\images\Product\{{ $row->id }}\{{ $img }}" alt="Generic placeholder image" style="height: 75px;">
                                     @endforeach
                                     </td>
-                                    <td>
-									<a class="primary"  href="edit_product/{{ $row->id }}" data-original-title="" title="">
-                                            <i class="ft-edit font-medium-3"></i>
-                                        </a>
-
-									<a class="danger" href="deleteProduct/{{ $row->id }}" data-original-title="" title="">
-                                            <i class="ft-trash font-medium-3"></i>
-                                        </a>
-
-										</td> --}}
+                                    --}}
 
                                 </tr>
                                 @endforeach
                             </tbody>
-
+                        {{-- </thead> --}}
                         </table>
                     </div>
                 </div>

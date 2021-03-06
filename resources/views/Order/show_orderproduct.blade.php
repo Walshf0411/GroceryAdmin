@@ -18,7 +18,6 @@
                                     <th>Product Name</th>
                                     <th>Product Description</th>
                                     <th>Price</th>
-                                    <th>Unit</th>
                                     <th>Discount</th>
                                     <th>Vendor name</th>
                                     {{-- <th>Count</th> --}}
@@ -32,7 +31,6 @@
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->description }}</td>
                                     <td>{{ $row->price }}</td>
-                                    <td>{{ $row->unit }}</td>
                                     <td>{{ $row->discount}}</td>
                                     <td><a href="../showOrderVendor/{{ $row->vendor_id }}">{{ $row->vendor_name }}</a></td>
                                     {{-- <td>{{ $row->count}}</td> --}}

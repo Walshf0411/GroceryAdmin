@@ -16,26 +16,18 @@ class VendorService{
 
     }
 
-    public function listVendorProduct(){
-        return DB::select('select b.*,v.name,p.unit,p.name AS product_name ,c.category_name FROM `business` AS b,
-        `vendors` AS v ,`products` AS p ,`categories` AS c WHERE b.vendor_id=v.id and b.product_id=p.id and b.category_id=c.id' );
-    }
-
-    // public function show_product($id){
-    //     $vendordetails = DB::select('select p.*,b.* FROM `business` AS b,`products`AS p,`vendors` AS v WHERE b.product_id=p.id and b.vendor_id=v.id and b.vendor_id=?', [$id]);
-    //     $vendorprofiledetails=DB::select('select v.name,v.shop_name,v.address,v.mobile_number,v.email_id,v.rating,v.gst_number FROM `business` AS b,`products`AS p,`vendors` AS v, `categories` AS c WHERE b.vendor_id=v.id and b.vendor_id=? limit 1', [$id]);
-    //     return  [$vendordetails, $vendorprofiledetails];
+    // public function listVendorProduct(){
+    //     return DB::select('select b.*,v.name,p.unit,p.name AS product_name ,c.category_name FROM `business` AS b,
+    //     `vendors` AS v ,`products` AS p ,`categories` AS c WHERE b.vendor_id=v.id and b.product_id=p.id and b.category_id=c.id' );
     // }
 
     public function getProductbyVendor($id){
-        $vendors = DB::select('select p.* from product2 as p,vendors as v  where p.vendor_id=v.id and v.id=?',[$id]);
-        return $vendors;
+         return DB::select('select p.* , p.name AS product_name FROM `product2` as p ,`vendors` as v WHERE v.id=p.vendor_id and v.id=?',[$id]);
     }
 
     public function getVendorById($id){
-        return DB::select('select * from vendors as v,product2 as p where v.id =? and p.vendor_id=v.id',[$id]);
+        return DB::select('select * from vendors where id =?',[$id]);
     }
-
 
     public function list_block_vendor(){
         return DB::select('select * from vendors where is_blocked = 1');
@@ -53,4 +45,6 @@ class VendorService{
         $deleteVendor = DB::delete('delete from vendors WHERE id=?',[$id]);
         return "Vendor Deleted Successfully";
     }
+
+    
 }

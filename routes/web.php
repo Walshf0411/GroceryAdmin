@@ -63,7 +63,7 @@ Route::get('/delete_block_vendor/{id}', 'VendorController@destroy');
 Route::get('/delete_unblock_vendor/{id}', 'VendorController@destroy_blockedVendor');
 Route::get('/block_Vendor/{id}', 'VendorController@update_block_vendor');
 Route::get('/unblock_Vendor/{id}', 'VendorController@update_unblock_vendor');
-Route::get('/showVendorProduct/{id}', 'VendorController@listView')->name('show_product');
+Route::get('/showVendorProduct/{id}', 'VendorController@listView')->name('list_vendorprofile');
 
 //TempVendor
 Route::get('/list_temp_vendor', 'TempVendorController@show')->name('list_temp_vendor');
@@ -95,9 +95,10 @@ Route::post('/update_deliverycost', 'DeliverycostController@update')->name('upda
 //Order
 // Route::get('/list_order/{id}', 'OrderController@showOrderDetails')->name('list_order');
 Route::get('/showOrderDetail', 'OrderController@show')->name('showOrderDetail');
-Route::get('/showOrderAddress/{address_id}', 'AddressController@showOrderAddres')->name('show_orderaddress');
+Route::get('/showOrderAddress/{id}', 'AddressController@showOrderAddres')->name('show_orderaddress');
+Route::get('/showOrderCustomer/{id}', 'CustomerController@showOrderCustomer')->name('show_ordercustomer');
 Route::get('/showOrderProduct/{id}', 'Product2Controller@showOrderProduct')->name('show_orderproduct');
-Route::get('/showOrderVendor/{id}', 'VendorController@vendorByid')->name('show_ordervendor');
+Route::get('/showOrderVendor/{id}', 'VendorController@showOrderVendor')->name('show_ordervendor');
 
 //Static Pages
 Route::get('/showTc', 'StaticPagesController@viewTc');

@@ -37,30 +37,35 @@ class CategoryService{
     }
 
 public function insertCategory(Request $request){
-    $count = DB::select("select id from categories order by id DESC LIMIT 1");
-        if(count($count)==0){
-            $number = 1;
-        }else{
-            $number = $count['0']->id +1;
-        }
-        if($request->hasFile('category_image')){
+    $cat = DB::select("select category_name from categories where category_name=?",[$request->category_name]);
+    if (count($cat)==0){
+        $count = DB::select("select id from categories order by id DESC LIMIT 1");
+            if(count($count)==0){
+                $number = 1;
+            }else{
+                $number = $count['0']->id +1;
+            }
+            if($request->hasFile('category_image')){
 
-            $path =storage_path("app/public/images/Category/");
-            if(!File::isDirectory($path)){
-                File::makeDirectory($path, 0777, true, true);
+                $path =storage_path("app/public/images/Category/");
+                if(!File::isDirectory($path)){
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                $image = $request->file('category_image');
+                $extension = $image->extension();
+                $name =  $number.".".$extension;
+                Image::make($image)->resize(100, 100)->save($path.$name);
+                if(!File::isFile($path.$name)){
+                    return redirect()->back();
+                }
+                $category = new Category;
+                $category->category_name = $request->category_name;
+                $category->category_image = $name;
+                $category->save();
             }
-            $image = $request->file('category_image');
-            $extension = $image->extension();
-            $name =  $number.".".$extension;
-            Image::make($image)->resize(100, 100)->save($path.$name);
-            if(!File::isFile($path.$name)){
-                return redirect()->back();
-            }
-            $category = new Category;
-            $category->category_name = $request->category_name;
-            $category->category_image = $name;
-            $category->save();
-        }
+    }else{
+        return redirect()->back()->with("Error","Category Already Exists ");
+    }
 
     }
     public function listCategory(){

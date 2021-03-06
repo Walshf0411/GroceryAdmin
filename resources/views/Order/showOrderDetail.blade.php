@@ -32,7 +32,7 @@
                                 @foreach($orders as $row)
                                 <tr>
                                     <td><a href="../showOrderProduct/{{ $row->id }}">{{ $row->id }}</a></td>
-                                    <td>{{ $row->customer_id }}</td>
+                                    <td><a href="../showOrderCustomer/{{ $row->customer_id }}">{{ $row->customer_id }}</a></td>
                                     <td><a href="../showOrderAddress/{{ $row->address_id }}">{{ $row->address_id }}</a></td>
                                     <td>{{ $row->amount }}</td>
                                     <td>{{ $row->delivery_charges }}</td>
