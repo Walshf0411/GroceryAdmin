@@ -12,26 +12,17 @@ class CategoryService{
 
     public function list_product_by_category($category_id){
 
-        $count= DB::select('select * FROM `categories` where id=?',[$category_id]);
+        $count= DB::select('select * FROM product2 where category_id=?',[$category_id]);
         if(count($count)==0){
-            return "category doesnt exits";
+            return "Prodcut with this category does not exits";
         }else{
             $answer = array();
-            $products = DB::select('select p.* FROM `product2` AS p WHERE p.category_id = ? ',[$category_id]);
-            foreach ($products as $product){
-                $vendors = DB::select('select b.*, v.* from business b, vendors v, product2 p where p.id = b.product_id and v.id=b.vendor_id and b.category_id=? and b.product_id = ? ORDER BY b.price ASC', [$category_id, $product->id]);
-                // dd($products);
-                if($vendors !=[]){
-                    $product->vendors = $vendors;
+            foreach ($count as $product){
+                $vendors = DB::select('select * from  vendors  where id= ?', [$product->vendor_id])['0'];
+                    $product->vendor = $vendors;
                     array_push($answer, $product);
                 }
-
-                // $product->merge([
-                //     'vendors' => $vendors
-                // ]);
-
-                }
-                return $answer;
+            return $answer;
         }
 
     }
