@@ -38,6 +38,13 @@ class Product2Controller extends Controller
     public function showOrderProduct($id)
     {
         $orderproducts =  $this->service->getOrderByProduct($id);
-        return view('Order.show_orderproduct', ['orderproducts'=> $orderproducts]);
+        $total =  $this->service->totalamount($id);
+        // dd($total);
+        return view('Order.show_orderproduct', ['orderproducts'=> $orderproducts,'total'=>$total]);
     }
+
+    // public function total($id){
+    //     $totals =  $this->service->totalamount($id);
+    //     return view('Order.show_orderproduct', ['totals'=> $totals]);
+    // }
 }
