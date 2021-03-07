@@ -25,7 +25,9 @@
                             <tbody>
                                 @foreach($customerdetails as $row)
                                 <tr>
-                                    <td>{{ $row->id }}</td>
+                                    <td><a href="../listAddress/{{ $row->id }}">{{ $row->id }}</a></td>
+                                    {{-- <td>{{ $row->id }}</td> --}}
+                                    <td><a href="../listCustomerOrder/{{ $row->id }}">{{ $row->c_name }}</a></td>
                                     <td>{{ $row->c_name }}</td>
                                     <td>{{ $row->mobile_number}}</td>
                                     <td>{{ $row->email_id }}</td>

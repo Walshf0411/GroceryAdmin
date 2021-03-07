@@ -13,17 +13,16 @@ class AddressController extends Controller
         // $this->middleware('auth');
     }
 
-    // public function showOrderAddres($address_id)
-    // {
-    //     $orderaddress =  $this->service->getOrderAddress($address_id);
-    //     return view('Order.show_orderaddress', ['orderaddress'=> $orderaddress]);
+    public function listAddress($customer_id){
 
-    // }
-    public function showOrderAddres($id)
+        $address =  $this->service->listAddress($customer_id);
+        return view('Address.list_address', ['address'=> $address]);
+    }
+
+    public function getAddress($id)
     {
-        $orderaddress =  $this->service->getAddressById($id);
-        return view('Order.show_orderaddress', ['orderaddress'=> $orderaddress]);
-
+        $address =  $this->service->getAddressById($id);
+        return view('Order.show_orderaddress', ['address'=> $address]);
     }
 
 

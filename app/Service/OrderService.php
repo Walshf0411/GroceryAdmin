@@ -76,13 +76,11 @@ class OrderService{
     }
 
 
-    public function orderList(){
+    public function ordersList(){
         return Orders::all();
     }
 
-    public function orderDetails(){
-        return DB::select('select * from orders');
-    }
+  
 
 
 

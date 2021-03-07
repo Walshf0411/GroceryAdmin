@@ -13,17 +13,15 @@ class OrderController extends Controller
         $this->middleware('auth');
     }
 
-    // public function listOrders(){
-    //         $orders= $this->service->orderList();
-    //         return view('Order.list_order',["orders"=>$orders]);
-    // }
-
-
-
-    public function show(){
-        $orders =  $this->service->orderDetails();
-        return view('Order.showOrderDetail', ['orders'=> $orders]);
-
+    public function listOrders(){
+        $orders= $this->service->ordersList();
+        return view('Order.list_order',["orders"=>$orders]);
     }
+
+    public function getOrdersByCustomer($id){
+        $orders= $this->service->getOrdersByCustomer($id);
+        return view('Customer.list_customerorder',["orders"=>$orders]);
+}
+
 
 }

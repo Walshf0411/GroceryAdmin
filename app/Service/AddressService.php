@@ -54,8 +54,8 @@ class AddressService
         }
 
         public function getAddressById($id){
-            $orderaddress = DB::select('select * from address  where id =?',[$id]);
-            return $orderaddress;
+            $address = DB::select('select * from address  where id =?',[$id]);
+            return $address;
 
         }
 

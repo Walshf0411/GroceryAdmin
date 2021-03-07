@@ -13,13 +13,13 @@ class CustomerController extends Controller
         $this->middleware('auth');
     }
 
-    public function show()
+    public function listCustomer()
     {
-        $customerdetails = $this->service->listVendor();
+        $customerdetails = $this->service->listCustomer();
         return view('Customer.list_customer', ["customerdetails"=> $customerdetails]);
     }
 
-    public function showOrderCustomer($id)
+    public function getCustomer($id)
     {
         $customer =  $this->service->getCustomerById($id);
         return view('Order.show_ordercustomer', ['customer'=> $customer]);

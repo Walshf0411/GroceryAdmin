@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class CustomerService{
 
-    public function listVendor(){
+    public function listCustomer(){
         return DB::select('select * from customers');
     }
 

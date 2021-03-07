@@ -31,9 +31,9 @@
                             <tbody>
                                 @foreach($orders as $row)
                                 <tr>
-                                    <td><a href="../showOrderProduct/{{ $row->id }}">{{ $row->id }}</a></td>
-                                    <td><a href="../showOrderCustomer/{{ $row->customer_id }}">{{ $row->customer_id }}</a></td>
-                                    <td><a href="../showOrderAddress/{{ $row->address_id }}">{{ $row->address_id }}</a></td>
+                                    <td><a href="../showProduct/{{ $row->id }}">{{ $row->id }}</a></td>
+                                    <td><a href="../showCustomer/{{ $row->customer_id }}">{{ $row->customer_id }}</a></td>
+                                    <td><a href="../showAddress/{{ $row->address_id }}">{{ $row->address_id }}</a></td>
                                     <td>{{ $row->amount }}</td>
                                     <td>{{ $row->delivery_charges }}</td>
                                     <td>{{ $row->total_amount }}</td>

@@ -57,13 +57,13 @@ Route::get('/rejectedTempProduct/{id}', 'TempProduct2Controller@destroy')->name(
 Route::get('/approveTempProduct/{id}', 'TempProduct2Controller@store');
 
 //Vendor
-Route::get('/list_vendor', 'VendorController@show')->name('list_vendor');
+Route::get('/list_vendor', 'VendorController@listVendor')->name('list_vendor');
 Route::get('/list_blocked_vendor', 'VendorController@show_block_vendor')->name('list_blocked_vendor');
 Route::get('/delete_block_vendor/{id}', 'VendorController@destroy');
 Route::get('/delete_unblock_vendor/{id}', 'VendorController@destroy_blockedVendor');
 Route::get('/block_Vendor/{id}', 'VendorController@update_block_vendor');
 Route::get('/unblock_Vendor/{id}', 'VendorController@update_unblock_vendor');
-Route::get('/showVendorProduct/{id}', 'VendorController@listView')->name('list_vendorprofile');
+Route::get('/vendorProfile/{id}', 'VendorController@getVendorProfile')->name('list_vendorprofile');
 
 //TempVendor
 Route::get('/list_temp_vendor', 'TempVendorController@show')->name('list_temp_vendor');
@@ -71,10 +71,11 @@ Route::get('/delete_temp_Vendor/{id}', 'TempVendorController@destroy');
 Route::get('/add_temp_Vendor/{id}', 'TempVendorController@store');
 Route::get('/list_vendor_products', 'BusinessController@show');
 
-// Route::get('/showVendorProduct/{id}', 'BusinessController@listView')->name('show.vendor.profile');
+
 
 //Customer
-Route::get('/list_customer', 'CustomerController@show')->name('list_customer');
+Route::get('/list_customer', 'CustomerController@listCustomer')->name('list_customer');
+
 
 //Timeslot
 Route::get('/add_timeslot', 'TimeslotController@viewAddTimeslot');
@@ -93,12 +94,16 @@ Route::get('/edit_deliverycost', 'DeliverycostController@edit')->name('edit_deli
 Route::post('/update_deliverycost', 'DeliverycostController@update')->name('update_deliverycost');
 
 //Order
+Route::get('/listCustomerOrder/{id}', 'OrderController@getOrdersByCustomer')->name('list_customerorder');
 // Route::get('/list_order/{id}', 'OrderController@showOrderDetails')->name('list_order');
-Route::get('/showOrderDetail', 'OrderController@show')->name('showOrderDetail');
-Route::get('/showOrderAddress/{id}', 'AddressController@showOrderAddres')->name('show_orderaddress');
-Route::get('/showOrderCustomer/{id}', 'CustomerController@showOrderCustomer')->name('show_ordercustomer');
-Route::get('/showOrderProduct/{id}', 'Product2Controller@showOrderProduct')->name('show_orderproduct');
+Route::get('/list_order', 'OrderController@listOrders')->name('list_order');
+Route::get('/showAddress/{id}', 'AddressController@getAddress')->name('show_orderaddress');
+Route::get('/showCustomer/{id}', 'CustomerController@getCustomer')->name('show_ordercustomer');
+Route::get('/showProduct/{id}', 'Product2Controller@getProduct')->name('show_orderproduct');
 Route::get('/total/{id}', 'Product2Controller@total')->name('total');
+
+//Address
+Route::get('/listAddress/{id}', 'AddressController@listAddress')->name('list_address');
 
 //Static Pages
 Route::get('/showTc', 'StaticTableController@viewTc');

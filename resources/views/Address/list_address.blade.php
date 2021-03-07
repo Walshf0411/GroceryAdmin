@@ -11,36 +11,27 @@
                     <div class="card-block card-dashboard">
 
                         <table class="table table-striped table-bordered dom-jQuery-events">
-                            <thead></thead>
+                            <thead>
+                                <tr>
+                                    <th>Address 1</th>
+                                    <th>Address 2</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>Pincode </th>
+                                    <th>Address Type</th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 @foreach($address as $row)
                                 <tr>
-                                    <th>Address 1</th>
-                                    <td colspan="3">{{ $row->address_line_1}}</td>
+                                    <td>{{ $row->address_line_1}}</td>
+                                    <td>{{ $row->address_line_2 }}</td>
+                                    <td>{{ $row->city }}</td>
+                                    <td>{{ $row->state }}</td>
+                                    <td>{{ $row->pincode }}</td>
+                                    <td>{{ $row->address_type }}</td>
                                 </tr>
-                                <tr>
-                                    <th>Address 2</th>
-                                    <td  colspan="3">{{ $row->address_line_2 }}</td>
-                                </tr>
-                                <tr>
-                                    <th>City</th>
-                                    <td  colspan="3">{{ $row->city }}</td>
-                                </tr>
-                                <tr>
-                                    <th>State</th>
-                                    <td colspan="3">{{ $row->state }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Pincode </th>
-                                    <td colspan="3">{{ $row->pincode }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Address Type</th>
-                                    <td colspan="3">{{ $row->address_type }}</td>
-                                </tr>
-
                                 @endforeach
-
                             </tbody>
 
                         </table>
