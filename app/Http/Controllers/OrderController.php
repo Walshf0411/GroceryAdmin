@@ -20,7 +20,7 @@ class OrderController extends Controller
 
     public function getOrdersByCustomer($id){
         $orders= $this->service->getOrdersByCustomer($id);
-        return view('Customer.list_customerorder',["orders"=>$orders]);
+        return view('Customer.list_customerprofile',["orders"=>$orders]);
 }
 
 

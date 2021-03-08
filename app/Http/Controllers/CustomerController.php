@@ -25,4 +25,11 @@ class CustomerController extends Controller
         return view('Order.show_ordercustomer', ['customer'=> $customer]);
 
     }
+
+    public function getVendorProfile($id)
+    {
+        $vendor =  $this->service->getVendorById($id);
+        $vendorprofile =  $this->service->getProductbyVendor($id);
+        return view('Vendor.list_vendorprofile', ['vendor'=> $vendor ,'vendorprofile' => $vendorprofile]);
+    }
 }
