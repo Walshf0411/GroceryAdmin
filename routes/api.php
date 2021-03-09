@@ -43,7 +43,7 @@ Route::get('/rpSecretKey', 'API\StaticTableController@getRpSecretKey');
 Route::prefix('/vendor')->group(function () {
 
     Route::post('/checkToken', 'API\VendorLoginController@checkToken')->name('vendor.check.token');
-    Route::get('/getSelectedProducts/{vendor_id}', 'API\ProductApxiController@selectedProducts')->name('vendor.product.list');
+    Route::get('/getSelectedProducts/{vendor_id}', 'API\ProductApiController@selectedProducts')->name('vendor.product.list');
     Route::get('/getVendorsTempProducts/{id}','API\TempProductController@vendorsProductList')->name('vendor.tempprod.list');
     Route::post('/login', 'API\VendorLoginController@login')->name('vendor.login');
     //Temp Prodcuts

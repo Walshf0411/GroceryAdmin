@@ -75,6 +75,7 @@ Route::get('/list_vendor_products', 'BusinessController@show');
 
 //Customer
 Route::get('/list_customer', 'CustomerController@listCustomer')->name('list_customer');
+Route::get('/customerProfile/{id}', 'CustomerController@getCustomerProfile')->name('list_customerprofile');
 
 
 //Timeslot

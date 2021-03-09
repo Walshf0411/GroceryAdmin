@@ -13,11 +13,11 @@ class AddressController extends Controller
         // $this->middleware('auth');
     }
 
-    public function listAddress($customer_id){
+    // public function listAddress($customer_id){
 
-        $address =  $this->service->listAddress($customer_id);
-        return view('Address.list_address', ['address'=> $address]);
-    }
+    //     $address =  $this->service->listAddress($customer_id);
+    //     return view('Address.list_address', ['address'=> $address]);
+    // }
 
     public function getAddress($id)
     {

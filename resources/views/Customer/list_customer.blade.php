@@ -25,10 +25,10 @@
                             <tbody>
                                 @foreach($customerdetails as $row)
                                 <tr>
-                                    <td><a href="../listAddress/{{ $row->id }}">{{ $row->id }}</a></td>
+                                    <td><a href="customerProfile/{{ $row->id }}">{{ $row->id }}</a></td>
                                     {{-- <td>{{ $row->id }}</td> --}}
-                                    <td><a href="../listCustomerOrder/{{ $row->id }}">{{ $row->c_name }}</a></td>
-                                    <td>{{ $row->c_name }}</td>
+                                    <td><a href="customerProfile/{{ $row->id }}">{{ $row->c_name }}</a></td>
+                                    {{-- <td>{{ $row->c_name }}</td> --}}
                                     <td>{{ $row->mobile_number}}</td>
                                     <td>{{ $row->email_id }}</td>
                                     <td>{{ $row->wallet }}</td>
@@ -39,7 +39,7 @@
 
                         </table>
 
-                        
+
                     </div>
                 </div>
             </div>

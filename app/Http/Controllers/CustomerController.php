@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Service\CustomerService;
-
+use App\Service\AddressService;
+use App\Service\OrderService;
 class CustomerController extends Controller
 {
 
-    public function __construct(CustomerService $service){
+    public function __construct(CustomerService $service,AddressService $addressService,OrderService $orderService){
         $this->service = $service;
+        $this->addressService = $addressService;
+        $this->orderService = $orderService;
         $this->middleware('auth');
     }
 
@@ -26,10 +29,10 @@ class CustomerController extends Controller
 
     }
 
-    public function getVendorProfile($id)
+    public function getCustomerProfile($id)
     {
-        $vendor =  $this->service->getVendorById($id);
-        $vendorprofile =  $this->service->getProductbyVendor($id);
-        return view('Vendor.list_vendorprofile', ['vendor'=> $vendor ,'vendorprofile' => $vendorprofile]);
+        $address =  $this->addressService->listAddress($id);
+        $orders =  $this->orderService->getOrdersByCustomer($id);
+        return view('Customer.list_customerprofile', ['address'=> $address ,'orders' => $orders]);
     }
 }

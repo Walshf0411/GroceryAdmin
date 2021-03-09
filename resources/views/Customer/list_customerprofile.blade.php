@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Vendor Profile</h4>
+                    <h4 class="card-title">Customer Profile</h4>
                 </div>
                 <div class="card-body collapse show">
                     <div class="card-block card-dashboard">
@@ -60,7 +60,7 @@
                                     <td>{{ $row->id }}</td>
                                     {{-- <td><a href="../showProduct/{{ $row->id }}">{{ $row->id }}</a></td>
                                     <td><a href="../showCustomer/{{ $row->customer_id }}">{{ $row->customer_id }}</a></td>--}}
-                                    <td><a href="../showAddress/{{ $row->address_id }}">{{ $row->address_id }}</a></td>
+                                    {{-- <td><a href="../showAddress/{{ $row->address_id }}">{{ $row->address_id }}</a></td> --}}
                                     <td>{{ $row->amount }}</td>
                                     <td>{{ $row->delivery_charges }}</td>
                                     <td>{{ $row->total_amount }}</td>
