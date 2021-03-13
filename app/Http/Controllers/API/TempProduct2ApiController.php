@@ -24,7 +24,7 @@ class TempProduct2ApiController extends Controller
     }
 
     public function listVendorTempProducts($id){
-        return response()->json(["tempProducts"=>$this->service->listTempProdcuts($id)], 200);
+        return response()->json(["tempProducts"=>$this->service->listVendorTempProducts($id)], 200);
     }
 
 }

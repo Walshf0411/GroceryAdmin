@@ -143,4 +143,7 @@ class TempProduct2Service{
         return DB::select('select t.* ,c.category_name ,v.shop_name from tempprod2 AS t, categories AS c ,vendors AS v where t.category_id = c.id and t.vendor_id = v.id');
     }
 
+    public function listVendorTempProducts($id){
+        return DB::select('select t.* from tempprod2 t where vendor_id= ? ', [$id]);
+    }
 }
