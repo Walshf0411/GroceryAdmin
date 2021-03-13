@@ -12,13 +12,19 @@ use App\Model\Product2;
 
 class TempProduct2Service{
     public function addTempProduct(Request $request){
-        $getid = DB::select("select id from tempprod2 order  by id  DESC limit 1");
-        if (count($getid) == 0) {
-            $number = 1;
-        } else {
-            // dd($getid);
-            $number = $getid['0']->id + 1;
-        }
+        $temp = new TempProduct2();
+        $temp->name = $request->name;
+        $temp->vendor_id= $request->vendor_id;
+        $temp->category_id = $request->category_id;
+        $temp->unit = $request->unit;
+        $temp->description = $request->description;
+        $temp->price = $request->price;
+        $temp->images = "yet to be uploaded";
+
+        $temp->discount = $request->discount;
+
+        $temp->save();
+
         //storing images in the folder with name $number(id)
         $images=array();
         $counter = 0;
@@ -27,7 +33,7 @@ class TempProduct2Service{
                 $counter += 1;
                 $extension = $file->extension();
                 $name =  $counter.".".$extension;
-                $path = storage_path("app/public/images/TempProduct/$number/");
+                $path = storage_path("app/public/images/TempProduct/$temp->id/");
                 if(!File::isDirectory($path)){
                     File::makeDirectory($path, 0777, true, true);
                 }
@@ -36,19 +42,11 @@ class TempProduct2Service{
                 $images[]=$name;
             }
         }
-        //inserting data in db
 
-        $temp = new TempProduct2();
-        $temp->name = $request->name;
-        $temp->vendor_id= $request->vendor_id;
-        $temp->category_id = $request->category_id;
-        $temp->unit = $request->unit;
-        $temp->description = $request->description;
-        $temp->price = $request->price;
-        $temp->images = implode("|",$images);
-        $temp->discount = $request->discount;
+        $updateTempProd = DB::table('tempprod2')
+        ->where('id', $temp->id)
+       ->update(['images' =>implode("|",$images)]);
 
-        $temp->save();
 
         return "Temp Product inserted successfully";
     }

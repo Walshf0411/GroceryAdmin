@@ -54,29 +54,7 @@ class Product2Service{
     }
 
     public function insertProduct(Request $request){
-        $count = DB::select("select id from product2 order by id DESC LIMIT 1");
-        if(count($count)==0){
-            $number = 1;
-        }else{
-            $number = $count['0']->id +1;
-        }
-        $images=array();
-        $counter = 0;
-        if($files=$request->file('images')){
-            foreach($files as $file){
-                $counter += 1;
-                // $name=$file->getClientOriginalName();
-                $extension = $file->extension();
-                $name =  $counter.".".$extension;
-                $path = storage_path("app/public/images/Product/$number/");
-                if(!File::isDirectory($path)){
-                    File::makeDirectory($path, 0777, true, true);
-                }
-                Image::make($file)->resize(100, 100)->save($path.$name);
-                $file->move('image',$name);
-                $images[]=$name;
-            }
-        }
+
         $product = new Product2;
         $product->name = $request->name;
         $product->vendor_id = $request->vendor_id;
@@ -85,8 +63,30 @@ class Product2Service{
         $product->discount = $request ->discount;
         $product->price = $request -> price;
         $product->description = $request -> description;
-        $product->images =implode("|",$images) ;
+        $product->images =  "yet to be added";
+
         $product->save();
+
+        $images=array();
+        $counter = 0;
+        if($files=$request->file('images')){
+            foreach($files as $file){
+                $counter += 1;
+                // $name=$file->getClientOriginalName();
+                $extension = $file->extension();
+                $name =  $counter.".".$extension;
+                $path = storage_path("app/public/images/Product/$product->id/");
+                if(!File::isDirectory($path)){
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                Image::make($file)->resize(100, 100)->save($path.$name);
+                $file->move('image',$name);
+                $images[]=$name;
+            }
+        }
+        $updateTempProd = DB::table('product2')
+        ->where('id', $product->id)
+       ->update(['images' =>implode("|",$images)]);
 
         return "Product Inserted Successfully";
     }
@@ -139,17 +139,12 @@ class Product2Service{
 
     public function getOrderByProduct($id){
         $orderproducts= DB::select("select p.*,v.name as vendor_name from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id", [$id]);
-        // $total= DB::select("select sum(p.price) As total from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id", [$id]);
+    
         return $orderproducts;
       }
 
       public function totalamount($id){
         $total= DB::select("select sum(p.price) As total from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id", [$id]);
-
-        // foreach($orderproducts as $orderproduct){
-        //     $total = $total + $orderproduct->price ;
-        // }
-        // dd($total);
         return $total;
       }
 
