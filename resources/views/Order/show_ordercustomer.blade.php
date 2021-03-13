@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Address Details</h4>
+                    <h4 class="card-title">Customer Details</h4>
                 </div>
                 <div class="card-body collapse show">
                     <div class="card-block card-dashboard">
@@ -31,7 +31,15 @@
                                     <th>Email id</th>
                                     <td  colspan="3">{{ $row->email_id }}</td>
                                 </tr>
-
+                                <tr>
+                                    <th>Wallet</th>
+                                    <td  colspan="3">{{ $row->wallet }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Unique Code</th>
+                                    <td  colspan="3">{{ $row->unique_code }}</td>
+                                </tr>
+                                
                                 @endforeach
 
                             </tbody>

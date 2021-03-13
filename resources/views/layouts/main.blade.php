@@ -112,22 +112,22 @@ padding: 7px;"></span></a>
           <li class="has-sub nav-item"><a href="#"><i class="fa fa-shopping-basket"></i>
             <span data-i18n="" class="menu-title">Orders</span></a>
             <ul class="menu-content">
-                <li><a href="showOrderDetail" class="menu-item">Order List</a>
+                <li><a href="list_order" class="menu-item">Order List</a>
                 </li>
             </ul>
           </li>
 
-          <li class="has-sub nav-item"><a href="#"><i class="fa fa-users"></i>
+          {{-- <li class="has-sub nav-item"><a href="#"><i class="fa fa-users"></i>
             <span data-i18n="" class="menu-title">Business</span></a>
-            <ul class="menu-content">
+            <ul class="menu-content"> --}}
                 {{-- <li><a href="" class="menu-item">Add Vendor</a>
                 </li> --}}
-                <li><a href="list_vendor_products" class="menu-item">Vendor Product List</a>
-                </li>
+                {{-- <li><a href="list_vendor_products" class="menu-item">Vendor Product List</a>
+                </li> --}}
                 {{-- <li><a href="show.vendor.profile" class="menu-item">Vendor Profile</a>
                 </li> --}}
-            </ul>
-          </li>
+            {{-- </ul>
+          </li> --}}
 
 {{--
 

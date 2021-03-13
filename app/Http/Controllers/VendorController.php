@@ -14,23 +14,17 @@ class VendorController extends Controller
         $this->middleware('auth');
     }
 
-    public function show()
+    public function listVendor()
     {
         $vendordetails = $this->service->listVendor();
         return view('Vendor.list_vendor', ["vendordetails"=> $vendordetails]);
     }
 
-    public function listView($id)
+    public function getVendorProfile($id)
     {
         $vendor =  $this->service->getVendorById($id);
         $vendorprofile =  $this->service->getProductbyVendor($id);
         return view('Vendor.list_vendorprofile', ['vendor'=> $vendor ,'vendorprofile' => $vendorprofile]);
-    }
-
-    public function showOrderVendor($id)
-    {
-        $vendordetails = $this->service->getVendorById($id);
-        return view('Order.show_ordervendor', ["vendordetails"=> $vendordetails]);
     }
 
     public function show_block_vendor()

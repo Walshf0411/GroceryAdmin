@@ -16,7 +16,6 @@ class Product2Service{
         return DB::select('select * from product2 where vendor_id = ? ', [$id]);
     }
 
-
     public function viewAllCategories(){
         return Category::all();
     }
@@ -24,6 +23,7 @@ class Product2Service{
     public function viewAllVendors(){
         return Vendor::all();
     }
+
     public function homeListProduct(){
         $products = DB::select('select * from product2 LIMIT 10');
         $newProd = array();
@@ -137,9 +137,8 @@ class Product2Service{
     }
 
 
-    public function getOrderByProduct($id){
+    public function getOrderProduct($id){
         $orderproducts= DB::select("select p.*,v.name as vendor_name from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id", [$id]);
-    
         return $orderproducts;
       }
 

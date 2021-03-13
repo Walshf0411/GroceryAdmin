@@ -13,7 +13,7 @@
                         <table class="table table-striped table-bordered dom-jQuery-events">
                             <thead></thead>
                             <tbody>
-                                @foreach($orderaddress as $row)
+                                @foreach($address as $row)
                                 <tr>
                                     <th>Address 1</th>
                                     <td colspan="3">{{ $row->address_line_1}}</td>

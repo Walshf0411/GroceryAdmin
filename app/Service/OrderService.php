@@ -42,7 +42,7 @@ class OrderService{
         }
         //for loop to iterate through products and insert them using order id
 
-        return "Order Placed Successfully";
+        return $order->id;
     }
 
     public function getOrdersByCustomer($id){
@@ -76,13 +76,11 @@ class OrderService{
     }
 
 
-    public function orderList(){
+    public function ordersList(){
         return Orders::all();
     }
 
-    public function orderDetails(){
-        return DB::select('select * from orders');
-    }
+
 
 
 

@@ -7,12 +7,12 @@ use App\Service\Product2Service;
 
 class Product2Controller extends Controller
 {
-    //
 
     public function __construct(Product2Service $service){
         $this->service = $service;
         // $this->middleware('auth');
     }
+
     public function index()
     {
         $category = $this->service->viewAllCategories();
@@ -35,16 +35,10 @@ class Product2Controller extends Controller
         return redirect()->back();
     }
 
-    public function showOrderProduct($id)
+    public function getProduct($id)
     {
-        $orderproducts =  $this->service->getOrderByProduct($id);
-        $total =  $this->service->totalamount($id);
-        // dd($total);
-        return view('Order.show_orderproduct', ['orderproducts'=> $orderproducts,'total'=>$total]);
+        $orderproducts =  $this->service->getOrderProduct($id);
+        return view('Order.show_orderproduct', ['orderproducts'=> $orderproducts]);
     }
 
-    // public function total($id){
-    //     $totals =  $this->service->totalamount($id);
-    //     return view('Order.show_orderproduct', ['totals'=> $totals]);
-    // }
 }

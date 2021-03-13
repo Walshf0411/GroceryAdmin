@@ -14,7 +14,7 @@ class OrderApiController extends Controller
     }
     //customer
     public function addOrder(Request $request){
-        return response()->json(["message"=>$this->service->addOrder($request)]);
+        return response()->json(["orderId"=>$this->service->addOrder($request)]);
     }
     public function getOrdersByCustomer($id){
         return response()->json(["responsePayload"=>$this->service->getOrdersByCustomer($id)]);
