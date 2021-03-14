@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class Product2Service{
     public function getAllVendorProducts($id){
-        return DB::select('select * from product2 where vendor_id = ? ', [$id]);
+        return DB::select('select * from product2 where vendor_id = ? order by id DESC ', [$id]);
     }
 
     public function viewAllCategories(){
@@ -39,7 +39,7 @@ class Product2Service{
     }
 
     public function listProduct(){
-        $products = DB::select('select * from product2 ');
+        $products = DB::select('select * from product2 order by id DESC ');
         $newProd = array();
         foreach ($products as $items) {
             $getVendor = DB::select('select * from vendors where id = ?', [$items->vendor_id])['0'];
@@ -138,14 +138,13 @@ class Product2Service{
 
 
     public function getOrderProduct($id){
-        $orderproducts= DB::select("select p.*,v.name as vendor_name from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id", [$id]);
-        return $orderproducts;
+        return DB::select("select p.*,v.name as vendor_name from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id order by p.id DESC", [$id]);
       }
 
-      public function totalamount($id){
-        $total= DB::select("select sum(p.price) As total from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id", [$id]);
-        return $total;
-      }
+    //   public function totalamount($id){
+    //     $total= DB::select("select sum(p.price) As total from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id", [$id]);
+    //     return $total;
+    //   }
 
 
 

@@ -144,6 +144,6 @@ class TempProduct2Service{
     }
 
     public function listVendorTempProducts($id){
-        return DB::select('select t.* from tempprod2 t where vendor_id= ? ', [$id]);
+        return DB::select('select t.* from tempprod2 t where vendor_id= ? order by id DESC', [$id]);
     }
 }
