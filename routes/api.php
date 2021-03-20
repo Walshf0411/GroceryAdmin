@@ -53,7 +53,7 @@ Route::prefix('/vendor')->group(function () {
     Route::get('/listVendorTempProducts/{id}', 'API\TempProduct2ApiController@listVendorTempProducts')->name('vendor.list.tempprodcuts');
     //Products
     Route::get('/listOfProducts/{id}', 'API\Product2ApiController@getAllVendorProducts')->name('vendor.list.products');
-    Route::post('/insertProduct', 'API\Product2ApiController@insertProduct')->name('vendor.insert.products');
+    // Route::post('/insertProduct', 'API\Product2ApiController@insertProduct')->name('vendor.insert.products');
     Route::post('/editProduct/{id}', 'API\Product2ApiController@editProduct')->name('vendor.edit.products');
     Route::get('/deleteProduct/{id}', 'API\Product2ApiController@deleteProduct')->name('vendor.delete.products');
     //Vendors

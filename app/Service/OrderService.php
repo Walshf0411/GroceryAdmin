@@ -33,6 +33,14 @@ class OrderService{
         $order->save();
 
         foreach($request->order_description as $order_description){
+            $unit = DB::select('select unit from product2 where id= ?', $order_description['product_id'])['0'];
+            if($unit<$order_description['counts']){
+                DB::delete('delete order where id = ?', [$order->id]);
+                return [$order_description['prodcut_id'], "error"];
+            }else{
+                $val = $unit-$order_description['counts'];
+                DB::update('update product2 set unit = ? where id = ?', [$val, $order_description['counts']]);
+            }
             $orderdescription  = new OrderDescription;
             $orderdescription->order_id = $order->id;
             $orderdescription->vendor_id = $order_description['vendor_id'];
@@ -42,7 +50,7 @@ class OrderService{
         }
         //for loop to iterate through products and insert them using order id
 
-        return $order->id;
+        return [$order->id, "success"];
     }
 
     public function getOrdersByCustomer($id){
@@ -64,6 +72,10 @@ class OrderService{
     }
 
     public function cancellOrder($id){
+        $description = DB::select("select * from orderdescription where order_id = ?",[$id]);
+        foreach($description as $detail){
+            DB::update("update product2 set unit = unit + ? where id = ?",[$detail->counts, $detail->product_id]);
+        }
         DB::update("update orders set status = 'Cancelled' where id = ? ",[$id]);
         return "Order Cancelled Sucessfully";
     }

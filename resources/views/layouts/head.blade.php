@@ -58,5 +58,5 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/prism.min.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/app.css') }}">
-
+    <title>@yield('title')</title>
   </head>
