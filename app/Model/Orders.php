@@ -30,4 +30,12 @@ class Orders extends Model
         'date_of_delivery',
         'payment_id'
      ];
+
+    public function customer() {
+        return $this->belongsTo("App\Model\Customer", "customer_id");
+    }
+
+    public function products() {
+        return $this->hasMany("App\Model\OrderDescription", "order_id");
+    }
 }

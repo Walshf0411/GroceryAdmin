@@ -8,6 +8,8 @@ use App\Model\Category;
 use App\Model\Vendor;
 use App\Model\Orders;
 use App\Model\OrderDescription;
+use App\Notifications\Customer\OrderPlacedNotification;
+use App\Notifications\Vendor\OrderReceivedNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -47,8 +49,12 @@ class OrderService{
             $orderdescription->product_id = $order_description['product_id'];
             $orderdescription->counts = $order_description['counts'];
             $orderdescription->save();
+
+            $orderdescription->vendor->notify(new OrderReceivedNotification($orderdescription));
         }
-        //for loop to iterate through products and insert them using order id
+
+        // Notify the customer about the order being placed
+        $order->customer->notify(new OrderPlacedNotification($order));
 
         return [$order->id, "success"];
     }

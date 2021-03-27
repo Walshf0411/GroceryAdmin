@@ -19,6 +19,15 @@ use App\Http\Controllers\API\BannerApiController;
 //     return $request->user();
 // });
 
+Route::get("/notification_test", function() {
+    $customer = App\Model\Customer::where("id", 1)->get()[0];
+    $order = App\Model\Orders::where("id", 7)->get()[0];
+    $product = $order->products[0];
+    $product->vendor->notify(new App\Notifications\Vendor\OrderReceivedNotification($product));
+    $customer->notify(new App\Notifications\Customer\OrderPlacedNotification($order));
+    return $order;
+});
+
 Route::get('/homepage', 'API\BannerApiController@show');
 Route::get('/category', 'API\BannerApiController@showCategory');
 Route::post('/tempvendor', 'API\VendorApiController@create');
@@ -60,6 +69,19 @@ Route::prefix('/vendor')->group(function () {
     // Route::get('/getVendorProducts/{id}', 'API\VendorApiController@getAddedProducts')->name('vendor.added.products');
     //Order
     Route::get('getOrderByVendor/{vendorId}', 'API\OrderApiController@getOrderByVendor')->name('vendor.order.list');
+
+    // notifications
+    Route::get("/notifications/read/{userId}", 'API\VendorNotificationsController@getReadNotifications')
+            ->name("vendor.notifications.read");
+
+    Route::get("/notifications/unread/{userId}", 'API\VendorNotificationsController@getUnreadNotifications')
+            ->name("vendor.notifications.unread");
+
+    Route::get("/notifications/mark/read/{notificationId}", 'API\VendorNotificationsController@markNotificationRead')
+            ->name("vendor.notifications.mark.read");
+
+    Route::get("/notifications/mark/read/all/{userId}", 'API\VendorNotificationsController@markNotificationsRead')
+            ->name("vendor.notifications.mark.read.all");
 });
 
 
@@ -88,6 +110,18 @@ Route::prefix('/customer')->group(function () {
     //Mode of Payment
     Route::get('/modeOfPayment', 'API\ModeOfPaymentApiController@getAllModes')->name('customer.paymentMode.list');
 
+    // notifications
+    Route::get("/notifications/read/{userId}", 'API\CustomerNotificationsController@getReadNotifications')
+            ->name("customer.notifications.read");
+
+    Route::get("/notifications/unread/{userId}", 'API\CustomerNotificationsController@getUnreadNotifications')
+            ->name("customer.notifications.unread");
+
+    Route::get("/notifications/mark/read/{notificationId}", 'API\CustomerNotificationsController@markNotificationRead')
+            ->name("customer.notifications.mark.read");
+
+    Route::get("/notifications/mark/read/all/{userId}", 'API\CustomerNotificationsController@markNotificationsRead')
+            ->name("customer.notifications.mark.read.all");
 });
 
 
