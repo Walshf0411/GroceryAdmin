@@ -35,7 +35,7 @@ class OrderService{
         $order->save();
 
         foreach($request->order_description as $order_description){
-            $unit = DB::select('select unit from product2 where id= ?', $order_description['product_id'])['0'];
+            $unit = Product2::findOrFail($order_description['product_id'])->unit;
             if($unit<$order_description['counts']){
                 DB::delete('delete order where id = ?', [$order->id]);
                 return [$order_description['prodcut_id'], "error"];
@@ -97,11 +97,4 @@ class OrderService{
     public function ordersList(){
         return Orders::all();
     }
-
-
-
-
-
-
-
 }
