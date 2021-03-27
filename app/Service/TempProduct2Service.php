@@ -24,24 +24,36 @@ class TempProduct2Service{
         $temp->discount = $request->discount;
 
         $temp->save();
-
-        //storing images in the folder with name $number(id)
-        $images=array();
         $counter = 0;
-        if($files=$request->file('images')){
-            foreach($files as $file){
-                $counter += 1;
-                $extension = $file->extension();
-                $name =  $counter.".".$extension;
-                $path = storage_path("app/public/images/TempProduct/$temp->id/");
-                if(!File::isDirectory($path)){
-                    File::makeDirectory($path, 0777, true, true);
-                }
-                Image::make($file)->resize(100, 100)->save($path.$name);
-                $file->move('image',$name);
-                $images[]=$name;
+        $images=array();
+        foreach($request->images as $imstr){
+            $file = base64_decode($imstr);
+            $counter += 1;
+            $safeName = $counter.'.'.'png';
+            $path = storage_path("app/public/images/TempProduct/$temp->id/");
+            $success = file_put_contents($path.$safeName, $file);
+            if(!$success){
+                return "error";
             }
+            $images[]=$safeName;
         }
+        //storing images in the folder with name $number(id)
+        // $images=array();
+        // $counter = 0;
+        // if($files=$request->file('images')){
+        //     foreach($files as $file){
+        //         $counter += 1;
+        //         $extension = $file->extension();
+        //         $name =  $counter.".".$extension;
+        //         $path = storage_path("app/public/images/TempProduct/$temp->id/");
+        //         if(!File::isDirectory($path)){
+        //             File::makeDirectory($path, 0777, true, true);
+        //         }
+        //         Image::make($file)->resize(100, 100)->save($path.$name);
+        //         $file->move('image',$name);
+        //         $images[]=$name;
+        //     }
+        // }
 
         $updateTempProd = DB::table('tempprod2')
         ->where('id', $temp->id)
