@@ -26,17 +26,40 @@ class TempProduct2Service{
         $temp->save();
         $counter = 0;
         $images=array();
-        foreach($request->images as $imstr){
-            $file = base64_decode($imstr);
-            $counter += 1;
-            $safeName = $counter.'.'.'png';
+        if ($request->image != null) {
+            $file = base64_decode($request->image);
+            $safeName = "1.png";
             $path = storage_path("app/public/images/TempProduct/$temp->id/");
-            $success = file_put_contents($path.$safeName, $file);
+            if (!File::exists($path)) {
+                File::makeDirectory($path);
+            } 
+            
+            $success = File::put($path.$safeName, $file);
             if(!$success){
                 return "error";
             }
-            $images[]=$safeName;
+            $image = $safeName;
+            
+            $updateTempProd = DB::table('tempprod2')
+            ->where('id', $temp->id)
+            ->update(['images' => $image]);
+        } else {
+            foreach($request->images as $imstr){
+                $file = base64_decode($imstr);
+                $counter += 1;
+                $safeName = $counter.'.'.'png';
+                $path = storage_path("app/public/images/TempProduct/$temp->id/");
+                $success = file_put_contents($path.$safeName, $file);
+                if(!$success){
+                    return "error";
+                }
+                $images[]=$safeName;
+            }    
+            $updateTempProd = DB::table('tempprod2')
+            ->where('id', $temp->id)
+           ->update(['images' =>implode("|",$images)]);
         }
+        
         //storing images in the folder with name $number(id)
         // $images=array();
         // $counter = 0;
@@ -54,11 +77,6 @@ class TempProduct2Service{
         //         $images[]=$name;
         //     }
         // }
-
-        $updateTempProd = DB::table('tempprod2')
-        ->where('id', $temp->id)
-       ->update(['images' =>implode("|",$images)]);
-
 
         return "Temp Product inserted successfully";
     }
