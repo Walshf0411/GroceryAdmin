@@ -1,4 +1,5 @@
 @extends('template')
+@section('title', 'Edit Products')
 @section('content')
 <script>
     function readURL(input) {

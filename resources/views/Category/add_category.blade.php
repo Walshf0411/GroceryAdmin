@@ -1,4 +1,6 @@
 @extends('template')
+{{-- @include('flash-message') --}}
+@section('title', 'Add Category')
 @section('content')
 <div class="row">
     <div class="col-md-12">

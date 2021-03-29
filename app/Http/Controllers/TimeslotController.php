@@ -26,7 +26,7 @@ class TimeslotController extends Controller
     public function store(Request $request)
     {
         $this->service->insertTimeslot($request);
-        return redirect()->route('list_timeslot')->with("Success","Data inserted Successfully");
+        return redirect()->route('list_timeslot')->with("success","Data inserted successfully");
     }
 
     public function edit($id)
@@ -38,12 +38,12 @@ class TimeslotController extends Controller
     public function update(Request $request,$id)
     {
         $this->service->updateTimeslot($request,$id);
-        return redirect()->route('list_timeslot')->with("Success","Data updated Successfully");
+        return redirect()->route('list_timeslot')->with("success","Data updated successfully");
     }
 
     public function destroy($id)
     {
         $this->service->deleteTimeslot($id);
-        return redirect()->back()->with("Success","Data deleted Successfully");
+        return redirect()->back()->with("success","Data deleted successfully");
     }
 }

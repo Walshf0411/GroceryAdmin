@@ -25,12 +25,12 @@ class TempVendorController extends Controller
     public function store($id)
     {
         $this->service->add_temp_Vendor($id);
-        return $this->destroy($id);
+        return $this->destroy($id)->with('success','Temporary vendor inserted');
     }
 
     public function destroy($id)
     {
         $this->service->delete_temp_Vendor($id);
-        return redirect()->route("list_temp_vendor");
+        return redirect()->route("list_temp_vendor")->with('success','Temporary vendor deleted');
     }
 }

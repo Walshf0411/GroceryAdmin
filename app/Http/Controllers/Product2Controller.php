@@ -27,12 +27,12 @@ class Product2Controller extends Controller
 
     public function store(Request $request){
         $products = $this->service->insertProduct($request);
-        return redirect()->route("listProduct");
+        return redirect()->route("listProduct")->with('success','Product inserted successfully');
     }
 
     public function destroy($id){
         $products = $this->service->deleteProduct($id);
-        return redirect()->back();
+        return redirect()->back()->with('success','Product deleted successfully');
     }
 
     public function getProduct($id)

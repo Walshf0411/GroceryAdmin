@@ -27,7 +27,7 @@ class BannerController extends Controller
     public function store(Request $request)
     {
         $this->service->insertBanner($request);
-        return redirect()->route("list_banner");
+        return redirect()->route("list_banner")->with("success","Banner inserted successfully");
     }
 
     public function edit(Banner $banner, $id)
@@ -39,13 +39,13 @@ class BannerController extends Controller
     public function update(Request $request, Banner $banner, $id)
     {
         $this->service->updateBanner($request,$id);
-        return redirect()->route('list_banner')->with("Success","Data deleted Successfully");;
+        return redirect()->route('list_banner')->with("success","Banner updated successfully");
     }
 
     public function destroy(Banner $banner,$id)
     {
         $this->service->deleteBanner($id);
-        return redirect()->back()->with("Success","Data deleted Successfully");
+        return redirect()->back()->with("success","Banner deleted successfully");
     }
 
     public function getAllBanner(){

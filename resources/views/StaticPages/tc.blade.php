@@ -1,4 +1,5 @@
 @extends('template')
+@section('title', 'Add Terms & Conditions')
 @section('content')
 {{-- <script src="//cdn.ckeditor.com/4.5.5/standard/ckeditor.js"></script> --}}
 <script src="{{ asset('app-assets/ckeditor/ckeditor.js') }}"></script>

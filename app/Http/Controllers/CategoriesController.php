@@ -25,7 +25,7 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $this->service->insertCategory($request);
-        return redirect()->route('list_category')->with("Success","Data inserted Successfully");
+        return redirect()->route('list_category')->with("success","Category inserted successfully");
     }
 
     public function edit(Category $category,$id)
@@ -37,12 +37,12 @@ class CategoriesController extends Controller
     public function update(Request $request, Category $category, $id)
     {
         $this->service->updateCategory($request,$id);
-        return redirect()->route('list_category')->with("Success","Data deleted Successfully");
+        return redirect()->route('list_category')->with("success","Category updated successfully");
     }
 
     public function destroy(Category $category, $id)
     {
         $this->service->deleteCategory($id);
-        return redirect()->back()->with("Success","Data deleted Successfully");
+        return redirect()->back()->with("success","Category deleted successfully");
     }
 }

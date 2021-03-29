@@ -1,4 +1,5 @@
 @extends('template')
+@section('title', 'Edit Banner')
 @section('content')
 <script>
     function readURL(input) {
@@ -23,7 +24,7 @@
             </div>
             <div class="card-body">
                 <div class="px-3">
-                    
+
                     <form class="form" action="../update_banner/{{ $banners['0']->id }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-body">

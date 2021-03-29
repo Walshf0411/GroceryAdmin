@@ -14,7 +14,7 @@
             <div class="main-panel">
                 <div class="main-content">
                     <div class="content-wrapper"><!--Statistics cards Starts-->
-
+                        @include('flash-message')
                         @yield('content')
 
                     </div>

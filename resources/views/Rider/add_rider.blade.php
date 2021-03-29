@@ -1,4 +1,5 @@
 @extends('template')
+@section('title', 'Add Rider')
 @section('content')
 <div class="row">
     <div class="col-md-12">

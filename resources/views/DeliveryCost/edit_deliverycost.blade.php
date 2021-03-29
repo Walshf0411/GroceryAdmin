@@ -1,4 +1,5 @@
 @extends('template')
+@section('title', 'Edit Deliverycost')
 @section('content')
 {{-- <script>
     function readURL(input) {

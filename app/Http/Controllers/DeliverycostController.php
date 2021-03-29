@@ -27,7 +27,7 @@ class DeliverycostController extends Controller
     public function store(Request $request)
     {
         $this->service->insertDeliveryCost($request);
-        return redirect()->route('list_deliverycost')->with("Success","Data inserted Successfully");
+        return redirect()->route('list_deliverycost')->with("success","Data inserted successfully");
     }
 
     public function edit()
@@ -39,13 +39,13 @@ class DeliverycostController extends Controller
     public function update(Request $request)
     {
         $this->service->updateDeliveryCost($request);
-        return redirect()->route('list_deliverycost')->with("Success","Data updated Successfully");
+        return redirect()->route('list_deliverycost')->with("success","Data updated successfully");
     }
 
     public function destroy()
     {
         $this->service->deleteDeliveryCost();
-        return redirect()->back()->with("Success","Data deleted Successfully");
+        return redirect()->back()->with("success","Data deleted successfully");
     }
 }
 

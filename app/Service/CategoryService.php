@@ -14,7 +14,7 @@ class CategoryService{
 
         $count= DB::select('select * FROM product2 where category_id=?',[$category_id]);
         if(count($count)==0){
-            return "Prodcut with this category does not exits";
+            return "Product with this category does not exits";
         }else{
             $answer = array();
             foreach ($count as $product){
@@ -55,7 +55,7 @@ public function insertCategory(Request $request){
                 $category->save();
             }
     }else{
-        return redirect()->back()->with("Error","Category Already Exists ");
+        return redirect()->back()->with("error","Category Already Exists ");
     }
 
     }
@@ -65,7 +65,7 @@ public function insertCategory(Request $request){
     public function deleteCategory($id){
         $category = DB::select('select * from categories where id = ? limit 1', [$id]);
         if($category==null){
-            return redirect()->back()->with("Error","Data Not Found ");
+            return redirect()->back()->with("error","Data Not Found ");
         }
         $image_path = storage_path('app/public/images/Category/'.$category[0]->category_image);
         if (File::exists($image_path)) {
@@ -78,7 +78,7 @@ public function insertCategory(Request $request){
     public function editCategory($id){
         $category = DB::select('select * from categories where id = ?', [$id]);
         if($category==[]){
-            return redirect()->back()->with("Error","Data Not Found ");
+            return redirect()->back()->with("error","Data Not Found ");
         }
         return $category;
     }

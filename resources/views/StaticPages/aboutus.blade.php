@@ -1,4 +1,5 @@
 @extends('template')
+@section('title', 'Add Aboutus')
 @section('content')
 <script src="//cdn.ckeditor.com/4.5.5/standard/ckeditor.js"></script>
 <div class="col-12">

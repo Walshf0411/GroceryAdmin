@@ -35,21 +35,21 @@ class VendorController extends Controller
 
     public function update_block_vendor($id){
         $this->service->block_Vendor($id);
-        return redirect()->route('list_vendor');
+        return redirect()->route('list_vendor')->with('successs','Vendor blocked successfully');
     }
 
     public function update_unblock_vendor($id){
         $this->service->unblock_Vendor($id);
-        return redirect()->route('list_blocked_vendor');
+        return redirect()->route('list_blocked_vendor')->with('successs','Vendor unblocked successfully');
     }
 
     public function destroy($id){
         $this->service->delete_block_Vendor($id);
-        return redirect()->route('list_vendor');
+        return redirect()->route('list_vendor')->with('successs','Deleted blocked vendor successfully');
     }
 
     public function destroy_blockedVendor($id){
         $this->service->delete_block_vendor($id);
-        return redirect()->route('list_blocked_vendor');
+        return redirect()->route('list_blocked_vendor')->with('successs','Deleted blocked vendor successfully');
     }
 }

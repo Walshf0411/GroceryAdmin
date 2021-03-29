@@ -1,4 +1,6 @@
 @extends('template')
+{{-- @include('flash-message') --}}
+@section('title', 'Order Customer Profile')
 @section('content')
 <section id="dom">
     <div class="row">
@@ -39,7 +41,7 @@
                                     <th>Unique Code</th>
                                     <td  colspan="3">{{ $row->unique_code }}</td>
                                 </tr>
-                                
+
                                 @endforeach
 
                             </tbody>

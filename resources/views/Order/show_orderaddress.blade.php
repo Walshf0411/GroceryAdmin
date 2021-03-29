@@ -1,4 +1,5 @@
 @extends('template')
+@section('title', 'Order Customer address')
 @section('content')
 <section id="dom">
     <div class="row">

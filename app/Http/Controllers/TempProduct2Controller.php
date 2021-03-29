@@ -20,12 +20,12 @@ class TempProduct2Controller extends Controller
 
     public function store(Request $request,$id){
         $this->service->approveTempProduct( $id);
-        return $this->destroy($id);
+        return $this->destroy($id)->with('success','Temporary product inserted');
     }
 
     public function destroy($id){
         $this->service->rejectedTempProduct($id);
-        return redirect()->route("listTempProduct");
+        return redirect()->route("listTempProduct")->with('success','Temporary product deleted');
     }
 
 
