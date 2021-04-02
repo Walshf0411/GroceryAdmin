@@ -31,11 +31,11 @@ public function insertCategory(Request $request){
     $cat = DB::select("select category_name from categories where category_name=?",[$request->category_name]);
     if (count($cat)==0){
         $category = new Category;
+        dd($request->file('category_image'));
         $category->category_name = $request->category_name;
-        $category->category_image = "name";
+        $category->category_image = "";
         $category->save();
         if($request->hasFile('category_image')){
-
             $path =storage_path("app/public/images/Category/");
             if(!File::isDirectory($path)){
                 File::makeDirectory($path, 0777, true, true);
@@ -47,12 +47,11 @@ public function insertCategory(Request $request){
             if(!File::isFile($path.$name)){
                 return redirect()->back();
             }
-            $category = new Category;
-            $category->category_name = $request->category_name;
+
+            $category = Category::findOrFail($category->id);
             $category->category_image = $name;
             $category->save();
         }
-
     }else{
         return redirect()->back()->with("error","Category Already Exists ");
     }

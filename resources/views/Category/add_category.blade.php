@@ -16,11 +16,11 @@
                         <div class="form-body">
                                 <div class="form-group">
                                     <label for="cname">Category Name</label>
-                                    <input type="text" id="cname"  class="form-control"  name="category_name" required >
+                                    <input type="text" id="category_name"  class="form-control"  name="category_name" required >
                                 </div>
                             <div class="form-group">
                                 <label>Category Image</label>
-                                <input type="file" name="category_image" class="form-control-file" id="projectinput8">
+                                <input type="file" name="category_image" class="form-control-file" id="category_image" required>
                             </div>
                             {{-- <div class="form-group">
                                 <img src="some_source" class="media-object round-media"  style="height: 75px;"/>
