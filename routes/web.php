@@ -28,7 +28,7 @@ Route::get('/', 'HomeController@index')->name('');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Category
-Route::get('/add_category', 'CategoriesController@viewAddCategory');
+Route::get('/add_category', 'CategoriesController@viewAddCategory')->name('add_category');
 Route::post('/insertCategory', 'CategoriesController@store');
 Route::get('/deleteCategory/{id}', 'CategoriesController@destroy');
 Route::get('/list_category', 'CategoriesController@listCategory')->name('list_category');
@@ -36,7 +36,7 @@ Route::get('/edit_category/{id}', 'CategoriesController@edit')->name('edit_categ
 Route::post('/update_category/{id}', 'CategoriesController@update')->name('update_category');
 
 //Banner
-Route::get('/add_banner', 'BannerController@viewAddBanner');
+Route::get('/add_banner', 'BannerController@viewAddBanner')->name('add_banner');
 Route::post('/insertBanner', 'BannerController@store');
 Route::get('/deleteBanner/{id}', 'BannerController@destroy');
 Route::get('/list_banner', 'BannerController@viewListBanner')->name('list_banner');
@@ -79,7 +79,7 @@ Route::get('/customerProfile/{id}', 'CustomerController@getCustomerProfile')->na
 
 
 //Timeslot
-Route::get('/add_timeslot', 'TimeslotController@viewAddTimeslot');
+Route::get('/add_timeslot', 'TimeslotController@viewAddTimeslot')->name('add_timeslot');
 Route::post('/insertTimeslot', 'TimeslotController@store');
 Route::get('/deleteTimeslot/{id}', 'TimeslotController@destroy');
 Route::get('/list_timeslot', 'TimeslotController@listTimeslots')->name('list_timeslot');
@@ -87,7 +87,7 @@ Route::get('/edit_timeslot/{id}', 'TimeslotController@edit')->name('edit_timeslo
 Route::post('/update_timeslot/{id}', 'TimeslotController@update')->name('update_timeslot');
 
 //Deliverycost
-Route::get('/add_deliverycost', 'DeliverycostController@viewAddDeliveryCost');
+Route::get('/add_deliverycost', 'DeliverycostController@viewAddDeliveryCost')->name('add_deliverycost');
 Route::post('/insertDeliveryCost', 'DeliverycostController@store');
 Route::get('/deletedeliveryCost', 'DeliverycostController@destroy');
 Route::get('/list_deliverycost', 'DeliverycostController@listDeliveryCost')->name('list_deliverycost');
@@ -107,9 +107,9 @@ Route::get('/total/{id}', 'Product2Controller@total')->name('total');
 Route::get('/listAddress/{id}', 'AddressController@listAddress')->name('list_address');
 
 //Static Pages
-Route::get('/showTc', 'StaticTableController@viewTc');
+Route::get('/showTc', 'StaticTableController@viewTc')->name('showTc');
 Route::post('/addTc', 'StaticTableController@addTc');
-Route::get('/showAbout', 'StaticTableController@viewAbout');
+Route::get('/showAbout', 'StaticTableController@viewAbout')->name('showAbout');
 Route::post('/addAbout', 'StaticTableController@addAboutUs');
-Route::get('/showShare', 'StaticTableController@viewShare');
+Route::get('/showShare', 'StaticTableController@viewShare')->name('showShare');
 Route::post('/addShare', 'StaticTableController@addShare');

@@ -19,9 +19,9 @@ padding: 7px;"></span></a>
 
         <li class="has-sub nav-item"><a href="#"><i class="ft-list"></i><span data-i18n="" class="menu-title">Category</span></a>
             <ul class="menu-content">
-              <li><a href="add_category" class="menu-item active">Add category</a>
+              <li><a href="{{ route('add_category') }}" class="menu-item active">Add category</a>
               </li>
-              <li><a href="list_category" class="menu-item">Category List</a>
+              <li><a href="{{ route('list_category') }}" class="menu-item">Category List</a>
               </li>
             </ul>
         </li>
@@ -41,9 +41,9 @@ padding: 7px;"></span></a>
             <ul class="menu-content">
                 {{-- <li><a href="add_product" class="menu-item">Add Product</a> --}}
                 </li>
-                <li><a href="listProduct" class="menu-item">Product List</a>
+                <li><a href="{{ route('listProduct') }}" class="menu-item">Product List</a>
                 </li>
-                <li><a href="listTempProduct" class="menu-item">Temporary Product List</a>
+                <li><a href="{{ route('listTempProduct') }}" class="menu-item">Temporary Product List</a>
                 </li>
             </ul>
           </li>
@@ -67,11 +67,11 @@ padding: 7px;"></span></a>
             <ul class="menu-content">
                 {{-- <li><a href="" class="menu-item">Add Vendor</a>
                 </li> --}}
-                <li><a href="list_vendor" class="menu-item">Vendor List</a>
+                <li><a href="{{ route('list_vendor') }}" class="menu-item">Vendor List</a>
                 </li>
-                <li><a href="list_temp_vendor" class="menu-item">Temporary Vendor List</a>
+                <li><a href="{{ route('list_temp_vendor') }}" class="menu-item">Temporary Vendor List</a>
                 </li>
-                <li><a href="list_blocked_vendor" class="menu-item">Blocked Vendor List</a>
+                <li><a href="{{ route('list_blocked_vendor') }}" class="menu-item">Blocked Vendor List</a>
                 </li>
             </ul>
           </li>
@@ -82,7 +82,7 @@ padding: 7px;"></span></a>
             <ul class="menu-content">
                 {{-- <li><a href="" class="menu-item">Add Vendor</a>
                 </li> --}}
-                <li><a href="list_customer" class="menu-item">Customer List</a>
+                <li><a href="{{ route('list_customer') }}" class="menu-item">Customer List</a>
                 </li>
                 {{-- <li><a href="list_temp_vendor" class="menu-item">Temporary Vendor List</a>
                 </li> --}}
@@ -92,9 +92,9 @@ padding: 7px;"></span></a>
           <li class="has-sub nav-item"><a href="#"><i class="fa fa-clock-o"></i>
             <span data-i18n="" class="menu-title">Timeslots</span></a>
             <ul class="menu-content">
-                <li><a href="add_timeslot" class="menu-item">Add Timeslot</a>
+                <li><a href="{{ route('add_timeslot') }}" class="menu-item">Add Timeslot</a>
                 </li>
-                <li><a href="list_timeslot" class="menu-item">Timeslots List</a>
+                <li><a href="{{ route('list_timeslot') }}" class="menu-item">Timeslots List</a>
                 </li>
             </ul>
           </li>
@@ -102,9 +102,9 @@ padding: 7px;"></span></a>
           <li class="has-sub nav-item"><a href="#"><i class="fa fa-money"></i>
             <span data-i18n="" class="menu-title">Delivery Costs</span></a>
             <ul class="menu-content">
-                <li><a href="add_deliverycost" class="menu-item">Add Delivery Cost</a>
+                <li><a href="{{ route('add_deliverycost') }}" class="menu-item">Add Delivery Cost</a>
                 </li>
-                <li><a href="list_deliverycost" class="menu-item">Delivery Cost List</a>
+                <li><a href="{{ route('list_deliverycost') }}" class="menu-item">Delivery Cost List</a>
                 </li>
             </ul>
           </li>
@@ -112,7 +112,7 @@ padding: 7px;"></span></a>
           <li class="has-sub nav-item"><a href="#"><i class="fa fa-shopping-basket"></i>
             <span data-i18n="" class="menu-title">Orders</span></a>
             <ul class="menu-content">
-                <li><a href="list_order" class="menu-item">Order List</a>
+                <li><a href="{{ route('list_order') }}" class="menu-item">Order List</a>
                 </li>
             </ul>
           </li>
@@ -186,9 +186,9 @@ padding: 7px;"></span></a>
 
      <li class="has-sub nav-item"><a href="#"><i class="ft-image"></i><span data-i18n="" class="menu-title">Banner</span></a>
             <ul class="menu-content">
-              <li><a href="/add_banner" class="menu-item">Add Banner</a>
+              <li><a href="{{ route('add_banner') }}" class="menu-item">Add Banner</a>
               </li>
-              <li><a href="/list_banner" class="menu-item">Banner List</a>
+              <li><a href="{{ route('list_banner') }}" class="menu-item">Banner List</a>
               </li>
 
                 </ul>
@@ -197,11 +197,11 @@ padding: 7px;"></span></a>
           </li>
         <li class="has-sub nav-item"><a href="#"><i class="ft-image"></i><span data-i18n="" class="menu-title">Static Pages</span></a>
         <ul class="menu-content">
-            <li><a href="/showTc" class="menu-item">Add T&C</a>
+            <li><a href="{{ route('showTc') }}" class="menu-item">Add T&C</a>
             </li>
-            <li><a href="/showShare" class="menu-item">Add Share App</a>
+            <li><a href="{{ route('showShare') }}" class="menu-item">Add Share App</a>
             </li>
-            <li><a href="/showAbout" class="menu-item">Add About Us</a>
+            <li><a href="{{ route('showAbout') }}" class="menu-item">Add About Us</a>
             </li>
             </ul>
 
