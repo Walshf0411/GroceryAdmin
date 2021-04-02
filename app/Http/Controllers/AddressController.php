@@ -20,7 +20,7 @@ class AddressController extends Controller
     // }
 
     public function getAddress($id)
-    {
+    {   
         $address =  $this->service->getAddressById($id);
         return view('Order.show_orderaddress', ['address'=> $address]);
     }
