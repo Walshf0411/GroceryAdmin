@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Model;
+
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +27,31 @@ Auth::routes(['register' => false]); //,  'reset' => false
 // Route::get('/walshtmp', function() {
 // 	return ("hello walsh");
 // });
+
+Route::get('/deploy/asdfghjkl', function() {
+    $commands = array(
+        ["git", "pull", "git@github.com:Walshf0411/GroceryAdmin.git"],
+        ["cp", "-af", "public/.", "../public_html"],
+        ["cp", "-af", ".", "../"],
+        ["git", "status"]
+    );
+    
+    echo "Starting to deploy<br>";
+    
+    foreach($commands as $cmd) {
+        echo "<br>Running command: ".implode(" ", $cmd);
+        
+        $process = new Process($cmd);
+        $process->setWorkingDirectory("/home1/creatio5/GroceryAdmin");
+        $process->run();
+        
+        if (!$process->isSuccessful()) {
+            throw new ProcessFailedException($process);
+        }
+        echo "<br>Command output: ".$process->getOutput();
+        echo "<br>";
+    }
+});
 
 Route::get('/', 'HomeController@index')->name('');
 Route::get('/home', 'HomeController@index')->name('home');

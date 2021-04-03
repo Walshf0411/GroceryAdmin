@@ -19,6 +19,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.4",
         "lcobucci/jwt": "3.3",
+        "symfony/process": "^5.2",
         "tymon/jwt-auth": "dev-develop"
     },
     "require-dev": {
