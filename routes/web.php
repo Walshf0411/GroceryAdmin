@@ -28,7 +28,7 @@ Auth::routes(['register' => false]); //,  'reset' => false
 // 	return ("hello walsh");
 // });
 
-Route::get('/deploy/asdfghjkl', function() {
+Route::match(array("GET", "POST"), '/deploy/asdfghjkl', function() {
     $commands = array(
         ["git", "pull", "git@github.com:Walshf0411/GroceryAdmin.git"],
         ["cp", "-af", "public/.", "../public_html"],
