@@ -24,8 +24,11 @@ class CategoriesController extends Controller
 
     public function store(Request $request)
     {
-        $this->service->insertCategory($request);
-        return redirect()->route('list_category')->with("success","Category inserted successfully");
+        if($this->service->insertCategory($request)=='error'){
+            return redirect()->back()->with("error","Category Already Exists ");
+        }else{
+            return redirect()->route('list_category')->with("success","Category inserted successfully");
+        }
     }
 
     public function edit(Category $category,$id)

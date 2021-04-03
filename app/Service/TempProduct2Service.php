@@ -60,23 +60,6 @@ class TempProduct2Service{
            ->update(['images' =>implode("|",$images)]);
         }
         
-        //storing images in the folder with name $number(id)
-        // $images=array();
-        // $counter = 0;
-        // if($files=$request->file('images')){
-        //     foreach($files as $file){
-        //         $counter += 1;
-        //         $extension = $file->extension();
-        //         $name =  $counter.".".$extension;
-        //         $path = storage_path("app/public/images/TempProduct/$temp->id/");
-        //         if(!File::isDirectory($path)){
-        //             File::makeDirectory($path, 0777, true, true);
-        //         }
-        //         Image::make($file)->resize(100, 100)->save($path.$name);
-        //         $file->move('image',$name);
-        //         $images[]=$name;
-        //     }
-        // }
 
         return "Temp Product inserted successfully";
     }
@@ -119,9 +102,8 @@ class TempProduct2Service{
                 $file->move('image',$name);
                 $images[]=$name;
             }
-            $temp->images = implode("|",$images);
         }
-
+        $temp->images = implode("|",$images);
         $temp->save();
         return "Product Edited Successfully";
     }

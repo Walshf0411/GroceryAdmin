@@ -22,7 +22,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $this->service->storeProduct($request);
-        return redirect()->route("list_product")->with("message","data inserted successfully");
+        return redirect()->route("listPoduct")->with("message","data inserted successfully");
     }
 
     public function show(Product $product)
@@ -41,7 +41,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product, $id)
     {
         $this->service->updateProject($request, $id);
-        return redirect()->route('list_product')->with("Success","Data Edited Successfully");
+        return redirect()->route('listProduct')->with("Success","Data Edited Successfully");
     }
 
 

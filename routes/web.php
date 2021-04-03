@@ -48,8 +48,8 @@ Route::get('/add_product', 'Product2Controller@index');
 Route::post('/insertProduct', 'Product2Controller@store');
 Route::get('/deleteProduct/{id}', 'Product2Controller@destroy')->name('deleteProduct');
 Route::get('/listProduct', 'Product2Controller@show')->name('listProduct');
-Route::get('/edit_product/{id}', 'ProductController@edit')->name('edit_product');
-Route::post('/update_product/{id}', 'ProductController@update')->name('update_product');
+Route::get('/edit_product/{id}', 'Product2Controller@edit')->name('edit_product');
+Route::post('/update_product/{id}', 'Product2Controller@update')->name('update_product');
 
 //TempProduct
 Route::get('/listTempProduct', 'TempProduct2Controller@show')->name('listTempProduct');

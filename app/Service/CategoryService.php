@@ -29,9 +29,10 @@ class CategoryService{
 
 public function insertCategory(Request $request){
     $cat = DB::select("select category_name from categories where category_name=?",[$request->category_name]);
+    // dd($cat);
     if (count($cat)==0){
         $category = new Category;
-        dd($request->file('category_image'));
+        // dd($request->file('category_image'));
         $category->category_name = $request->category_name;
         $category->category_image = "";
         $category->save();
@@ -51,9 +52,10 @@ public function insertCategory(Request $request){
             $category = Category::findOrFail($category->id);
             $category->category_image = $name;
             $category->save();
+            return "success";
         }
     }else{
-        return redirect()->back()->with("error","Category Already Exists ");
+        return "error";
     }
 
     }

@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Service\CategoryService;
 use Illuminate\Http\Request;
 use App\Service\Product2Service;
 
 class Product2Controller extends Controller
 {
 
-    public function __construct(Product2Service $service){
+    public function __construct(Product2Service $service, CategoryService $categoryService){
         $this->service = $service;
+        $this->categoryService = $categoryService;
         // $this->middleware('auth');
     }
 
@@ -40,5 +42,12 @@ class Product2Controller extends Controller
         $orderproducts =  $this->service->getOrderProduct($id);
         return view('Order.show_orderproduct', ['orderproducts'=> $orderproducts]);
     }
+    public function edit($id){
 
+        return view('Product.edit_product', ['product'=> $this->service->getProduct($id),
+                     'category'=> $this->categoryService->listCategory()]);
+    }
+    public function update(Request $request, $id){
+        return redirect()->route('listProduct')->with('success',$this->service->editProduct($request, $id));
+    }
 }

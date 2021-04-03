@@ -90,7 +90,9 @@ class Product2Service{
 
     //     return "Product Inserted Successfully";
     // }
-
+    public function getProduct($id){
+        return Product2::findOrFail($id);
+    }
     public function editProduct(Request $request,$id){
         $temp = Product2::findOrFail($id);
         $temp->name = $request->name;
