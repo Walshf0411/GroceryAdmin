@@ -76,34 +76,37 @@ class TempProduct2Service{
     public function editTempProdcut($id, Request $request){
         $temp = TempProduct2::findOrFail($id);
         $temp->name = $request->name;
-        $temp->vendor_id= $request->vendor_id;
         $temp->category_id = $request->category_id;
         $temp->unit = $request->unit;
         $temp->description = $request->description;
         $temp->price = $request->price;
         $temp->discount = $request->discount;
 
-        $images=array();
         $counter = 0;
-        if($files=$request->file('images')){
+        $name = "";
+        if($request->image != null){
             $path = storage_path("app/public/images/TempProduct/$id/");
             if(File::isDirectory($path)){
                 File::deleteDirectory($path);
             }
-            foreach($files as $file){
-                $counter += 1;
-                $extension = $file->extension();
-                $name =  $counter.".".$extension;
-                $path = storage_path("app/public/images/TempProduct/$id/");
-                if(!File::isDirectory($path)){
-                    File::makeDirectory($path, 0777, true, true);
-                }
-                Image::make($file)->resize(100, 100)->save($path.$name);
-                $file->move('image',$name);
-                $images[]=$name;
+            $file = base64_decode($request->image);
+            $safeName = "1.png";
+            $path = storage_path("app/public/images/TempProduct/$temp->id/");
+            if (!File::exists($path)) {
+                File::makeDirectory($path);
+            } 
+            
+            $success = File::put($path.$safeName, $file);
+            if(!$success){
+                return "error";
             }
+            $image = $safeName;
+            
+            $updateTempProd = DB::table('tempprod2')
+            ->where('id', $temp->id)
+            ->update(['images' => $image]);
+            
         }
-        $temp->images = implode("|",$images);
         $temp->save();
         return "Product Edited Successfully";
     }
