@@ -23,5 +23,11 @@ class OrderController extends Controller
 //         return view('Order.list_order',["orders"=>$orders]);
 // }
 
+    public function orderDetails($id)
+    {
+        $orderdetails =  $this->service->getOrderDetails($id);
+        return view('Order.order_details', ['orderdetails'=> $orderdetails]);
+    }
+
 
 }

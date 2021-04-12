@@ -93,8 +93,14 @@ class OrderService{
         return DB::select("select * from orders as o, orderdescription AS od where od.vendor_id = ? and od.order_id = o.id", [$id]);
     }
 
+    public function getOrderDetails($id){
+        return DB::select("select p.*,v.name as vendor_name from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id order by p.id DESC", [$id]);
+      }
+
 
     public function ordersList(){
         return Orders::all();
     }
+
+
 }

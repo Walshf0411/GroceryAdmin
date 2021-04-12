@@ -32,14 +32,14 @@ class TempProduct2Service{
             $path = storage_path("app/public/images/TempProduct/$temp->id/");
             if (!File::exists($path)) {
                 File::makeDirectory($path);
-            } 
-            
+            }
+
             $success = File::put($path.$safeName, $file);
             if(!$success){
                 return "error";
             }
             $image = $safeName;
-            
+
             $updateTempProd = DB::table('tempprod2')
             ->where('id', $temp->id)
             ->update(['images' => $image]);
@@ -54,12 +54,12 @@ class TempProduct2Service{
                     return "error";
                 }
                 $images[]=$safeName;
-            }    
+            }
             $updateTempProd = DB::table('tempprod2')
             ->where('id', $temp->id)
            ->update(['images' =>implode("|",$images)]);
         }
-        
+
 
         return "Temp Product inserted successfully";
     }
@@ -94,18 +94,18 @@ class TempProduct2Service{
             $path = storage_path("app/public/images/TempProduct/$temp->id/");
             if (!File::exists($path)) {
                 File::makeDirectory($path);
-            } 
-            
+            }
+
             $success = File::put($path.$safeName, $file);
             if(!$success){
                 return "error";
             }
             $image = $safeName;
-            
+
             $updateTempProd = DB::table('tempprod2')
             ->where('id', $temp->id)
             ->update(['images' => $image]);
-            
+
         }
         $temp->save();
         return "Product Edited Successfully";

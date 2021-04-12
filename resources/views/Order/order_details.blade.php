@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Product Details</h4>
+                    <h4 class="card-title">Order Details</h4>
                 </div>
                 <div class="card-body collapse show">
                     <div class="card-block card-dashboard">
@@ -28,7 +28,7 @@
                             </thead>
                             <tbody>
                                 <?php $totalss=0 ?>
-                                @foreach($orderproducts as $row)
+                                @foreach($orderdetails as $row)
                                 <?php $totalss += $row->price ?>
                                 <tr>
                                     <td>{{ $row->id }}</td>
