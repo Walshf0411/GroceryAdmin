@@ -128,6 +128,9 @@ Route::post('/update_deliverycost', 'DeliverycostController@update')->name('upda
 Route::get('/listCustomerOrder/{id}', 'OrderController@getOrdersByCustomer')->name('list_customerorder');
 // Route::get('/list_order/{id}', 'OrderController@showOrderDetails')->name('list_order');
 Route::get('/list_order', 'OrderController@listOrders')->name('list_order');
+Route::get('/pending_order', 'OrderController@pendingOrders')->name('pending_order');
+Route::get('/completed_order', 'OrderController@completedOrders')->name('completed_order');
+Route::get('/cancelled_order', 'OrderController@cancelledOrders')->name('cancelled_order');
 Route::get('/showAddress/{id}', 'AddressController@getAddress')->name('show_orderaddress');
 Route::get('/showCustomer/{id}', 'CustomerController@getCustomer')->name('show_ordercustomer');
 Route::get('/orderDetails/{id}', 'OrderController@orderDetails')->name('show_orderdetails');

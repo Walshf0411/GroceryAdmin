@@ -128,5 +128,3 @@ Route::prefix('/customer')->group(function () {
 Route::get('/product_category/{id}', 'API\CategoryApiController@list_product_category');
 
 
-
-

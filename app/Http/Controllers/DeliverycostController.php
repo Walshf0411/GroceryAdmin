@@ -26,8 +26,11 @@ class DeliverycostController extends Controller
 
     public function store(Request $request)
     {
-        $this->service->insertDeliveryCost($request);
-        return redirect()->route('list_deliverycost')->with("success","Data inserted successfully");
+        if($this->service->insertDeliveryCost($request)=='error'){
+            return redirect()->route('list_deliverycost')->with("error","Data Already Exists");
+        }else{
+            return redirect()->route('list_deliverycost')->with("success","Data inserted successfully");
+        }
     }
 
     public function edit()

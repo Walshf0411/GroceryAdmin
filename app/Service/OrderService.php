@@ -102,5 +102,18 @@ class OrderService{
         return Orders::all();
     }
 
+    public function pendingOrdersList(){
+        return DB::select('select * from orders where status = "pending"');
+    }
+
+    public function completeOrdersList(){
+        return DB::select('select * from orders where status = "completed"');
+    }
+
+    public function cancelledOrdersList(){
+        return DB::select('select * from orders where status = "cancelled"');
+    }
+
+
 
 }

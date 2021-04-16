@@ -24,7 +24,8 @@
                                 <tr>
 
                                     {{-- <td>{{ $row->id }}</td> --}}
-                                    <td>{{ $row->delivery_charges }}</td>
+                                    {{-- dd{{ $delivery_cost }} --}}
+                                    <td>{{ $row->delivery_charges}}</td>
 									<td>
                                         <a class="primary"  href="edit_deliverycost" data-original-title="" title="">
                                                 <i class="ft-edit font-medium-3"></i>
