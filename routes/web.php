@@ -33,7 +33,9 @@ Route::match(array("GET", "POST"), '/deploy/asdfghjkl', function() {
         ["git", "pull", "git@github.com:Walshf0411/GroceryAdmin.git"],
         ["cp", "-af", "public/.", "../public_html"],
         ["cp", "-af", ".", "../"],
-        ["git", "status"]
+        ["unlink", "/home1/creatio5/public_html/storage"],
+        ["ln", "-s", "/home1/creatio5/storage/app/public", "/home1/creatio5/public_html/storage"],
+        ["git", "status"],
     );
 
     echo "Starting to deploy<br>";
