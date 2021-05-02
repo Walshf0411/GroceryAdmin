@@ -54,6 +54,10 @@ return [
             'driver' => 'jwt',
             'provider' => 'customers',
         ],
+        'deliveryboy' => [
+            'driver' => 'jwt',
+            'provider' => 'deliveryboy',
+        ],
     ],
 
     /*
@@ -85,6 +89,10 @@ return [
         'customers' => [
             'driver' => 'eloquent',
             'model' => App\Model\Customer::class,
+        ],
+        'deliveryboy' => [
+            'driver' => 'eloquent',
+            'model' => App\Model\DeliveryBoy::class,
         ],
         // 'users' => [
         //     'driver' => 'database',

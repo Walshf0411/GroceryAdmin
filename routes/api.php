@@ -127,6 +127,8 @@ Route::prefix('/customer')->group(function () {
 
 Route::get('/product_category/{id}', 'API\CategoryApiController@list_product_category');
 
-
+Route::prefix('/deliveryboy')->group(function () {
+    Route::post('/login',"API\DeliveryBoyController@login" )->name('deliveryboy.login');
+});
 
 
