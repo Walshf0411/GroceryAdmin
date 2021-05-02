@@ -10,14 +10,16 @@ class DeliveryService{
 
     public function insertDeliveryCost(Request $request){
         $delivery_cost = DB::select('select * from delivery_costs');
-        if(count($delivery_cost) ==1)
+        if(count($delivery_cost) == 1)
         {
-            return redirect()->back()->with("Error");
+            return "error";
+            // return redirect()->back()->with("Error","Data Already Exit Just Update ");
         }else{
 
-        $delivery_cost = new Delivery_cost;
-        $delivery_cost->delivery_charges = $request->delivery_charges;
-        $delivery_cost->save();
+            $delivery_cost = new Delivery_cost;
+            $delivery_cost->delivery_charges = $request->delivery_charges;
+            $delivery_cost->save();
+            return "success";
         }
     }
 
@@ -45,17 +47,20 @@ class DeliveryService{
 
     public function deleteDeliveryCost(){
         $delivery_cost = DB::select('delete FROM delivery_costs LIMIT 1');
-        return response()->json(["message" => "Data deleted Successfully"]);
+        // return response()->json(["message" => "Data deleted Successfully"]);
     }
 
 
     public function listDeliveryCost(){
-        $delivery_cost = DB::select('select * from delivery_costs');
-        if (count($delivery_cost) == 1){
-            return $delivery_cost['0']->delivery_charges;
-        }
-        else{
-            return response()->json(["message" => "Data Error"],400);
-        }
+        return DB::select('select * from delivery_costs');
+
+        // $delivery_cost = DB::select('select * from delivery_costs');
+        // if (count($delivery_cost) == 1){
+            // dd($delivery_cost['0']->delivery_charges);
+            // return $delivery_cost['0']->delivery_charges;
+        // }
+        // else{
+        //     return response()->json(["message" => "Data Error"],400);
+        // }
     }
 }

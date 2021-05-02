@@ -33,18 +33,20 @@ Route::match(array("GET", "POST"), '/deploy/asdfghjkl', function() {
         ["git", "pull", "git@github.com:Walshf0411/GroceryAdmin.git"],
         ["cp", "-af", "public/.", "../public_html"],
         ["cp", "-af", ".", "../"],
-        ["git", "status"]
+        ["unlink", "/home1/creatio5/public_html/storage"],
+        ["ln", "-s", "/home1/creatio5/storage/app/public", "/home1/creatio5/public_html/storage"],
+        ["git", "status"],
     );
-    
+
     echo "Starting to deploy<br>";
-    
+
     foreach($commands as $cmd) {
         echo "<br>Running command: ".implode(" ", $cmd);
-        
+
         $process = new Process($cmd);
         $process->setWorkingDirectory("/home1/creatio5/GroceryAdmin");
         $process->run();
-        
+
         if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
@@ -79,6 +81,7 @@ Route::get('/deleteProduct/{id}', 'Product2Controller@destroy')->name('deletePro
 Route::get('/listProduct', 'Product2Controller@show')->name('listProduct');
 Route::get('/edit_product/{id}', 'Product2Controller@edit')->name('edit_product');
 Route::post('/update_product/{id}', 'Product2Controller@update')->name('update_product');
+Route::get('/productDetails/{id}', 'Product2Controller@listProduct')->name('listProductDetails');
 
 //TempProduct
 Route::get('/listTempProduct', 'TempProduct2Controller@show')->name('listTempProduct');
@@ -127,9 +130,12 @@ Route::post('/update_deliverycost', 'DeliverycostController@update')->name('upda
 Route::get('/listCustomerOrder/{id}', 'OrderController@getOrdersByCustomer')->name('list_customerorder');
 // Route::get('/list_order/{id}', 'OrderController@showOrderDetails')->name('list_order');
 Route::get('/list_order', 'OrderController@listOrders')->name('list_order');
+Route::get('/pending_order', 'OrderController@pendingOrders')->name('pending_order');
+Route::get('/completed_order', 'OrderController@completedOrders')->name('completed_order');
+Route::get('/cancelled_order', 'OrderController@cancelledOrders')->name('cancelled_order');
 Route::get('/showAddress/{id}', 'AddressController@getAddress')->name('show_orderaddress');
 Route::get('/showCustomer/{id}', 'CustomerController@getCustomer')->name('show_ordercustomer');
-Route::get('/showProduct/{id}', 'Product2Controller@getProduct')->name('show_orderproduct');
+Route::get('/orderDetails/{id}', 'OrderController@orderDetails')->name('show_orderdetails');
 Route::get('/total/{id}', 'Product2Controller@total')->name('total');
 
 //Address

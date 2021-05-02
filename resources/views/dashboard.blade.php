@@ -17,7 +17,7 @@
             <div class="media">
               <div class="media-body text-left">
                 <h3 class="mb-1 danger">{{ $category }}</h3>
-                <span>Total Category</span>
+                <a href="../list_category"><span>Total Category</span></a>
               </div>
               <div class="media-right align-self-center">
                 <i class="icon-list danger font-large-2 float-right"></i>
@@ -35,7 +35,7 @@
             <div class="media">
               <div class="media-body text-left">
                 <h3 class="mb-1 danger">{{ $vendors }}</h3>
-                <span>Total Vendors</span>
+                <a href="../list_vendor"><span>Total Vendors</span></a>
               </div>
               <div class="media-right align-self-center">
                 <i class="icon-user warning font-large-2 float-right"></i>
@@ -53,7 +53,7 @@
             <div class="media">
               <div class="media-body text-left">
                 <h3 class="mb-1 success">{{ $products }}</h3>
-                <span>Total Product</span>
+                <a href="../listProduct"><span>Total Product</span></a>
               </div>
               <div class="media-right align-self-center">
                 <i class="icon-basket-loaded success font-large-2 float-right"></i>
@@ -71,7 +71,7 @@
             <div class="media">
               <div class="media-body text-left">
                 <h3 class="mb-1 warning">{{ $bvendors }}</h3>
-                <span>Total Blocked Vendors</span>
+                <a href="../list_blocked_vendor"><span>Total Blocked Vendors</span></a>
               </div>
               <div class="media-right align-self-center">
                 <i class="icon-user danger font-large-2 float-right"></i>
@@ -107,7 +107,7 @@
             <div class="media">
               <div class="media-body text-left">
                 <h3 class="mb-1 primary">{{ $banner }}</h3>
-                <span>Total Banner</span>
+                <a href="../list_banner"><span>Total Banner</span></a>
               </div>
               <div class="media-right align-self-center">
                 <i class="icon-screen-desktop primary font-large-2 float-right"></i>
@@ -126,7 +126,7 @@
             <div class="media">
               <div class="media-body text-left">
                 <h3 class="mb-1 success">{{ $customers }}</h3>
-                <span>Total Customer</span>
+                <a href="../list_customer"><span>Total Customer</span></a>
               </div>
               <div class="media-right align-self-center">
                 <i class="icon-user success font-large-2 float-right"></i>
@@ -144,7 +144,7 @@
             <div class="media">
               <div class="media-body text-left">
                 <h3 class="mb-1 danger">{{ $pendingOrders }}</h3>
-                <span>Pending Order</span>
+                <a href="../pending_order"><span>Pending Order</span></a>
               </div>
               <div class="media-right align-self-center">
                 <i class="icon-handbag danger font-large-2 float-right"></i>
@@ -162,7 +162,7 @@
             <div class="media">
               <div class="media-body text-left">
                 <h3 class="mb-1 primary">{{ $deliveredOrders }}</h3>
-                <span>Complete Order</span>
+                <a href="../completed_order"><span>Complete Order</span></a>
               </div>
               <div class="media-right align-self-center">
                 <i class="icon-handbag primary font-large-2 float-right"></i>
@@ -180,7 +180,7 @@
             <div class="media">
               <div class="media-body text-left">
                 <h3 class="mb-1 warning">{{ $cancelledOrders }}</h3>
-                <span>Cancelled Order</span>
+                <a href="../cancelled_order"><span>Cancelled Order</span></a>
               </div>
               <div class="media-right align-self-center">
                 <i class="icon-handbag warning font-large-2 float-right"></i>

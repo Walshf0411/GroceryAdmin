@@ -52,6 +52,10 @@ class Product2Service{
         // dd($newProd);
 
     }
+    public function getProductDetails($id){
+        $productdescription = DB::select('select * from product2 where id=?',[$id]);
+        return $productdescription;
+    }
 
     // public function insertProduct(Request $request){
 
@@ -92,6 +96,7 @@ class Product2Service{
     // }
     public function getProduct($id){
         return Product2::findOrFail($id);
+        // dd( Product2::findOrFail($id));
     }
     public function editProduct(Request $request,$id){
         $temp = Product2::findOrFail($id);
@@ -139,14 +144,8 @@ class Product2Service{
     }
 
 
-    public function getOrderProduct($id){
-        return DB::select("select p.*,v.name as vendor_name from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id order by p.id DESC", [$id]);
-      }
+    
 
-    //   public function totalamount($id){
-    //     $total= DB::select("select sum(p.price) As total from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id", [$id]);
-    //     return $total;
-    //   }
 
     public function editProductByVendor(Request $request, $id){
         if(DB::select("select * from product2 where id= ? ",[$id])==[]){

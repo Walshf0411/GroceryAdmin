@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Order List</h4>
+                    <h4 class="card-title">Completed Orders</h4>
                 </div>
                 <div class="card-body collapse show">
                     <div class="card-block card-dashboard">
@@ -30,7 +30,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($orders as $row)
+                                @foreach($completedorders as $row)
                                 <tr>
                                     <td><a href="../orderDetails/{{ $row->id }}">{{ $row->id }}</a></td>
                                     <td><a href="../showCustomer/{{ $row->customer_id }}">{{ $row->customer_id }}</a></td>

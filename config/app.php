@@ -163,6 +163,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        // Mews\Captcha\CaptchaServiceProvider::class,
+        // Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -230,6 +232,8 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+        // 'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+        // 'Captcha' => Mews\Captcha\Facades\Captcha::class,
     ],
 
 ];

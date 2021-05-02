@@ -28,8 +28,8 @@
                             <tbody>
                                 @foreach($products as $row)
                                 <tr>
-
-                                    <td>{{ $row->id }}</td>
+                                    <td><a href="../productDetails/{{ $row->id }}">{{ $row->id }}</a></td>
+                                    {{-- <td>{{ $row->id }}</td> --}}
                                      {{-- {{ dd($row)}} --}}
                                     <td>{{ $row->category->category_name }}</td>
                                     <td>{{ $row->name }}</td>

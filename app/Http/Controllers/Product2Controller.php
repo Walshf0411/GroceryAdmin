@@ -37,11 +37,13 @@ class Product2Controller extends Controller
         return redirect()->back()->with('success','Product deleted successfully');
     }
 
-    public function getProduct($id)
-    {
-        $orderproducts =  $this->service->getOrderProduct($id);
-        return view('Order.show_orderproduct', ['orderproducts'=> $orderproducts]);
+    public function listProduct($id){
+        $productdescription = $this->service->getProductDetails($id);
+        return view('Product.product_details',['productdescription'=>$productdescription]);
+        // return redirect()->back()->with('success','Product deleted successfully');
     }
+
+   
     public function edit($id){
 
         return view('Product.edit_product', ['product'=> $this->service->getProduct($id),
