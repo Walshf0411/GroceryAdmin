@@ -28,7 +28,8 @@ class Orders extends Model
         'rider_id',
         'mode_of_payment',
         'date_of_delivery',
-        'payment_id'
+        'payment_id',
+        'comment'
      ];
 
     public function customer() {

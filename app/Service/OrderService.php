@@ -29,6 +29,7 @@ class OrderService{
         $order->rider_id = 0;
         $order->mode_of_payment = $request->mode_of_payment;
         $order->date_of_delivery = $request->date_of_delivery;
+        $order->comment = $request->comment;
         if(isset($request->payment_id)){
             $order->payment_id = $request->payment_id;
         }
@@ -77,12 +78,12 @@ class OrderService{
         return $final_orders;
     }
 
-    public function cancellOrder($id){
+    public function cancellOrder($id, Request $request){
         $description = DB::select("select * from orderdescription where order_id = ?",[$id]);
         foreach($description as $detail){
             DB::update("update product2 set unit = unit + ? where id = ?",[$detail->counts, $detail->product_id]);
         }
-        DB::update("update orders set status = 'Cancelled' where id = ? ",[$id]);
+        DB::update("update orders set status = 'Cancelled', comment = ? where id = ? ",[$request->comment, $id]);
         return "Order Cancelled Sucessfully";
     }
 

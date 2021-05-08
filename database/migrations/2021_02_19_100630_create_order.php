@@ -28,6 +28,7 @@ class CreateOrder extends Migration
             $table->string("mode_of_payment");
             $table->date("date_of_delivery");
             $table->string("payment_id")->nullable()->change();
+            $table->string("comment")->nullable()->change();
             $table->timestamps();
         });
     }
