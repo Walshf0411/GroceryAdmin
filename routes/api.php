@@ -130,6 +130,8 @@ Route::get('/product_category/{id}', 'API\CategoryApiController@list_product_cat
 Route::prefix('/deliveryboy')->group(function () {
     Route::post('/login',"API\DeliveryBoyController@login" )->name('deliveryboy.login');
     Route::get('/orders/{id}',"API\DeliveryBoyController@getListOfOrdersByRider" )->name('deliveryboy.orders');
+    Route::post('/update/',"API\DeliveryBoyController1@updateDeliveryBoyDetails" )->name('deliveryboy.update');
+    Route::post('/update/status/',"API\DeliveryBoyController1@updateDeliveryBoyStatus" )->name('deliveryboy.update.status');
 });
 
 
