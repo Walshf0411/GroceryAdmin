@@ -17,6 +17,7 @@
 								    <th>ID</th>
                                     <th>Name</th>
                                     <th>Phone No</th>
+                                    <th>Availablility</th>
 									<th>Email</th>
 									<th>Address</th>
                                     <th>Action</th>
@@ -29,6 +30,7 @@
                                     <td><a href="viewDeliveryBoy/{{ $row->id }}">{{ $row->id }}</a></td>
                                     <td>{{ $row->name }}</td>
                                     <td>{{  $row->phoneno }}</td>
+                                    <td>{{  $row->is_available }}</td>
                                     <td>{{  $row->email }}</td>
                                     <td>{{  $row->address }}</td>
 									<td>

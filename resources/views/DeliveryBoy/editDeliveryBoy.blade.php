@@ -24,6 +24,16 @@
                                 <input type="number" id="phoneno" value="{{ $delivery['0']->phoneno }}" class="form-control"  name="phoneno" required >
                             </div>
                             <div class="form-group">
+                                <label for="phoneno">Availability: </label>
+                                @if ($delivery['0']->is_available)
+                                <input type="radio" name="availablity" value="1" checked> Yes
+                                <input type="radio" name="availablity" value="0"> No    
+                                @else
+                                <input type="radio" name="availablity" value="1" > Yes
+                                <input type="radio" name="availablity" value="0"checked> No        
+                                @endif
+                            </div>
+                            <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" id="email" value="{{ $delivery['0']->email }}" class="form-control"  name="email" required >
                             </div>

@@ -20,6 +20,7 @@
                                     <th>Phone No</th>
                                     <th>Email</th>
                                     <th>Address</th>
+                                    <th>Availablity</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -30,6 +31,11 @@
                                     <td>{{ $row->phoneno }}</td>
                                     <td>{{ $row->email }}</td>
                                     <td>{{ $row->address }}</td>
+                                    @if ($row->is_available)
+                                        <td>Yes</td>
+                                    @else
+                                        <td>No</td>
+                                    @endif
                                 </tr>
                                 
                             </tbody>

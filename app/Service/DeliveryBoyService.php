@@ -59,6 +59,7 @@ class DeliveryBoyService{
         $deliveryboy->email = $request->email;
         if(trim($request->password)!="") {$deliveryboy->password = Hash::make($request->password);};
         $deliveryboy->address = $request->address;
+        $deliveryboy->is_available = $request->availablity;
         $deliveryboy->save();
         return "Delivery Boy Details edited Successfully";
     }
