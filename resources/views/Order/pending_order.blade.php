@@ -25,6 +25,7 @@
                                     <th>Rider</th>
                                     <th>Mode of Payment</th>
 									<th>Date of Delivery</th>
+                                    <th>Comment</th>
                                     {{-- <th>Action</th> --}}
 
                                 </tr>
@@ -43,6 +44,7 @@
                                     <td>{{ $row->rider_id }}</td>
                                     <td>{{ $row->mode_of_payment }}</td>
                                     <td>{{ $row->date_of_delivery }}</td>
+                                   <td>{{ $row->comment }}</td>
                                    {{-- <td></td> --}}
 
                                 </tr>

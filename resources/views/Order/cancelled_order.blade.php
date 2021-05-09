@@ -25,7 +25,7 @@
                                     <th>Rider</th>
                                     <th>Mode of Payment</th>
 									<th>Date of Delivery</th>
-                                    {{-- <th>Action</th> --}}
+                                    <th>Comment</th>
 
                                 </tr>
                             </thead>
@@ -43,7 +43,7 @@
                                     <td>{{ $row->rider_id }}</td>
                                     <td>{{ $row->mode_of_payment }}</td>
                                     <td>{{ $row->date_of_delivery }}</td>
-                                   {{-- <td></td> --}}
+                                   <td>{{ $row->comment }}</td>
 
                                 </tr>
                                 @endforeach

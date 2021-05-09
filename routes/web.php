@@ -28,32 +28,32 @@ Auth::routes(['register' => false]); //,  'reset' => false
 // 	return ("hello walsh");
 // });
 
-Route::match(array("GET", "POST"), '/deploy/asdfghjkl', function() {
-    $commands = array(
-        ["git", "pull", "git@github.com:Walshf0411/GroceryAdmin.git"],
-        ["cp", "-af", "public/.", "../public_html"],
-        ["cp", "-af", ".", "../"],
-        ["unlink", "/home1/creatio5/public_html/storage"],
-        ["ln", "-s", "/home1/creatio5/storage/app/public", "/home1/creatio5/public_html/storage"],
-        ["git", "status"],
-    );
+// Route::match(array("GET", "POST"), '/deploy/asdfghjkl', function() {
+//     $commands = array(
+//         ["git", "pull", "git@github.com:Walshf0411/GroceryAdmin.git"],
+//         ["cp", "-af", "public/.", "../public_html"],
+//         ["cp", "-af", ".", "../"],
+//         ["unlink", "/home1/creatio5/public_html/storage"],
+//         ["ln", "-s", "/home1/creatio5/storage/app/public", "/home1/creatio5/public_html/storage"],
+//         ["git", "status"],
+//     );
 
-    echo "Starting to deploy<br>";
+    // echo "Starting to deploy<br>";
 
-    foreach($commands as $cmd) {
-        echo "<br>Running command: ".implode(" ", $cmd);
+    // foreach($commands as $cmd) {
+    //     echo "<br>Running command: ".implode(" ", $cmd);
 
-        $process = new Process($cmd);
-        $process->setWorkingDirectory("/home1/creatio5/GroceryAdmin");
-        $process->run();
+    //     $process = new Process($cmd);
+    //     $process->setWorkingDirectory("/home1/creatio5/GroceryAdmin");
+    //     $process->run();
 
-        if (!$process->isSuccessful()) {
-            throw new ProcessFailedException($process);
-        }
-        echo "<br>Command output: ".$process->getOutput();
-        echo "<br>";
-    }
-});
+    //     if (!$process->isSuccessful()) {
+    //         throw new ProcessFailedException($process);
+    //     }
+    //     echo "<br>Command output: ".$process->getOutput();
+    //     echo "<br>";
+    // }
+// });
 
 Route::get('/', 'HomeController@index')->name('');
 Route::get('/home', 'HomeController@index')->name('home');
@@ -148,3 +148,13 @@ Route::get('/showAbout', 'StaticTableController@viewAbout')->name('showAbout');
 Route::post('/addAbout', 'StaticTableController@addAboutUs');
 Route::get('/showShare', 'StaticTableController@viewShare')->name('showShare');
 Route::post('/addShare', 'StaticTableController@addShare');
+
+
+//Delivery Boy
+Route::post("/addDeliveryBoy", "DeliveryBoyController@addDeliveryBoy")->name("deliveryBoy.add");
+Route::get("/deleteDeliveryBoy/{id}", "DeliveryBoyController@deleteDeliveryBoy")->name("deliveryBoy.delete");
+Route::get("/viewAddDeliveryBoy", "DeliveryBoyController@viewAddDeliveryBoyPage")->name("deliveryBoy.view.add");
+Route::post("/editDeliveryBoy/{id}", "DeliveryBoyController@editDeliveryBoy")->name("deliveryBoy.edit");
+Route::get("/viewEditDeliveryBoy/{id}", "DeliveryBoyController@viewEditDeliveryBoyPage")->name("deliveryBoy.view.edit");
+Route::get("/listDeliveryBoy", "DeliveryBoyController@listDeliveryBoys")->name("deliveryBoy.list");
+Route::get("/viewDeliveryBoy/{id}", "DeliveryBoyController@viewDeliveryBoy")->name("deliveryBoy.profile");

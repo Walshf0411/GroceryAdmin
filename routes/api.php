@@ -19,14 +19,14 @@ use App\Http\Controllers\API\BannerApiController;
 //     return $request->user();
 // });
 
-Route::get("/notification_test", function() {
-    $customer = App\Model\Customer::where("id", 1)->get()[0];
-    $order = App\Model\Orders::where("id", 7)->get()[0];
-    $product = $order->products[0];
-    $product->vendor->notify(new App\Notifications\Vendor\OrderReceivedNotification($product));
-    $customer->notify(new App\Notifications\Customer\OrderPlacedNotification($order));
-    return $order;
-});
+// Route::get("/notification_test", function() {
+//     $customer = App\Model\Customer::where("id", 1)->get()[0];
+//     $order = App\Model\Orders::where("id", 7)->get()[0];
+//     $product = $order->products[0];
+//     $product->vendor->notify(new App\Notifications\Vendor\OrderReceivedNotification($product));
+//     $customer->notify(new App\Notifications\Customer\OrderPlacedNotification($order));
+//     return $order;
+// });
 
 Route::get('/homepage', 'API\BannerApiController@show');
 Route::get('/category', 'API\BannerApiController@showCategory');
@@ -129,6 +129,7 @@ Route::get('/product_category/{id}', 'API\CategoryApiController@list_product_cat
 
 Route::prefix('/deliveryboy')->group(function () {
     Route::post('/login',"API\DeliveryBoyController@login" )->name('deliveryboy.login');
+    Route::get('/orders/{id}',"API\DeliveryBoyController@getListOfOrdersByRider" )->name('deliveryboy.orders');
 });
 
 

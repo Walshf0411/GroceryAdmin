@@ -39,4 +39,7 @@ class Orders extends Model
     public function products() {
         return $this->hasMany("App\Model\OrderDescription", "order_id");
     }
+    public function deliveryboy() {
+        return $this->hasOne("App\Model\DeliveryBoy", "rider_id");
+    }
 }

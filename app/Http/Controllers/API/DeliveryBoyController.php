@@ -26,4 +26,8 @@ class DeliveryBoyController extends Controller
 
         }
     }
+    public function getListOfOrdersByRider($id){
+        return response()->json(["orders"=>$this->vendorLoginService->getListOfOrdersByRider($id)]);
+    }
+
 }
