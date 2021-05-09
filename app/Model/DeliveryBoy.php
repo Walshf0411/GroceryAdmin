@@ -18,7 +18,7 @@ class DeliveryBoy extends Authenticatable implements JWTSubject
     protected $guard = 'deliveryboy';
 
     protected $fillable = [
-        'name' ,'phoneno', 'email', 'is_available'
+        'name' ,'phoneno', 'email','address', 'is_available'
      ];
      protected $hidden = [
         'password'
@@ -35,7 +35,8 @@ class DeliveryBoy extends Authenticatable implements JWTSubject
         'name'=> $this->name ,
         'phoneno' => $this->phoneno,
         'email' => $this->email,
-        'is_available'=> $this->is_available
+        'is_available'=> $this->is_available,
+        'address'=> $this->address 
     ];
     }
     public function isAvailable() {

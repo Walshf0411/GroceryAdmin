@@ -67,5 +67,12 @@ class DeliveryBoyService{
         $deliveryboy = DeliveryBoy::findOrFail($id)->delete();
         return "Delivery Boy Deleted Successfullly";
     }
+    public function getDeliveryBoyAvailability($riderId) {
+        return DeliveryBoy::findOrFail($riderId)->is_available;
+    }
+
+    public function updateDeliveryBoy(int $riderId, $data) {
+        DeliveryBoy::findOrFail($riderId)->update($data);
+    }
 }
 ?>
