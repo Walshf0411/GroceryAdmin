@@ -38,4 +38,7 @@ class DeliveryBoy extends Authenticatable implements JWTSubject
         'is_available'=> $this->is_available
     ];
     }
+    public function isAvailable() {
+        return $this->is_available >= 0;
+    }
 }
