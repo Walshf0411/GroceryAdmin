@@ -107,6 +107,7 @@ Route::prefix('/customer')->group(function () {
     Route::post('/addOrder', 'API\OrderApiController@addOrder')->name('add.order');
     Route::get('/listOrderByCustomer/{id}', 'API\OrderApiController@getOrdersByCustomer')->name('customer.orders');
     Route::post('/cancelOrder/{orderid}', 'API\OrderApiController@cancellOrder')->name('customer.cancel.order');
+    Route::post("order/update/status", "API\OrderApiController@updateOrderStatus")->name("customer.update.order.staus");
     //Mode of Payment
     Route::get('/modeOfPayment', 'API\ModeOfPaymentApiController@getAllModes')->name('customer.paymentMode.list');
 

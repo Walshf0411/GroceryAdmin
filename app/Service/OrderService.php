@@ -96,6 +96,16 @@ class OrderService{
         return DB::update("update orders set status = 'Cancelled', comment = ? where id = ? ",[$comment, $id]);
     }
 
+    public function updateOrderStatus(int $id, $status) {
+        $orderDetails = DB::select("SELECT * FROM orders WHERE id = ?", [$id]);
+
+        if (count($orderDetails) == 0 || count($orderDetails) > 1) {
+            return false;
+        }
+
+        return DB::update("UPDATE orders SET status = ? WHERE id = ? ",[$status, $id]);
+    }
+
 
     //vendor
 

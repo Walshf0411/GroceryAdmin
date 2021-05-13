@@ -41,4 +41,19 @@ class OrderApiController extends Controller
     public function getOrderByVendor($id){
         return response()->json(["responsePayload"=>$this->service->getOrderByVendor($id)]);
     }
+
+    public function updateOrderStatus(Request $request) {
+        $request->validate([
+            "order_id" => "required|int",
+            "status" => "required|string"
+        ]);
+
+        $updateStatus = $this->service->updateOrderStatus($request->order_id, $request->status);
+
+        return response()
+                ->json([
+                    "status" => $updateStatus ? "Success": "Failure",
+                    "message" => $updateStatus ? "Order status updated successfully!": "Order status could not be updated"
+                ], $updateStatus ? 200: 400);
+    }
 }
