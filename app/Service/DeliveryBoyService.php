@@ -2,6 +2,9 @@
 
 namespace App\Service;
 // namespace App\Http\Controllers;
+
+use App\Model\Address;
+use App\Model\Customer;
 use App\Model\DeliveryBoy;
 use App\Model\Orders;
 use Illuminate\Http\Request;
@@ -14,17 +17,30 @@ class DeliveryBoyService{
         $token = auth('deliveryboy')->attempt($credentials);
         if($token){
             $deliveryboy = DeliveryBoy::where("phoneno", "=", $request->phoneno)->get();
-            
+
             return response()->json(["token"=>$token, 'deliveryboy'=>$deliveryboy[0]],200);
         }else{
             return response()->json(["error"=> "wrong credentials"],401);
         }
     }
 
-    public function getListOfOrdersByRider($id){
-        $orders = DB::table('orders')->where("rider_id", "=", $id)->orderBy("id")->get();
+    public function getListOfOrdersByRider(int $id, $orderStatus){
+        $orders = DB::table('orders')
+                    ->where("rider_id", "=", $id)
+                    ->where("status", "like", $orderStatus)
+                    ->orderBy("id")->get();
+
         $final_orders = array();
         foreach($orders as $order){
+            $order->address = Address::whereRaw("id = ? and customer_id = ?",
+                                [$order->customer_id, $order->address_id]
+                            )->first();
+
+            $order->customer = Customer::findOrFail($order->customer_id, ["c_name", "mobile_number", "email_id"]);
+
+            unset($order->address_id);
+            unset($order->customer_id);
+
             $orderdescription = DB::select('select * from orderdescription where order_id = ? order by created_at desc', [$order->id]);
             if($orderdescription==[]){return "there is some error";}
             $finalOrderdescription = array();

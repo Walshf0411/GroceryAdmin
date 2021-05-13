@@ -26,21 +26,21 @@ class DeliveryBoyController extends Controller
 
         }
     }
-    
-    public function getListOfOrdersByRider($id){
-        return response()->json(["orders"=>$this->service->getListOfOrdersByRider($id)]);
+
+    public function getListOfOrdersByRider(int $id, $orderStatus="%"){
+        return response()->json(["orders"=>$this->service->getListOfOrdersByRider($id, $orderStatus)]);
     }
-    
+
     public function getDeliveryBoyStatus(Request $request) {
         $request->validate([
             "rider_id" => "required|int"
         ]);
-        
+
         return response()->json([
             "available" => $this->service->getDeliveryBoyAvailability($request->rider_id)
         ]);
     }
-    
+
     public function updateDeliveryBoyDetails(Request $request) {
         $request->validate([
             "rider_id" => "required|int"
