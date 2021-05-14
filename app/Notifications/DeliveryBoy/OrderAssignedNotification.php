@@ -54,8 +54,9 @@ class OrderAssignedNotification extends Notification
      */
     public function toArray($notifiable)
     {
+        $orderId = $this->order->id;
         return [
-            "message" => "An order as been assigned to you #$this->order->id",
+            "message" => "An order as been assigned to you Order #$orderId",
             "details" => [
                 "order" => $this->order
             ]
