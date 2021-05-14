@@ -44,5 +44,8 @@ class OrderController extends Controller
         return view('Order.order_details', ['orderdetails'=> $orderdetails]);
     }
 
-
+    public function unassignedOrders(){
+        $orders = $this->service->getUnassignedOrdersDetails();
+        return view('Order.unassigned_orders', ["orders" => $orders]);
+    }
 }

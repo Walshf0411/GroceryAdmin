@@ -112,7 +112,15 @@ padding: 7px;"></span></a>
           <li class="has-sub nav-item"><a href="#"><i class="fa fa-shopping-basket"></i>
             <span data-i18n="" class="menu-title">Orders</span></a>
             <ul class="menu-content">
-                <li><a href="{{ route('list_order') }}" class="menu-item">Order List</a>
+                <li><a href="{{ route('list_order') }}" class="menu-item">All Orders List</a>
+                </li>
+                <li><a href="{{ route('cancelled_order') }}" class="menu-item">Cancelled Order List</a>
+                </li>
+                <li><a href="{{ route('completed_order') }}" class="menu-item">Delivered Order List</a>
+                </li>
+                <li><a href="{{ route('pending_order') }}" class="menu-item">Pending Order List</a>
+                </li>
+                <li><a href="{{ route('order.unassigned') }}" class="menu-item">Unassigned Order List</a>
                 </li>
             </ul>
           </li>
