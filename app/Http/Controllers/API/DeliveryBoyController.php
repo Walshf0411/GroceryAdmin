@@ -36,14 +36,19 @@ class DeliveryBoyController extends Controller
             "rider_id" => "required|int"
         ]);
 
-        return response()->json([
-            "available" => $this->service->getDeliveryBoyAvailability($request->rider_id)
-        ]);
+        return response()->json(
+             $this->service->getDeliveryBoyAvailability($request->rider_id)
+        );
     }
 
     public function updateDeliveryBoyDetails(Request $request) {
         $request->validate([
-            "rider_id" => "required|int"
+            "rider_id" => "required|int",
+            "name" => "required",
+            'phoneno' => 'required|max:10',
+            "email" => "required",
+            "address"=> "required",
+            "password" => "min:8"
         ]);
 
         $this->service->updateDeliveryBoy($request->rider_id, $request->all());
@@ -65,6 +70,13 @@ class DeliveryBoyController extends Controller
         return response()->json([
             "status" => "Success",
             "message" => "Availability updated successfully."
+        ]);
+    }
+
+    public function getDeliveryBoyProfile(int $id){
+        return response()->json([
+            "status" => "Success",
+            "message" => $this->service->deliveryBoyProfile($id)
         ]);
     }
 

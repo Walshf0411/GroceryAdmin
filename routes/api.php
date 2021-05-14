@@ -134,6 +134,7 @@ Route::prefix('/deliveryboy')->group(function () {
     Route::get('/status/',"API\DeliveryBoyController@getDeliveryBoyStatus" )->name('deliveryboy.status');
     Route::post('/update/',"API\DeliveryBoyController@updateDeliveryBoyDetails" )->name('deliveryboy.update');
     Route::post('/update/status/',"API\DeliveryBoyController@updateDeliveryBoyStatus" )->name('deliveryboy.update.status');
+    Route::get('/profile/{id}', "API\DeliveryBoyController@getDeliveryBoyProfile")->name('deliveryboy.profile');
 });
 
 
