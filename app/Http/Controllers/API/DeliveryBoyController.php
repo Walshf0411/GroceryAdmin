@@ -31,6 +31,20 @@ class DeliveryBoyController extends Controller
         return response()->json(["orders"=>$this->service->getListOfOrdersByRider($id, $orderStatus)]);
     }
 
+    public function completeOrder(Request $request) {
+        $request->validate([
+            "order_id" => "required|int",
+            "customer_signature" => "required|string"
+        ]);
+
+        $updateStatus = $this->service->completeOrder($request->order_id, $request->customer_signature);
+
+        return response()->json([
+            "status" => $updateStatus? "Success": "Failure",
+            "message" => $updateStatus? "Order completed!" : "Order could not be completed"
+        ], $updateStatus ? 200 : 400);
+    }
+
     public function getDeliveryBoyStatus(Request $request) {
         $request->validate([
             "rider_id" => "required|int"

@@ -29,7 +29,8 @@ class Orders extends Model
         'mode_of_payment',
         'date_of_delivery',
         'payment_id',
-        'comment'
+        'comment',
+        'customer_signature'
      ];
 
     public function customer() {

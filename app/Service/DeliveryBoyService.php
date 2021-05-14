@@ -107,6 +107,16 @@ class DeliveryBoyService{
         DeliveryBoy::findOrFail($riderId)->update($data);
     }
 
+    public function completeOrder(int $orderId, $customerSignature) {
+        $order = Orders::findOrFail($orderId);
 
+        if ($order->status != "Out For Delivery") {
+            return false;
+        }
+        $order->status = "Delivered";
+        $order->customer_signature = $customerSignature;
+
+        return $order->save();
+    }
 }
 ?>
