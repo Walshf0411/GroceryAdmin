@@ -85,11 +85,28 @@ class DeliveryBoyService{
         return "Delivery Boy Deleted Successfullly";
     }
     public function getDeliveryBoyAvailability($riderId) {
-        return DeliveryBoy::findOrFail($riderId)->is_available;
+        $cancelled = Orders::select(DB::raw('count(*) as cancelled'))
+        ->where("rider_id", $riderId)
+        ->where("status", "Cancelled")->get();
+        $delivered = Orders::select(DB::raw('count(*) as delivered'))
+        ->where("rider_id", $riderId)
+        ->where("status", "Delivered")->get();
+        $sales = Orders::select(DB::raw('sum(total_amount) as sales'))
+        ->where("rider_id", $riderId)
+        ->where("status", "Delivered")->get();
+
+        $message  = (object)[];
+        $message->status =DeliveryBoy::findOrFail($riderId)->is_available;
+        $message->cancelled = $cancelled['0']->cancelled;
+        $message->delivered = $delivered['0']->delivered;
+        $message->sales = $sales['0']->sales;
+        return $message;
     }
 
     public function updateDeliveryBoy(int $riderId, $data) {
         DeliveryBoy::findOrFail($riderId)->update($data);
     }
+
+
 }
 ?>
