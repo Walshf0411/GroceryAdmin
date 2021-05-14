@@ -78,13 +78,32 @@ class OrderService{
         return $final_orders;
     }
 
-    public function cancellOrder($id, Request $request){
+    public function cancelOrder(int $id, $comment) {
+        $orderDetails = DB::select("SELECT status FROM orders WHERE id = ?", [$id]);
+
+        if (count($orderDetails) == 0) {
+            return false;
+        } else if (count($orderDetails) > 1 || $orderDetails[0]->status != "Pending") {
+            return false;
+        }
+
         $description = DB::select("select * from orderdescription where order_id = ?",[$id]);
+
         foreach($description as $detail){
             DB::update("update product2 set unit = unit + ? where id = ?",[$detail->counts, $detail->product_id]);
         }
-        DB::update("update orders set status = 'Cancelled', comment = ? where id = ? ",[$request->comment, $id]);
-        return "Order Cancelled Sucessfully";
+
+        return DB::update("update orders set status = 'Cancelled', comment = ? where id = ? ",[$comment, $id]);
+    }
+
+    public function updateOrderStatus(int $id, $status) {
+        $orderDetails = DB::select("SELECT * FROM orders WHERE id = ?", [$id]);
+
+        if (count($orderDetails) == 0 || count($orderDetails) > 1) {
+            return false;
+        }
+
+        return DB::update("UPDATE orders SET status = ? WHERE id = ? ",[$status, $id]);
     }
 
 

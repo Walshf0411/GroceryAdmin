@@ -8,6 +8,7 @@ use App\Model\Customer;
 use App\Model\DeliveryBoy;
 use App\Model\Orders;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -109,6 +110,30 @@ class DeliveryBoyService{
         DeliveryBoy::findOrFail($riderId)->update($data);
     }
 
+
+    public function completeOrder(int $orderId, $customerSignature) {
+        $order = Orders::findOrFail($orderId);
+
+        if ($order->status != "Out For Delivery") {
+            return false;
+        }
+        $file = base64_decode($customerSignature);
+        $safeName = "1.png";
+        $path = storage_path("app/public/images/CustomerSignatures/$orderId/");
+        if (!File::exists($path)) {
+            File::makeDirectory($path);
+        }
+
+        $success = File::put($path.$safeName, $file);
+        if(!$success){
+            return false;
+        }
+
+        $order->status = "Delivered";
+        $order->customer_signature = $safeName;
+
+        return $order->save();
+    }
 
 }
 ?>

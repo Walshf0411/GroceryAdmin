@@ -107,6 +107,7 @@ Route::prefix('/customer')->group(function () {
     Route::post('/addOrder', 'API\OrderApiController@addOrder')->name('add.order');
     Route::get('/listOrderByCustomer/{id}', 'API\OrderApiController@getOrdersByCustomer')->name('customer.orders');
     Route::post('/cancelOrder/{orderid}', 'API\OrderApiController@cancellOrder')->name('customer.cancel.order');
+    Route::post("order/update/status", "API\OrderApiController@updateOrderStatus")->name("customer.update.order.staus");
     //Mode of Payment
     Route::get('/modeOfPayment', 'API\ModeOfPaymentApiController@getAllModes')->name('customer.paymentMode.list');
 
@@ -130,10 +131,26 @@ Route::get('/product_category/{id}', 'API\CategoryApiController@list_product_cat
 Route::prefix('/deliveryboy')->group(function () {
     Route::post('/login',"API\DeliveryBoyController@login" )->name('deliveryboy.login');
     Route::get('/orders/{id}/{orderStatus?}',"API\DeliveryBoyController@getListOfOrdersByRider" )->name('deliveryboy.orders');
+    Route::post('/orders/complete/',"API\DeliveryBoyController@completeOrder")->name('deliveryboy.orders.complete');
     Route::get('/status/',"API\DeliveryBoyController@getDeliveryBoyStatus" )->name('deliveryboy.status');
     Route::post('/update/',"API\DeliveryBoyController@updateDeliveryBoyDetails" )->name('deliveryboy.update');
     Route::post('/update/status/',"API\DeliveryBoyController@updateDeliveryBoyStatus" )->name('deliveryboy.update.status');
     Route::get('/profile/{id}', "API\DeliveryBoyController@getDeliveryBoyProfile")->name('deliveryboy.profile');
+
+    // notifications
+    Route::get("/notifications/read/{userId}", 'API\DeliveryBoyNotificationsController@getReadNotifications')
+            ->name("vendor.notifications.read");
+
+    Route::get("/notifications/unread/{userId}", 'API\DeliveryBoyNotificationsController@getUnreadNotifications')
+            ->name("vendor.notifications.unread");
+
+    Route::get("/notifications/mark/read/{notificationId}", 'API\DeliveryBoyNotificationsController@markNotificationRead')
+            ->name("vendor.notifications.mark.read");
+
+    Route::get("/notifications/mark/read/all/{userId}", 'API\DeliveryBoyNotificationsController@markNotificationsRead')
+            ->name("vendor.notifications.mark.read.all");
+
+
 });
 
 
