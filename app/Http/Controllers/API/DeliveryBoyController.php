@@ -48,7 +48,7 @@ class DeliveryBoyController extends Controller
             'phoneno' => 'required|max:10',
             "email" => "required",
             "address"=> "required",
-            "password" => "min:8"
+            "password" => ""
         ]);
 
         $this->service->updateDeliveryBoy($request->rider_id, $request->all());
