@@ -2,6 +2,7 @@
 
 namespace App\Notifications\Customer;
 
+use App\Mail\Customer\OrderPlacedMail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -45,11 +46,8 @@ class OrderPlacedNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        // TODO: update the content here
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+        return (new OrderPlacedMail($this->order))
+                    ->to($notifiable->email_id);
     }
 
     /**

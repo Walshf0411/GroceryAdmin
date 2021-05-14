@@ -17,4 +17,8 @@ class OrderDescription extends Model
         return $this->belongsTo("App\Model\Vendor", "vendor_id");
     }
 
+    public function product() {
+        return $this->belongsTo("App\Model\Product2", "product_id");
+    }
+
 }

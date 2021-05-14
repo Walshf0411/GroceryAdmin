@@ -37,6 +37,10 @@ class Orders extends Model
         return $this->belongsTo("App\Model\Customer", "customer_id");
     }
 
+    public function address() {
+        return $this->belongsTo("App\Model\Address");
+    }
+
     public function products() {
         return $this->hasMany("App\Model\OrderDescription", "order_id");
     }
