@@ -136,6 +136,20 @@ Route::prefix('/deliveryboy')->group(function () {
     Route::post('/update/',"API\DeliveryBoyController@updateDeliveryBoyDetails" )->name('deliveryboy.update');
     Route::post('/update/status/',"API\DeliveryBoyController@updateDeliveryBoyStatus" )->name('deliveryboy.update.status');
     Route::get('/profile/{id}', "API\DeliveryBoyController@getDeliveryBoyProfile")->name('deliveryboy.profile');
+
+    // notifications
+    Route::get("/notifications/read/{userId}", 'API\DeliveryBoyNotificationsController@getReadNotifications')
+            ->name("vendor.notifications.read");
+
+    Route::get("/notifications/unread/{userId}", 'API\DeliveryBoyNotificationsController@getUnreadNotifications')
+            ->name("vendor.notifications.unread");
+
+    Route::get("/notifications/mark/read/{notificationId}", 'API\DeliveryBoyNotificationsController@markNotificationRead')
+            ->name("vendor.notifications.mark.read");
+
+    Route::get("/notifications/mark/read/all/{userId}", 'API\DeliveryBoyNotificationsController@markNotificationsRead')
+            ->name("vendor.notifications.mark.read.all");
+
 });
 
 
