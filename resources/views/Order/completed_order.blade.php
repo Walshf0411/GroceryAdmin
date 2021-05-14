@@ -1,5 +1,5 @@
 @extends('template')
-@section('title', 'List Orders')
+@section('title', 'List Completed Orders')
 @section('content')
 <section id="dom">
     <div class="row">

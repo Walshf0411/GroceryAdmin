@@ -150,6 +150,7 @@ Route::prefix('/deliveryboy')->group(function () {
     Route::get("/notifications/mark/read/all/{userId}", 'API\DeliveryBoyNotificationsController@markNotificationsRead')
             ->name("vendor.notifications.mark.read.all");
 
+
 });
 
 

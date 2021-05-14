@@ -105,8 +105,11 @@ class DeliveryBoyService{
     }
 
     public function updateDeliveryBoy(int $riderId, $data) {
+        if(isset($data['password'])){$data["password"] = Hash::make($data["password"]);}
+        // dd($data['password']);
         DeliveryBoy::findOrFail($riderId)->update($data);
     }
+
 
     public function completeOrder(int $orderId, $customerSignature) {
         $order = Orders::findOrFail($orderId);
@@ -131,5 +134,6 @@ class DeliveryBoyService{
 
         return $order->save();
     }
+
 }
 ?>

@@ -37,6 +37,7 @@ class DeliveryBoyController extends Controller
             "customer_signature" => "required|string"
         ]);
 
+
         $updateStatus = $this->service->completeOrder($request->order_id, $request->customer_signature);
 
         return response()->json([
@@ -50,6 +51,7 @@ class DeliveryBoyController extends Controller
             "rider_id" => "required|int"
         ]);
 
+
         return response()->json(
              $this->service->getDeliveryBoyAvailability($request->rider_id)
         );
@@ -62,7 +64,9 @@ class DeliveryBoyController extends Controller
             'phoneno' => 'required|max:10',
             "email" => "required",
             "address"=> "required",
-            "password" => "min:8"
+
+            "password" => ""
+
         ]);
 
         $this->service->updateDeliveryBoy($request->rider_id, $request->all());

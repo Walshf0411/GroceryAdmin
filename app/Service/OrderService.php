@@ -134,6 +134,10 @@ class OrderService{
         return DB::select('select * from orders where status = "cancelled"');
     }
 
+    public function getUnassignedOrdersDetails(){
+        return Orders::where("status", "Pending")
+        ->where("rider_id", null)->get();
+    }
 
 
 }

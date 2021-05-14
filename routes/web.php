@@ -133,6 +133,7 @@ Route::get('/list_order', 'OrderController@listOrders')->name('list_order');
 Route::get('/pending_order', 'OrderController@pendingOrders')->name('pending_order');
 Route::get('/completed_order', 'OrderController@completedOrders')->name('completed_order');
 Route::get('/cancelled_order', 'OrderController@cancelledOrders')->name('cancelled_order');
+Route::get('/unassignedOrder', 'OrderController@unassignedOrders')->name('order.unassigned');
 Route::get('/showAddress/{id}', 'AddressController@getAddress')->name('show_orderaddress');
 Route::get('/showCustomer/{id}', 'CustomerController@getCustomer')->name('show_ordercustomer');
 Route::get('/orderDetails/{id}', 'OrderController@orderDetails')->name('show_orderdetails');
