@@ -60,7 +60,7 @@ class OrderService{
         }
 
         foreach($productsByVendor as $vendorId => $productsList) {
-            Vendor::find($vendorId)->notify(new OrderReceivedNotification($productsList));
+            Vendor::find($vendorId)->notify(new OrderReceivedNotification($order->id, $productsList));
         }
 
         // Notify the customer about the order being placed
