@@ -26,7 +26,7 @@
                                     <th>Mode of Payment</th>
 									<th>Date of Delivery</th>
                                     <th>Comment</th>
-                                    {{-- <th>Action</th> --}}
+                                    <th>Action</th>
 
                                 </tr>
                             </thead>
@@ -41,11 +41,11 @@
                                     <td>{{ $row->total_amount }}</td>
                                     <td>{{ $row->timeslot }}</td>
                                     <td>{{ $row->status }}</td>
-                                    <td>{{ $row->rider_id }}</td>
+                                    <td><a href="../viewDeliveryBoy/{{ $row->rider_id }}">{{ $row->rider_id }}</a></td>
                                     <td>{{ $row->mode_of_payment }}</td>
                                     <td>{{ $row->date_of_delivery }}</td>
                                    <td>{{ $row->comment }}</td>
-                                   {{-- <td></td> --}}
+                                   <td><a href= "../order/delete/{{ $row->id }}">Delete</a></td>
 
                                 </tr>
                                 @endforeach
