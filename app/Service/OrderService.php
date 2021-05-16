@@ -2,12 +2,17 @@
 
 namespace App\Service;
 
+use App\Model\Address;
 use App\Model\TempProduct2;
 use App\Model\Product2;
 use App\Model\Category;
+use App\Model\DeliveryBoy;
+use App\Model\ModeOfPayment;
 use App\Model\Vendor;
 use App\Model\Orders;
 use App\Model\OrderDescription;
+use App\Model\Status;
+use App\Model\Timeslot;
 use App\Notifications\Customer\OrderPlacedNotification;
 use App\Notifications\Vendor\OrderReceivedNotification;
 use Illuminate\Http\Request;
@@ -70,7 +75,7 @@ class OrderService{
     }
 
     public function getOrdersByCustomer($id){
-        $orders = DB::select('select * from orders where customer_id = ?', [$id]);
+        $orders = Orders::where("customer_id", $id)->get();
         $final_orders = array();
         foreach($orders as $order){
             $orderdescription = DB::select('select * from orderdescription where order_id = ? order by created_at desc', [$order->id]);
@@ -148,5 +153,36 @@ class OrderService{
         ->where("rider_id", null)->get();
     }
 
+    public function deleteOrder($id){
+        OrderDescription::where("order_id", $id)->delete();
+        return Orders::where("id", $id)->delete();
+    }
+
+    public function editOrder(int $id, $request){
+        Orders::findOrFail($id)->update($request);
+    }
+    public function editOrderDescription(int $id, $request){
+        OrderDescription::findOrFail($id)->update($request);
+    }
+    public function getSingleOrder($id){
+        $order = (object)[];
+        $details =DB::table("orders")->where("id",$id)->get();
+        // dd($details);
+        if(count($details)==0) return $order;
+        $order->details = $details['0'];
+        $description = DB::table("orderdescription")->where("order_id", $id)->get();
+        foreach($description as $item){
+            $item->vendor = DB::table("vendors")->where("id", $item->vendor_id)->get()['0'];
+            $item->product = DB::table("product2")->where("id", $item->product_id)->get()['0'];
+        }
+        $order->description = $description;
+        $order->address = DB::table("address")->where("customer_id", $order->details->customer_id)->get();
+        $order->timeslots = Timeslot::all();
+        $order->status = Status::all();
+        $order->rider = DeliveryBoy::all();
+        $order->mop = ModeOfPayment::all();
+        // dd($order);
+        return $order;
+    }
 
 }

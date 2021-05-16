@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\OrderDescription;
 use App\Model\Orders;
 use Illuminate\Http\Request;
 use App\Service\OrderService;
@@ -47,5 +48,20 @@ class OrderController extends Controller
     public function unassignedOrders(){
         $orders = $this->service->getUnassignedOrdersDetails();
         return view('Order.unassigned_orders', ["orders" => $orders]);
+    }
+
+    public function deleteOrder($id){
+        $delete = $this->service->deleteOrder($id);
+        if($delete){return $this->listOrders()->with('success', 'Order Deleted Successfully');}
+        else{return redirect()->back()->with('error','order could not be deleted');}
+    }
+
+    public function editOrder($id){
+        $order = $this->service->getSingleOrder($id);
+        if($order!=(object)[]){
+            return view('Order.editOrder', ["order"=>$order]);
+        }else{
+            return redirect()->back()->with('error','this order does not exists');
+        }
     }
 }

@@ -28,32 +28,32 @@ Auth::routes(['register' => false]); //,  'reset' => false
 // 	return ("hello walsh");
 // });
 
-Route::match(array("GET", "POST"), '/deploy/asdfghjkl', function() {
-    $commands = array(
-        ["git", "pull", "git@github.com:Walshf0411/GroceryAdmin.git"],
-        ["cp", "-af", "public/.", "../public_html"],
-        ["cp", "-af", ".", "../"],
-        ["unlink", "/home1/creatio5/public_html/storage"],
-        ["ln", "-s", "/home1/creatio5/storage/app/public", "/home1/creatio5/public_html/storage"],
-        ["git", "status"],
-    );
+// Route::match(array("GET", "POST"), '/deploy/asdfghjkl', function() {
+//     $commands = array(
+//         ["git", "pull", "git@github.com:Walshf0411/GroceryAdmin.git"],
+//         ["cp", "-af", "public/.", "../public_html"],
+//         ["cp", "-af", ".", "../"],
+//         ["unlink", "/home1/creatio5/public_html/storage"],
+//         ["ln", "-s", "/home1/creatio5/storage/app/public", "/home1/creatio5/public_html/storage"],
+//         ["git", "status"],
+//     );
 
-    echo "Starting to deploy<br>";
+//     echo "Starting to deploy<br>";
 
-    foreach($commands as $cmd) {
-        echo "<br>Running command: ".implode(" ", $cmd);
+//     foreach($commands as $cmd) {
+//         echo "<br>Running command: ".implode(" ", $cmd);
 
-        $process = new Process($cmd);
-        $process->setWorkingDirectory("/home1/creatio5/GroceryAdmin");
-        $process->run();
+//         $process = new Process($cmd);
+//         $process->setWorkingDirectory("/home1/creatio5/GroceryAdmin");
+//         $process->run();
 
-        if (!$process->isSuccessful()) {
-            throw new ProcessFailedException($process);
-        }
-        echo "<br>Command output: ".$process->getOutput();
-        echo "<br>";
-    }
-});
+//         if (!$process->isSuccessful()) {
+//             throw new ProcessFailedException($process);
+//         }
+//         echo "<br>Command output: ".$process->getOutput();
+//         echo "<br>";
+//     }
+// });
 
 Route::get('/', 'HomeController@index')->name('');
 Route::get('/home', 'HomeController@index')->name('home');
@@ -138,7 +138,8 @@ Route::get('/showAddress/{id}', 'AddressController@getAddress')->name('show_orde
 Route::get('/showCustomer/{id}', 'CustomerController@getCustomer')->name('show_ordercustomer');
 Route::get('/orderDetails/{id}', 'OrderController@orderDetails')->name('show_orderdetails');
 Route::get('/total/{id}', 'Product2Controller@total')->name('total');
-
+Route::get('/order/delete/{id}', 'OrderController@deleteOrder')->name('order.delete');
+Route::get('/order/edit/{id}', 'OrderController@editOrder')->name('order.edit');
 //Address
 Route::get('/listAddress/{id}', 'AddressController@listAddress')->name('list_address');
 
