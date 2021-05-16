@@ -71,17 +71,17 @@ Route::prefix('/vendor')->group(function () {
     Route::get('getOrderByVendor/{vendorId}', 'API\OrderApiController@getOrderByVendor')->name('vendor.order.list');
 
     // notifications
-    // Route::get("/notifications/read/{userId}", 'API\VendorNotificationsController@getReadNotifications')
-    //         ->name("vendor.notifications.read");
+    Route::get("/notifications/read/{userId}", 'API\VendorNotificationsController@getReadNotifications')
+            ->name("vendor.notifications.read");
 
-    // Route::get("/notifications/unread/{userId}", 'API\VendorNotificationsController@getUnreadNotifications')
-    //         ->name("vendor.notifications.unread");
+    Route::get("/notifications/unread/{userId}", 'API\VendorNotificationsController@getUnreadNotifications')
+            ->name("vendor.notifications.unread");
 
-    // Route::get("/notifications/mark/read/{notificationId}", 'API\VendorNotificationsController@markNotificationRead')
-    //         ->name("vendor.notifications.mark.read");
+    Route::get("/notifications/mark/read/{notificationId}", 'API\VendorNotificationsController@markNotificationRead')
+            ->name("vendor.notifications.mark.read");
 
-    // Route::get("/notifications/mark/read/all/{userId}", 'API\VendorNotificationsController@markNotificationsRead')
-    //         ->name("vendor.notifications.mark.read.all");
+    Route::get("/notifications/mark/read/all/{userId}", 'API\VendorNotificationsController@markNotificationsRead')
+            ->name("vendor.notifications.mark.read.all");
 });
 
 
