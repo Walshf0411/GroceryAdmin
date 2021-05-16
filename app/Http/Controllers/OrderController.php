@@ -66,6 +66,25 @@ class OrderController extends Controller
     }
 
     public function updateOrder(Request $request,$id){
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|int',
+            'customer_id' => 'required|int',
+            'address_id' => 'required|int',
+            'amount' => 'required',
+            'delivery_charges' => 'required',
+            'total_amount' => 'required',
+            'tiemslot' => 'required|date',
+            'status' => 'required|max:255',
+            'rider_id' => 'required|int',
+            'mode_of_payment' => 'required',
+            'date_of_delivery' => 'required',
+            'comment' => 'max:255',
+            
+          ]);
+
+        if($validator->fails()){
+            redirect()->back()->with('error',$validator);
+        }
         if($this->service->updateOrder($request->all(), $id)){
             return redirect()->route('list_order', ["orders"=>$this->service->ordersList()])->with('success', 'Order Edited Successfully');
             // $this->listOrders()->with('success', 'Order Edited Successfully');

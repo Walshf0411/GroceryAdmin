@@ -64,7 +64,6 @@ class DeliveryBoyController extends Controller
             'phoneno' => 'required|max:10',
             "email" => "required",
             "address"=> "required",
-
             "password" => ""
 
         ]);

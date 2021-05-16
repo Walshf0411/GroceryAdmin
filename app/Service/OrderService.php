@@ -150,7 +150,7 @@ class OrderService{
 
     public function getUnassignedOrdersDetails(){
         return Orders::where("status", "Pending")
-        ->where("rider_id", null)->get();
+        ->where("rider_id", 0)->get();
     }
 
     public function deleteOrder($id){
