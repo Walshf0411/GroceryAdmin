@@ -1,5 +1,5 @@
 @extends('template')
-@section('title', 'List Orders')
+@section('title', 'List Unassigned Orders')
 @section('content')
 <section id="dom">
     <div class="row">
@@ -54,6 +54,8 @@
                                             <i class="ft-trash font-medium-3"></i>
                                         </a>
                                     </td>
+
+
                                 </tr>
                                 @endforeach
                             </tbody>
