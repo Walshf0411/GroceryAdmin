@@ -26,7 +26,7 @@
                                     <th>Mode of Payment</th>
 									<th>Date of Delivery</th>
                                     <th>Comment</th>
-
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,7 +44,15 @@
                                     <td>{{ $row->mode_of_payment }}</td>
                                     <td>{{ $row->date_of_delivery }}</td>
                                    <td>{{ $row->comment }}</td>
-
+                                   <td>
+                                        <a class="primary"  href="../order/edit/{{ $row->id }}" data-original-title="" title="Edit Order">
+                                            <i class="fa fa-ban font-medium-3"></i>
+                                        </a>
+                                        
+                                        <a class="danger" href="../order/delete/{{ $row->id }}" data-original-title="" title="Delete Order">
+                                            <i class="ft-trash font-medium-3"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

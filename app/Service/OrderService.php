@@ -176,4 +176,8 @@ class OrderService{
         return $order;
     }
 
+    public function updateOrder($request, int $id){
+        return Orders::findOrFail($id)->update($request);
+    }
+
 }
