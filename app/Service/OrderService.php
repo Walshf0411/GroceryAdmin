@@ -16,6 +16,7 @@ use App\Model\Timeslot;
 use App\Notifications\Customer\OrderPlacedNotification;
 use App\Notifications\Vendor\OrderReceivedNotification;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\DB;
@@ -55,8 +56,16 @@ class OrderService{
             $orderdescription->product_id = $order_description['product_id'];
             $orderdescription->counts = $order_description['counts'];
             $orderdescription->save();
+        }
 
-            $orderdescription->vendor->notify(new OrderReceivedNotification($orderdescription));
+        $productsByVendor = [];
+
+        foreach ($order->products as $product) {
+            $productsByVendor[$product->vendor->id][] = $product;
+        }
+
+        foreach($productsByVendor as $vendorId => $productsList) {
+            Vendor::find($vendorId)->notify(new OrderReceivedNotification($order->id, $productsList));
         }
 
         // Notify the customer about the order being placed

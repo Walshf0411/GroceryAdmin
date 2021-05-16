@@ -2,6 +2,7 @@
 
 namespace App\Notifications\Vendor;
 
+use App\Mail\Vendor\OrderReceivedMail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,16 +12,17 @@ class OrderReceivedNotification extends Notification
 {
     use Queueable;
 
-    private $orderDescription;
+    private $productsList;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($orderDescription)
+    public function __construct(int $orderId, $productsList)
     {
-        $this->orderDescription = $orderDescription;
+        $this->orderId = $orderId;
+        $this->productsList = $productsList;
     }
 
     /**
@@ -42,10 +44,8 @@ class OrderReceivedNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+        return (new OrderReceivedMail($this->orderId, $this->productsList, $notifiable))
+                    ->to($notifiable->email_id);
     }
 
     /**
@@ -59,7 +59,7 @@ class OrderReceivedNotification extends Notification
         return [
             "message" => "Order received",
             "details" => [
-                "product" => $this->orderDescription
+                "product" => $this->productsList,
             ]
         ];
     }

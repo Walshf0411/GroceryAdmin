@@ -27,4 +27,8 @@ class Product2 extends Model
     {
         return $this->belongsTo(Vendor::class, 'foreign_key', 'other_key');
     }
+
+    public function orderDescriptions() {
+        return $this->hasMany("App\Model\OrderDescription", "product_id");
+    }
 }
