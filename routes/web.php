@@ -140,6 +140,7 @@ Route::get('/orderDetails/{id}', 'OrderController@orderDetails')->name('show_ord
 Route::get('/total/{id}', 'Product2Controller@total')->name('total');
 Route::get('/order/delete/{id}', 'OrderController@deleteOrder')->name('order.delete');
 Route::get('/order/edit/{id}', 'OrderController@editOrder')->name('order.edit');
+Route::post('/order/update/{id}', 'OrderController@updateOrder')->name('order.update');
 //Address
 Route::get('/listAddress/{id}', 'AddressController@listAddress')->name('list_address');
 

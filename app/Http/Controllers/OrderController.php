@@ -64,4 +64,12 @@ class OrderController extends Controller
             return redirect()->back()->with('error','this order does not exists');
         }
     }
+
+    public function updateOrder(Request $request,$id){
+        if($this->service->updateOrder($request->all(), $id)){
+            return redirect()->route('list_order', ["orders"=>$this->service->ordersList()])->with('success', 'Order Edited Successfully');
+            // $this->listOrders()->with('success', 'Order Edited Successfully');
+        }
+        return redirect()->back()->with('error','order could not be edited');
+    }
 }
