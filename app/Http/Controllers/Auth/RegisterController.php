@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+// use App\Rules\Captcha;
 
 class RegisterController extends Controller
 {
@@ -53,6 +54,19 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            // 'captcha' => ['required|captcha'],
+            // 'g-recaptcha-response' => new Captcha(),
+            // 'g-recaptcha-response' => function($attribute, $value, $fail){
+            //     $secretKey = '6LcNrKoaAAAAAOxc10x1ftYphsK5PFHwECep3iye' ;
+            //     $response = $value;
+            //     $userIP = $_SERVER['REMOTE_ADDR'];
+            //     $url = "https://www.google.com/recaptcha/api/siteverify?secretkey=$secretKey&response=$response&remoteip=$userIP";
+            //     $response = \file_get_contents($url);
+            //     $response = json_decode($response);
+            //     if (!$response->success){
+            //         $fail($attribute. 'google reCaptcha failed');
+            //     }
+            // }
         ]);
     }
 
@@ -64,10 +78,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    // public function refreshCaptcha()
+    // {
+    //     return response()->json(['captcha'=> captcha_img()]);
+    // }
 }

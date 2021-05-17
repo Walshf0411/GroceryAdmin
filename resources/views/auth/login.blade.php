@@ -1,5 +1,8 @@
 @include('layouts.head')
 
+@section('scripts')
+{!! NoCaptcha::renderJs() !!}
+@stop
 {{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -115,6 +118,59 @@
                                 </div>
                               </div>
 
+                              {{-- <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="captcha">
+                                        <span>{!! captcha_img() !!}</span>
+                                        <button type="button" class="btn btn-success"><i class="fa fa-refresh" id="refresh"></i></button>
+                                    </div>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <div class="col-md-12">
+                                    <input id="captcha" type="text" class="form-control" @error('captcha') is-invalid @enderror placeholder="Enter Captcha" name="captcha" required>
+                                    @error('captcha')
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                      </span>
+                                    @enderror
+                                </div>
+                              </div> --}}
+
+                              {{-- <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                                <label class="col-md-4 control-label">Captcha</label>
+                                <div class="col-md-6 pull-center">
+                                {!! app('captcha')->display() !!}
+                                @if ($errors->has('g-recaptcha-response'))
+                                <span class="help-block">
+                                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                </span>
+                                @endif
+                                </div>
+                                </div> --}}
+
+
+
+                            {{-- <div class="form-group">
+                                <div class="col-md-12">
+                                <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY')}}"></div>
+                                <div class="g-recaptcha" data-sitekey= 6LcNrKoaAAAAAOxc10x1ftYphsK5PFHwECep3iye></div>
+
+                                @if($errors->has('g-recaptcha-response'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{$errors->first('g-recaptcha-response')}}</strong>
+                                        </span>
+                                @endif
+                                </div>
+                            </div> --}}
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    {!! NoCaptcha::display() !!}
+                                </div>
+                            </div>
+
 
 
                               <div class="form-group">
@@ -134,4 +190,21 @@
       </div>
   </div>
 </section>
-
+{{-- <script type="text/javascript">
+    $('#refresh').click(function(){
+      $.ajax({
+         type:'GET',
+         url:'refreshcaptcha',
+         success:function(data){
+            $(".captcha span").html(data.captcha);
+         }
+      });
+    });
+</script> --}}
+{{-- <script type="text/javascript">
+    var onloadCallback = function() {
+      grecaptcha.render('html_element', {
+        'sitekey' : 6Lf3s6kaAAAAAFAc4BUgzUXvWz6LstbKml3u69Kj
+      });
+    };
+</script> --}}

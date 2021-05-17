@@ -61,6 +61,17 @@
                             </div>
                         </div>
 
+                        {{-- <div class="form-group row">
+                            <div class="col-md-6">
+                               <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY')}}"></div>
+                               @error('g-recaptcha-response')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div> --}}
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

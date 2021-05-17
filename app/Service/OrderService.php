@@ -148,5 +148,45 @@ class OrderService{
         ->where("rider_id", null)->get();
     }
 
+    public function editOrderDescription($id){
+        $orderdescription = DB::select('select * FROM orderdescription where id = ?', [$id]);
+        if($orderdescription==[]){
+            return redirect()->back()->with("error","Data Not Found ");
+        }
+        return $orderdescription;
+    }
+
+    public function updateOrderDescription($request, $id){
+        $orderdescription = DB::select('select * from orderdescription where id = ?', [$id]);
+        if($orderdescription==[]){
+            return redirect()->back()->with("Error","Data Not Found ");
+        }else{
+            return DB::update('update orderdescription set counts = ? where id = ?',
+            [ $request['counts'],$id]);
+        }
+    }
+
+    public function addValue($productId,$addedCount){
+        $quantity = DB::update("update product2 set unit  = unit + ? where id = ?",[$addedCount,$productId]);
+    }
+
+    public function checkAvail($productId,$addedCount){
+        $quantity = DB::select('select unit from product2 where id = ?',[$productId]);
+        $count = $addedCount * -1 ;
+        if($quantity==[]){
+            return redirect()->back()->with("Error","Product Not Found ");
+        }else{
+                if($quantity['0']->unit<$count){
+                        return false;
+                }else{
+                        $this->addValue($productId, $addedCount);
+                        return true;
+                }
+        }
+    }
+
+    public function listOrderDescription(){
+        return OrderDescription::all();
+    }
 
 }

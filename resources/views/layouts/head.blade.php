@@ -58,5 +58,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/prism.min.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/app.css') }}">
+    {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
+    {{-- <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+    </script> --}}
     <title>@yield('title')</title>
+    @yield('scripts')
   </head>

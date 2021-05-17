@@ -75,7 +75,7 @@ class DeliveryBoyController extends Controller
             "status" => "Success",
             "message" => "Rider deails updated successfully."
         ]);
-    }
+    } 
 
     public function updateDeliveryBoyStatus(Request $request) {
         $request->validate([
