@@ -6,6 +6,8 @@ use App\Model\OrderDescription;
 use App\Model\Orders;
 use Illuminate\Http\Request;
 use App\Service\OrderService;
+use Illuminate\Support\Facades\Validator;
+
 class OrderController extends Controller
 {
 
@@ -79,13 +81,15 @@ class OrderController extends Controller
             'mode_of_payment' => 'required',
             'date_of_delivery' => 'required',
             'comment' => 'max:255',
-            
+
           ]);
 
         if($validator->fails()){
             redirect()->back()->with('error',$validator);
         }
         if($this->service->updateOrder($request->all(), $id)){
+        $order->customer->notify(new OrderPlacedNotification($order));
+
             return redirect()->route('list_order', ["orders"=>$this->service->ordersList()])->with('success', 'Order Edited Successfully');
             // $this->listOrders()->with('success', 'Order Edited Successfully');
         }

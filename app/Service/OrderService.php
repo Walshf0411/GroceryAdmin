@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Mail\Customer\OrderUpdatedMail;
 use App\Model\Address;
 use App\Model\TempProduct2;
 use App\Model\Product2;
@@ -11,9 +12,11 @@ use App\Model\ModeOfPayment;
 use App\Model\Vendor;
 use App\Model\Orders;
 use App\Model\OrderDescription;
+use App\Model\Product;
 use App\Model\Status;
 use App\Model\Timeslot;
 use App\Notifications\Customer\OrderPlacedNotification;
+use App\Notifications\Customer\OrderUpdatedNotification;
 use App\Notifications\Vendor\OrderReceivedNotification;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
@@ -128,7 +131,12 @@ class OrderService{
     }
 
     public function getOrderDetails($id){
-        return DB::select("select p.*,v.name as vendor_name from product2 as p,vendors as v, orderdescription AS od where od.order_id = ? and od.product_id = p.id and od.vendor_id=v.id order by p.id DESC", [$id]);
+        $orderDesc = OrderDescription::where("order_id", $id)->get();
+        foreach($orderDesc as $item){
+            $item->vendor = Vendor::where("id", $item->vendor_id)->get()['0'];
+            $item->product = Product2::where("id", $item->product_id)->get()['0'];
+        }
+        return $orderDesc;
       }
 
 
@@ -186,7 +194,29 @@ class OrderService{
     }
 
     public function updateOrder($request, int $id){
-        return Orders::findOrFail($id)->update($request);
+        // $order = Orders::where("id", $id)->get();
+        // dd($order);
+        if(!Orders::findOrFail($id)->update($request)){return false;}
+        // if(count($order) == 1){
+        //     $order->customer->notify(new OrderUpdatedMail($order));
+
+        //     $orderd = OrderDescription::where("order_id", $id)->get();
+        //     $productsByVendor = [];
+
+        //     foreach ($orderd as $product) {
+        //         $productsByVendor[$product->vendor->id][] = $product;
+        //     }
+
+        //     foreach($productsByVendor as $vendorId => $productsList) {
+        //         Vendor::find($vendorId)->notify(new OrderReceivedNotification($order->id, $productsList));
+        //     }
+
+        //     // Notify the customer about the order being placed
+        //     $order->customer->notify(new OrderUpdatedNotification($order));
+
+            return true;
+        // }
+        // return false;
     }
 
 }

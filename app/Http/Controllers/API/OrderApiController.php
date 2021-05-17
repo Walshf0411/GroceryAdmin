@@ -56,4 +56,7 @@ class OrderApiController extends Controller
                     "message" => $updateStatus ? "Order status updated successfully!": "Order status could not be updated"
                 ], $updateStatus ? 200: 400);
     }
+    public function getOrderDetails($id){
+        return response()->json(["message"=>$this->service->getOrderDetails($id)]);
+    }
 }

@@ -26,7 +26,7 @@
                                     <th>Mode of Payment</th>
 									<th>Date of Delivery</th>
                                     <th>Comment</th>
-                                    <td><a href= "../order/edit/{{ $row->id }}">Edit</a><a href= "../order/delete/{{ $row->id }}">Delete</a></td>
+                                    <td>Action</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,7 +48,7 @@
                                         <a class="primary"  href="../order/edit/{{ $row->id }}" data-original-title="" title="Edit Order">
                                             <i class="ft-edit font-medium-3"></i>
                                         </a>
-                                        
+
                                         <a class="danger" href="../order/delete/{{ $row->id }}" data-original-title="" title="Delete Order">
                                             <i class="ft-trash font-medium-3"></i>
                                         </a>
