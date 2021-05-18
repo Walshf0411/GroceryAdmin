@@ -36,18 +36,29 @@ class OrderController extends Controller
         }else{
                 $this->service->addValue($request->productId,$addedCount);
                 $this->service->updateOrderDescription($request->all() ,$id);
-                return redirect()->route('orderDescription.list')->with("success","updated successfully");
+                return redirect()->route('order.edit', ["id"=>$request->order_id])->with("success","updated successfully");
         }
 
         if($bol){
                 $this->service->updateOrderDescription($request->all() ,$id);
-                return redirect()->route('orderDescription.list')->with("success","updated successfully");
+                return redirect()->route('order.edit', ["id"=>$request->order_id])->with("success","updated successfully");
+
         }else{
-                return redirect()->route('orderDescription.list')->with("error","Stock not available");
+                return redirect()->route('order.edit', ["id"=>$request->order_id])->with("error","Stock not available");
+
         }
 
     }
 
+    public function deleteOrderDescription($id){
+        $bol = true;
+        $bol = $this->service->deleteOrderDescription($id);
+        if($bol){
+            return  redirect()->back()->with('success', 'Order Deleted Successfully');
+        }else{
+            return redirect()->back()->with('error','Single order could not be deleted');
+        }
+    }
     public function listOrderDescription(){
         $orderdescription = $this->service->listOrderDescription();
         return view('Order.listOrderDescription', ['orderdescription'=>$orderdescription]);
@@ -87,5 +98,47 @@ class OrderController extends Controller
     public function unassignedOrders(){
         $orders = $this->service->getUnassignedOrdersDetails();
         return view('Order.unassigned_orders', ["orders" => $orders]);
+    }
+
+    public function deleteOrder($id){
+        $delete = $this->service->deleteOrder($id);
+        if($delete){return $this->listOrders()->with('success', 'Order Deleted Successfully');}
+        else{return redirect()->back()->with('error','order could not be deleted');}
+    }
+
+    public function editOrder($id){
+        $order = $this->service->getSingleOrder($id);
+        if($order!=(object)[]){
+            return view('Order.editOrder', ["order"=>$order]);
+        }else{
+            return redirect()->back()->with('error','this order does not exists');
+        }
+    }
+
+    public function updateOrder(Request $request,$id){
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|int',
+            'customer_id' => 'required|int',
+            'address_id' => 'required|int',
+            'amount' => 'required',
+            'delivery_charges' => 'required',
+            'total_amount' => 'required',
+            'tiemslot' => 'required|date',
+            'status' => 'required|max:255',
+            'rider_id' => 'required|int',
+            'mode_of_payment' => 'required',
+            'date_of_delivery' => 'required',
+            'comment' => 'max:255',
+
+          ]);
+
+        if($validator->fails()){
+            redirect()->back()->with('error',$validator);
+        }
+        if($this->service->updateOrder($request->all(), $id)){
+            return redirect()->route('list_order', ["orders"=>$this->service->ordersList()])->with('success', 'Order Edited Successfully');
+            // $this->listOrders()->with('success', 'Order Edited Successfully');
+        }
+        return redirect()->back()->with('error','order could not be edited');
     }
 }
