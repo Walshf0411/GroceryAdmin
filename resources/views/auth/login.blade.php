@@ -1,8 +1,8 @@
 @include('layouts.head')
 
-@section('scripts')
+{{-- @section('scripts')
 {!! NoCaptcha::renderJs() !!}
-@stop
+@stop --}}
 {{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -165,11 +165,11 @@
                                 </div>
                             </div> --}}
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <div class="col-md-12">
                                     {!! NoCaptcha::display() !!}
                                 </div>
-                            </div>
+                            </div> --}}
 
 
 
