@@ -102,7 +102,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="customer_signature">Customer Signature</label>
-                                <input type="text" id="customer_signature"  class="form-control" value="{{ $order->details->customer_signature }}" name="customer_signature"  >
+                                @if ( $order->details->customer_signature == "")
+                                    Signature will Appearafter the order is delivered
+                                @else
+                                    <img src="..\..\storage\images\CustomerSignatures\{{ $order->details->id }}\{{ $order->details->customer_signature }}">
+                                @endif
                             </div>
 
                                 <div class="form-group">
