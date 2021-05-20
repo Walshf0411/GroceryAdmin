@@ -105,7 +105,7 @@
                                 @if ( $order->details->customer_signature == "")
                                     Signature will Appearafter the order is delivered
                                 @else
-                                    <img src="..\..\storage\images\CustomerSignatures\{{ $order->details->id }}\{{ $order->details->customer_signature }}">
+                                    <img src="..\..\storage\images\CustomerSignatures\{{ $order->details->id }}\{{ $order->details->customer_signature }}" style="height: 50vh; width:10vw">
                                 @endif
                             </div>
 
