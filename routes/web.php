@@ -141,6 +141,16 @@ Route::get('/total/{id}', 'Product2Controller@total')->name('total');
 Route::get('/order/delete/{id}', 'OrderController@deleteOrder')->name('order.delete');
 Route::get('/order/edit/{id}', 'OrderController@editOrder')->name('order.edit');
 Route::post('/order/update/{id}', 'OrderController@updateOrder')->name('order.update');
+
+//OrderDescription
+Route::prefix('/orderDescription')->group(function () {
+Route::get('/edit/{id}', 'OrderController@editOrderDescription')->name('edit');
+Route::post('/update/{id}', 'OrderController@updateOrderDescription')->name('update');
+Route::get('/list', 'OrderController@listOrderDescription')->name('orderDescription.list');
+
+});
+
+
 //Address
 Route::get('/listAddress/{id}', 'AddressController@listAddress')->name('list_address');
 
