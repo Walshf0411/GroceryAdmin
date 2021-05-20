@@ -130,11 +130,11 @@
                                     <td><a href="../../productDetails/{{ $row->product_id }}"> {{ $row->product_id }} || {{ $row->product->name }} || {{ $row->product->price }}</td>
                                     <td>{{ $row->counts }}</td>
                                     <td>
-                                        <a class="primary"  href="{{ $row->id }}" data-original-title="" title="Edit Order">
+                                        <a class="primary"  href="../../../orderDescription/edit/{{ $row->id }}" data-original-title="" title="Edit Order">
                                             <i class="ft-edit font-medium-3"></i>
                                         </a>
-                                        
-                                        <a class="danger" href="{{ $row->id }}" data-original-title="" title="Delete Order">
+
+                                        <a class="danger" href="../../../orderDescription/delete/{{ $row->id }}" data-original-title="" title="Delete Order">
                                             <i class="ft-trash font-medium-3"></i>
                                         </a>
                                     </td>
@@ -142,7 +142,7 @@
                                 </tr>
                                 @endforeach
 
-                               
+
                             </tbody>
 
                         </table>

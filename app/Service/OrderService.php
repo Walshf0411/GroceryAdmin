@@ -254,8 +254,12 @@ class OrderService{
         }
     }
 
-    public function listOrderDescription(){
-        return OrderDescription::all();
+    public function deleteOrderDescription($id){
+        $bol = DB::select("select count(*) as count from orderdescription where order_id IN (select order_id from orderdescription where id= ?)", [$id]);
+        if($bol['0']->count>1){
+            return OrderDescription::findOrFail($id)->delete();
+        }else{
+            return false;
+        }
     }
-
 }

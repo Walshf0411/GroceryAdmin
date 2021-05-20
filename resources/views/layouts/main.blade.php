@@ -122,8 +122,7 @@ padding: 7px;"></span></a>
                 </li>
                 <li><a href="{{ route('order.unassigned') }}" class="menu-item">Unassigned Order List</a>
                 </li>
-                <li><a href="{{ route('orderDescription.list') }}" class="menu-item">OrderDescription List</a>
-                </li>
+                
             </ul>
           </li>
 
