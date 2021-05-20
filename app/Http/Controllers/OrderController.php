@@ -75,7 +75,7 @@ class OrderController extends Controller
             'amount' => 'required',
             'delivery_charges' => 'required',
             'total_amount' => 'required',
-            'tiemslot' => 'required|date',
+            'timeslot' => 'required|date',
             'status' => 'required|max:255',
             'rider_id' => 'required|int',
             'mode_of_payment' => 'required',
@@ -85,16 +85,15 @@ class OrderController extends Controller
           ]);
 
         if($validator->fails()){
-            redirect()->back()->with('error',$validator);
+            redirect()->back()->with('error', "please enter all values");
         }
+
         if($this->service->updateOrder($request->all(), $id)){
-
-            return redirect()->route('list_order', ["orders"=>$this->service->ordersList()])->with('success', 'Order Edited Successfully');
-            // $this->listOrders()->with('success', 'Order Edited Successfully');
+            $orders = $this->service->ordersList();
+            return redirect()->route('list_order')->with('success', 'Order Edited Successfully');
         }
-        return redirect()->back()->with('error','order could not be edited');
+            return redirect()->back()->with('error','order could not be edited');
     }
-
 
     public function editOrderDescription(OrderDescription $orderdescription,$id)
     {
@@ -135,5 +134,4 @@ class OrderController extends Controller
             return redirect()->back()->with('error','Single order could not be deleted');
         }
     }
-    
 }

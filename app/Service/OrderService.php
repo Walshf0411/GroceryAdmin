@@ -195,8 +195,12 @@ class OrderService{
 
     public function updateOrder($request, int $id){
         // $order = Orders::where("id", $id)->get();
-        // dd($order);
-        if(!Orders::findOrFail($id)->update($request)){return false;}
+        // dd($request);
+        // if(!
+        $bol = Orders::findOrFail($id)->update($request);
+        return $bol;
+        // )
+        // {return false;}
         // if(count($order) == 1){
         //     $order->customer->notify(new OrderUpdatedMail($order));
 
@@ -214,7 +218,7 @@ class OrderService{
         //     // Notify the customer about the order being placed
         //     $order->customer->notify(new OrderUpdatedNotification($order));
 
-            return true;
+            // return true;
         }
         // return false;
     public function editOrderDescription($id){
@@ -236,7 +240,7 @@ class OrderService{
     }
 
     public function addValue($productId,$addedCount){
-        $quantity = DB::update("update product2 set unit  = unit + ? where id = ?",[$addedCount,$productId]);
+        return DB::update("update product2 set unit  = unit + ? where id = ?",[$addedCount,$productId]);
     }
 
     public function checkAvail($productId,$addedCount){
@@ -255,9 +259,11 @@ class OrderService{
     }
 
     public function deleteOrderDescription($id){
-        $bol = DB::select("select count(*) as count from orderdescription where order_id IN (select order_id from orderdescription where id= ?)", [$id]);
+
+        $bol = DB::select("select count(*) as count, counts, product_id from orderdescription where order_id IN (select order_id from orderdescription where id= ?)", [$id]);
+        $desc = OrderDescription::findOrFail($id);
         if($bol['0']->count>1){
-            return OrderDescription::findOrFail($id)->delete();
+            return $this->addValue($desc->product_id, $desc->counts ) && OrderDescription::findOrFail($id)->delete();
         }else{
             return false;
         }
