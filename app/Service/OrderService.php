@@ -161,6 +161,13 @@ class OrderService{
         ->where("rider_id", 0)->get();
     }
 
+    
+
+
+    public function listOrderDescription(){
+        return OrderDescription::all();
+    }
+
     public function deleteOrder($id){
         OrderDescription::where("order_id", $id)->delete();
         return Orders::where("id", $id)->delete();

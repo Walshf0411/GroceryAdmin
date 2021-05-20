@@ -147,7 +147,6 @@ Route::prefix('/orderDescription')->group(function () {
 Route::get('/edit/{id}', 'OrderController@editOrderDescription')->name('edit');
 Route::post('/update/{id}', 'OrderController@updateOrderDescription')->name('update');
 Route::get('/delete/{id}', 'OrderController@deleteOrderDescription')->name('delete');
-// Route::get('/list', 'OrderController@listOrderDescription')->name('orderDescription.list');
 
 });
 

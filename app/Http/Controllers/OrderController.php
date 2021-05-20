@@ -16,6 +16,56 @@ class OrderController extends Controller
         $this->middleware('auth');
     }
 
+    public function editOrderDescription(OrderDescription $orderdescription,$id)
+    {
+        $orderdescription =  $this->service->editOrderDescription($id);
+        return view('Order.editOrderDescription', ['orderdescription'=> $orderdescription]);
+    }
+
+    public function updateOrderDescription(Request $request,$id)
+    {
+        // $request->validate([
+        //     "id" => "required|int",
+        //     "order_id" => "required|int",
+        //     'vendor_id' => 'required|int',
+        //     "product_id" => "required|int",
+        //     "counts"=> "required|int",
+        // ]);
+        $addedCount = $request->value - $request->counts;
+        $bol = true;
+        if($addedCount<0){
+                $bol = $this->service->checkAvail($request->productId, $addedCount);
+        }else{
+                $this->service->addValue($request->productId,$addedCount);
+                $this->service->updateOrderDescription($request->all() ,$id);
+                return redirect()->route('order.edit', ["id"=>$request->order_id])->with("success","updated successfully");
+        }
+
+        if($bol){
+                $this->service->updateOrderDescription($request->all() ,$id);
+                return redirect()->route('order.edit', ["id"=>$request->order_id])->with("success","updated successfully");
+
+        }else{
+                return redirect()->route('order.edit', ["id"=>$request->order_id])->with("error","Stock not available");
+
+        }
+
+    }
+
+    public function deleteOrderDescription($id){
+        $bol = true;
+        $bol = $this->service->deleteOrderDescription($id);
+        if($bol){
+            return  redirect()->back()->with('success', 'Order Deleted Successfully');
+        }else{
+            return redirect()->back()->with('error','Single order could not be deleted');
+        }
+    }
+    public function listOrderDescription(){
+        $orderdescription = $this->service->listOrderDescription();
+        return view('Order.listOrderDescription', ['orderdescription'=>$orderdescription]);
+    }
+
     public function listOrders(){
         $orders= $this->service->ordersList();
         return view('Order.list_order',["orders"=>$orders]);
