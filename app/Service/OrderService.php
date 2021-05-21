@@ -7,6 +7,7 @@ use App\Model\Address;
 use App\Model\TempProduct2;
 use App\Model\Product2;
 use App\Model\Category;
+use App\Model\Delivery_cost;
 use App\Model\DeliveryBoy;
 use App\Model\ModeOfPayment;
 use App\Model\Vendor;
@@ -127,7 +128,7 @@ class OrderService{
     //vendor
 
     public function getOrderByVendor($id) {
-        return DB::select("select * from orders as o, orderdescription AS od where od.vendor_id = ? and od.order_id = o.id", [$id]);
+        return DB::select("select o.* from orders as o, orderdescription AS od where od.vendor_id = ? and od.order_id = o.id", [$id]);
     }
 
     public function getOrderDetails($id){
@@ -161,7 +162,7 @@ class OrderService{
         ->where("rider_id", 0)->get();
     }
 
-    
+
 
 
     public function listOrderDescription(){
@@ -186,10 +187,13 @@ class OrderService{
         if(count($details)==0) return $order;
         $order->details = $details['0'];
         $description = DB::table("orderdescription")->where("order_id", $id)->get();
+        $amount = 0;
         foreach($description as $item){
             $item->vendor = DB::table("vendors")->where("id", $item->vendor_id)->get()['0'];
             $item->product = DB::table("product2")->where("id", $item->product_id)->get()['0'];
+            $amount = $amount +(($item->product->price )*($item->counts));
         }
+        $order->details->amount = $amount ;
         $order->description = $description;
         $order->address = DB::table("address")->where("customer_id", $order->details->customer_id)->get();
         $order->timeslots = Timeslot::all();
@@ -197,7 +201,25 @@ class OrderService{
         $order->rider = DeliveryBoy::all();
         $order->mop = ModeOfPayment::all();
         // dd($order);
+        $order->details->delivery_charges = Delivery_cost::all()['0']->delivery_charges;
         return $order;
+    }
+
+    public function amount($id){
+        // $detail= DB::select("select * from orders where id = ?",[$id]); #13
+        // $des = DB::select("select count from orderdescription where order_id = ?",[$id]);
+        // $desp = DB::select("select o.counts ,p.price from product2 as p , orderdescription as o
+        // where o.order_id = ? and p.id=o.product_id",[$id]);
+         // foreach($desp as $de){
+        //     $amount = $amount + (($de->price) * ($de->counts));
+        // }
+        $order = $this->getSingleOrder($id);
+        $amount =0;
+        foreach(($order->description) as $de){
+            $amount = $amount +(($de->product->price )*($de->counts));
+        }
+        return $amount;
+
     }
 
     public function updateOrder($request, int $id){

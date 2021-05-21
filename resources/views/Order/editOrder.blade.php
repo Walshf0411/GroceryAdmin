@@ -33,15 +33,17 @@
                             </div>
                             <div class="form-group">
                                 <label for="amount">Amount</label>
-                                <input type="number" id="amount"  class="form-control"  value="{{ $order->details->amount }}" name="amount" required >
+                                {{-- <input type="number" id="amount"  class="form-control"  value="{{ $amount }}" name="amount" required > --}}
+
+                                <input type="number" id="amount"  class="form-control"  value="{{ $order->details->amount }}" name="amount"  readonly="readonly">
                             </div>
                             <div class="form-group">
                                 <label for="delivery_charges">Delivery Charges</label>
-                                <input type="text" id="delivery_charges"  class="form-control" value="{{ $order->details->delivery_charges }}" name="delivery_charges" required >
+                                <input type="text" id="delivery_charges"  class="form-control" value="{{ $order->details->delivery_charges }}" name="delivery_charges"  readonly="readonly">
                             </div>
                             <div class="form-group">
                                 <label for="total_amount">Total Amount</label>
-                                <input type="text" id="total_amount"  class="form-control" value="{{ $order->details->total_amount }}" name="total_amount" required >
+                                <input type="text" id="total_amount"  class="form-control" value="{{ $order->details->amount + $order->details->delivery_charges }} " name="total_amount"  readonly="readonly">
                             </div>
                             <div class="form-group">
                                 <label for="timeslot">Timeslot</label>

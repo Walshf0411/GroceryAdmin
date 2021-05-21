@@ -106,6 +106,7 @@ class OrderController extends Controller
 
     public function editOrder($id){
         $order = $this->service->getSingleOrder($id);
+        // $amount = $this->service->amount($id);
         if($order!=(object)[]){
             return view('Order.editOrder', ["order"=>$order]);
         }else{
@@ -149,5 +150,7 @@ class OrderController extends Controller
 
 
 
-   
+
+
+
 }
