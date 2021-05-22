@@ -84,6 +84,9 @@ class OrderService{
         foreach($orders as $order){
             $orderdescription = DB::select('select * from orderdescription where order_id = ? order by created_at desc', [$order->id]);
             if($orderdescription==[]){return "there is some error";}
+            $rider = DeliveryBoy::where("id", $order->rider_id)->get();
+            if(count($rider) == 1){$order->rider = $rider['0'];}
+            else{$order->rider = null;}
             $finalOrderdescription = array();
             foreach($orderdescription as $orderdesc){
                 $orderdesc->vendor = DB::select('select * from vendors where id = ?', [$orderdesc->vendor_id])['0'];
@@ -130,7 +133,12 @@ class OrderService{
     public function getOrderByVendor($id) {
         $order = DB::select("select o.* from orders as o, orderdescription AS od where od.vendor_id = ? and od.order_id = o.id", [$id]);
         foreach($order as $item){
-            $item->rider = DeliveryBoy::where("id", $item->rider_id)->get();
+            $rider = DeliveryBoy::where("id", $item->rider_id)->get();
+            if(count($rider) == 1){
+                $item->rider = $rider['0'];
+            }else{
+                $item->rider = null;
+            }
         }
         return $order;
     }
