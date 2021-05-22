@@ -128,7 +128,11 @@ class OrderService{
     //vendor
 
     public function getOrderByVendor($id) {
-        return DB::select("select o.* from orders as o, orderdescription AS od where od.vendor_id = ? and od.order_id = o.id", [$id]);
+        $order = DB::select("select o.* from orders as o, orderdescription AS od where od.vendor_id = ? and od.order_id = o.id", [$id]);
+        foreach($order as $item){
+            $item->rider = DeliveryBoy::where("id", $item->rider_id)->get();
+        }
+        return $order;
     }
 
     public function getOrderDetails($id){

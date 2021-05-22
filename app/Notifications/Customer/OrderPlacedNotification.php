@@ -58,8 +58,9 @@ class OrderPlacedNotification extends Notification
      */
     public function toArray($notifiable)
     {
+        $orderId = $this->order->id;
         return [
-            "message" => "Order Placed successfully.",
+            "message" => "Order Placed Successfully! Order #$orderId",
             "details"=> [
                 "order" => $this->order,
                 "products"=> $this->order->products]
