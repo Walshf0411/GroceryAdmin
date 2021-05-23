@@ -92,7 +92,7 @@ class DeliveryBoyService{
         $delivered = Orders::select(DB::raw('count(*) as delivered'))
         ->where("rider_id", $riderId)
         ->where("status", "Delivered")->get();
-        $sales = Orders::select(DB::raw('sum(total_amount) as sales'))
+        $sales = Orders::select(DB::raw('format(sum(total_amount),2) as sales'))
         ->where("rider_id", $riderId)
         ->where("status", "Delivered")->get();
 
@@ -135,5 +135,12 @@ class DeliveryBoyService{
         return $order->save();
     }
 
+    public function getRiderById($id){
+        return DeliveryBoy::findOrFail($id);
+    }
+
+    public function getOrderByRiderId($id){
+        return Orders::where("rider_id", $id)->get();
+    }
 }
 ?>

@@ -32,8 +32,13 @@ class DeliveryBoyController extends Controller
     }
 
     public function viewDeliveryBoy($id){
-        return view('DeliveryBoy.viewDeliveryBoy', ["row"=> DeliveryBoy::findOrFail($id), "orders"=> Orders::where("rider_id", $id)->get()]);
+        return view('DeliveryBoy.viewDeliveryBoy', [
+            "row"=>  $this->service->getRiderById($id),
+            "orders"=> $this->service->getOrderByRiderId($id),
+            "message" => $this->service->getDeliveryBoyAvailability($id)
+        ]);
     }
+
 
 
 }
