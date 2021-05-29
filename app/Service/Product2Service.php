@@ -143,10 +143,6 @@ class Product2Service{
         return "Product Deleted Successfully";
     }
 
-
-    
-
-
     public function editProductByVendor(Request $request, $id){
         if(DB::select("select * from product2 where id= ? ",[$id])==[]){
             return "Sorry no product as such was found";
@@ -157,6 +153,13 @@ class Product2Service{
         $temp->discount = $request->discount;
         $temp->save();
         return "Prodcut Edited Successfully";
+    }
+
+    public function productExistsCheck($id, $name){
+        // $details = (object)[];
+        // //'like','%' . . '%'
+        // $details->products = 
+        return Product2::where('vendor_id', $id)->where('name',  $name['name'] )->get();
     }
 
 }

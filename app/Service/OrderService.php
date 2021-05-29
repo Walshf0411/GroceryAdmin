@@ -263,20 +263,26 @@ class OrderService{
         }
         // return false;
     public function editOrderDescription($id){
-        $orderdescription = DB::select('select * FROM orderdescription where id = ?', [$id]);
-        if($orderdescription==[]){
+        // $orderdescription = DB::select('select * FROM orderdescription where id = ?', [$id]);
+        $orderDesc = OrderDescription::where("id", $id)->get();
+        foreach($orderDesc as $item){
+            $item->vendor = Vendor::where("id", $item->vendor_id)->get()['0'];
+            $item->product = Product2::where("id", $item->product_id)->get()['0'];
+        }
+        if(count($orderDesc)!=1){
             return redirect()->back()->with("error","Data Not Found ");
         }
-        return $orderdescription;
+        return $orderDesc['0'];
     }
 
     public function updateOrderDescription($request, $id){
-        $orderdescription = DB::select('select * from orderdescription where id = ?', [$id]);
+            // return OrderDescription::findOrFail($id)->update($request);  
+            $orderdescription = DB::select('select * from orderdescription where id = ?', [$id]);
         if($orderdescription==[]){
             return redirect()->back()->with("Error","Data Not Found ");
         }else{
-            return DB::update('update orderdescription set counts = ? where id = ?',
-            [ $request['counts'],$id]);
+            return DB::update('update orderdescription set counts = ? , price = ? where id = ?',
+            [ $request['counts'],$request['price'],$id]);
         }
     }
 

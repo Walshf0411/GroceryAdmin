@@ -1,6 +1,11 @@
 @extends('template')
 @section('title', 'Ordered Products')
 @section('content')
+<style>
+    table, th, td{
+        text-align:center;
+    }
+</style>
 <section id="dom">
     <div class="row">
         <div class="col-12">
@@ -15,48 +20,33 @@
                             <thead>
                                 <tr>
                                     <th>Id No.</th>
-                                    {{-- <th>Category Name</th> --}}
                                     <th>Product Name</th>
+                                    <th>Vendor name</th>
                                     <th>Product Description</th>
                                     <th>Price</th>
-                                    <th>Discount</th>
-                                    <th>Vendor name</th>
-                                    {{-- <th>Total</th> --}}
-                                    {{-- <th>Count</th> --}}
-                                    {{-- <th>Product Image</th> --}}
+                                    <th>Count</th>
+                                    <th>Sub-Total</th>
                                 </tr>
                             </thead>
-                            <tbody>
+        <tbody>
                                 <?php $totalss=0 ?>
                                 @foreach($orderdetails as $row)
-                                <?php $totalss += $row->price ?>
+                                <?php $totalss += $row->price * $row->counts  ?>
                                 <tr>
+
                                     <td>{{ $row->id }}</td>
-                                    <td>{{ $row->name }}</td>
-                                    <td>{{ $row->description }}</td>
+                                    <td>{{ $row->product->name }}</td>
+                                    <td><a href="../vendorProfile/{{ $row->vendor_id }}">{{ $row->vendor->name }}</a></td>
+                                    <td>{{ $row->product->description }}</td> 
                                     <td>{{ $row->price }}</td>
-                                    <td>{{ $row->discount}}</td>
-                                    <td><a href="../vendorProfile/{{ $row->vendor_id }}">{{ $row->vendor_name }}</a></td>
-
-                                    {{-- <td>
-                                    @foreach( explode("|", $row->images) as $img)
-                                        <img class="media-object round-media" src="storage\images\Product\{{ $row->id }}\{{ $img }}" alt="Generic placeholder image" style="height: 75px;">
-                                    @endforeach
-                                    </td> --}}
-
+                                    <td>{{ $row->counts }}</td>
+                                    <td>{{ $row->price * $row->counts }}</td>
                                 </tr>
                                 @endforeach
                                 <tr>
-                                    <td colspan=3>Total</td>
-                                    <td>{{ $totalss }}</td>
+                                    <td colspan=4>Total</td>
+                                    <td colspan =3>{{ $totalss }}</td>
                                 </tr>
-                                {{-- {{ dd($total) }}; --}}
-                                {{-- <td>{{ $total->total->total}}</td> --}}
-                                {{-- {{ $total = 0 }} --}}
-                                {{-- @foreach($total as $row) --}}
-                                {{-- <td>{{ $total}}</td> --}}
-                                {{-- @endforeach --}}
-                                {{-- <td>{{ $total->total }}</td> --}}
                             </tbody>
 
                         </table>

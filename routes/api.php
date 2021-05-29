@@ -70,7 +70,8 @@ Route::prefix('/vendor')->group(function () {
     // Route::get('/getVendorProducts/{id}', 'API\VendorApiController@getAddedProducts')->name('vendor.added.products');
     //Order
     Route::get('getOrderByVendor/{vendorId}', 'API\OrderApiController@getOrderByVendor')->name('vendor.order.list');
-
+    //product check
+    Route::post("/productExistsCheck/{id}", 'API\Product2ApiController@productExistsCheck')->name('product.check');
     // notifications
     Route::get("/notifications/read/{userId}", 'API\VendorNotificationsController@getReadNotifications')
             ->name("vendor.notifications.read");

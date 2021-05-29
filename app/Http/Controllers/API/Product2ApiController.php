@@ -40,5 +40,19 @@ class Product2ApiController extends Controller
         return response()->json(["products"=>$this->service->listProduct()], 200);
     }
 
+    public function productExistsCheck($id, Request $request){
+        $request->validate([
+            "name" => "required|string"
+        ]);
+
+        $productList = $this->service->productExistsCheck($id, $request->all());
+
+        return response()->json([
+            "status" => "Success",
+            "message" => "Product List",
+            "details"=> $productList 
+        ], 200 ); 
+    }
+
 
 }
