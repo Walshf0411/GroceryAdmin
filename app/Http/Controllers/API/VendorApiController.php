@@ -19,7 +19,8 @@ class VendorApiController extends Controller
     }
 
     public function create(Request $request)
-    {   $validator = Validator::make($request->all(), [
+    {   
+        $validator = Validator::make($request->all(), [
         'name' => 'required',
         'shop_name' => 'required',
         'address' => 'required',
@@ -39,5 +40,18 @@ class VendorApiController extends Controller
 
     public function getAddedProducts($id){
         return response()->json(["products"=>$this->service->show_product($id)['0']], 200);
+    }
+    public function vendorStats($id, Request $request){
+        $request->validate([
+            'fDate' => 'required',
+            'tDate' => 'required',
+            ]);
+        $vendorStats = $this->service->vendorStats($id, $request->all()); 
+
+        return response()->json([
+            "status" => "Success",
+            "message" => "Vendor Stats retrived successfully.",
+            "details" => $vendorStats
+        ]);
     }
 }

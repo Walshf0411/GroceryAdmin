@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Model\Product2;
 use App\Model\TempVendor;
 use App\Model\Vendor;
 use Illuminate\Http\Request;
@@ -41,5 +42,15 @@ class VendorService{
         return "Vendor Deleted Successfully";
     }
 
-
+    public function vendorStats($id, $data){ 
+        return DB::select("SELECT od.product_id, p.name, sum(od.counts) count ,sum(od.price * od.counts) as price, p.description, p.images 
+                        FROM orderdescription od, orders o, product2 p 
+                        WHERE od.vendor_id= ? AND o.id=od.order_id AND o.status='Delivered' AND o.date_of_delivery> ? AND o.date_of_delivery<? AND p.id = od.product_id 
+                        GROUP BY od.product_id", 
+                        [
+                            $id,
+                            date('Y-m-d', strtotime($data['fDate'])),
+                            date('Y-m-d', strtotime($data['tDate'])) 
+                        ]);
+    }
 }

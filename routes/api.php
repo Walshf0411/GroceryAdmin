@@ -66,6 +66,8 @@ Route::prefix('/vendor')->group(function () {
     // Route::post('/insertProduct', 'API\Product2ApiController@insertProduct')->name('vendor.insert.products');
     Route::post('/editProduct/{id}', 'API\Product2ApiController@editProduct')->name('vendor.edit.products');
     Route::get('/deleteProduct/{id}', 'API\Product2ApiController@deleteProduct')->name('vendor.delete.products');
+    //Vendor Stats
+    Route::post('/statistics/{id}', 'API\VendorApiController@vendorStats')->name('vendor.statistics');
     //Vendors
     // Route::get('/getVendorProducts/{id}', 'API\VendorApiController@getAddedProducts')->name('vendor.added.products');
     //Order
