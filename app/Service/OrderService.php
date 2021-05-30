@@ -203,7 +203,7 @@ class OrderService{
         foreach($description as $item){
             $item->vendor = DB::table("vendors")->where("id", $item->vendor_id)->get()['0'];
             $item->product = DB::table("product2")->where("id", $item->product_id)->get()['0'];
-            $amount = $amount +(($item->product->price )*($item->counts));
+            $amount = $amount +(($item->price )*($item->counts));
         }
         $order->details->amount = $amount ;
         $order->description = $description;

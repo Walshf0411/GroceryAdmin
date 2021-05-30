@@ -133,7 +133,7 @@
                                 <tr>
                                     <td>{{ $row->id }}</td>
                                     <td><a href= "../../vendorProfile/{{ $row->vendor_id }}">{{ $row->vendor_id }} || {{ $row->vendor->name }} || {{ $row->vendor->shop_name }} || {{ $row->vendor->mobile_number }}</a></td>
-                                    <td><a href="../../productDetails/{{ $row->product_id }}"> {{ $row->product_id }} || {{ $row->product->name }} || {{ $row->product->price }}</td>
+                                    <td><a href="../../productDetails/{{ $row->product_id }}"> {{ $row->product_id }} || {{ $row->product->name }} || {{ $row->price }}</td>
                                     <td>{{ $row->counts }}</td>
                                     <td>
                                         <a class="primary"  href="../../../orderDescription/edit/{{ $row->id }}" data-original-title="" title="Edit Order">
