@@ -21,7 +21,7 @@ class DeliverycostController extends Controller
 
     public function listDeliveryCost(){
         $delivery_cost = $this->service->listDeliveryCost();
-        return view('DeliveryCost.list_deliverycost', ['delivery_cost'=>$delivery_cost]);
+        return view('DeliveryCost.list_deliverycost', ['delivery'=>$delivery_cost]);
     }
 
     public function store(Request $request)
@@ -38,13 +38,27 @@ class DeliverycostController extends Controller
         $delivery_cost =  $this->service->editDeliveryCost();
         return view('DeliveryCost.edit_deliverycost', ['delivery_cost'=>$delivery_cost]);
     }
-
+    public function editLimit()
+    {
+        $delivery =  $this->service->editDeliveryLimit();
+        return view('DeliveryCost.edit_deliveryLimit', ['delivery'=>$delivery]);
+    }
     public function update(Request $request)
     {
-        $this->service->updateDeliveryCost($request);
+        if($this->service->updateDeliveryCost($request)){
         return redirect()->route('list_deliverycost')->with("success","Data updated successfully");
+        }else{
+            return redirect()->back()->with("error", "Couldnt update");
+        }
     }
-
+    public function updateLimit(Request $request)
+    { 
+        if($this->service->updateDeliveryLimit($request)){
+        return redirect()->route('list_deliverycost')->with("success","Data updated successfully");
+        }else{
+            return redirect()->back()->with("error", "Couldnt update");
+        }
+    }
     public function destroy()
     {
         $this->service->deleteDeliveryCost();

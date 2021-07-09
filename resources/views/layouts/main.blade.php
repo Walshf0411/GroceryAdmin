@@ -102,8 +102,8 @@ padding: 7px;"></span></a>
           <li class="has-sub nav-item"><a href="#"><i class="fa fa-money"></i>
             <span data-i18n="" class="menu-title">Delivery Costs</span></a>
             <ul class="menu-content">
-                <li><a href="{{ route('add_deliverycost') }}" class="menu-item">Add Delivery Cost</a>
-                </li>
+                {{-- <li><a href="{{ route('add_deliverycost') }}" class="menu-item">Add Delivery Cost</a>
+                </li> --}}
                 <li><a href="{{ route('list_deliverycost') }}" class="menu-item">Delivery Cost List</a>
                 </li>
             </ul>
@@ -122,7 +122,7 @@ padding: 7px;"></span></a>
                 </li>
                 <li><a href="{{ route('order.unassigned') }}" class="menu-item">Unassigned Order List</a>
                 </li>
-                
+
             </ul>
           </li>
 
@@ -180,8 +180,8 @@ padding: 7px;"></span></a>
 
            <li class="has-sub nav-item"><a href="#"><i class="fa fa-motorcycle"></i><span data-i18n="" class="menu-title">Delivery Boy</span></a>
             <ul class="menu-content">
-              <li><a href="{{ route('deliveryBoy.view.add') }}" class="menu-item active">Add Delivery Boy</a>
-              </li>
+              {{-- <li><a href="{{ route('deliveryBoy.view.add') }}" class="menu-item active">Add Delivery Boy</a>
+              </li> --}}
               <li><a href="{{ route('deliveryBoy.list') }}" class="menu-item">Delivery Boy List</a>
               </li>
 

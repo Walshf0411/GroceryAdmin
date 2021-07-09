@@ -30,7 +30,13 @@ class DeliveryService{
         }
         return $delivery_cost;
     }
-
+    public function editDeliveryLimit(){
+        $delivery = DB::select("select content from statictable where page='delivery_limit'")[0];
+        if($delivery==[]){
+            return redirect()->back()->with("Error","Data Not Found ");
+        }
+        return $delivery;
+    }
     public function updateDeliveryCost(Request $request){
         $delivery_cost = DB::select('select * from delivery_costs');
         if($delivery_cost==[]){
@@ -40,10 +46,21 @@ class DeliveryService{
         {
             return redirect()->back()->with("Error");
         }else{
-            $delivery_cost = DB::update('update delivery_costs set delivery_charges = ?', [ $request->delivery_charges]);
+            return DB::update('update delivery_costs set delivery_charges = ?', [ $request->delivery_charges]);
         }
     }
-
+    public function updateDeliveryLimit(Request $request){
+        $delivery_cost = DB::select("select content from statictable where page='delivery_limit'");
+        if($delivery_cost==[]){
+            return redirect()->back()->with("Error","Data Not Found ");
+        }
+        elseif(count($delivery_cost)>1)
+        {
+            return redirect()->back()->with("Error");
+        }else{
+           return DB::update("update statictable set content = ? where page='delivery_limit'", [ $request->delivery_charges]);
+        }
+    }
 
     public function deleteDeliveryCost(){
         $delivery_cost = DB::select('delete FROM delivery_costs LIMIT 1');
@@ -52,7 +69,10 @@ class DeliveryService{
 
 
     public function listDeliveryCost(){
-        return DB::select('select * from delivery_costs');
+        $delivery = (object)[];
+        $delivery->cost = DB::select('select delivery_charges from delivery_costs')[0];
+        $delivery->limit = DB::select("select content from statictable where page='delivery_limit'")[0];
+        return $delivery;
 
         // $delivery_cost = DB::select('select * from delivery_costs');
         // if (count($delivery_cost) == 1){

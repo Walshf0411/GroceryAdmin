@@ -15,7 +15,14 @@ class DeliverycostApiController extends Controller
         // $this->middleware('auth:vendor');
     }
     public function listDeliveryCosts(){
-        return response()->json(["delivery_cost"=>$this->service->listDeliveryCost()],200);
+        $response = (object)[];
+        $response->message = "Success";
+        $data = $this->service->listDeliveryCost();
+        $response->details = (object)[];
+        $response->details->delivery = (object)[];
+        $response->details->delivery->cost = $data->cost->delivery_charges;
+        $response->details->delivery->limit = (float)$data->limit->content;
+        return response()->json($response,200);
     }
 }
 

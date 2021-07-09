@@ -119,12 +119,14 @@ Route::get('/edit_timeslot/{id}', 'TimeslotController@edit')->name('edit_timeslo
 Route::post('/update_timeslot/{id}', 'TimeslotController@update')->name('update_timeslot');
 
 //Deliverycost
-Route::get('/add_deliverycost', 'DeliverycostController@viewAddDeliveryCost')->name('add_deliverycost');
-Route::post('/insertDeliveryCost', 'DeliverycostController@store');
-Route::get('/deletedeliveryCost', 'DeliverycostController@destroy');
+// Route::get('/add_deliverycost', 'DeliverycostController@viewAddDeliveryCost')->name('add_deliverycost');
+// Route::post('/insertDeliveryCost', 'DeliverycostController@store');
+// Route::get('/deletedeliveryCost', 'DeliverycostController@destroy');
 Route::get('/list_deliverycost', 'DeliverycostController@listDeliveryCost')->name('list_deliverycost');
 Route::get('/edit_deliverycost', 'DeliverycostController@edit')->name('edit_deliverycost');
 Route::post('/update_deliverycost', 'DeliverycostController@update')->name('update_deliverycost');
+Route::get('/edit_deliverylimit', 'DeliverycostController@editLimit')->name('edit_deliverycost.limit');
+Route::post('/update_deliverylimit', 'DeliverycostController@updateLimit')->name('update_deliverycost.limit');
 
 //Order
 Route::get('/listCustomerOrder/{id}', 'OrderController@getOrdersByCustomer')->name('list_customerorder');

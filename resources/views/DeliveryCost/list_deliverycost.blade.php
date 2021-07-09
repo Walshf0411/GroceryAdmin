@@ -15,28 +15,45 @@
                             <thead>
                                 <tr>
 								 {{-- <th>Sr No.</th> --}}
-                                 <th>Delivery Charges</th>
+                                 <th>Charge Name</th>
+                                 <th>Amount</th>
                                  <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($delivery_cost as $row)
+
                                 <tr>
 
                                     {{-- <td>{{ $row->id }}</td> --}}
                                     {{-- dd{{ $delivery_cost }} --}}
-                                    <td>{{ $row->delivery_charges}}</td>
+                                    <td>Delivery Charge</td>
+                                    <td>{{ $delivery->cost->delivery_charges}}</td>
 									<td>
                                         <a class="primary"  href="edit_deliverycost" data-original-title="" title="">
                                                 <i class="ft-edit font-medium-3"></i>
                                         </a>
-                                        <a class="danger" href="deletedeliveryCost" data-original-title="" title="">
+                                        {{-- <a class="danger" href="deletedeliveryCost" data-original-title="" title="">
                                                 <i class="ft-trash font-medium-3"></i>
-                                        </a>
+                                        </a> --}}
 									</td>
 
                                 </tr>
-                                @endforeach
+                                <tr>
+
+                                    {{-- <td>{{ $row->id }}</td> --}}
+                                    {{-- dd{{ $delivery_cost }} --}}
+                                    <td>Delivery Charge Limit Value</td>
+                                    <td>{{ $delivery->limit->content}}</td>
+									<td>
+                                        <a class="primary"  href="edit_deliverylimit" data-original-title="" title="">
+                                                <i class="ft-edit font-medium-3"></i>
+                                        </a>
+                                        {{-- <a class="danger" href="deletedeliveryCost" data-original-title="" title="">
+                                                <i class="ft-trash font-medium-3"></i>
+                                        </a> --}}
+									</td>
+
+                                </tr>
                             </tbody>
 
                         </table>
