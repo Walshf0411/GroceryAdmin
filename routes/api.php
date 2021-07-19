@@ -48,7 +48,7 @@ Route::post('/updatebusiness/{id}', 'API\BusinessApiController@update');
 Route::get('/about', 'API\StaticTableController@getAbout');
 Route::get('/share', 'API\StaticTableController@getShare');
 Route::get('/terms', 'API\StaticTableController@getTc');
-Route::get('/rpSecretKey', 'API\StaticTableController@getRpSecretKey');
+Route::get('/getConstant', 'API\StaticTableController@getRpSecretKey');
 Route::get('/orderDescription/{id}','API\OrderApiController@getOrderDetails')->name('order.description');
 Route::prefix('/vendor')->group(function () {
 

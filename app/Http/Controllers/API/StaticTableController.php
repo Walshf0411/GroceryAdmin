@@ -22,6 +22,6 @@ class StaticTableController extends Controller
         return response()->json(["content" => $this->service->getShare()], 200);
     }
     public function getRpSecretKey(){
-        return response()->json(["key"=>$this->service->getRpSecretKey()], 200);
+        return response()->json(["value"=>$this->service->getRpSecretKey()], 200);
     }
 }
