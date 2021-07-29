@@ -10,6 +10,8 @@ use Illuminate\Notifications\Notification;
 
 use App\Model\Orders;
 use App\Model\OrderDescription;
+use App\Broadcasting\SmsChannel;
+
 
 class OrderPlacedNotification extends Notification
 {
@@ -35,7 +37,7 @@ class OrderPlacedNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database', 'mail'];
+        return ['database', 'mail', SmsChannel::class];
     }
 
     /**
@@ -63,7 +65,14 @@ class OrderPlacedNotification extends Notification
             "message" => "Order Placed Successfully! Order #$orderId",
             "details"=> [
                 "order" => $this->order,
-                "products"=> $this->order->products]
+                "products"=> $this->order->products
+            ]
         ];
+    }
+
+    public function toSms($notifiable) {
+        $orderId = $this->order->id;
+
+        return "Order Placed Successfully! Order #$orderId";
     }
 }
