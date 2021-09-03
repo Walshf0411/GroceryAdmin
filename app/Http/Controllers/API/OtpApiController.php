@@ -12,7 +12,7 @@ use App\Http\RestClients\SmsRestClient;
 
 class OtpApiController extends Controller
 {
-    private SmsRestClient $smsRestClient;
+    private $smsRestClient;
 
     public function __construct(SmsRestClient $smsRestClient) {
         $this->smsRestClient = $smsRestClient;
