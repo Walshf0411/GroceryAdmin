@@ -36,7 +36,7 @@ Route::post('/test', 'API\TempProductController@test');
 
 Route::get('/trial', 'API\VendorApiController@trial');
 
-Route::post('/email', 'API\EmailApiController@sendEmail')->name('email');
+Route::get('/otp', 'API\OtpApiController@sendOtp')->name('otp');
 Route::get('/unauthorized', 'API\CustomerLoginController@unauthorized')->name('unauthorized');
 Route::post('/insertbusiness', 'API\BusinessApiController@store');
 // Route::post('/insertProduct', 'ProductController@store');
