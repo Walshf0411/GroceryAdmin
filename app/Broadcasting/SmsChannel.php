@@ -8,7 +8,7 @@ use App\Http\RestClients\SmsRestClient;
 
 class SmsChannel
 {
-    private SmsRestClient $smsRestClient;
+    private $smsRestClient;
 
     /**
      * Create a new channel instance.
