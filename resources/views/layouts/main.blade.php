@@ -180,8 +180,8 @@ padding: 7px;"></span></a>
 
            <li class="has-sub nav-item"><a href="#"><i class="fa fa-motorcycle"></i><span data-i18n="" class="menu-title">Delivery Boy</span></a>
             <ul class="menu-content">
-              {{-- <li><a href="{{ route('deliveryBoy.view.add') }}" class="menu-item active">Add Delivery Boy</a>
-              </li> --}}
+               <li><a href="{{ route('deliveryBoy.view.add') }}" class="menu-item active">Add Delivery Boy</a>
+              </li> 
               <li><a href="{{ route('deliveryBoy.list') }}" class="menu-item">Delivery Boy List</a>
               </li>
 
