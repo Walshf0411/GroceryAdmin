@@ -17,7 +17,6 @@ class SmsRestClient {
             Log::info("Sending sms to contact: " . $mobileNumber . " with content: " . $message);
             
             $startTime = microtime(true); 
-
             $smsEndPoint = "http://jskbulksms.in/app/smsapi/index.php?key=36107BAE7E6D41&campaign=1&routeid=48&type=text&contacts=".$mobileNumber."&senderid=SOCSDP&msg=".$message;
 
             $response = $this->client->request('GET', $smsEndPoint,[ 

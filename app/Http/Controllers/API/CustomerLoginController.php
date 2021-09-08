@@ -37,10 +37,7 @@ class CustomerLoginController extends Controller
             'c_name' => 'required',
             'mobile_number' => 'required|digits:10',
             'email_id' => 'required|email',
-            'password' => 'required|min:6|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
-
-            'gst_number' => 'required',
-            'message' => 'required',
+            'password' => 'required|min:6|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/'
           ]);
           if($validator->fails()){
             return response()->json(["message"=>"Enter all details properly"],400);
