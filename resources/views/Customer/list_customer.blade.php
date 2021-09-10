@@ -14,6 +14,7 @@
                         <table class="table table-striped table-bordered dom-jQuery-events">
                             <thead>
                                 <tr>
+								    <th>Sr No.</th>
 								    <th>Id No.</th>
                                     <th>Customer Name</th>
                                     <th>Mobile Number</th>
@@ -24,8 +25,12 @@
                                 </tr>
                             </thead>
                             <tbody>
+                             <?php $i =0; ?>
+
                                 @foreach($customerdetails as $row)
                                 <tr>
+                                    <td><?php echo ++$i;?></td>
+
                                     <td><a href="customerProfile/{{ $row->id }}">{{ $row->id }}</a></td>
                                     {{-- <td>{{ $row->id }}</td> --}}
                                     <td><a href="customerProfile/{{ $row->id }}">{{ $row->c_name }}</a></td>

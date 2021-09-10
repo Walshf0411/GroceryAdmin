@@ -14,10 +14,15 @@
                         <table class="table table-striped table-bordered dom-jQuery-events">
                             <thead>
                                 <tr>
+								    <th>Sr No.</th>
 								 <th>Id No.</th>
                                     <th>Name</th>
+                                    <th>Nickname</th>
                                     <th>Vendor Shop Name</th>
                                     <th>Mobile Number</th>
+                                    <th>Address</th>
+                                    <th>Email</th>
+                                    <th>GST Number</th>
 
 									{{-- <th>Total Subcategory</th> --}}
                                     <th>Action</th>
@@ -25,13 +30,19 @@
                                 </tr>
                             </thead>
                             <tbody>
+                             <?php $i =0; ?>
                                 @foreach($tempvendors as $row)
                                 <tr>
-
+                                    <td><?php echo ++$i;?></td>
                                     <td>{{ $row->id }}</td>
                                     <td>{{ $row->name }}</td>
+                                    <td>{{ $row->nickname }}</td>
                                     <td>{{ $row->shop_name }}</td>
                                     <td>{{ $row->mobile_number }}</td>
+                                    <td>{{ $row->address }}</a></td>
+                                    <td>{{ $row->email_id }}</a></td>
+                                      <td>{{ $row->gst_number }}</a></td>
+
                                     {{-- <td>
                                     @foreach( explode("|", $row->images) as $img)
                                         <img class="media-object round-media" src="storage\images\TempProduct\{{ $row->id }}\{{ $img }}" alt="Generic placeholder image" style="height: 75px;">

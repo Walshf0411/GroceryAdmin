@@ -15,14 +15,16 @@
                             <thead>
                                 <tr>
 								 <th>Sr No.</th>
+								<th>Id</th>
                                  <th>Timeslots</th>
                                  <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                             <?php $i =0; ?>
                                 @foreach($timeslots as $row)
                                 <tr>
-
+                                    <td><?php echo ++$i;?></td>
                                     <td>{{ $row->id }}</td>
                                     <td>{{ $row->timeslot }}</td>
 									<td>

@@ -15,6 +15,7 @@
                             <thead>
                                 <tr>
 								 <th>Sr No.</th>
+                                 <th>Id</th>
                                     <th>Category Name</th>
                                     <th>Category Image</th>
 									{{-- <th>Total Subcategory</th> --}}
@@ -23,9 +24,10 @@
                                 </tr>
                             </thead>
                             <tbody>
+                             <?php $i =0; ?>
                                 @foreach($category as $row)
                                 <tr>
-
+                                    <td><?php echo ++$i;?></td>
                                     <td>{{ $row->id }}</td>
                                     <td>{{ $row->category_name }}</td>
                                     <td><img class="media-object round-media" src="storage\images\Category\{{ $row->category_image }}" alt="Generic placeholder image" style="height: 75px;"></td>
@@ -39,7 +41,7 @@
                                         </a>
 
 										</td>
- 
+
                                 </tr>
                                 @endforeach
                             </tbody>

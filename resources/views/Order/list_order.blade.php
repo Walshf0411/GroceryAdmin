@@ -14,6 +14,7 @@
                         <table class="table table-striped table-bordered dom-jQuery-events">
                             <thead>
                                 <tr>
+								    <th>Sr No.</th>
 								 <th>Id No.</th>
                                     <th>Customer Id</th>
                                     <th>Address Id</th>
@@ -31,8 +32,11 @@
                                 </tr>
                             </thead>
                             <tbody>
+                             <?php $i =0; ?>
+
                                 @foreach($orders as $row)
                                 <tr>
+                                    <td><?php echo ++$i;?></td>
                                     <td><a href="../orderDetails/{{ $row->id }}">{{ $row->id }}</a></td>
                                     <td><a href="../showCustomer/{{ $row->customer_id }}">{{ $row->customer_id }}</a></td>
                                     <td><a href="../showAddress/{{ $row->address_id }}">{{ $row->address_id }}</a></td>
@@ -49,7 +53,7 @@
                                         <a class="primary"  href="../order/edit/{{ $row->id }}" data-original-title="" title="Edit Order">
                                             <i class="ft-edit font-medium-3"></i>
                                         </a>
-                                        
+
                                         <a class="danger" href="../order/delete/{{ $row->id }}" data-original-title="" title="Delete Order">
                                             <i class="ft-trash font-medium-3"></i>
                                         </a>

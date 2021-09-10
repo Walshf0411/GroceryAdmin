@@ -14,6 +14,7 @@
                         <table class="table table-striped table-bordered dom-jQuery-events">
                             <thead>
                                 <tr>
+								    <th>Sr No.</th>
 								 <th>Id No.</th>
                                     <th>Category Name</th>
                                     <th>Temporary Product Name</th>
@@ -25,8 +26,10 @@
                                 </tr>
                             </thead>
                             <tbody>
+                             <?php $i =0; ?>
                                 @foreach($tempProducts as $row)
                                 <tr>
+                                    <td><?php echo ++$i;?></td>
                                     <td>{{ $row->id }}</td>
                                     <td>{{ $row->category_name }}</td>
                                     <td>{{ $row->name }}</td>

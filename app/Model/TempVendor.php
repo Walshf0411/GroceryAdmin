@@ -8,6 +8,6 @@ class TempVendor extends Model
 {
     //
     protected $fillable = [
-        'name' ,'shop_name','address', 'email_id','mobile_number','gst_number','message'
+        'name', 'nickname' ,'shop_name','address', 'email_id','mobile_number','gst_number','message'
      ];
 }

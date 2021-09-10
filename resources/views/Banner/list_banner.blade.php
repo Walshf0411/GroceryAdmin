@@ -15,18 +15,18 @@
                             <thead>
                                 <tr>
 								 <th>Sr No.</th>
-
-                                    <th>Banner Image</th>
-                                    <th>Action</th>
+								 <th>Id</th>
+                                 <th>Banner Image</th>
+                                 <th>Action</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- {{ $i = 0 }} --}}
+                                <?php $i =0; ?>
 
                                 @foreach($banners as $row)
-                                {{-- {{ $i++ }} --}}
                                 <tr>
+                                    <td><?php echo ++$i;?></td>
                                     <td>{{ $row->id }}</td>
 
                                     <td><img src="storage\images\Banner\{{ $row->banner_image }}" width="100" height="100"/></td>

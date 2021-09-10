@@ -35,6 +35,7 @@ class TempVendorService{
                 $tempvendor->gst_number = $request->gst_number;
                 $tempvendor->password  = Hash::make($request->password);
                 $tempvendor->message = $request->message;
+                $tempvendor->message = $request->message;
                 $tempvendor->save();
                 return response()->json($tempvendor);
             }else{

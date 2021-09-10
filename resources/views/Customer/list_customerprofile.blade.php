@@ -41,6 +41,7 @@
                             <h4 class="card-title">Order Details</h4>
                             <thead>
                                 <tr>
+								    <th>Sr No.</th>
 								    <th>Order Id</th>
                                     {{-- <th>Address Id</th> --}}
 									<th>Amount</th>
@@ -56,8 +57,12 @@
                                 </tr>
                             </thead>
                             <tbody>
+                             <?php $i =0; ?>
+
                                 @foreach($orders as $row)
                                 <tr>
+                                    <td><?php echo ++$i;?></td>
+
                                     <td>{{ $row->id }}</td>
                                     {{-- <td><a href="../showProduct/{{ $row->id }}">{{ $row->id }}</a></td>
                                     <td><a href="../showCustomer/{{ $row->customer_id }}">{{ $row->customer_id }}</a></td>--}}
