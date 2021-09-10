@@ -20,7 +20,7 @@ class OtpApiController extends Controller
 
     public function sendOtp(Request $request){
         $otp = $this->generateOTP();
-        $message = "From Aahar App - Your OTP is : " . $otp;
+        $message = "Aahar Online Grocery Shopping customer - Your OTP is : " . $otp;
         $this->smsRestClient->sendSms($request->mobile_number, $message);
 
         return response()->json(["otp" => $otp]);
