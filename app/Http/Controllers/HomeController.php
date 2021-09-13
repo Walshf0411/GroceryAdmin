@@ -28,7 +28,7 @@ class HomeController extends Controller
         $vendors = DB::select('select count(*) c from vendors where is_blocked = 0');
         $bvendors = DB::select('select count(*) c from vendors where is_blocked = 1');
         $customers = DB::select('select count(*) c from customers');
-        $products = DB::select('select count(*) c from products');
+        $products = DB::select('select count(*) c from product2');
         $cancelledOrders = DB::select('select count(*) c from orders where status="Cancelled"');
         $pendingOrders = DB::select('select count(*) c from orders where status="Pending"');
         $deliveredOrders = DB::select('select count(*) c from orders where status="Delivered"');

@@ -19,7 +19,7 @@ class TempVendorService{
     }
 
     public function add_temp_Vendor($id){
-        $tempvendors = DB::insert('insert into vendors (name,shop_name,address,mobile_number,email_id,password,gst_number) SELECT name, shop_name,address,mobile_number,email_id,password,gst_number FROM temp_vendors where id=?',[$id]);
+        $tempvendors = DB::insert('insert into vendors (name,shop_name,address,mobile_number,email_id,password,gst_number, nickname) SELECT name, shop_name,address,mobile_number,email_id,password,gst_number, nickname FROM temp_vendors where id=?',[$id]);
     }
 
         public function create_temp_vendor(Request $request){
@@ -35,7 +35,7 @@ class TempVendorService{
                 $tempvendor->gst_number = $request->gst_number;
                 $tempvendor->password  = Hash::make($request->password);
                 $tempvendor->message = $request->message;
-                $tempvendor->message = $request->message;
+                $tempvendor->nickname = $request->nickname;
                 $tempvendor->save();
                 return response()->json($tempvendor);
             }else{
