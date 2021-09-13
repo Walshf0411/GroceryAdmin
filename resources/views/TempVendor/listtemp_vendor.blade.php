@@ -15,7 +15,7 @@
                             <thead>
                                 <tr>
 								    <th>Sr No.</th>
-								 <th>Id No.</th>
+								 {{-- <th>Id No.</th> --}}
                                     <th>Name</th>
                                     <th>Nickname</th>
                                     <th>Vendor Shop Name</th>
@@ -34,7 +34,7 @@
                                 @foreach($tempvendors as $row)
                                 <tr>
                                     <td><?php echo ++$i;?></td>
-                                    <td>{{ $row->id }}</td>
+                                    {{-- <td>{{ $row->id }}</td> --}}
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->nickname }}</td>
                                     <td>{{ $row->shop_name }}</td>

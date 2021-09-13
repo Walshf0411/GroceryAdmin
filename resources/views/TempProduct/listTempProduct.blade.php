@@ -15,7 +15,7 @@
                             <thead>
                                 <tr>
 								    <th>Sr No.</th>
-								 <th>Id No.</th>
+								 {{-- <th>Id No.</th> --}}
                                     <th>Category Name</th>
                                     <th>Temporary Product Name</th>
                                     <th>Product Image</th>
@@ -30,7 +30,7 @@
                                 @foreach($tempProducts as $row)
                                 <tr>
                                     <td><?php echo ++$i;?></td>
-                                    <td>{{ $row->id }}</td>
+                                    {{-- <td>{{ $row->id }}</td> --}}
                                     <td>{{ $row->category_name }}</td>
                                     <td>{{ $row->name }}</td>
                                     <td>

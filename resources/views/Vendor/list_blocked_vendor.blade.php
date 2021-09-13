@@ -16,6 +16,7 @@
                                 <tr>
 								 <th>Id No.</th>
                                     <th>Vendor Name</th>
+                                    <th>Nick Name</th>
                                     <th>Shop Name</th>
                                     <th>Mobile Number</th>
                                     <th>Actions</th>
@@ -27,6 +28,7 @@
 
                                     <td>{{ $row->id }}</td>
                                     <td>{{ $row->name }}</td>
+                                    <td>{{ $row->nickname }}</td>
                                     <td>{{ $row->shop_name }}</td>
                                     <td>{{ $row->mobile_number }}</td>
 

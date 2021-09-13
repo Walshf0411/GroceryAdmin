@@ -15,13 +15,13 @@
                             <thead>
                                 <tr>
                                     <th>Sr No.</th>
-                                    <th>Id</th>
+                                    {{-- <th>Id</th> --}}
                                     <th>Name</th>
                                     <th>Nickname</th>
                                     <th>Shop Name</th>
-                                    <th>Address</th>
-									<th>Email ID</th>
                                     <th>Mobile Number</th>
+									<th>Address</th>
+                                    <th>Email ID</th>
                                     <th>GST Number</th>
                                     <th>Action</th>
 
@@ -33,7 +33,7 @@
                                 @foreach($vendordetails as $row)
                                 <tr>
                                     <td><?php echo ++$i;?></td>
-                                  <td><a href="vendorProfile/{{ $row->id }}">{{ $row->id }}</a></td>
+                                  {{-- <td><a href="vendorProfile/{{ $row->id }}">{{ $row->id }}</a></td> --}}
                                   <td><a href="vendorProfile/{{ $row->id }}">{{ $row->name }}</a></td>
                                   <td><a href="vendorProfile/{{ $row->id }}">{{ $row->nickname }}</a></td>
                                   <td><a href="vendorProfile/{{ $row->id }}"> {{ $row->shop_name }}</a></td>

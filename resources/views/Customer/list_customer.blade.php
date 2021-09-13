@@ -15,7 +15,7 @@
                             <thead>
                                 <tr>
 								    <th>Sr No.</th>
-								    <th>Id No.</th>
+								    {{-- <th>Id No.</th> --}}
                                     <th>Customer Name</th>
                                     <th>Mobile Number</th>
                                     <th>Email id</th>
@@ -31,7 +31,7 @@
                                 <tr>
                                     <td><?php echo ++$i;?></td>
 
-                                    <td><a href="customerProfile/{{ $row->id }}">{{ $row->id }}</a></td>
+                                    {{-- <td><a href="customerProfile/{{ $row->id }}">{{ $row->id }}</a></td> --}}
                                     {{-- <td>{{ $row->id }}</td> --}}
                                     <td><a href="customerProfile/{{ $row->id }}">{{ $row->c_name }}</a></td>
                                     {{-- <td>{{ $row->c_name }}</td> --}}
