@@ -51,7 +51,7 @@
                                     <td>{{ $row->shop_name }}</td>--}}
                                     <td>
 									<a class="primary"  href="add_temp_Vendor/{{ $row->id }}" data-original-title="" title="">
-                                            <i class="ft-edit font-medium-3"></i>
+                                            <i class="icon-check font-medium-3"></i>
                                         </a>
 
 									<a class="danger" href="delete_temp_Vendor/{{ $row->id }}" data-original-title="" title="">
