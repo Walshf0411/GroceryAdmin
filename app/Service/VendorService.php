@@ -53,4 +53,22 @@ class VendorService{
                             date('Y-m-d', strtotime($data['tDate'])) 
                         ]);
     }
+
+    public function editTempVendor($id, Request $request){
+
+        $tempvendor = Vendor::find($id);
+        // dd($tempvendor);
+        // DB::select("select * from temp_vendors AS t ,vendors AS v where t.email_id=? or v.email_id=?",[$request->email_id,$request->email_id]);
+            // if($tempvendor->count()==1){
+                $tempvendor->name = $request->name;
+                $tempvendor->shop_name = $request->shop_name;
+                $tempvendor->address = $request->address;
+                $tempvendor->gst_number = $request->gst_number;
+                $tempvendor->nickname = $request->nickname;
+                $tempvendor->save();
+                return response()->json($tempvendor);
+            // }else{
+            //     return response()->json(["message" => "Vendor does not exists"], 400);
+        // }
+    }
 }

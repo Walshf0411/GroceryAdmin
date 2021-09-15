@@ -27,11 +27,12 @@ class TempVendorApiController extends Controller
         'password' => 'required|min:6|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
         'mobile_number' => 'required|digits:10',
         'gst_number' => 'required',
-        'message' => 'required',
+        'message' => 'string',
+        'nickname' => 'string'
       ]);
 
         if($validator->fails()){
-            return response()->json(["message"=>"Enter all details properly"],400);
+            return response()->json(["message"=>$validator->errors()->getMessages()],400);
         }else{
             return $this->service->create_temp_vendor($request);
         }

@@ -30,7 +30,7 @@ use App\Http\Controllers\API\BannerApiController;
 
 Route::get('/homepage', 'API\BannerApiController@show');
 Route::get('/category', 'API\BannerApiController@showCategory');
-Route::post('/tempvendor', 'API\VendorApiController@create');
+Route::post('/tempvendor', 'API\TempVendorApiController@create');
 Route::post('/tempproduct', 'API\TempProductController@create');
 Route::post('/test', 'API\TempProductController@test');
 
@@ -52,6 +52,7 @@ Route::get('/getConstant', 'API\StaticTableController@getRpSecretKey');
 Route::get('/orderDescription/{id}','API\OrderApiController@getOrderDetails')->name('order.description');
 Route::prefix('/vendor')->group(function () {
 
+        Route::post('/update/{id}', 'API\VendorApiController@edit');
     Route::post('/checkToken', 'API\VendorLoginController@checkToken')->name('vendor.check.token');
     Route::get('/getSelectedProducts/{vendor_id}', 'API\ProductApiController@selectedProducts')->name('vendor.product.list');
     Route::get('/getVendorsTempProducts/{id}','API\TempProductController@vendorsProductList')->name('vendor.tempprod.list');

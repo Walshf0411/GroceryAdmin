@@ -40,7 +40,7 @@ class CustomerLoginController extends Controller
             'password' => 'required|min:6|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/'
           ]);
           if($validator->fails()){
-            return response()->json(["message"=>"Enter all details properly"],400);
+            return response()->json(["message"=>$validator->errors()->getMessages()],400);
         }else{
 
         $response = $this->customerLoginService->insertCustomer($request);

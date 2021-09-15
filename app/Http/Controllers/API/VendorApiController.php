@@ -18,23 +18,20 @@ class VendorApiController extends Controller
         // $this->middleware('auth:vendor');
     }
 
-    public function create(Request $request)
+    public function edit($id, Request $request)
     {   
         $validator = Validator::make($request->all(), [
-        'name' => 'required',
-        'shop_name' => 'required',
-        'address' => 'required',
-        'email_id' => 'required|email',
-        'password' => 'required|min:6|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
-        'mobile_number' => 'required|digits:10',
-        'gst_number' => 'required',
-        'message' => 'required',
+        'name' => 'string',
+        'shop_name' => 'string',
+        'address' => 'string',
+        'gst_number' => 'string',
+        'nickname' => 'string'
       ]);
 
         if($validator->fails()){
-            return response()->json(["message"=>"Enter all details properly"],400);
+            return response()->json(["message"=>$validator->errors()->getMessages()],400);
         }else{
-            return $this->service->create_temp_vendor($request);
+            return $this->service->editTempVendor($id, $request);
         }
     }
 
