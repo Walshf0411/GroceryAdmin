@@ -45,6 +45,10 @@ Route::get('/deletebusiness/{id}', 'API\BusinessApiController@destroy');
 // Route::get('/edit_product/{id}', 'ProductController@edit')->name('edit_product');
 Route::post('/updatebusiness/{id}', 'API\BusinessApiController@update');
 
+/** Forgot passsword api */
+Route::post("{userType}/forgot_password", 'API\ForgotPasswordController@updatePassword')
+                ->name("forgot_password");
+
 Route::get('/about', 'API\StaticTableController@getAbout');
 Route::get('/share', 'API\StaticTableController@getShare');
 Route::get('/terms', 'API\StaticTableController@getTc');
@@ -52,7 +56,7 @@ Route::get('/getConstant', 'API\StaticTableController@getRpSecretKey');
 Route::get('/orderDescription/{id}','API\OrderApiController@getOrderDetails')->name('order.description');
 Route::prefix('/vendor')->group(function () {
 
-        Route::post('/update/{id}', 'API\VendorApiController@edit');
+    Route::post('/update/{id}', 'API\VendorApiController@edit');
     Route::post('/checkToken', 'API\VendorLoginController@checkToken')->name('vendor.check.token');
     Route::get('/getSelectedProducts/{vendor_id}', 'API\ProductApiController@selectedProducts')->name('vendor.product.list');
     Route::get('/getVendorsTempProducts/{id}','API\TempProductController@vendorsProductList')->name('vendor.tempprod.list');
