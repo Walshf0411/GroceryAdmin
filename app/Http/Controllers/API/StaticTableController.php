@@ -18,6 +18,9 @@ class StaticTableController extends Controller
     public function getAbout(){
         return response()->json(["content" => $this->service->getAboutUs()], 200);
     }
+    public function getContact(){
+        return response()->json(["content" => $this->service->getContact()], 200);
+    }
     public function getShare(){
         return response()->json(["content" => $this->service->getShare()], 200);
     }

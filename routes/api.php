@@ -50,6 +50,7 @@ Route::post("{userType}/forgot_password", 'API\ForgotPasswordController@updatePa
                 ->name("forgot_password");
 
 Route::get('/about', 'API\StaticTableController@getAbout');
+Route::get('/contact', 'API\StaticTableController@getContact');
 Route::get('/share', 'API\StaticTableController@getShare');
 Route::get('/terms', 'API\StaticTableController@getTc');
 Route::get('/getConstant', 'API\StaticTableController@getRpSecretKey');

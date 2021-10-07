@@ -17,6 +17,10 @@ class StaticTableService{
         $staticTable = DB::update('update statictable set content = ? where page = "about"', [$request->aboutus]);
         return "About Us changes completed Successfully";
     }
+    public function addContact(Request $request){
+        $staticTable = DB::update('update statictable set content = ? where page = "contact"', [$request->contact]);
+        return "Contact changes completed Successfully";
+    }
     public function getTc(){
         return DB::select('select content from statictable where page = "terms"')['0']->content;
     }
@@ -25,6 +29,9 @@ class StaticTableService{
     }
     public function getAboutUs(){
         return DB::select('select content from statictable where page = "about"')['0']->content;
+    }
+    public function getContact() {
+        return DB::select('select content from statictable where page = "contact"')['0']->content;
     }
     public function getRpSecretKey(){
         return DB::select("select content from statictable where page='rpsecretkey'")['0']->content;
