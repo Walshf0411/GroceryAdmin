@@ -163,6 +163,8 @@ Route::get('/showAbout', 'StaticTableController@viewAbout')->name('showAbout');
 Route::post('/addAbout', 'StaticTableController@addAboutUs');
 Route::get('/showShare', 'StaticTableController@viewShare')->name('showShare');
 Route::post('/addShare', 'StaticTableController@addShare');
+Route::get('/showContact', 'StaticTableController@viewContact')->name('showContact');
+Route::post('/addContact', 'StaticTableController@addContact');
 
 
 //Delivery Boy

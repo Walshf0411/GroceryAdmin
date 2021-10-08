@@ -23,6 +23,10 @@ class StaticTableController extends Controller
     public function viewAbout(){
         return view('StaticPages.aboutus',["content" => $this->service->getAboutUs()] );
     }
+    public function viewContact() {
+        return view('StaticPages.contact',["content" => $this->service->getContact()] );
+    }
+    
     public function addTc(Request $request){
         $this->service->addTc($request);
         return $this->viewTc();
@@ -34,5 +38,9 @@ class StaticTableController extends Controller
     public function addAboutUs(Request $request){
         $this->service->addAboutUs($request);
         return $this->viewAbout();
+    }
+    public function addContact(Request $request){
+        $this->service->addContact($request);
+        return $this->viewContact();
     }
 }

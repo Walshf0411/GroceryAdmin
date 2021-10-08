@@ -218,6 +218,9 @@
                 </li>
                 <li><a href="{{ route('showAbout') }}" class="menu-item">Add About Us</a>
                 </li>
+                <li>
+                    <a href="{{ route('showContact') }}" class="menu-item">Add Contact</a>
+                </li>
                 </ul>
 
 
