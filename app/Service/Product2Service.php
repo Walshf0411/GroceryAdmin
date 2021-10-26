@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class Product2Service{
     public function getAllVendorProducts($id){
@@ -36,6 +37,19 @@ class Product2Service{
         }
         return $newProd;
 
+    }
+
+    public function searchProducts($searchTerm){
+
+        $products = Product2::where("name", "like", "%${searchTerm}%")
+                        ->orderBy("name", "asc") 
+                        ->get();
+
+        foreach ($products as $product) {
+            $product->vendor = $product->vendor;
+        }
+
+        return $products;
     }
 
     public function listProduct(){

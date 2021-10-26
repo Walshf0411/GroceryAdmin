@@ -6,8 +6,8 @@ use App\Model\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
-// use DB as DB;
 use Illuminate\Support\Facades\DB;
+
 class CategoryService{
 
     public function list_product_by_category($category_id){
@@ -103,5 +103,11 @@ public function insertCategory(Request $request){
 
     }
 
+    public function searchCategories($searchTerm){
+
+        return Category::where("category_name", "like", "%${searchTerm}%")
+                        ->orderBy("category_name", "asc") 
+                        ->get();
+    }
 
 }

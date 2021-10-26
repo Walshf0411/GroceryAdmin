@@ -25,7 +25,7 @@ class Product2 extends Model
      */
     public function vendor()
     {
-        return $this->belongsTo(Vendor::class, 'foreign_key', 'other_key');
+        return $this->belongsTo(Vendor::class);
     }
 
     public function orderDescriptions() {

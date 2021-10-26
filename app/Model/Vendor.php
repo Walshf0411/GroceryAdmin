@@ -47,6 +47,6 @@ class Vendor extends Authenticatable implements JWTSubject
      */
     public function prodcut()
     {
-        return $this->hasMany(Product2::class, 'foreign_key', 'local_key');
+        return $this->hasMany(Product2::class);
     }
 }
