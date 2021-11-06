@@ -143,6 +143,8 @@ Route::get('/total/{id}', 'Product2Controller@total')->name('total');
 Route::get('/order/delete/{id}', 'OrderController@deleteOrder')->name('order.delete');
 Route::get('/order/edit/{id}', 'OrderController@editOrder')->name('order.edit');
 Route::post('/order/update/{id}', 'OrderController@updateOrder')->name('order.update');
+Route::get('/order/assign/{id}', 'OrderController@assignOrder')->name('order.assign');
+Route::post('/order/assigned/{id}', 'OrderController@assignedOrder')->name('order.assigned');
 
 //OrderDescription
 Route::prefix('/orderDescription')->group(function () {

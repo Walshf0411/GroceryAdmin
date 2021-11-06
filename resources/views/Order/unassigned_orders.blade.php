@@ -46,10 +46,13 @@
                                     <td>{{ $row->date_of_delivery }}</td>
                                    <td>{{ $row->comment }}</td>
                                    <td>
+                                    <button class="btn btn-warning " ><a  href="../order/assign/{{ $row->id }}">
+                                        Assign/Change Rider
+                                    </a></button>
                                         <a class="primary"  href="../order/edit/{{ $row->id }}" data-original-title="" title="Edit Order">
                                             <i class="ft-edit font-medium-3"></i>
                                         </a>
-                                        
+
                                         <a class="danger" href="../order/delete/{{ $row->id }}" data-original-title="" title="Delete Order">
                                             <i class="ft-trash font-medium-3"></i>
                                         </a>

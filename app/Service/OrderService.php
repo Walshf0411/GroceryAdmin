@@ -143,6 +143,15 @@ class OrderService{
         return $order;
     }
 
+    public function assignedOrder($id, Request $request){
+        $order = Orders::find($id);
+        // dd($order);
+        if($order==null){
+            return false;
+        }
+        $order->rider_id  = $request->rider_id;
+        return $order->save();
+    }
     public function getOrderDetails($id){
         $orderDesc = OrderDescription::where("order_id", $id)->get();
         foreach($orderDesc as $item){
@@ -152,6 +161,9 @@ class OrderService{
         return $orderDesc;
       }
 
+      public function getOrder($id){
+        return Orders::where("id", $id)->get();
+      }
 
     public function ordersList(){
         return Orders::all();
@@ -276,7 +288,7 @@ class OrderService{
     }
 
     public function updateOrderDescription($request, $id){
-            // return OrderDescription::findOrFail($id)->update($request);  
+            // return OrderDescription::findOrFail($id)->update($request);
             $orderdescription = DB::select('select * from orderdescription where id = ?', [$id]);
         if($orderdescription==[]){
             return redirect()->back()->with("Error","Data Not Found ");

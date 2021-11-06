@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\OrderDescription;
-use App\Model\Orders;
+use App\Model\DeliveryBoy;
 use Illuminate\Http\Request;
 use App\Service\OrderService;
 use Illuminate\Support\Facades\Validator;
@@ -27,7 +27,7 @@ class OrderController extends Controller
             "price"=> "required",
             "value"=> "required|int",
         ]);
-        $addedCount = $request->value - $request->counts; 
+        $addedCount = $request->value - $request->counts;
         $bol = true;
         if($addedCount<0){
                 $bol = $this->service->checkAvail($request->productId, $addedCount);
@@ -112,7 +112,22 @@ class OrderController extends Controller
             return redirect()->back()->with('error','this order does not exists');
         }
     }
-
+    public function assignOrder($id){
+        $order = $this->service->getorder($id);
+        if($order!=(object)[]){
+            return view('Order.assignOrder', ["order"=>$order[0], "delivery" => DeliveryBoy::all()]);
+        }else{
+            return redirect()->back()->with('error','this order does not exists');
+        }
+    }
+    public function assignedOrder($id, Request $request){
+        $order = $this->service->assignedOrder($id, $request);
+        if($order){
+            return redirect(route('list_order'))->with('success','rider updated successfully');
+        }else{
+            return redirect(route('list_order'))->with('error','this order does not exists');
+        }
+    }
     public function updateOrder(Request $request,$id){
         $validator = Validator::make($request->all(), [
             'id' => 'required|int',

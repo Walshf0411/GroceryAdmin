@@ -48,7 +48,7 @@
                                         <a class="primary"  href="../order/edit/{{ $row->id }}" data-original-title="" title="Edit Order">
                                             <i class="ft-edit font-medium-3"></i>
                                         </a>
-                                        
+
                                         <a class="danger" href="../order/delete/{{ $row->id }}" data-original-title="" title="Delete Order">
                                             <i class="ft-trash font-medium-3"></i>
                                         </a>
