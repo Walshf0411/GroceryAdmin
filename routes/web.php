@@ -59,12 +59,21 @@ Route::get('/', 'HomeController@index')->name('');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Category
-Route::get('/add_category', 'CategoriesController@viewAddCategory')->name('add_category');
+Route::get('/add_category', 'SubCategoriesController@viewAddCategory')->name('add_category');
 Route::post('/insertCategory', 'CategoriesController@store');
 Route::get('/deleteCategory/{id}', 'CategoriesController@destroy');
 Route::get('/list_category', 'CategoriesController@listCategory')->name('list_category');
 Route::get('/edit_category/{id}', 'CategoriesController@edit')->name('edit_category');
 Route::post('/update_category/{id}', 'CategoriesController@update')->name('update_category');
+
+
+//SubCategory
+Route::get('/add_subcategory', 'SubCategoriesController@viewAddSubCategory')->name('add_subcategory');
+Route::post('/insertSubCategory', 'SubCategoriesController@store');
+Route::get('/deleteSubCategory/{id}', 'SubCategoriesController@destroy');
+Route::get('/list_subcategory', 'SubCategoriesController@listSubCategory')->name('list_subcategory');
+Route::get('/edit_subcategory/{id}', 'SubCategoriesController@edit')->name('edit_subcategory');
+Route::post('/update_subcategory/{id}', 'SubCategoriesController@update')->name('update_subcategory');
 
 //Banner
 Route::get('/add_banner', 'BannerController@viewAddBanner')->name('add_banner');

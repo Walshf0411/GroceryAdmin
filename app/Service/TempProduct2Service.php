@@ -16,6 +16,7 @@ class TempProduct2Service{
         $temp->name = $request->name;
         $temp->vendor_id= $request->vendor_id;
         $temp->category_id = $request->category_id;
+        $temp->subcategory_id = $request->subcategory_id;
         $temp->unit = $request->unit;
         $temp->description = $request->description;
         $temp->price = $request->price;
@@ -77,6 +78,7 @@ class TempProduct2Service{
         $temp = TempProduct2::findOrFail($id);
         $temp->name = $request->name;
         $temp->category_id = $request->category_id;
+        $temp->subcategory_id = $request->subcategory_id;
         $temp->unit = $request->unit;
         $temp->description = $request->description;
         $temp->price = $request->price;
@@ -119,6 +121,7 @@ class TempProduct2Service{
         $prod = new Product2;
         $prod->vendor_id= $tempProd['0']->vendor_id;
         $prod->category_id = $tempProd['0']->category_id;
+        $prod->subcategory_id = $tempProd['0']->subcategory_id;
         $prod->name = $tempProd['0']->name;
         $prod->description = $tempProd['0']->description;
         $prod->price = $tempProd['0']->price;
@@ -155,7 +158,9 @@ class TempProduct2Service{
     }
 
     public function listTempProduct(){
-        return DB::select('select t.* ,c.category_name ,v.shop_name from tempprod2 AS t, categories AS c ,vendors AS v where t.category_id = c.id and t.vendor_id = v.id');
+        return DB::select('select t.* ,c.category_name ,v.shop_name, s.subcategory_name 
+        from tempprod2 AS t, categories AS c ,vendors AS v, subcategories AS s 
+        where t.category_id = c.id and t.vendor_id = v.id and t.subcategory_id = s.id');
     }
 
     public function listVendorTempProducts($id){

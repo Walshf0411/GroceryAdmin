@@ -30,8 +30,10 @@ class Product2Service{
         $newProd = array();
         foreach ($products as $items) {
             $getVendor = DB::select('select * from vendors where id = ?', [$items->vendor_id])['0'];
+            $getSubCategory = DB::select('select * from subcategories where id = ?', [$items->subcategory_id])['0'];
             $getCategory = DB::select('select * from categories where id = ?', [$items->category_id])['0'];
             $items->vendor = $getVendor;
+            $items->subcategory = $getSubCategory;
             $items->category = $getCategory;
             array_push($newProd, $items);
         }
@@ -58,8 +60,10 @@ class Product2Service{
         foreach ($products as $items) {
             $getVendor = DB::select('select * from vendors where id = ?', [$items->vendor_id])['0'];
             $getCategory = DB::select('select * from categories where id = ?', [$items->category_id])['0'];
+            $getSubCategory = DB::select('select * from subcategories where id = ?', [$items->subcategory_id])['0'];
             $items->vendor = $getVendor;
             $items->category = $getCategory;
+            $items->subcategory = $getSubCategory;
             array_push($newProd, $items);
         }
         return $newProd;
@@ -117,6 +121,7 @@ class Product2Service{
         $temp->name = $request->name;
         $temp->vendor_id= $request->vendor_id;
         $temp->category_id = $request->category_id;
+        $temp->subcategory_id = $request->subcategory_id;
         $temp->unit = $request->unit;
         $temp->description = $request->description;
         $temp->price = $request->price;

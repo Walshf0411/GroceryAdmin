@@ -18,6 +18,7 @@
 
                                  <th>Id No.</th>
                                     <th>Category Name</th>
+                                    <th>SubCategory Name</th>
                                     <th>Product Name</th>
                                     <th>Vendor Name</th>
                                     <th>Unit</th>
@@ -37,6 +38,7 @@
                                     {{-- <td>{{ $row->id }}</td> --}}
                                      {{-- {{ dd($row)}} --}}
                                     <td>{{ $row->category->category_name }}</td>
+                                    <td>{{ $row->subcategory->subcategory_name }}</td>
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->vendor->name }}</td>
                                     <td>{{ $row->unit }}</td>

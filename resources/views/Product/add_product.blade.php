@@ -39,6 +39,14 @@
                                     </select>
                             </div>
                             <div class="form-group">
+                                <label for="projectinput6">Select SubCategory</label>
+                                    <select id="sub_list" name="subcategory_id" class="form-control">
+                                        @foreach($category as $item)
+                                            <option  value="{{ $item->id }}">{{ $item->subcategory_name }}</option>
+                                        @endforeach
+                                    </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="projectinput6">Select Vendor</label>
                                     <select id="sub_list" name="vendor_id" class="form-control">
                                         @foreach($vendors as $item)

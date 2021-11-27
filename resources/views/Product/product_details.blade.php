@@ -28,6 +28,10 @@
                                     <td>{{ $row->category_id }}</td>
                                 </tr>
                                 <tr>
+                                    <th>Category Id</th>
+                                    <td>{{ $row->subcategory_id }}</td>
+                                </tr>
+                                <tr>
                                     <th>Product Name</th>
                                     <td>{{ $row->name }}</td>
                                 </tr>

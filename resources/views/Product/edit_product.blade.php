@@ -64,6 +64,18 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="cname">SubCategory Name</label>
+                                <select id="sub_list" name="subcategory_id" class="form-control">
+                                    @foreach($subcategory as $item)
+                                        @if($item->subcategory_name == $product->subcategory_name)
+                                            <option value="{{ $item->id }}" selected>{{ $item->subcategory_name }}</option>
+                                        @else
+                                            <option value="{{ $item->id }}">{{ $item->subcategory_name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
 
                             <div class="form-group">
                                 <label>Product Image</label>
