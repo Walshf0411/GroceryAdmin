@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Service\SubCategoryService;
 
-class CategoryApiController extends Controller
+class SubCategoryApiController extends Controller
 {
     public function __construct(SubCategoryService $categoryService){
         $this->categoryService = $categoryService;
