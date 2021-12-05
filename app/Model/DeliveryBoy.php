@@ -42,4 +42,14 @@ class DeliveryBoy extends Authenticatable implements JWTSubject
     public function isAvailable() {
         return $this->is_available >= 0;
     }
+
+    public function getLocation() {
+        return new RiderLocation($this->location_latitude, $this->location_longitude);
+    }
+
+    public function updateLocation($riderLocation) {
+        $this->location_latitude = $riderLocation->latitude;
+        $this->location_longitude = $riderLocation->longitude;
+        $this->save();
+    }
 }
