@@ -165,3 +165,6 @@ Route::prefix('/deliveryboy')->group(function () {
 // Search API
 Route::post("/search", "API\SearchController@search")->name("search");
 
+// Rider location API
+Route::get("/riderLocation/{riderId}", "API\RiderLocationApiController@getRiderLocation")->name("rider_location");
+Route::post("/riderLocation/{riderId}/addOrUpdate", "API\RiderLocationApiController@addOrUpdateRiderLocation")->name("rider_location.add_or_update");
