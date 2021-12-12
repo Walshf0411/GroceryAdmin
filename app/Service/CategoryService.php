@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Model\Category;
+use App\Model\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -60,7 +61,11 @@ public function insertCategory(Request $request){
 
     }
     public function listCategory(){
-        return Category::all();
+        $categories = Category::all();
+        foreach ($categories as $category){
+            $category->subcategories = SubCategory::where("category_id", $category->id)->get();
+        }
+        return $categories;
     }
     public function deleteCategory($id){
         $category = DB::select('select * from categories where id = ? limit 1', [$id]);

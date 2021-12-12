@@ -29,6 +29,18 @@
                         @csrf
                         <div class="form-body">
                             <div class="form-group">
+                                <label for="cname">Category Name</label>
+                                <select id="sub_list" name="category_id" class="form-control">
+                                    @foreach($category as $item)
+                                        @if($item->id == $subcategory['0']->category_id)
+                                            <option value="{{ $item->id }}" selected>{{ $item->category_name }}</option>
+                                        @else
+                                            <option value="{{ $item->id }}">{{ $item->category_name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="cname">Sub Category Name</label>
                                 <input type="text" id="cname" value="{{ $subcategory['0']->subcategory_name }}" class="form-control"  name="subcategory_name" required >
                             </div>

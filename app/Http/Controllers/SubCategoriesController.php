@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\SubCategory;
+use App\Model\Category;
 use App\Service\SubCategoryService;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class SubCategoriesController extends Controller
 
 
     public function viewAddSubCategory(){
-        return view('SubCategory.add_subcategory');
+        return view('SubCategory.add_subcategory', ['category'=> Category::all()]);
     }
     public function listSubCategory(){
         $subcategory = $this->service->listSubCategory();
@@ -34,8 +35,8 @@ class SubCategoriesController extends Controller
 
     public function edit(SubCategory $subcategory,$id)
     {
-        $category =  $this->service->editSubCategory($id);
-        return view('SubCategory.edit_subcategory', ['subcategory'=> $subcategory]);
+        $subcategory =  $this->service->editSubCategory($id);
+        return view('SubCategory.edit_subcategory', ['subcategory'=> $subcategory, 'category'=> Category::all()]);
     }
 
     public function update(Request $request, SubCategory $subcategory, $id)

@@ -34,6 +34,7 @@ public function insertSubCategory(Request $request){
         $subcategory = new SubCategory;
         // dd($request->file('category_image'));
         $subcategory->subcategory_name = $request->subcategory_name;
+        $subcategory->category_id = $request->category_id;
         $subcategory->subcategory_image = "";
         $subcategory->save();
         if($request->hasFile('subcategory_image')){
@@ -96,9 +97,9 @@ public function insertSubCategory(Request $request){
             $name =  $id.".".$extension;
             Image::make($image)->resize(100, 100)->save(storage_path('app/public/images/SubCategory/').$name);
 
-            $subcategory = DB::update('update subcategories set subcategory_image = ?, subcategory_name = ? where id = ?', [$name, $request->subcategory_name ,$id]);
+            $subcategory = DB::update('update subcategories set category_id = ?, subcategory_image = ?, subcategory_name = ? where id = ?', [$request->category_id, $name, $request->subcategory_name ,$id]);
         }else{
-            $subcategory = DB::update('update subcategories set subcategory_name = ? where id = ?', [ $request->subcategory_name ,$id]);
+            $subcategory = DB::update('update subcategories set category_id = ?, subcategory_name = ? where id = ?', [$request->category_id,  $request->subcategory_name ,$id]);
         }
 
     }

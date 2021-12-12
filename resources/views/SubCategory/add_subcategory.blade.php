@@ -14,6 +14,14 @@
                     <form class="form" method="post" enctype="multipart/form-data" action="insertSubCategory">
                         @csrf
                         <div class="form-body">
+                            <div class="form-group">
+                                <label for="projectinput6">Select Category</label>
+                                    <select id="sub_list" name="category_id" class="form-control">
+                                        @foreach($category as $item)
+                                            <option  value="{{ $item->id }}">{{ $item->category_name }}</option>
+                                        @endforeach
+                                    </select>
+                            </div>
                                 <div class="form-group">
                                     <label for="cname">Sub Category Name</label>
                                     <input type="text" id="subcategory_name"  class="form-control"  name="subcategory_name" required >

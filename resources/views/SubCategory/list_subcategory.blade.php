@@ -16,6 +16,7 @@
                                 <tr>
 								 <th>Sr No.</th>
                                  <th>Id</th>
+                                 <th>Category Id</th>
                                     <th>Sub Category Name</th>
                                     <th>Sub Category Image</th>
 									{{-- <th>Total Subcategory</th> --}}
@@ -29,6 +30,7 @@
                                 <tr>
                                     <td><?php echo ++$i;?></td>
                                     <td>{{ $row->id }}</td>
+                                    <td>{{ $row->category_id }}</td>
                                     <td>{{ $row->subcategory_name }}</td>
                                     <td><img class="media-object round-media" src="storage\images\SubCategory\{{ $row->subcategory_image }}" alt="Generic placeholder image" style="height: 75px;"></td>
 									<td>
