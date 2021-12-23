@@ -59,7 +59,7 @@ Route::get('/', 'HomeController@index')->name('');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Category
-Route::get('/add_category', 'SubCategoriesController@viewAddCategory')->name('add_category');
+Route::get('/add_category', 'CategoriesController@viewAddCategory')->name('add_category');
 Route::post('/insertCategory', 'CategoriesController@store');
 Route::get('/deleteCategory/{id}', 'CategoriesController@destroy');
 Route::get('/list_category', 'CategoriesController@listCategory')->name('list_category');
