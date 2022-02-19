@@ -33,8 +33,8 @@ Route::match(array("GET", "POST"), '/deploy/asdfghjkl', function() {
         ["git", "pull", "git@github.com:Walshf0411/GroceryAdmin.git"],
         ["cp", "-af", "public/.", "../public_html"],
         ["cp", "-af", ".", "../"],
-        ["unlink", "/home1/creatio5/public_html/storage"],
-        ["ln", "-s", "/home1/creatio5/storage/app/public", "/home1/creatio5/public_html/storage"],
+        ["unlink", "~/public_html/storage"],
+        ["ln", "-s", "~/storage/app/public", "~/public_html/storage"],
         ["git", "status"],
     );
 
@@ -44,7 +44,7 @@ Route::match(array("GET", "POST"), '/deploy/asdfghjkl', function() {
         echo "<br>Running command: ".implode(" ", $cmd);
 
         $process = new Process($cmd);
-        $process->setWorkingDirectory("/home1/creatio5/GroceryAdmin");
+        $process->setWorkingDirectory("~/GroceryAdmin");
         $process->run();
 
         if (!$process->isSuccessful()) {
