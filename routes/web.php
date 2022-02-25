@@ -30,7 +30,7 @@ Auth::routes(['register' => false]); //,  'reset' => false
 
 Route::match(array("GET", "POST"), '/deploy/asdfghjkl', function() {
     $commands = array(
-        ["git", "pull", "git@github.com:Walshf0411/GroceryAdmin.git"],
+        ["git", "pull", "https://github.com/Walshf0411/GroceryAdmin.git"],
         ["cp", "-af", "public/.", "../public_html"],
         ["cp", "-af", ".", "../"],
         ["unlink", "~/public_html/storage"],
@@ -44,7 +44,7 @@ Route::match(array("GET", "POST"), '/deploy/asdfghjkl', function() {
         echo "<br>Running command: ".implode(" ", $cmd);
 
         $process = new Process($cmd);
-        $process->setWorkingDirectory("~/GroceryAdmin");
+        $process->setWorkingDirectory("../GroceryAdmin");
         $process->run();
 
         if (!$process->isSuccessful()) {
