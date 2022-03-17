@@ -26,7 +26,8 @@ class SmsRestClient {
             
             $startTime = microtime(true); 
             // $smsEndPoint = "http://jskbulksms.in/app/smsapi/index.php?key=36107BAE7E6D41&campaign=1&routeid=48&type=text&contacts=9757221040&senderid=SOCSDP&msg=Dear+Aahar+customer+your+OTP+for+login+is";
-            $smsEndPoint = "http://jskbulksms.in/app/smsapi/index.php?key=36107BAE7E6D41&campaign=1&routeid=48&type=text&contacts=".$mobileNumber."&senderid=SOCSDP&msg=Dear+".$message;
+            //$smsEndPoint = "http://jskbulksms.in/app/smsapi/index.php?key=36107BAE7E6D41&campaign=1&routeid=48&type=text&contacts=".$mobileNumber."&senderid=SOCSDP&msg=Dear+".$message;
+            $smsEndPoint = "http://jskbulkmarketing.in/app/smsapi/index.php?key=36107BAE7E6D41&campaign=1&routeid=46&type=text&contacts=".$mobileNumber."&senderid=RAVPNI&msg=".$message."&template_id=1707164336243851897";
 
             $response = $this->client->request('GET', $smsEndPoint,[ 
                 'on_stats' => function (\GuzzleHttp\TransferStats $stats) use (&$url) {
