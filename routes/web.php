@@ -33,8 +33,8 @@ Route::match(array("GET", "POST"), '/deploy/asdfghjkl', function() {
         ["git", "pull", "https://github.com/Walshf0411/GroceryAdmin.git"],
         ["cp", "-af", "public/.", "../public_html"],
         ["cp", "-af", ".", "../"],
-        ["unlink", "~/public_html/storage"],
-        ["ln", "-s", "~/storage/app/public", "~/public_html/storage"],
+        ["unlink", "../public_html/storage"],
+        ["ln", "-s", "../storage/app/public", "../public_html/storage"],
         ["git", "status"],
     );
 
