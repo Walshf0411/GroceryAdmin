@@ -50,14 +50,9 @@ class CustomerLoginController extends Controller
 
     public function editCustomer(Request $request,$id){
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'shop_name' => 'required',
-            'address' => 'required',
+            'c_name' => 'required',
             'email_id' => 'required|email',
-            'password' => 'required|min:6|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
             'mobile_number' => 'required|digits:10',
-            'gst_number' => 'required',
-            'message' => 'required',
           ]);
           if($validator->fails()){
             return response()->json(["message"=>"Enter all details properly"],400);
